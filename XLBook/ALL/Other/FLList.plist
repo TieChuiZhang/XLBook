@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>收藏</key>
+	<array>
+		<string>https://shuapi.jiaston.com/top/man/top/collect/</string>
+		<string>https://shuapi.jiaston.com/top/lady/top/collect/</string>
+	</array>
+	<key>新书</key>
+	<array>
+		<string>https://shuapi.jiaston.com/top/man/top/new/</string>
+		<string>https://shuapi.jiaston.com/top/lady/top/new/</string>
+	</array>
+	<key>完结</key>
+	<array>
+		<string>https://shuapi.jiaston.com/top/man/top/over/</string>
+		<string>https://shuapi.jiaston.com/top/lady/top/over/</string>
+	</array>
+	<key>推荐</key>
+	<array>
+		<string>https://shuapi.jiaston.com/top/man/top/commend/</string>
+		<string>https://shuapi.jiaston.com/top/lady/top/commend/</string>
+	</array>
+	<key>最热</key>
+	<array>
+		<string>https://shuapi.jiaston.com/top/man/top/hot/</string>
+		<string>https://shuapi.jiaston.com/top/lady/top/hot/</string>
+	</array>
+	<key>评分</key>
+	<array>
+		<string>https://shuapi.jiaston.com/top/man/top/vote/</string>
+		<string>https://shuapi.jiaston.com/top/lady/top/vote/</string>
+	</array>
+</dict>
+</plist>
