@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XLAPI : NSObject
 ///获取首页的推荐列表
-+ (void)getHomeRecommandListComplete:(httpCompleteBlock)completeBlock;
++(void)getHomeRecommandListComplete:(httpCompleteBlock)completeBlock;
 ///获取所有可用源
 + (void)getSourcesWithBookId:(NSString *)bookId complete:(httpCompleteBlock)completeBlock;
 ///获取章节文章

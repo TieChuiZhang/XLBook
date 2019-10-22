@@ -171,7 +171,6 @@
         }
     }
     NSDictionary *dic = @{@"listUrl":string};
-    NSLog(@"%@",dic);
     [LeeRunTimePush runtimePush:@"TopBookDController" dic:dic nav:self.navigationController];
 }
 

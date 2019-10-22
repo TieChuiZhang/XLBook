@@ -7,18 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TopBookOneBookDModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TopBookModel : NSObject
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;
 - (void)getAllClassify:(NSString *)urlString;
 
-- (void)changeGroupAtIndex:(NSInteger)index needScroll:(BOOL)need;
+- (void)getOneBookClassify:(NSString *)urlString;
 
-- (void)clickItemAtIndexPath:(NSIndexPath *)indexPath;
-
-- (void)startSearch;
+- (void)reloadData;
 @end
 
 NS_ASSUME_NONNULL_END
