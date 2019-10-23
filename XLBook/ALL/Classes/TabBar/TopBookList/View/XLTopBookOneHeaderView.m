@@ -66,7 +66,7 @@
     [_Desc mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.bgView).offset(10);
         make.left.equalTo(self.bgView).offset(10);
-        make.width.offset(100);
+        make.right.equalTo(self.bgView).offset(-10);
         make.height.offset(100);
     }];
 //
