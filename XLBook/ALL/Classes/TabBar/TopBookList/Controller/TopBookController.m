@@ -15,7 +15,7 @@
 @implementation TopBookController
 
 - (UICollectionView *)collectionView {
-    
+   
     if (_collectionView == nil) {
         // 创建FlowLayout
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];

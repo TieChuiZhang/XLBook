@@ -153,6 +153,8 @@
 		9BD93780235D72B200B34B13 /* UIImage+CropRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD9370C235D72B200B34B13 /* UIImage+CropRotate.m */; };
 		9BD93781235D72B200B34B13 /* ZHWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD93710235D72B200B34B13 /* ZHWave.m */; };
 		9BD9379B235D804600B34B13 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD9379A235D804600B34B13 /* SceneDelegate.m */; };
+		9BE63DA1236088F200C87BCC /* TopBookOneBookHXJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DA0236088F200C87BCC /* TopBookOneBookHXJCell.m */; };
+		9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -449,6 +451,10 @@
 		9BD93782235D730600B34B13 /* XLBook.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBook.pch; sourceTree = "<group>"; };
 		9BD93799235D804600B34B13 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		9BD9379A235D804600B34B13 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		9BE63D9F236088F200C87BCC /* TopBookOneBookHXJCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookHXJCell.h; sourceTree = "<group>"; };
+		9BE63DA0236088F200C87BCC /* TopBookOneBookHXJCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookHXJCell.m; sourceTree = "<group>"; };
+		9BE63DA223608B2200C87BCC /* TopBookOneBookTJView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookTJView.h; sourceTree = "<group>"; };
+		9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookTJView.m; sourceTree = "<group>"; };
 		DADFB010B27A93C545AA30BE /* Pods_XLBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XLBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F20B0EF3D2DC87138B2EF52C /* Pods-XLBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XLBook.debug.xcconfig"; path = "Target Support Files/Pods-XLBook/Pods-XLBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -679,6 +685,10 @@
 				9B32B0B12360211700FE71A9 /* TopBookOneBookMLCell.m */,
 				9B32B0B323602E0600FE71A9 /* TopBookOneBookTJCell.h */,
 				9B32B0B423602E0600FE71A9 /* TopBookOneBookTJCell.m */,
+				9BE63DA223608B2200C87BCC /* TopBookOneBookTJView.h */,
+				9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */,
+				9BE63D9F236088F200C87BCC /* TopBookOneBookHXJCell.h */,
+				9BE63DA0236088F200C87BCC /* TopBookOneBookHXJCell.m */,
 				9B32B0B923603C8500FE71A9 /* TopBookOneBookHXJListView.h */,
 				9B32B0BA23603C8500FE71A9 /* TopBookOneBookHXJListView.m */,
 				9B32B0BC2360503D00FE71A9 /* TopBookOneBookHXJListCell.h */,
@@ -1395,6 +1405,7 @@
 				9BD9372E235D72B200B34B13 /* YYTextLayout.m in Sources */,
 				9BD93776235D72B200B34B13 /* TZGifPhotoPreviewController.m in Sources */,
 				9B32B076235D89D900FE71A9 /* LNRequest.m in Sources */,
+				9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */,
 				9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */,
 				9BD9360D235D717000B34B13 /* AppDelegate.m in Sources */,
 				9B32B0BE2360503D00FE71A9 /* TopBookOneBookHXJListCell.m in Sources */,
@@ -1406,6 +1417,7 @@
 				9BD93766235D72B200B34B13 /* YYReachability.m in Sources */,
 				9BD93738235D72B200B34B13 /* NSAttributedString+YYText.m in Sources */,
 				9BD9371D235D72B200B34B13 /* YYImage.m in Sources */,
+				9BE63DA1236088F200C87BCC /* TopBookOneBookHXJCell.m in Sources */,
 				9BD93721235D72B200B34B13 /* UIButton+YYWebImage.m in Sources */,
 				9B32B08B235DA07100FE71A9 /* MBProgressHUD+LNHUD.m in Sources */,
 				9B32B0BB23603C8500FE71A9 /* TopBookOneBookHXJListView.m in Sources */,

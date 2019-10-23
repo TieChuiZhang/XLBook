@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class XLTopOneBookNav;
 NS_ASSUME_NONNULL_BEGIN
-
+@protocol XLTopOneBookNavDelegate <NSObject>
+- (void)dissMissViewControllerCurrentView:(XLTopOneBookNav *)topEView bySender:(NSInteger )sender;
+@end
 @interface XLTopOneBookNav : UIView
+@property (nonatomic, weak) id<XLTopOneBookNavDelegate> delegate;
 @property (nonatomic,strong)UIView *navV;
 @property (nonatomic,strong)UILabel *navLabel;
 @property (nonatomic,assign)BOOL isScrollUp;

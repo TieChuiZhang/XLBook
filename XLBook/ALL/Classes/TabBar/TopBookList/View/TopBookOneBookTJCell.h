@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopBookHXGModel.h"
 #import "TopBookOneBookDModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TopBookOneBookTJCell : UITableViewCell
 + (instancetype)xlTopBookOneBookTJCellWithTableView:(UITableView *)tableView IndexPathRow:(NSInteger)row;
 - (void)setXLBookOneBookDTJModelCellValue:(TopBookOneBookDModel *)xlBookOneBookDMLModel ArrayWithHXGDataArray:(NSArray *)dataArray;
-//- (void)setXLBookOneBookDTJModelCellValue:(TopBookHXGModel *)topBookHXGModel;
 @end
 
 NS_ASSUME_NONNULL_END
