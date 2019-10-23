@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XLTopBookOneHeaderView : UIView
-- (void)setXLBookOneBookHeaderValue:(TopBookOneBookDModel *)topBookOneBookDModel;
+- (void)setXLBookOneBookWithSXTableView:(UITableView *)tableView HeaderValue:(TopBookOneBookDModel *)topBookOneBookDModel;
 @end
 
 NS_ASSUME_NONNULL_END

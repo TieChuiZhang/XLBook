@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TopBookOneBookDModel.h"
+#import "XLTopBookOneHeaderView.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TopBookModel : NSObject
@@ -16,7 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;
 - (void)getAllClassify:(NSString *)urlString;
 
-- (void)getOneBookClassify:(NSString *)urlString;
+- (void)getOneBookClassifyWithTableView:(UITableView *)tableView
+                     WithHeaderxlTopBookOneHeaderView:(XLTopBookOneHeaderView *)xlTopBookOneHeaderView
+                                        WithUrlString:(NSString *)urlString;
 
 - (void)reloadData;
 @end

@@ -9,7 +9,7 @@
 #import "TopBookModel.h"
 #import "XLAPI.h"
 #import "TopBookListModel.h"
-#import "XLTopBookOneHeaderView.h"
+#import "TopBookHXGModel.h"
 @implementation TopBookModel
 - (void)getAllClassify:(NSString *)urlString
 {
@@ -26,10 +26,12 @@
     [self.tableView reloadData];
 }
 
-- (void)getOneBookClassify:(NSString *)urlString
+- (void)getOneBookClassifyWithTableView:(UITableView *)tableView WithHeaderxlTopBookOneHeaderView:(XLTopBookOneHeaderView *)xlTopBookOneHeaderView WithUrlString:(NSString *)urlString
 {
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
         TopBookOneBookDModel *topBookOneBookDModel = [TopBookOneBookDModel mj_objectWithKeyValues:result[@"data"]];
+        self.dataArray = [TopBookHXGModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"SameUserBooks"]];
+        [xlTopBookOneHeaderView setXLBookOneBookWithSXTableView:tableView HeaderValue:topBookOneBookDModel];
         self.topBookOneBookDModel = topBookOneBookDModel;
         [self reloadData];
         [MBProgressHUD dismissHUD];

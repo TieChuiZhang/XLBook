@@ -30,7 +30,7 @@
         [self addSubview:self.bgImage];
         [self addSubview:self.bgView];
         [self addSubview:self.Name];
-        [self.bgView addSubview:self.Desc];
+        [self addSubview:self.Desc];
         [self addSubview:self.Author];
         [self addSubview:self.Img];
         [self addSubview:self.Score];
@@ -46,28 +46,28 @@
         make.top.equalTo(self).offset(0);
         make.left.equalTo(self).offset(0);
         make.width.equalTo(self);
-        make.height.offset(self.size.height/1.9);
+        make.height.offset(200);
     }];
     
     [_bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_bgImage.mas_bottom).offset(-30);
+        make.top.equalTo(self.bgImage.mas_bottom).offset(-30);
         make.left.equalTo(self).offset(10);
         make.right.equalTo(self).offset(-10);
         make.bottom.equalTo(self).offset(-10);
     }];
     
     [_Img mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bgImage).offset(self.size.height/3.9);
+        make.top.equalTo(self.bgView).offset(-110);
         make.right.equalTo(self).offset(-20);
         make.width.offset(70);
-        make.height.offset(self.size.height/4.5);
+        make.height.offset(120);
     }];
     
     [_Desc mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.bgView).offset(10);
         make.left.equalTo(self.bgView).offset(10);
         make.right.equalTo(self.bgView).offset(-10);
-        make.height.offset(100);
+        make.bottom.equalTo(self.bgView).offset(-10);
     }];
 //
 //    [_Author mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +82,6 @@
 {
     if (!_bgImage) {
         _bgImage = [UIImageView new];
-        _bgImage.backgroundColor = [UIColor greenColor];
         _bgImage.image = [UIImage imageNamed:@"111.jpg"];
     }
     return _bgImage;
@@ -121,9 +120,8 @@
 {
     if (!_Desc) {
         _Desc = [UILabel new];
-        _Desc.backgroundColor = [UIColor redColor];
         _Desc.font = [UIFont systemFontOfSize:12];
-        self.Desc.text = @"231231";
+        self.Desc.text = @"请稍后...";
         _Desc.numberOfLines = 0;
         _Desc.textColor = [UIColor colorWithHexString:@"#666666"];
     }
@@ -150,9 +148,15 @@
     return _Img;
 }
 
-- (void)setXLBookOneBookHeaderValue:(TopBookOneBookDModel *)topBookOneBookDModel
+- (void)setXLBookOneBookWithSXTableView:(UITableView *)tableView HeaderValue:(TopBookOneBookDModel *)topBookOneBookDModel;
 {
     self.Desc.text = topBookOneBookDModel.Desc;
+       //label3.lineBreakMode = NSLineBreakByWordWrapping;//(默认)
+//       CGSize size = [self.Desc sizeThatFits:CGSizeMake(self.Desc.frame.size.width, MAXFLOAT)];
+//       self.Desc.frame = CGRectMake(self.Desc.frame.origin.x, self.Desc.frame.origin.y, self.Desc.frame.size.width,            size.height);
+//       NSLog(@"label3.frame = %@",NSStringFromCGRect(self.Desc.frame));
+    [tableView layoutIfNeeded];
+       
 }
 
 @end

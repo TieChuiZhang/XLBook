@@ -40,7 +40,7 @@
     
     UILabel *navLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, navV.height - 40, kScreenWidth, 30)];
     navLabel.textAlignment = 1;
-    navLabel.text = @"朋友圈";
+    navLabel.text = @"书籍详情";
     navLabel.alpha = 0;
     navLabel.font = [UIFont boldSystemFontOfSize:17];
     [self addSubview:navLabel];
