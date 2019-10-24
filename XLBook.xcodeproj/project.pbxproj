@@ -35,6 +35,7 @@
 		9B32B0BB23603C8500FE71A9 /* TopBookOneBookHXJListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0BA23603C8500FE71A9 /* TopBookOneBookHXJListView.m */; };
 		9B32B0BE2360503D00FE71A9 /* TopBookOneBookHXJListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0BD2360503D00FE71A9 /* TopBookOneBookHXJListCell.m */; };
 		9B32B0C1236056A600FE71A9 /* TopBookHXGModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0C0236056A600FE71A9 /* TopBookHXGModel.m */; };
+		9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF1A72361614C00DF6C18 /* TopBookOneBookHXJCell.m */; };
 		9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BD935D9235D6E3000B34B13 /* XLBook.xcdatamodeld */; };
 		9BD93608235D717000B34B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BD935EC235D717000B34B13 /* Assets.xcassets */; };
 		9BD93609235D717000B34B13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BD935FE235D717000B34B13 /* LaunchScreen.storyboard */; };
@@ -153,7 +154,6 @@
 		9BD93780235D72B200B34B13 /* UIImage+CropRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD9370C235D72B200B34B13 /* UIImage+CropRotate.m */; };
 		9BD93781235D72B200B34B13 /* ZHWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD93710235D72B200B34B13 /* ZHWave.m */; };
 		9BD9379B235D804600B34B13 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD9379A235D804600B34B13 /* SceneDelegate.m */; };
-		9BE63DA1236088F200C87BCC /* TopBookOneBookHXJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DA0236088F200C87BCC /* TopBookOneBookHXJCell.m */; };
 		9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */; };
 /* End PBXBuildFile section */
 
@@ -212,6 +212,8 @@
 		9B32B0BD2360503D00FE71A9 /* TopBookOneBookHXJListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookHXJListCell.m; sourceTree = "<group>"; };
 		9B32B0BF236056A600FE71A9 /* TopBookHXGModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookHXGModel.h; sourceTree = "<group>"; };
 		9B32B0C0236056A600FE71A9 /* TopBookHXGModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookHXGModel.m; sourceTree = "<group>"; };
+		9B3AF1A62361614C00DF6C18 /* TopBookOneBookHXJCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookHXJCell.h; sourceTree = "<group>"; };
+		9B3AF1A72361614C00DF6C18 /* TopBookOneBookHXJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookHXJCell.m; sourceTree = "<group>"; };
 		9BD935CA235D6E3000B34B13 /* XLBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XLBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BD935DA235D6E3000B34B13 /* XLBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XLBook.xcdatamodel; sourceTree = "<group>"; };
 		9BD935E1235D6E3200B34B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -451,8 +453,6 @@
 		9BD93782235D730600B34B13 /* XLBook.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBook.pch; sourceTree = "<group>"; };
 		9BD93799235D804600B34B13 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		9BD9379A235D804600B34B13 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		9BE63D9F236088F200C87BCC /* TopBookOneBookHXJCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookHXJCell.h; sourceTree = "<group>"; };
-		9BE63DA0236088F200C87BCC /* TopBookOneBookHXJCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookHXJCell.m; sourceTree = "<group>"; };
 		9BE63DA223608B2200C87BCC /* TopBookOneBookTJView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookTJView.h; sourceTree = "<group>"; };
 		9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookTJView.m; sourceTree = "<group>"; };
 		DADFB010B27A93C545AA30BE /* Pods_XLBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XLBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -675,6 +675,8 @@
 		9BD935F6235D717000B34B13 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B3AF1A62361614C00DF6C18 /* TopBookOneBookHXJCell.h */,
+				9B3AF1A72361614C00DF6C18 /* TopBookOneBookHXJCell.m */,
 				9B32B092235DBE0400FE71A9 /* TopBookDCell.h */,
 				9B32B093235DBE0400FE71A9 /* TopBookDCell.m */,
 				9B32B0A0235ECAA100FE71A9 /* XLTopOneBookNav.h */,
@@ -687,8 +689,6 @@
 				9B32B0B423602E0600FE71A9 /* TopBookOneBookTJCell.m */,
 				9BE63DA223608B2200C87BCC /* TopBookOneBookTJView.h */,
 				9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */,
-				9BE63D9F236088F200C87BCC /* TopBookOneBookHXJCell.h */,
-				9BE63DA0236088F200C87BCC /* TopBookOneBookHXJCell.m */,
 				9B32B0B923603C8500FE71A9 /* TopBookOneBookHXJListView.h */,
 				9B32B0BA23603C8500FE71A9 /* TopBookOneBookHXJListView.m */,
 				9B32B0BC2360503D00FE71A9 /* TopBookOneBookHXJListCell.h */,
@@ -1417,7 +1417,6 @@
 				9BD93766235D72B200B34B13 /* YYReachability.m in Sources */,
 				9BD93738235D72B200B34B13 /* NSAttributedString+YYText.m in Sources */,
 				9BD9371D235D72B200B34B13 /* YYImage.m in Sources */,
-				9BE63DA1236088F200C87BCC /* TopBookOneBookHXJCell.m in Sources */,
 				9BD93721235D72B200B34B13 /* UIButton+YYWebImage.m in Sources */,
 				9B32B08B235DA07100FE71A9 /* MBProgressHUD+LNHUD.m in Sources */,
 				9B32B0BB23603C8500FE71A9 /* TopBookOneBookHXJListView.m in Sources */,
@@ -1451,6 +1450,7 @@
 				9BD9376A235D72B200B34B13 /* TZVideoPlayerController.m in Sources */,
 				9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.m in Sources */,
 				9BD9376C235D72B200B34B13 /* NSBundle+TZImagePicker.m in Sources */,
+				9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */,
 				9BD9375A235D72B200B34B13 /* CALayer+YYAdd.m in Sources */,
 				9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */,
 				9B32B08E235DA10F00FE71A9 /* XLAPI.m in Sources */,
