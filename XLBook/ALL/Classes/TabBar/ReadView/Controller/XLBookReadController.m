@@ -36,7 +36,7 @@
     // Do any additional setup after loading the view.
     
     self.menuIsShowing = NO;
-    self.settingViewIsShowing = NO;
+    self.settingViewIsShowing = YES;
     
     UIImageView *bgImageView = [[UIImageView alloc] init];
     bgImageView.backgroundColor = [UIColor whiteColor];
