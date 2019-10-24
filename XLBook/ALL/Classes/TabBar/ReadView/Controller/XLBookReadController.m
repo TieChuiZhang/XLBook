@@ -168,6 +168,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LNReaderContentCell *cell = [LNReaderContentCell cellForTableView:tableView];
+    XLBookReadZJLBModel *bookZJModel = [self.dataArray objectAtIndex:indexPath.row];
+    [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,bookZJModel.id]];
     //LNBookContent *content = [self.dataArray objectAtIndex:indexPath.row];
     //cell.content = content;
     return cell;

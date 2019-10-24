@@ -19,4 +19,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *name;
 @end
 
+@interface XLBookReadZJNRModel : NSObject
+/** 书籍id*/
+@property (nonatomic, copy) NSString *id;
+/** 书籍名称*/
+@property (nonatomic, copy) NSString *name;
+/** 章节名称*/
+@property (nonatomic, copy) NSString *cname;
+/** 章节id*/
+@property (nonatomic, copy) NSString *cid;
+/** 下一章id*/
+@property (nonatomic, copy) NSString *nid;
+/** 章节内容*/
+@property (nonatomic, copy) NSString *content;
+@end
+
 NS_ASSUME_NONNULL_END
