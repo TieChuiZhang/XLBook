@@ -11,3 +11,9 @@
 @implementation XLBookReadZJLBModel
 
 @end
+
+
+@implementation XLBookReadZJNRModel
+
+@end
+

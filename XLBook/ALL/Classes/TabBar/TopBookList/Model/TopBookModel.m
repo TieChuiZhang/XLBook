@@ -54,7 +54,7 @@
     [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
         NSLog(@"%@",result);
-        self.dataArray = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
+        XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
         [self reloadData];
         [MBProgressHUD dismissHUD];
     }];
