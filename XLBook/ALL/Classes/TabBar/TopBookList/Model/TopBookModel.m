@@ -10,6 +10,7 @@
 #import "XLAPI.h"
 #import "TopBookListModel.h"
 #import "TopBookHXGModel.h"
+#import "XLBookReadZJLBModel.h"
 @implementation TopBookModel
 - (void)getAllClassify:(NSString *)urlString
 {
@@ -36,6 +37,26 @@
         [self reloadData];
         [MBProgressHUD dismissHUD];
     }];
-    
 }
+
+- (void)getAllReadBookZJLB:(NSString *)urlString
+{
+    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
+    [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+        self.dataArray = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
+        [self reloadData];
+        [MBProgressHUD dismissHUD];
+    }];
+}
+
+- (void)getAllReadBookZJNR:(NSString *)urlString
+{
+    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
+    [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+        self.dataArray = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
+        [self reloadData];
+        [MBProgressHUD dismissHUD];
+    }];
+}
+
 @end

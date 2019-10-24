@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "TopBookOneBookDModel.h"
+@class TopBookOneBookTJView;
 NS_ASSUME_NONNULL_BEGIN
-
+@protocol TopBookOneBookTJViewDelegate <NSObject>
+- (void)topBookOneBookTJViewTapCurrentView:(TopBookOneBookTJView *)topEView;
+@end
 @interface TopBookOneBookTJView : UIView
 @property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;
+@property (nonatomic, weak) id<TopBookOneBookTJViewDelegate> delegate;
 - (void)setXLBookOne:(TopBookOneBookDModel *)xlBookOneBookDMLModel;
 /**图片链接  */
 @property (nonatomic, copy) UIImageView *Img;

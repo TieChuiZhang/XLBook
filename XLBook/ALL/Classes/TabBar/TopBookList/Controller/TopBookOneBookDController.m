@@ -14,7 +14,6 @@
 #import "TopBookOneBookDModel.h"
 #import "XLTopOneBookNav.h"
 #import "TopBookModel.h"
-
 @interface TopBookOneBookDController ()<UITableViewDelegate,UITableViewDataSource,XLTopOneBookNavDelegate>
 @property (nonatomic, copy) NSString *bookID;
 @property (nonatomic, strong) XLTopBookOneHeaderView *xlTopBookOneHeaderView;
@@ -69,11 +68,23 @@
 
     self.topBookModel.tableView = [self setupTableView];
     //CGFloat  aa = NAV_HEIGHT;
-    self.topBookModel.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-10);
+    self.topBookModel.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-60);
     [self.topBookModel getOneBookClassifyWithTableView:self.topBookModel.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://shuapi.jiaston.com/info/%@.html",self.bookID]];
     [self.view addSubview:self.xlTopOneBookNav];
     
+    
+    UIButton *button = [UIButton new];
+    button.frame = CGRectMake(10, kScreenHeight-50, kScreenWidth-20, 50);
+    button.backgroundColor = [UIColor blueColor];
+    [button addTarget:self action:@selector(tap) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+}
 
+- (void)tap
+{
+    
+    NSDictionary *dic = @{@"bookID":self.topBookModel.topBookOneBookDModel.Id};
+    [LeeRunTimePush runtimePush:@"XLBookReadController" dic:dic nav:self.navigationController];
 }
 
 - (TopBookModel *)topBookModel
@@ -157,7 +168,7 @@
             return 49;
         }
     }else if(indexPath.section == 2){
-        return 400;
+        return 370;
     }else {
         return 44;
     }

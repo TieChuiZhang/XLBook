@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *dataArray;
 @property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;
 - (void)getAllClassify:(NSString *)urlString;
-
+- (void)getAllReadBookZJLB:(NSString *)urlString;
 - (void)getOneBookClassifyWithTableView:(UITableView *)tableView
                      WithHeaderxlTopBookOneHeaderView:(XLTopBookOneHeaderView *)xlTopBookOneHeaderView
                                         WithUrlString:(NSString *)urlString;

@@ -36,9 +36,15 @@
 		9B32B0BE2360503D00FE71A9 /* TopBookOneBookHXJListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0BD2360503D00FE71A9 /* TopBookOneBookHXJListCell.m */; };
 		9B32B0C1236056A600FE71A9 /* TopBookHXGModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0C0236056A600FE71A9 /* TopBookHXGModel.m */; };
 		9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF1A72361614C00DF6C18 /* TopBookOneBookHXJCell.m */; };
+		9B3AF1B023617FE400DF6C18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3AF1AE23617FE300DF6C18 /* LaunchScreen.storyboard */; };
+		9B3AF25823619A5A00DF6C18 /* LNTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF25723619A5A00DF6C18 /* LNTableViewController.m */; };
+		9B3AF25B23619AC400DF6C18 /* XLBookReadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF25A23619AC400DF6C18 /* XLBookReadController.m */; };
+		9B3AF25E2361A13900DF6C18 /* LNReaderContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF25C2361A13800DF6C18 /* LNReaderContentCell.m */; };
+		9B3AF2622361A18800DF6C18 /* LNBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF2602361A18800DF6C18 /* LNBaseTableViewCell.m */; };
+		9B3AF2652361A22000DF6C18 /* UIView+NIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF2642361A22000DF6C18 /* UIView+NIB.m */; };
+		9B3AF2682361A90E00DF6C18 /* XLBookReadZJLBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF2672361A90E00DF6C18 /* XLBookReadZJLBModel.m */; };
 		9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BD935D9235D6E3000B34B13 /* XLBook.xcdatamodeld */; };
 		9BD93608235D717000B34B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BD935EC235D717000B34B13 /* Assets.xcassets */; };
-		9BD93609235D717000B34B13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BD935FE235D717000B34B13 /* LaunchScreen.storyboard */; };
 		9BD9360A235D717000B34B13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BD93600235D717000B34B13 /* Main.storyboard */; };
 		9BD9360B235D717000B34B13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD93602235D717000B34B13 /* main.m */; };
 		9BD9360D235D717000B34B13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD93606235D717000B34B13 /* AppDelegate.m */; };
@@ -214,11 +220,23 @@
 		9B32B0C0236056A600FE71A9 /* TopBookHXGModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookHXGModel.m; sourceTree = "<group>"; };
 		9B3AF1A62361614C00DF6C18 /* TopBookOneBookHXJCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookHXJCell.h; sourceTree = "<group>"; };
 		9B3AF1A72361614C00DF6C18 /* TopBookOneBookHXJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookHXJCell.m; sourceTree = "<group>"; };
+		9B3AF1AF23617FE300DF6C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9B3AF25623619A5A00DF6C18 /* LNTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNTableViewController.h; sourceTree = "<group>"; };
+		9B3AF25723619A5A00DF6C18 /* LNTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNTableViewController.m; sourceTree = "<group>"; };
+		9B3AF25923619AC400DF6C18 /* XLBookReadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBookReadController.h; sourceTree = "<group>"; };
+		9B3AF25A23619AC400DF6C18 /* XLBookReadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLBookReadController.m; sourceTree = "<group>"; };
+		9B3AF25C2361A13800DF6C18 /* LNReaderContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNReaderContentCell.m; sourceTree = "<group>"; };
+		9B3AF25D2361A13800DF6C18 /* LNReaderContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNReaderContentCell.h; sourceTree = "<group>"; };
+		9B3AF2602361A18800DF6C18 /* LNBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNBaseTableViewCell.m; sourceTree = "<group>"; };
+		9B3AF2612361A18800DF6C18 /* LNBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNBaseTableViewCell.h; sourceTree = "<group>"; };
+		9B3AF2632361A22000DF6C18 /* UIView+NIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NIB.h"; sourceTree = "<group>"; };
+		9B3AF2642361A22000DF6C18 /* UIView+NIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NIB.m"; sourceTree = "<group>"; };
+		9B3AF2662361A90E00DF6C18 /* XLBookReadZJLBModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBookReadZJLBModel.h; sourceTree = "<group>"; };
+		9B3AF2672361A90E00DF6C18 /* XLBookReadZJLBModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLBookReadZJLBModel.m; sourceTree = "<group>"; };
 		9BD935CA235D6E3000B34B13 /* XLBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XLBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BD935DA235D6E3000B34B13 /* XLBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XLBook.xcdatamodel; sourceTree = "<group>"; };
 		9BD935E1235D6E3200B34B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BD935EC235D717000B34B13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9BD935FF235D717000B34B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BD93601235D717000B34B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BD93602235D717000B34B13 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9BD93604235D717000B34B13 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -523,6 +541,62 @@
 			path = LeeLabel;
 			sourceTree = "<group>";
 		};
+		9B3AF1A923617C0100DF6C18 /* ReadView */ = {
+			isa = PBXGroup;
+			children = (
+				9B3AF1AA23617C0100DF6C18 /* Controller */,
+				9B3AF1AB23617C0100DF6C18 /* Model */,
+				9B3AF1AC23617C0100DF6C18 /* View */,
+				9B3AF1AD23617C0100DF6C18 /* Tool */,
+			);
+			path = ReadView;
+			sourceTree = "<group>";
+		};
+		9B3AF1AA23617C0100DF6C18 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B3AF25923619AC400DF6C18 /* XLBookReadController.h */,
+				9B3AF25A23619AC400DF6C18 /* XLBookReadController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B3AF1AB23617C0100DF6C18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B3AF2662361A90E00DF6C18 /* XLBookReadZJLBModel.h */,
+				9B3AF2672361A90E00DF6C18 /* XLBookReadZJLBModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B3AF1AC23617C0100DF6C18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B3AF25D2361A13800DF6C18 /* LNReaderContentCell.h */,
+				9B3AF25C2361A13800DF6C18 /* LNReaderContentCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B3AF1AD23617C0100DF6C18 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				9B3AF2632361A22000DF6C18 /* UIView+NIB.h */,
+				9B3AF2642361A22000DF6C18 /* UIView+NIB.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		9B3AF25F2361A18800DF6C18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B3AF2602361A18800DF6C18 /* LNBaseTableViewCell.m */,
+				9B3AF2612361A18800DF6C18 /* LNBaseTableViewCell.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9BD935C1235D6E3000B34B13 = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +658,7 @@
 		9BD935ED235D717000B34B13 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				9B3AF1A923617C0100DF6C18 /* ReadView */,
 				9BD9360E235D71C400B34B13 /* Base */,
 				9BD935EE235D717000B34B13 /* MyBookList */,
 				9BD935F3235D717000B34B13 /* TopBookList */,
@@ -675,8 +750,6 @@
 		9BD935F6235D717000B34B13 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9B3AF1A62361614C00DF6C18 /* TopBookOneBookHXJCell.h */,
-				9B3AF1A72361614C00DF6C18 /* TopBookOneBookHXJCell.m */,
 				9B32B092235DBE0400FE71A9 /* TopBookDCell.h */,
 				9B32B093235DBE0400FE71A9 /* TopBookDCell.m */,
 				9B32B0A0235ECAA100FE71A9 /* XLTopOneBookNav.h */,
@@ -691,6 +764,8 @@
 				9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */,
 				9B32B0B923603C8500FE71A9 /* TopBookOneBookHXJListView.h */,
 				9B32B0BA23603C8500FE71A9 /* TopBookOneBookHXJListView.m */,
+				9B3AF1A62361614C00DF6C18 /* TopBookOneBookHXJCell.h */,
+				9B3AF1A72361614C00DF6C18 /* TopBookOneBookHXJCell.m */,
 				9B32B0BC2360503D00FE71A9 /* TopBookOneBookHXJListCell.h */,
 				9B32B0BD2360503D00FE71A9 /* TopBookOneBookHXJListCell.m */,
 			);
@@ -748,7 +823,7 @@
 		9BD935FD235D717000B34B13 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				9BD935FE235D717000B34B13 /* LaunchScreen.storyboard */,
+				9B3AF1AE23617FE300DF6C18 /* LaunchScreen.storyboard */,
 				9BD93600235D717000B34B13 /* Main.storyboard */,
 				9BD93602235D717000B34B13 /* main.m */,
 				9B32B07C235D947D00FE71A9 /* FLList.plist */,
@@ -770,6 +845,7 @@
 		9BD9360E235D71C400B34B13 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				9B3AF25F2361A18800DF6C18 /* View */,
 				9B32B088235DA07100FE71A9 /* Category */,
 				9B32B06C235D89B400FE71A9 /* Tool */,
 				9BD9360F235D71C400B34B13 /* Controller */,
@@ -782,6 +858,8 @@
 		9BD9360F235D71C400B34B13 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B3AF25623619A5A00DF6C18 /* LNTableViewController.h */,
+				9B3AF25723619A5A00DF6C18 /* LNTableViewController.m */,
 				9BD93610235D720E00B34B13 /* XLBookBaseController.h */,
 				9BD93611235D720E00B34B13 /* XLBookBaseController.m */,
 				9B32B066235D852300FE71A9 /* XLBookNavController.h */,
@@ -1294,9 +1372,9 @@
 				9BD9360A235D717000B34B13 /* Main.storyboard in Resources */,
 				9BD9376F235D72B200B34B13 /* TZImagePickerController.bundle in Resources */,
 				9BD93608235D717000B34B13 /* Assets.xcassets in Resources */,
+				9B3AF1B023617FE400DF6C18 /* LaunchScreen.storyboard in Resources */,
 				9B32B0A9235EEFD000FE71A9 /* 111.jpg in Resources */,
 				9B32B07D235D947D00FE71A9 /* FLList.plist in Resources */,
-				9BD93609235D717000B34B13 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1363,8 +1441,10 @@
 				9BD9371B235D72B200B34B13 /* YYWebImageManager.m in Sources */,
 				9BD93741235D72B200B34B13 /* UIApplication+YYAdd.m in Sources */,
 				9BD93726235D72B200B34B13 /* YYWebImageOperation.m in Sources */,
+				9B3AF2622361A18800DF6C18 /* LNBaseTableViewCell.m in Sources */,
 				9BD93760235D72B200B34B13 /* YYDispatchQueuePool.m in Sources */,
 				9BD93755235D72B200B34B13 /* NSString+YYAdd.m in Sources */,
+				9B3AF25B23619AC400DF6C18 /* XLBookReadController.m in Sources */,
 				9BD93725235D72B200B34B13 /* YYAnimatedImageView.m in Sources */,
 				9BD93777235D72B200B34B13 /* TZImageRequestOperation.m in Sources */,
 				9BD9374F235D72B200B34B13 /* NSData+YYAdd.m in Sources */,
@@ -1415,6 +1495,7 @@
 				9BD9374B235D72B200B34B13 /* NSArray+YYAdd.m in Sources */,
 				9BD93745235D72B200B34B13 /* UIView+YYAdd.m in Sources */,
 				9BD93766235D72B200B34B13 /* YYReachability.m in Sources */,
+				9B3AF2682361A90E00DF6C18 /* XLBookReadZJLBModel.m in Sources */,
 				9BD93738235D72B200B34B13 /* NSAttributedString+YYText.m in Sources */,
 				9BD9371D235D72B200B34B13 /* YYImage.m in Sources */,
 				9BD93721235D72B200B34B13 /* UIButton+YYWebImage.m in Sources */,
@@ -1451,6 +1532,7 @@
 				9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.m in Sources */,
 				9BD9376C235D72B200B34B13 /* NSBundle+TZImagePicker.m in Sources */,
 				9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */,
+				9B3AF2652361A22000DF6C18 /* UIView+NIB.m in Sources */,
 				9BD9375A235D72B200B34B13 /* CALayer+YYAdd.m in Sources */,
 				9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */,
 				9B32B08E235DA10F00FE71A9 /* XLAPI.m in Sources */,
@@ -1472,6 +1554,7 @@
 				9BD93723235D72B200B34B13 /* MKAnnotationView+YYWebImage.m in Sources */,
 				9BD9374D235D72B200B34B13 /* NSBundle+YYAdd.m in Sources */,
 				9BD93716235D72B200B34B13 /* YYDiskCache.m in Sources */,
+				9B3AF25823619A5A00DF6C18 /* LNTableViewController.m in Sources */,
 				9BD9377F235D72B200B34B13 /* TOCropToolbar.m in Sources */,
 				9BD9372B235D72B200B34B13 /* YYTextContainerView.m in Sources */,
 				9BD93739235D72B200B34B13 /* UIPasteboard+YYText.m in Sources */,
@@ -1483,6 +1566,7 @@
 				9B32B065235D849F00FE71A9 /* SearchBookController.m in Sources */,
 				9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */,
 				9B32B091235DADD800FE71A9 /* TopBookListModel.m in Sources */,
+				9B3AF25E2361A13900DF6C18 /* LNReaderContentCell.m in Sources */,
 				9BD9374A235D72B200B34B13 /* UIFont+YYAdd.m in Sources */,
 				9BD93713235D72B200B34B13 /* YBNetworkCache.m in Sources */,
 				9BD93772235D72B200B34B13 /* TZPhotoPickerController.m in Sources */,
@@ -1496,10 +1580,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9BD935FE235D717000B34B13 /* LaunchScreen.storyboard */ = {
+		9B3AF1AE23617FE300DF6C18 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9BD935FF235D717000B34B13 /* Base */,
+				9B3AF1AF23617FE300DF6C18 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1630,6 +1714,7 @@
 			baseConfigurationReference = F20B0EF3D2DC87138B2EF52C /* Pods-XLBook.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KP7MH829B8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1650,6 +1735,7 @@
 			baseConfigurationReference = 30DFE58C575FFA38F726E2DC /* Pods-XLBook.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KP7MH829B8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

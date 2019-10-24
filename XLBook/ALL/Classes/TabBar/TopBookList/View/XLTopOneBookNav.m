@@ -53,16 +53,12 @@
     _isScrollUp = isScrollUp;
     
     if (_isScrollUp) {
-        
         [self.backBtn setImage:[UIImage imageNamed:@"icon_return_8x14_"] forState:0];
         [self.camareBtn setImage:[UIImage imageNamed:@"camera"] forState:0];
-        
     } else {
-        
         [self.backBtn setImage:[UIImage imageNamed:@"icon_return_8x14_"] forState:0];
         [self.camareBtn setImage:[UIImage imageNamed:@"camera_w"] forState:0];
     }
-    
 }
 
 - (void)dissMissCurrentVC:(UIButton *)sender

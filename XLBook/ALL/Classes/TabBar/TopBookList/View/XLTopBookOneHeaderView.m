@@ -151,12 +151,7 @@
 - (void)setXLBookOneBookWithSXTableView:(UITableView *)tableView HeaderValue:(TopBookOneBookDModel *)topBookOneBookDModel;
 {
     self.Desc.text = topBookOneBookDModel.Desc;
-       //label3.lineBreakMode = NSLineBreakByWordWrapping;//(默认)
-//       CGSize size = [self.Desc sizeThatFits:CGSizeMake(self.Desc.frame.size.width, MAXFLOAT)];
-//       self.Desc.frame = CGRectMake(self.Desc.frame.origin.x, self.Desc.frame.origin.y, self.Desc.frame.size.width,            size.height);
-//       NSLog(@"label3.frame = %@",NSStringFromCGRect(self.Desc.frame));
     [tableView layoutIfNeeded];
-       
 }
 
 @end

@@ -17,6 +17,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self addSubview:self.tableView];
+       
     }
     return self;
 }
@@ -48,8 +49,6 @@
 {
     return 1;
 }
-
-//每个分区有多少行
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

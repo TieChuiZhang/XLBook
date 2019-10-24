@@ -19,7 +19,6 @@
     if (self) {
         self.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
         [self addSubview:self.listView];
-        //[self updateConstraintsForView];
     }
     return self;
 }
@@ -56,9 +55,6 @@
 }
 
 - (void)setXLBookOneBookDHXJModelCellValue:(TopBookOneBookDModel *)xlBookOneBookDMLModel ArrayWithHXGDataArray:(NSArray *)dataArray{
-//    if (xlBookOneBookDMLModel.SameUserBooks.count == 0) {
-//        self.height = YES;
-//    }
     self.listView.dataArray = dataArray;
     [self.listView.tableView reloadData];
 }
