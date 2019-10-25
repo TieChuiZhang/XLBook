@@ -158,7 +158,7 @@
 
 - (void)setXLBookListModelCellValue:(TopBookListModel *)topBookListModel
 {
-     [self.Img setImageURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",topBookListModel.Img]]];
+    [self.Img setImageURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",topBookListModel.Img]]];
     self.Name.text = topBookListModel.Name;
     self.Author.text = [NSString stringWithFormat:@"%@/%@",topBookListModel.Author,topBookListModel.CName];
     self.Desc.text = topBookListModel.Desc;

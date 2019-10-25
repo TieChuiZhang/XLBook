@@ -8,15 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "TopBookOneBookDModel.h"
+#import "XLTopBookOneHeaderView.h"
+#import "XLBookReadZJLBModel.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TopBookModel : NSObject
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSArray *zjlbBookArr;
 @property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;
+@property (nonatomic, strong) XLBookReadZJLBModel *xlBookReadZJLBModel;
 - (void)getAllClassify:(NSString *)urlString;
-
-- (void)getOneBookClassify:(NSString *)urlString;
+- (void)getAllReadBookZJLB:(NSString *)urlString;
+- (void)getAllReadBookZJNR:(NSString *)urlString
+                   success:(void (^)(id responseObject))success
+                   failure:(void (^)(NSError *error))failure;
+- (void)getOneBookClassifyWithTableView:(UITableView *)tableView
+                     WithHeaderxlTopBookOneHeaderView:(XLTopBookOneHeaderView *)xlTopBookOneHeaderView
+                                        WithUrlString:(NSString *)urlString;
+- (void)getAllReadBookZJNR:(NSString *)urlString;
 
 - (void)reloadData;
 @end

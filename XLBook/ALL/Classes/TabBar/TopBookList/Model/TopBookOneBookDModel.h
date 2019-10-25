@@ -43,4 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
      "Score":9.1  */
 @property (nonatomic, copy) NSDictionary *BookVote;
 @end
+
+@interface TopBookOneBookMLDModel : NSObject
+@property(nonatomic,strong)NSString* personName;
+@end
 NS_ASSUME_NONNULL_END

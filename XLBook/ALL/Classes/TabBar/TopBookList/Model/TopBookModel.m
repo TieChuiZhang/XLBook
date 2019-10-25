@@ -9,7 +9,8 @@
 #import "TopBookModel.h"
 #import "XLAPI.h"
 #import "TopBookListModel.h"
-#import "XLTopBookOneHeaderView.h"
+#import "TopBookHXGModel.h"
+#import "XLBookReadZJLBModel.h"
 @implementation TopBookModel
 - (void)getAllClassify:(NSString *)urlString
 {
@@ -26,14 +27,38 @@
     [self.tableView reloadData];
 }
 
-- (void)getOneBookClassify:(NSString *)urlString
+- (void)getOneBookClassifyWithTableView:(UITableView *)tableView WithHeaderxlTopBookOneHeaderView:(XLTopBookOneHeaderView *)xlTopBookOneHeaderView WithUrlString:(NSString *)urlString
 {
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
         TopBookOneBookDModel *topBookOneBookDModel = [TopBookOneBookDModel mj_objectWithKeyValues:result[@"data"]];
+        self.dataArray = [TopBookHXGModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"SameUserBooks"]];
+        [xlTopBookOneHeaderView setXLBookOneBookWithSXTableView:tableView HeaderValue:topBookOneBookDModel];
         self.topBookOneBookDModel = topBookOneBookDModel;
         [self reloadData];
         [MBProgressHUD dismissHUD];
     }];
-    
 }
+
+- (void)getAllReadBookZJLB:(NSString *)urlString
+{
+    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
+    [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+        self.zjlbBookArr = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
+        [self reloadData];
+        [MBProgressHUD dismissHUD];
+    }];
+}
+
+- (void)getAllReadBookZJNR:(NSString *)urlString success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
+{
+    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
+    [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+        NSLog(@"%@",result);
+        XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
+        success(xlBookReadZJNRModel);
+        [self reloadData];
+        [MBProgressHUD dismissHUD];
+    }];
+}
+
 @end
