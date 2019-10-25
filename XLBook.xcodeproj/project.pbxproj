@@ -38,10 +38,6 @@
 		9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF1A72361614C00DF6C18 /* TopBookOneBookHXJCell.m */; };
 		9B3AF1B023617FE400DF6C18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B3AF1AE23617FE300DF6C18 /* LaunchScreen.storyboard */; };
 		9B3AF25823619A5A00DF6C18 /* LNTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF25723619A5A00DF6C18 /* LNTableViewController.m */; };
-		9B3AF25B23619AC400DF6C18 /* XLBookReadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF25A23619AC400DF6C18 /* XLBookReadController.m */; };
-		9B3AF25E2361A13900DF6C18 /* LNReaderContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF25C2361A13800DF6C18 /* LNReaderContentCell.m */; };
-		9B3AF2622361A18800DF6C18 /* LNBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF2602361A18800DF6C18 /* LNBaseTableViewCell.m */; };
-		9B3AF2652361A22000DF6C18 /* UIView+NIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF2642361A22000DF6C18 /* UIView+NIB.m */; };
 		9B3AF2682361A90E00DF6C18 /* XLBookReadZJLBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B3AF2672361A90E00DF6C18 /* XLBookReadZJLBModel.m */; };
 		9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BD935D9235D6E3000B34B13 /* XLBook.xcdatamodeld */; };
 		9BD93608235D717000B34B13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BD935EC235D717000B34B13 /* Assets.xcassets */; };
@@ -161,6 +157,18 @@
 		9BD93781235D72B200B34B13 /* ZHWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD93710235D72B200B34B13 /* ZHWave.m */; };
 		9BD9379B235D804600B34B13 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD9379A235D804600B34B13 /* SceneDelegate.m */; };
 		9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */; };
+		9BE63E0F2361D5F300C87BCC /* ZGiReaderTopAndBottomBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DF32361D5F300C87BCC /* ZGiReaderTopAndBottomBarController.m */; };
+		9BE63E102361D5F300C87BCC /* ZGiReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DF62361D5F300C87BCC /* ZGiReaderViewController.m */; };
+		9BE63E112361D5F300C87BCC /* ZGiReaderGlobalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DF92361D5F300C87BCC /* ZGiReaderGlobalModel.m */; };
+		9BE63E122361D5F300C87BCC /* ZGiReaderRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DFA2361D5F300C87BCC /* ZGiReaderRecordModel.m */; };
+		9BE63E132361D5F300C87BCC /* ZGiReaderChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DFB2361D5F300C87BCC /* ZGiReaderChapterModel.m */; };
+		9BE63E142361D5F300C87BCC /* ZGiReaderCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DFF2361D5F300C87BCC /* ZGiReaderCollectionView.m */; };
+		9BE63E152361D5F300C87BCC /* ZGiReaderCurrentTempView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E032361D5F300C87BCC /* ZGiReaderCurrentTempView.m */; };
+		9BE63E162361D5F300C87BCC /* ZGiReaderPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E052361D5F300C87BCC /* ZGiReaderPageCell.m */; };
+		9BE63E172361D5F300C87BCC /* ZGiReaderCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E072361D5F300C87BCC /* ZGiReaderCollectionViewFlowLayout.m */; };
+		9BE63E182361D5F300C87BCC /* ZGiReaderPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E082361D5F300C87BCC /* ZGiReaderPageView.m */; };
+		9BE63E192361D5F300C87BCC /* JJPreventCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E0A2361D5F300C87BCC /* JJPreventCrash.m */; };
+		9BE63E1A2361D5F300C87BCC /* NSString+ZGiReaderPaging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E0B2361D5F300C87BCC /* NSString+ZGiReaderPaging.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -223,14 +231,6 @@
 		9B3AF1AF23617FE300DF6C18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B3AF25623619A5A00DF6C18 /* LNTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNTableViewController.h; sourceTree = "<group>"; };
 		9B3AF25723619A5A00DF6C18 /* LNTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNTableViewController.m; sourceTree = "<group>"; };
-		9B3AF25923619AC400DF6C18 /* XLBookReadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBookReadController.h; sourceTree = "<group>"; };
-		9B3AF25A23619AC400DF6C18 /* XLBookReadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLBookReadController.m; sourceTree = "<group>"; };
-		9B3AF25C2361A13800DF6C18 /* LNReaderContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNReaderContentCell.m; sourceTree = "<group>"; };
-		9B3AF25D2361A13800DF6C18 /* LNReaderContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNReaderContentCell.h; sourceTree = "<group>"; };
-		9B3AF2602361A18800DF6C18 /* LNBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNBaseTableViewCell.m; sourceTree = "<group>"; };
-		9B3AF2612361A18800DF6C18 /* LNBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNBaseTableViewCell.h; sourceTree = "<group>"; };
-		9B3AF2632361A22000DF6C18 /* UIView+NIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NIB.h"; sourceTree = "<group>"; };
-		9B3AF2642361A22000DF6C18 /* UIView+NIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NIB.m"; sourceTree = "<group>"; };
 		9B3AF2662361A90E00DF6C18 /* XLBookReadZJLBModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBookReadZJLBModel.h; sourceTree = "<group>"; };
 		9B3AF2672361A90E00DF6C18 /* XLBookReadZJLBModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLBookReadZJLBModel.m; sourceTree = "<group>"; };
 		9BD935CA235D6E3000B34B13 /* XLBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XLBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -473,6 +473,31 @@
 		9BD9379A235D804600B34B13 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		9BE63DA223608B2200C87BCC /* TopBookOneBookTJView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookTJView.h; sourceTree = "<group>"; };
 		9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookTJView.m; sourceTree = "<group>"; };
+		9BE63DF32361D5F300C87BCC /* ZGiReaderTopAndBottomBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderTopAndBottomBarController.m; sourceTree = "<group>"; };
+		9BE63DF42361D5F300C87BCC /* ZGiReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderViewController.h; sourceTree = "<group>"; };
+		9BE63DF52361D5F300C87BCC /* ZGiReaderTopAndBottomBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderTopAndBottomBarController.h; sourceTree = "<group>"; };
+		9BE63DF62361D5F300C87BCC /* ZGiReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderViewController.m; sourceTree = "<group>"; };
+		9BE63DF82361D5F300C87BCC /* ZGiReaderChapterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderChapterModel.h; sourceTree = "<group>"; };
+		9BE63DF92361D5F300C87BCC /* ZGiReaderGlobalModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderGlobalModel.m; sourceTree = "<group>"; };
+		9BE63DFA2361D5F300C87BCC /* ZGiReaderRecordModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderRecordModel.m; sourceTree = "<group>"; };
+		9BE63DFB2361D5F300C87BCC /* ZGiReaderChapterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderChapterModel.m; sourceTree = "<group>"; };
+		9BE63DFC2361D5F300C87BCC /* ZGiReaderGlobalModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderGlobalModel.h; sourceTree = "<group>"; };
+		9BE63DFD2361D5F300C87BCC /* ZGiReaderRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderRecordModel.h; sourceTree = "<group>"; };
+		9BE63DFF2361D5F300C87BCC /* ZGiReaderCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderCollectionView.m; sourceTree = "<group>"; };
+		9BE63E002361D5F300C87BCC /* ZGiReaderPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderPageCell.h; sourceTree = "<group>"; };
+		9BE63E012361D5F300C87BCC /* ZGiReaderCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		9BE63E022361D5F300C87BCC /* ZGiReaderPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderPageView.h; sourceTree = "<group>"; };
+		9BE63E032361D5F300C87BCC /* ZGiReaderCurrentTempView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderCurrentTempView.m; sourceTree = "<group>"; };
+		9BE63E042361D5F300C87BCC /* ZGiReaderCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderCollectionView.h; sourceTree = "<group>"; };
+		9BE63E052361D5F300C87BCC /* ZGiReaderPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderPageCell.m; sourceTree = "<group>"; };
+		9BE63E062361D5F300C87BCC /* ZGiReaderCurrentTempView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderCurrentTempView.h; sourceTree = "<group>"; };
+		9BE63E072361D5F300C87BCC /* ZGiReaderCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		9BE63E082361D5F300C87BCC /* ZGiReaderPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGiReaderPageView.m; sourceTree = "<group>"; };
+		9BE63E0A2361D5F300C87BCC /* JJPreventCrash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJPreventCrash.m; sourceTree = "<group>"; };
+		9BE63E0B2361D5F300C87BCC /* NSString+ZGiReaderPaging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZGiReaderPaging.m"; sourceTree = "<group>"; };
+		9BE63E0C2361D5F300C87BCC /* NSString+ZGiReaderPaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZGiReaderPaging.h"; sourceTree = "<group>"; };
+		9BE63E0D2361D5F300C87BCC /* JJPreventCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJPreventCrash.h; sourceTree = "<group>"; };
+		9BE63E0E2361D5F300C87BCC /* ZGiReaderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderHeader.h; sourceTree = "<group>"; };
 		DADFB010B27A93C545AA30BE /* Pods_XLBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XLBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F20B0EF3D2DC87138B2EF52C /* Pods-XLBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XLBook.debug.xcconfig"; path = "Target Support Files/Pods-XLBook/Pods-XLBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -555,8 +580,7 @@
 		9B3AF1AA23617C0100DF6C18 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9B3AF25923619AC400DF6C18 /* XLBookReadController.h */,
-				9B3AF25A23619AC400DF6C18 /* XLBookReadController.m */,
+				9BE63DF12361D5F300C87BCC /* ZGiReader */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -573,8 +597,6 @@
 		9B3AF1AC23617C0100DF6C18 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9B3AF25D2361A13800DF6C18 /* LNReaderContentCell.h */,
-				9B3AF25C2361A13800DF6C18 /* LNReaderContentCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,8 +604,6 @@
 		9B3AF1AD23617C0100DF6C18 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				9B3AF2632361A22000DF6C18 /* UIView+NIB.h */,
-				9B3AF2642361A22000DF6C18 /* UIView+NIB.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -591,8 +611,6 @@
 		9B3AF25F2361A18800DF6C18 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9B3AF2602361A18800DF6C18 /* LNBaseTableViewCell.m */,
-				9B3AF2612361A18800DF6C18 /* LNBaseTableViewCell.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1302,6 +1320,70 @@
 			path = Wave;
 			sourceTree = "<group>";
 		};
+		9BE63DF12361D5F300C87BCC /* ZGiReader */ = {
+			isa = PBXGroup;
+			children = (
+				9BE63DF22361D5F300C87BCC /* Controller */,
+				9BE63DF72361D5F300C87BCC /* Model */,
+				9BE63DFE2361D5F300C87BCC /* View */,
+				9BE63E092361D5F300C87BCC /* Tool */,
+			);
+			path = ZGiReader;
+			sourceTree = "<group>";
+		};
+		9BE63DF22361D5F300C87BCC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9BE63DF32361D5F300C87BCC /* ZGiReaderTopAndBottomBarController.m */,
+				9BE63DF52361D5F300C87BCC /* ZGiReaderTopAndBottomBarController.h */,
+				9BE63DF42361D5F300C87BCC /* ZGiReaderViewController.h */,
+				9BE63DF62361D5F300C87BCC /* ZGiReaderViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9BE63DF72361D5F300C87BCC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9BE63DF82361D5F300C87BCC /* ZGiReaderChapterModel.h */,
+				9BE63DFB2361D5F300C87BCC /* ZGiReaderChapterModel.m */,
+				9BE63DFC2361D5F300C87BCC /* ZGiReaderGlobalModel.h */,
+				9BE63DF92361D5F300C87BCC /* ZGiReaderGlobalModel.m */,
+				9BE63DFD2361D5F300C87BCC /* ZGiReaderRecordModel.h */,
+				9BE63DFA2361D5F300C87BCC /* ZGiReaderRecordModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9BE63DFE2361D5F300C87BCC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9BE63E042361D5F300C87BCC /* ZGiReaderCollectionView.h */,
+				9BE63DFF2361D5F300C87BCC /* ZGiReaderCollectionView.m */,
+				9BE63E002361D5F300C87BCC /* ZGiReaderPageCell.h */,
+				9BE63E052361D5F300C87BCC /* ZGiReaderPageCell.m */,
+				9BE63E012361D5F300C87BCC /* ZGiReaderCollectionViewFlowLayout.h */,
+				9BE63E072361D5F300C87BCC /* ZGiReaderCollectionViewFlowLayout.m */,
+				9BE63E022361D5F300C87BCC /* ZGiReaderPageView.h */,
+				9BE63E082361D5F300C87BCC /* ZGiReaderPageView.m */,
+				9BE63E062361D5F300C87BCC /* ZGiReaderCurrentTempView.h */,
+				9BE63E032361D5F300C87BCC /* ZGiReaderCurrentTempView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9BE63E092361D5F300C87BCC /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				9BE63E0A2361D5F300C87BCC /* JJPreventCrash.m */,
+				9BE63E0B2361D5F300C87BCC /* NSString+ZGiReaderPaging.m */,
+				9BE63E0C2361D5F300C87BCC /* NSString+ZGiReaderPaging.h */,
+				9BE63E0D2361D5F300C87BCC /* JJPreventCrash.h */,
+				9BE63E0E2361D5F300C87BCC /* ZGiReaderHeader.h */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		D91A2D5691768854C8852333 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1441,10 +1523,10 @@
 				9BD9371B235D72B200B34B13 /* YYWebImageManager.m in Sources */,
 				9BD93741235D72B200B34B13 /* UIApplication+YYAdd.m in Sources */,
 				9BD93726235D72B200B34B13 /* YYWebImageOperation.m in Sources */,
-				9B3AF2622361A18800DF6C18 /* LNBaseTableViewCell.m in Sources */,
+				9BE63E122361D5F300C87BCC /* ZGiReaderRecordModel.m in Sources */,
 				9BD93760235D72B200B34B13 /* YYDispatchQueuePool.m in Sources */,
 				9BD93755235D72B200B34B13 /* NSString+YYAdd.m in Sources */,
-				9B3AF25B23619AC400DF6C18 /* XLBookReadController.m in Sources */,
+				9BE63E132361D5F300C87BCC /* ZGiReaderChapterModel.m in Sources */,
 				9BD93725235D72B200B34B13 /* YYAnimatedImageView.m in Sources */,
 				9BD93777235D72B200B34B13 /* TZImageRequestOperation.m in Sources */,
 				9BD9374F235D72B200B34B13 /* NSData+YYAdd.m in Sources */,
@@ -1466,6 +1548,7 @@
 				9BD9372C235D72B200B34B13 /* YYTextEffectWindow.m in Sources */,
 				9BD93765235D72B200B34B13 /* YYThreadSafeArray.m in Sources */,
 				9BD93731235D72B200B34B13 /* YYTextKeyboardManager.m in Sources */,
+				9BE63E112361D5F300C87BCC /* ZGiReaderGlobalModel.m in Sources */,
 				9BD93719235D72B200B34B13 /* YYMemoryCache.m in Sources */,
 				9BD93758235D72B200B34B13 /* NSObject+YYAddForKVO.m in Sources */,
 				9BD9379B235D804600B34B13 /* SceneDelegate.m in Sources */,
@@ -1475,6 +1558,7 @@
 				9BD93732235D72B200B34B13 /* YYTextDebugOption.m in Sources */,
 				9BD93737235D72B200B34B13 /* YYTextParser.m in Sources */,
 				9BD93775235D72B200B34B13 /* TZLocationManager.m in Sources */,
+				9BE63E152361D5F300C87BCC /* ZGiReaderCurrentTempView.m in Sources */,
 				9B32B0A2235ECAA100FE71A9 /* XLTopOneBookNav.m in Sources */,
 				9BD9374C235D72B200B34B13 /* NSNumber+YYAdd.m in Sources */,
 				9BD93768235D72B200B34B13 /* TZImageCropManager.m in Sources */,
@@ -1486,13 +1570,17 @@
 				9BD93776235D72B200B34B13 /* TZGifPhotoPreviewController.m in Sources */,
 				9B32B076235D89D900FE71A9 /* LNRequest.m in Sources */,
 				9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */,
+				9BE63E102361D5F300C87BCC /* ZGiReaderViewController.m in Sources */,
 				9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */,
+				9BE63E162361D5F300C87BCC /* ZGiReaderPageCell.m in Sources */,
 				9BD9360D235D717000B34B13 /* AppDelegate.m in Sources */,
 				9B32B0BE2360503D00FE71A9 /* TopBookOneBookHXJListCell.m in Sources */,
 				9BD9374E235D72B200B34B13 /* NSObject+YYAdd.m in Sources */,
 				9BD93780235D72B200B34B13 /* UIImage+CropRotate.m in Sources */,
+				9BE63E0F2361D5F300C87BCC /* ZGiReaderTopAndBottomBarController.m in Sources */,
 				9BD9360B235D717000B34B13 /* main.m in Sources */,
 				9BD9374B235D72B200B34B13 /* NSArray+YYAdd.m in Sources */,
+				9BE63E142361D5F300C87BCC /* ZGiReaderCollectionView.m in Sources */,
 				9BD93745235D72B200B34B13 /* UIView+YYAdd.m in Sources */,
 				9BD93766235D72B200B34B13 /* YYReachability.m in Sources */,
 				9B3AF2682361A90E00DF6C18 /* XLBookReadZJLBModel.m in Sources */,
@@ -1507,6 +1595,7 @@
 				9BD9376E235D72B200B34B13 /* TZPhotoPreviewController.m in Sources */,
 				9BD93763235D72B200B34B13 /* YYFileHash.m in Sources */,
 				9B32B084235D9E4B00FE71A9 /* TopBookDController.m in Sources */,
+				9BE63E1A2361D5F300C87BCC /* NSString+ZGiReaderPaging.m in Sources */,
 				9BD9377C235D72B200B34B13 /* TOCropScrollView.m in Sources */,
 				9BD93743235D72B200B34B13 /* UIScrollView+YYAdd.m in Sources */,
 				9BD93746235D72B200B34B13 /* UIBarButtonItem+YYAdd.m in Sources */,
@@ -1532,13 +1621,14 @@
 				9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.m in Sources */,
 				9BD9376C235D72B200B34B13 /* NSBundle+TZImagePicker.m in Sources */,
 				9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */,
-				9B3AF2652361A22000DF6C18 /* UIView+NIB.m in Sources */,
 				9BD9375A235D72B200B34B13 /* CALayer+YYAdd.m in Sources */,
 				9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */,
 				9B32B08E235DA10F00FE71A9 /* XLAPI.m in Sources */,
+				9BE63E172361D5F300C87BCC /* ZGiReaderCollectionViewFlowLayout.m in Sources */,
 				9BD93774235D72B200B34B13 /* TZImagePickerController.m in Sources */,
 				9BD9373F235D72B200B34B13 /* UIColor+YYAdd.m in Sources */,
 				9BD93728235D72B200B34B13 /* YYClassInfo.m in Sources */,
+				9BE63E182361D5F300C87BCC /* ZGiReaderPageView.m in Sources */,
 				9BD9375B235D72B200B34B13 /* YYWeakProxy.m in Sources */,
 				9B32B087235D9F9700FE71A9 /* TopBookModel.m in Sources */,
 				9BD9373C235D72B200B34B13 /* YYTextRubyAnnotation.m in Sources */,
@@ -1562,11 +1652,11 @@
 				9BD93767235D72B200B34B13 /* YZAuthID.m in Sources */,
 				9BD93756235D72B200B34B13 /* NSNotificationCenter+YYAdd.m in Sources */,
 				9BD93773235D72B200B34B13 /* TZPhotoPreviewCell.m in Sources */,
+				9BE63E192361D5F300C87BCC /* JJPreventCrash.m in Sources */,
 				9BD93770235D72B200B34B13 /* TZProgressView.m in Sources */,
 				9B32B065235D849F00FE71A9 /* SearchBookController.m in Sources */,
 				9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */,
 				9B32B091235DADD800FE71A9 /* TopBookListModel.m in Sources */,
-				9B3AF25E2361A13900DF6C18 /* LNReaderContentCell.m in Sources */,
 				9BD9374A235D72B200B34B13 /* UIFont+YYAdd.m in Sources */,
 				9BD93713235D72B200B34B13 /* YBNetworkCache.m in Sources */,
 				9BD93772235D72B200B34B13 /* TZPhotoPickerController.m in Sources */,

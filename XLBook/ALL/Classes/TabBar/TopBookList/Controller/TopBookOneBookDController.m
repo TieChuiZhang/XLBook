@@ -83,8 +83,11 @@
 - (void)tap
 {
     
-    NSDictionary *dic = @{@"bookID":self.topBookModel.topBookOneBookDModel.Id};
-    [LeeRunTimePush runtimePush:@"XLBookReadController" dic:dic nav:self.navigationController];
+    //NSDictionary *dic = @{@"bookID":self.topBookModel.topBookOneBookDModel.Id};
+    //[LeeRunTimePush runtimePush:@"XLBookReadController" dic:dic nav:self.navigationController];
+    [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/2594003.html",self.topBookModel.topBookOneBookDModel.Id]];
+    //[self.topBookModel getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID]];
+    
 }
 
 - (TopBookModel *)topBookModel
