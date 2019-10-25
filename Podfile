@@ -11,4 +11,7 @@ target 'XLBook' do
   pod 'Masonry'
   pod 'MJExtension'
   pod 'MJRefresh'
+  pod 'YYKit', '~> 1.0.9'
+  pod 'FDFullscreenPopGesture'
+  pod 'UITableView+FDTemplateLayoutCell'
 end

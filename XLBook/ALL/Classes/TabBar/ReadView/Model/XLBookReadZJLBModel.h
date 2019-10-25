@@ -32,6 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *nid;
 /** 章节内容*/
 @property (nonatomic, copy) NSString *content;
+
+@property (nonatomic, strong) NSMutableArray *pageDatas;
+@property (nonatomic, strong) NSMutableAttributedString *attributedString;
+@property (nonatomic, assign) NSInteger pageCount;
+
 @end
 
 NS_ASSUME_NONNULL_END

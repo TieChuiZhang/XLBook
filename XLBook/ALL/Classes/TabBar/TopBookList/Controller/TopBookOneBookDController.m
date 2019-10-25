@@ -70,6 +70,7 @@
     //CGFloat  aa = NAV_HEIGHT;
     self.topBookModel.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-60);
     [self.topBookModel getOneBookClassifyWithTableView:self.topBookModel.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://shuapi.jiaston.com/info/%@.html",self.bookID]];
+    [self.topBookModel getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID]];
     [self.view addSubview:self.xlTopOneBookNav];
     
     
@@ -83,10 +84,9 @@
 - (void)tap
 {
     
-    //NSDictionary *dic = @{@"bookID":self.topBookModel.topBookOneBookDModel.Id};
-    //[LeeRunTimePush runtimePush:@"XLBookReadController" dic:dic nav:self.navigationController];
-    [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/2594003.html",self.topBookModel.topBookOneBookDModel.Id]];
-    //[self.topBookModel getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID]];
+    NSDictionary *dic = @{@"bookID":self.topBookModel.topBookOneBookDModel.Id,@"bookZJLBArr":self.topBookModel.zjlbBookArr};
+    [LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
+    //[self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/2594003.html",self.topBookModel.topBookOneBookDModel.Id]];
     
 }
 

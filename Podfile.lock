@@ -14,33 +14,47 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - FDFullscreenPopGesture (1.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJExtension (3.0.15.1)
   - MJRefresh (3.1.15.7)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
   - AFNetworking
+  - FDFullscreenPopGesture
   - Masonry
   - MBProgressHUD
   - MJExtension
   - MJRefresh
+  - "UITableView+FDTemplateLayoutCell"
+  - YYKit (~> 1.0.9)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs:
     - AFNetworking
+    - FDFullscreenPopGesture
     - Masonry
     - MBProgressHUD
     - MJExtension
     - MJRefresh
+    - "UITableView+FDTemplateLayoutCell"
+    - YYKit
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 851d5e1582d367d5ad5836447e23b53aa2766819
+PODFILE CHECKSUM: ab1c8b41e16aa296aed02ab78529a9bf93f21421
 
 COCOAPODS: 1.7.5

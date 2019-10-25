@@ -43,18 +43,19 @@
 {
     [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
-        self.dataArray = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
+        self.zjlbBookArr = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
         [self reloadData];
         [MBProgressHUD dismissHUD];
     }];
 }
 
-- (void)getAllReadBookZJNR:(NSString *)urlString
+- (void)getAllReadBookZJNR:(NSString *)urlString success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
 {
     [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
         NSLog(@"%@",result);
         XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
+        success(xlBookReadZJNRModel);
         [self reloadData];
         [MBProgressHUD dismissHUD];
     }];
