@@ -14,4 +14,5 @@ target 'XLBook' do
   pod 'YYKit', '~> 1.0.9'
   pod 'FDFullscreenPopGesture'
   pod 'UITableView+FDTemplateLayoutCell'
+  pod 'ReactiveObjC'
 end

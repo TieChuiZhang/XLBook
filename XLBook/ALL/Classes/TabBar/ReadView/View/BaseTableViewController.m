@@ -101,8 +101,8 @@
 
 
 - (void)configEmptyView {
-    [super configEmptyView];
-    [self.emptyView configEdgesSuperView:self.tableView];
+    //[super configEmptyView];
+    //[self.emptyView configEdgesSuperView:self.tableView];
 }
 
 
@@ -122,12 +122,12 @@
  配置list控件 下拉刷新
  */
 - (void)configListDownpullRefresh {
-    MJWeakSelf;
-    _tableView.mj_header = [MJDIYHeader headerWithRefreshingBlock:^{
-        weakSelf.page = weakSelf.initialPage;
-        [weakSelf.tableView.mj_footer resetNoMoreData];
-        [weakSelf requestDataWithShowLoading:NO];
-    }];
+//    MJWeakSelf;
+//    _tableView.mj_header = [MJDIYHeader headerWithRefreshingBlock:^{
+//        weakSelf.page = weakSelf.initialPage;
+//        [weakSelf.tableView.mj_footer resetNoMoreData];
+//        [weakSelf requestDataWithShowLoading:NO];
+//    }];
 }
 
 
@@ -135,105 +135,105 @@
  配置list控件 上拉刷新
  */
 - (void)configListOnpullRefresh {
-    MJWeakSelf;
-    _tableView.mj_footer = [MJDIYAutoFooter footerWithRefreshingBlock:^{
-        if (IsEmpty(weakSelf.datas)) {
-            weakSelf.page = weakSelf.initialPage;
-        } else {
-            weakSelf.page++;
-        }
-        [weakSelf requestDataWithShowLoading:NO];
-    }];
+//    MJWeakSelf;
+//    _tableView.mj_footer = [MJDIYAutoFooter footerWithRefreshingBlock:^{
+//        if (IsEmpty(weakSelf.datas)) {
+//            weakSelf.page = weakSelf.initialPage;
+//        } else {
+//            weakSelf.page++;
+//        }
+//        [weakSelf requestDataWithShowLoading:NO];
+//    }];
 }
 
 
 - (void)endRefresh {
-    if (self.tableView.mj_header.refreshing) {
-        [self.tableView.mj_header endRefreshing];
-    }
-    else if (self.tableView.mj_footer.refreshing) {
-        [self.tableView.mj_footer endRefreshing];
-    }
+//    if (self.tableView.mj_header.refreshing) {
+//        [self.tableView.mj_header endRefreshing];
+//    }
+//    else if (self.tableView.mj_footer.refreshing) {
+//        [self.tableView.mj_footer endRefreshing];
+//    }
 }
 
 
 - (void)showEmpty:(NSString *)errorTitle message:(NSString *)errorMessage {
     
-    dispatch_async_on_main_queue(^{
-        [HUD hide];
-        self.errorTitle = errorTitle;
-        if (self.page == self.initialPage) {
-            if (!IsEmpty(self.datas) && errorTitle.length > 0) {
-                //不为空
-                self.emptyView.hidden = YES;
-                if (errorTitle.length > 0) {
-                    [HUD showError:errorTitle inview:self.view];
-                }
-                //            self.tableView.hidden = NO;
-                return;
-            }
-            
-            [self.emptyView updateTitle:errorTitle message:errorMessage];
-            self.emptyView.hidden = NO;
-            //        self.tableView.hidden = YES;
-            
-        } else {
-            if (errorTitle.length > 0) {
-                [HUD showError:errorTitle inview:self.view];
-            }
-            self.emptyView.hidden = YES;
-            //        self.tableView.hidden = NO;
-        }
-    });
+    //dispatch_async_on_main_queue(^{
+//        [HUD hide];
+//        self.errorTitle = errorTitle;
+//        if (self.page == self.initialPage) {
+//            if (!IsEmpty(self.datas) && errorTitle.length > 0) {
+//                //不为空
+//                self.emptyView.hidden = YES;
+//                if (errorTitle.length > 0) {
+//                    [HUD showError:errorTitle inview:self.view];
+//                }
+//                //            self.tableView.hidden = NO;
+//                return;
+//            }
+//
+//            [self.emptyView updateTitle:errorTitle message:errorMessage];
+//            self.emptyView.hidden = NO;
+//            //        self.tableView.hidden = YES;
+//
+//        } else {
+//            if (errorTitle.length > 0) {
+//                [HUD showError:errorTitle inview:self.view];
+//            }
+//            self.emptyView.hidden = YES;
+//            //        self.tableView.hidden = NO;
+//        }
+//    });
 }
 
 
 - (void)requestDataWithShowLoading:(BOOL)show {
-    [super requestDataWithShowLoading:show];
+    //[super requestDataWithShowLoading:show];
     
-    MJWeakSelf;
-    [self requestDataWithOffset:self.page success:^(NSArray *dataArr) {
-        [HUD hide];
-        [weakSelf endRefresh];
-        weakSelf.tableView.hidden = NO;
-        weakSelf.emptyView.hidden = YES;
-        if (weakSelf.page == weakSelf.initialPage && IsEmpty(dataArr)) {
-            //没有数据的时候
-            [weakSelf showEmpty:@"没有数据..." message:nil];
-            return;
-        }
-        else if (weakSelf.page == weakSelf.initialPage) {
-            //第一次加载数据
-            [weakSelf.datas removeAllObjects];
-            [weakSelf.datas addObjectsFromArray:dataArr];
-            dispatch_async_on_main_queue(^{
-                [weakSelf.tableView reloadData];
-            });
-            
-            return;
-        }
-        else if (weakSelf.page > weakSelf.initialPage && IsEmpty(dataArr)) {
-            //加载没有更多数据的时候
-            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
-            return;
-        }
-        else if (weakSelf.page > weakSelf.initialPage && !IsEmpty(dataArr)) {
-            //上拉刷新
-            
-            [weakSelf.datas addObjectsFromArray:dataArr];
-            
-            dispatch_async_on_main_queue(^{
-                weakSelf.tableView.hidden = YES;
-                [weakSelf.tableView reloadData];
-                weakSelf.tableView.hidden = NO;
-            });
-            
-            return;
-        }
-    } failure:^(NSString *msg) {
-        [weakSelf endRefresh];
-        [weakSelf showEmpty:msg message:nil];
-    }];
+//    MJWeakSelf;
+//    [self requestDataWithOffset:self.page success:^(NSArray *dataArr) {
+//        [HUD hide];
+//        [weakSelf endRefresh];
+//        weakSelf.tableView.hidden = NO;
+//        weakSelf.emptyView.hidden = YES;
+//        if (weakSelf.page == weakSelf.initialPage && IsEmpty(dataArr)) {
+//            //没有数据的时候
+//            [weakSelf showEmpty:@"没有数据..." message:nil];
+//            return;
+//        }
+//        else if (weakSelf.page == weakSelf.initialPage) {
+//            //第一次加载数据
+//            [weakSelf.datas removeAllObjects];
+//            [weakSelf.datas addObjectsFromArray:dataArr];
+//            dispatch_async_on_main_queue(^{
+//                [weakSelf.tableView reloadData];
+//            });
+//            
+//            return;
+//        }
+//        else if (weakSelf.page > weakSelf.initialPage && IsEmpty(dataArr)) {
+//            //加载没有更多数据的时候
+//            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+//            return;
+//        }
+//        else if (weakSelf.page > weakSelf.initialPage && !IsEmpty(dataArr)) {
+//            //上拉刷新
+//            
+//            [weakSelf.datas addObjectsFromArray:dataArr];
+//            
+//            dispatch_async_on_main_queue(^{
+//                weakSelf.tableView.hidden = YES;
+//                [weakSelf.tableView reloadData];
+//                weakSelf.tableView.hidden = NO;
+//            });
+//            
+//            return;
+//        }
+//    } failure:^(NSString *msg) {
+//        [weakSelf endRefresh];
+//        [weakSelf showEmpty:msg message:nil];
+//    }];
 }
 
 

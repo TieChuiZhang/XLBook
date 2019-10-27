@@ -11,7 +11,7 @@
 @interface XXDirectoryVC : BaseTableViewController
 
 - (instancetype)initWithIsReplaceSummary:(BOOL)isReplaceSummary;
-
+@property (nonatomic, strong) NSArray *dataArr;
 @property (nonatomic, copy) void(^selectChapter)(NSInteger chapter);
 
 - (void)scrollToCurrentRow;

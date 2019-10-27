@@ -7,7 +7,7 @@
 //
 
 #define kLeftX AdaWidth(15.f)
-#define kTopHeight (kAppDelegate.statusBarHeight + NavigationBar_HEIGHT + 25)
+#define kTopHeight (20 + NavigationBar_HEIGHT + 25)
 #define kBottomHeight (55 + kSafeAreaInsets.safeAreaInsets.bottom)
 
 #import "XXBookMenuView.h"
@@ -76,14 +76,14 @@
     }];
     
     [replaceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_topView.mas_top).offset(kAppDelegate.statusBarHeight);
+        //make.top.mas_equalTo(_topView.mas_top).offset(kAppDelegate.statusBarHeight);
         make.left.mas_equalTo(_topView.mas_left).offset(kLeftX);
         make.size.mas_equalTo(CGSizeMake(NavigationBar_HEIGHT, NavigationBar_HEIGHT));
     }];
     [replaceBtn setEnlargeEdgeWithTop:0 right:kLeftX bottom:0 left:kLeftX];
     
     //replaceBtn抗拉伸
-    //    [replaceBtn setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+    [replaceBtn setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(replaceBtn);
@@ -105,16 +105,17 @@
         make.left.right.mas_equalTo(_topView);
     }];
     
-    MJWeakSelf
+    //MJWeakSelf
+    LeeWeakSelf(self);
     [[replaceBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        if (weakSelf.delegate) {
-            [weakSelf.delegate sendNext: [NSNumber numberWithInteger:kBookMenuType_source]];
+        if (weakself.delegate) {
+            [weakself.delegate sendNext: [NSNumber numberWithInteger:kBookMenuType_source]];
         }
     }];
-    
+
     [[closeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        if (weakSelf.delegate) {
-            [weakSelf.delegate sendNext: [NSNumber numberWithInteger:kBookMenuType_close]];
+        if (weakself.delegate) {
+            [weakself.delegate sendNext: [NSNumber numberWithInteger:kBookMenuType_close]];
         }
     }];
 }
@@ -140,7 +141,7 @@
     
     UIView *tempView = nil;
     
-    MJWeakSelf;
+    LeeWeakSelf(self);
     for (int i = 0; i < images.count; i++) {
         
         XXHighLightButton *button = [[XXHighLightButton alloc] init];
@@ -160,10 +161,10 @@
             make.width.mas_equalTo(_bottomView.mas_width).dividedBy(images.count);
             make.height.mas_equalTo(kBottomHeight - kSafeAreaInsets.safeAreaInsets.bottom);
         }];
-        
+
         [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-            if (weakSelf.delegate) {
-                [weakSelf.delegate sendNext:types[i]];
+            if (weakself.delegate) {
+                [weakself.delegate sendNext:types[i]];
             }
         }];
         
@@ -171,11 +172,11 @@
         
         if (i == 0) {
             _dayButton = button;
-            
-            if (kReadingManager.bgColor != 5) {
-                [button setImage:UIImageName(@"day_mode") forState:0];
-                [button setTitle:@"白天" forState:UIControlStateNormal];
-            }
+
+//            if (kReadingManager.bgColor != 5) {
+//                [button setImage:UIImageName(@"day_mode") forState:0];
+//                [button setTitle:@"白天" forState:UIControlStateNormal];
+//            }
         }
     }
 }
@@ -183,30 +184,30 @@
 
 - (void)changeDayAndNight {
     
-    if (kReadingManager.dayMode == kDayMode_light) {
+//    if (kReadingManager.dayMode == kDayMode_light) {
+//        
+//        kReadingManager.dayMode = kDayMode_night;
+//        kReadingManager.bgColor = kBgColor_Black;
+//        
+//        BookSettingModel *model = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
+//        model.dayMode = kDayMode_light;
+//        model.bgColor = kBgColor_Black;
+//        [BookSettingModel encodeModel:model key:[BookSettingModel className]];
         
-        kReadingManager.dayMode = kDayMode_night;
-        kReadingManager.bgColor = kBgColor_Black;
-        
-        BookSettingModel *model = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
-        model.dayMode = kDayMode_light;
-        model.bgColor = kBgColor_Black;
-        [BookSettingModel encodeModel:model key:[BookSettingModel className]];
-        
-        [_dayButton setImage:[UIImage imageNamed:@"night_mode"] forState:0];
-        [_dayButton setTitle:@"夜间" forState:UIControlStateNormal];
-        
-        [_settingView changeNight];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWithChangeBg object:nil userInfo:@{kNotificationWithChangeBg:NSStringFormat(@"%ld", (long)kBgColor_Black)}];
-        
-    } else {
-        
-        [_dayButton setImage:[UIImage imageNamed:@"day_mode"] forState:0];
-        [_dayButton setTitle:@"白天" forState:UIControlStateNormal];
-        
-        [_settingView changeLightbgColorSeleted:kBgColor_default];
-    }
+//        [_dayButton setImage:[UIImage imageNamed:@"night_mode"] forState:0];
+//        [_dayButton setTitle:@"夜间" forState:UIControlStateNormal];
+//
+//        [_settingView changeNight];
+//
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWithChangeBg object:nil userInfo:@{kNotificationWithChangeBg:NSStringFormat(@"%ld", (long)kBgColor_Black)}];
+//
+//    } else {
+//
+//        [_dayButton setImage:[UIImage imageNamed:@"day_mode"] forState:0];
+//        [_dayButton setTitle:@"白天" forState:UIControlStateNormal];
+//
+//        [_settingView changeLightbgColorSeleted:kBgColor_default];
+//    }
 }
 
 
@@ -258,17 +259,17 @@
         self.hidden = hidden;
     } else {
         hidden = YES;
-        topOffset = -kTopHeight;
+        //topOffset = -kTopHeight;
         bottomOffset = kBottomHeight;
     }
     
     [UIView animateWithDuration:duration animations:^{
         
-        [_topView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.mas_top).offset(topOffset);
         }];
         
-        [_bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.bottom.mas_equalTo(self.mas_bottom).offset(bottomOffset);
         }];
         
@@ -291,13 +292,4 @@
     
     _settingView.hidden = !_settingView.hidden;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
 @end

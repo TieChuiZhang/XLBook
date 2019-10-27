@@ -26,6 +26,11 @@
 #import "DateTools.h"
 #import "UIView+NewLine.h"
 #import "UIButton+Add.h"
+#import "UIButton+EnlargeTouchArea.h"
+#import <ReactiveObjC/ReactiveObjC.h>
+#import "XXHighLightButton.h"
+#import "UIButton+ImagePosition.h"
+#import "HUD.h"
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 //日志
@@ -50,4 +55,5 @@
 #define kIPhoneX_TOP_HEIGHT  (KIphoneFullScreen?24:0)
 #define RGBCOLOR(R,G,B)  [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]
 #define NAV_HEIGHT ([[UIScreen mainScreen] bounds].size.height>=812)?88:64
+#define LeeWeakSelf(type)  __weak typeof(type) weak##type = type;
 #endif /* XLBook_pch */

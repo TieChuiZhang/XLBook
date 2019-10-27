@@ -8,6 +8,7 @@
 
 #import "XXDirectoryVC.h"
 #import "XXDirectoryCell.h"
+#import "XLBookReadZJLBModel.h"
 #define STATUS_BAR_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
 @interface XXDirectoryVC ()
 
@@ -21,6 +22,7 @@
 @property (nonatomic, assign) BOOL isBottom;
 
 @property (nonatomic, assign) BOOL isReplaceSummary;
+
 
 @end
 
@@ -75,9 +77,9 @@
     [_topView addSubview:_rightButton];
     
     //标题
-    UILabel *titleLabel = [UILabel newLabel:kReadingManager.title andTextColor:kwhiteColor andFont:fontSize(16)];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    [_topView addSubview:titleLabel];
+//    UILabel *titleLabel = [UILabel newLabel:kReadingManager.title andTextColor:kwhiteColor andFont:fontSize(16)];
+//    titleLabel.textAlignment = NSTextAlignmentCenter;
+//    [_topView addSubview:titleLabel];
     
     //取消按钮
     UIButton *cancelButton = [[UIButton alloc] init];
@@ -106,12 +108,12 @@
         make.size.mas_equalTo(CGSizeMake(NavigationBar_HEIGHT, NavigationBar_HEIGHT));
     }];
     
-    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_rightButton);
-        make.left.mas_equalTo(_topView.mas_left).offset(AdaWidth(12.f)*2 + NavigationBar_HEIGHT);
-        make.right.mas_equalTo(_rightButton.mas_left).offset(-AdaWidth(12.f));
-        make.height.mas_equalTo(NavigationBar_HEIGHT);
-    }];
+//    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(_rightButton);
+//        make.left.mas_equalTo(_topView.mas_left).offset(AdaWidth(12.f)*2 + NavigationBar_HEIGHT);
+//        make.right.mas_equalTo(_rightButton.mas_left).offset(-AdaWidth(12.f));
+//        make.height.mas_equalTo(NavigationBar_HEIGHT);
+//    }];
     
     [cancelButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.bottomView.mas_top).offset(0);
@@ -131,8 +133,8 @@
     
     if (_isBottom) {
         [_rightButton setTitle:@"到顶部" forState:UIControlStateNormal];
-        NSIndexPath *idxPath = [NSIndexPath indexPathForRow:kReadingManager.chapters.count - 1 inSection:0];
-        [self.tableView scrollToRowAtIndexPath:idxPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        //NSIndexPath *idxPath = [NSIndexPath indexPathForRow:kReadingManager.chapters.count - 1 inSection:0];
+        //[self.tableView scrollToRowAtIndexPath:idxPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
         _isBottom = NO;
     } else {
         [_rightButton setTitle:@"到底部" forState:UIControlStateNormal];
@@ -147,13 +149,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return kReadingManager.chapters.count;
+    return self.dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     XXDirectoryCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([XXDirectoryCell class])];
-    [cell configTitle:((XXBookChapterModel *)kReadingManager.chapters[indexPath.row]).title indexPath:indexPath];
+    XLBookReadZJLBModel *model = self.dataArr[indexPath.row];
+    [cell configTitle:model.name indexPath:indexPath];
     return cell;
 }
 
@@ -169,26 +172,38 @@
 }
 
 - (void)scrollToCurrentRow {
-    if (kReadingManager.chapters.count > kReadingManager.chapter) {
-        NSIndexPath *idxPath = [NSIndexPath indexPathForRow:kReadingManager.chapter inSection:0];;
-        [self.tableView scrollToRowAtIndexPath:idxPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-    }
+//    if (kReadingManager.chapters.count > kReadingManager.chapter) {
+//        NSIndexPath *idxPath = [NSIndexPath indexPathForRow:kReadingManager.chapter inSection:0];;
+//        [self.tableView scrollToRowAtIndexPath:idxPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+//    }
 }
 
 - (void)cancelAction {
     
-    if (_isReplaceSummary) {
-        //换了源
-        if (_selectChapter) {
-            _selectChapter (kReadingManager.chapter);
-        }
-    }
+//    if (_isReplaceSummary) {
+//        //换了源
+//        if (_selectChapter) {
+//            _selectChapter (kReadingManager.chapter);
+//        }
+//    }
     [self go2Back];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)go2Back {
+    if (self.navigationController) {
+        if ([self.navigationController viewControllers].count > 1) {
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 /*

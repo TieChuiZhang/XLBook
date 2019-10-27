@@ -48,7 +48,10 @@
 @property (nonatomic, strong) XLBookReadZJNRModel *xlBookReadZJNRModel;
 @property (nonatomic, assign) NSInteger pageCurrent;
 @property (nonatomic, assign) NSInteger pageZJ;
+/* 前一个*/
+@property (nonatomic, assign) NSInteger pagePrevious;
 @property (nonatomic, strong) NSMutableArray *mlArr;
+
 @end
 
 @implementation XXBookReadingVC
@@ -447,7 +450,7 @@
     }
     else {
         //中间
-        //[self showMenu];
+        [self showMenu];
     }
 }
 
@@ -457,6 +460,7 @@
     if (self.pageCurrent >= self.xlBookReadZJNRModel.pageCount-1) {
         self.pageCurrent = 0;
         self.pageZJ ++;
+        self.ispreChapter = NO;
         [self requestDataAndSetViewController];
     }else{
         self.pageCurrent ++;
@@ -514,9 +518,19 @@
 //点击上一页
 - (void)tapPrePage {
     
-    self.pageCurrent --;
-    XXBookContentVC *textVC = [self getpageBookContent];
-    [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+    if (self.pageZJ == 0 && self.pageCurrent == 0) {
+        [HUD showMsgWithoutView:@"已经是第一页了!"];
+        return;
+    }
+    if (self.pageCurrent > 0){
+        self.pageCurrent --;
+        XXBookContentVC *textVC = [self getpageBookContent];
+        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+    }else{
+        self.pageZJ --;
+        _ispreChapter = YES;
+        [self requestDataAndSetViewController];
+    }
 
 //    if (kReadingManager.chapter == 0 && kReadingManager.page == 0) {
 //        [HUD showMsgWithoutView:@"已经是第一页了!"];
@@ -560,15 +574,24 @@
 //        [self requestDataAndSetViewController];
 //    }
 }
-
-
+#define kReadSpaceX 15
+#define kReadingTopH 40
+#define kReadingBottomH 35
+#define kReadingFrame CGRectMake(kReadSpaceX, kReadingTopH, kScreenWidth - kReadSpaceX*2, kScreenHeight - kReadingTopH - kReadingBottomH - kSafeAreaInsets.safeAreaInsets.top - kSafeAreaInsets.safeAreaInsets.bottom)
 - (void)requestDataAndSetViewController {
+    NSLog(@"%@",[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]]);
     [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] success:^(id  _Nonnull responseObject) {
         self.xlBookReadZJNRModel = responseObject;
         XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
-        contentVC.page = self.pageCurrent;
+        if (self.ispreChapter) {
+            [self pagingWithBounds:kReadingFrame withFont:fontSize(15) andChapter:self.xlBookReadZJNRModel];
+            contentVC.page = self.pagePrevious;
+            self.pageCurrent = self.pagePrevious;
+        }else{
+            contentVC.page = self.pageCurrent;
+        }
         self.isTaping = NO;
         [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
@@ -578,21 +601,87 @@
     
 }
 
+- (void)pagingWithBounds:(CGRect)bounds withFont:(UIFont *)font andChapter:(XLBookReadZJNRModel *)xlBookReadZJNRModel {
+    
+    xlBookReadZJNRModel.pageDatas = @[].mutableCopy;
+    
+    if (!xlBookReadZJNRModel.content) {
+        xlBookReadZJNRModel.content = @"";
+    }
+    
+    NSString *body = [self adjustParagraphFormat:xlBookReadZJNRModel.content];
+    
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:body];
+    attr.font = font;
+    attr.color = kblackColor;
+    
+    // 设置label的行间距
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:AdaWidth(9)];
+    [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, body.length)];
+    
+    CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) attr);
+    
+    CGPathRef path = CGPathCreateWithRect(bounds, NULL);
+    
+    CFRange range = CFRangeMake(0, 0);
+    
+    NSUInteger rangeOffset = 0;
+    
+    do {
+        CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(rangeOffset, 0), path, NULL);
+        
+        range = CTFrameGetVisibleStringRange(frame);
+        
+        rangeOffset += range.length;
+        
+        //range.location
+        [xlBookReadZJNRModel.pageDatas addObject:@(range.location)];
+        
+        if (frame) {
+            CFRelease(frame);
+        }
+    } while (range.location + range.length < attr.length);
+    
+    if (path) {
+        CFRelease(path);
+    }
+    
+    if (frameSetter) {
+        CFRelease(frameSetter);
+    }
+    
+    //xlBookReadZJNRModel.pageCount = xlBookReadZJNRModel.pageDatas.count;
+    
+    //xlBookReadZJNRModel.attributedString = attr;
+    
+    self.pagePrevious = xlBookReadZJNRModel.pageDatas.count -1;
+}
 
+// 换行\t制表符，缩进
+- (NSString *)adjustParagraphFormat:(NSString *)string {
+    if (!string) {
+        return nil;
+    }
+    string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+    string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\n　　"];
+
+    return string;
+}
 #pragma mark - 处理菜单的单击事件
 - (void)configMenuTap {
     
-    //MJWeakSelf;
+    LeeWeakSelf(self);
     
-    //self.menuView.delegate = [RACSubject subject];
+    self.menuView.delegate = [RACSubject subject];
     
-    //[self.menuView.delegate subscribeNext:^(id  _Nullable x) {
+    [self.menuView.delegate subscribeNext:^(id  _Nullable x) {
         
-        //NSUInteger type = [x integerValue];
+        NSUInteger type = [x integerValue];
         
-        //switch (type) {
-           // case kBookMenuType_source: {
-                //换源
+        switch (type) {
+            case kBookMenuType_source: {
+//                换源
 //                XXSummaryVC *vc = [[XXSummaryVC alloc] init];
 //                [weakSelf presentViewController:vc animated:YES completion:nil];
 //
@@ -602,10 +691,10 @@
 //
 //                    [weakSelf requestDataWithShowLoading:YES];
 //                };
-          //  }
+            }
                 
-                //break;
-            //case kBookMenuType_close: {
+                break;
+            case kBookMenuType_close: {
                 //关闭
                 
                 //保存进度
@@ -630,34 +719,34 @@
 //                [kReadingManager clear];
 //
 //                [weakSelf go2Back];
- //           }
-                //break;
-//            case kBookMenuType_day: {
-//                //白天黑夜切换
-//                [weakSelf.menuView changeDayAndNight];
-//            }
-//                break;
-//            case kBookMenuType_directory: {
-//                //目录
-//                [weakSelf showDirectoryVCWithIsReplaceSummary:NO];
-//            }
-//
-//                break;
-//            case kBookMenuType_down: {
-//                //下载
-//
-//            }
-//                break;
-//            case kBookMenuType_setting: {
-//                //设置
-//                [weakSelf.menuView showOrHiddenSettingView];
-//            }
-//                break;
-//
-//            default:
-//                break;
-//        }
-//    }];
+            }
+                break;
+            case kBookMenuType_day: {
+                //白天黑夜切换
+                //[weakSelf.menuView changeDayAndNight];
+            }
+                break;
+            case kBookMenuType_directory: {
+                //目录
+                [weakself showDirectoryVCWithIsReplaceSummary:NO];
+            }
+
+                break;
+            case kBookMenuType_down: {
+                //下载
+
+            }
+                break;
+            case kBookMenuType_setting: {
+                //设置
+                //[weakSelf.menuView showOrHiddenSettingView];
+            }
+                break;
+
+            default:
+                break;
+        }
+    }];
     
     
 //    self.menuView.settingView.changeSmallerFontBlock = ^{
@@ -694,29 +783,43 @@
     
     //[HUD hide];
     
-//    XXDirectoryVC *directoryVC = [[XXDirectoryVC alloc] initWithIsReplaceSummary:isReplaceSummary];
-//    
-//    [self presentViewController:directoryVC animated:YES completion:^{
-//        [directoryVC scrollToCurrentRow];
-//    }];
-//    
-//    //选择章节
-//    MJWeakSelf;
-//    directoryVC.selectChapter = ^(NSInteger chapter) {
-//        
-//        [weakSelf showMenu];
-//        
+    XXDirectoryVC *directoryVC = [[XXDirectoryVC alloc] initWithIsReplaceSummary:isReplaceSummary];
+    directoryVC.dataArr = self.bookZJLBArr;
+    [self presentViewController:directoryVC animated:YES completion:^{
+            //[directoryVC scrollToCurrentRow];
+    }];
+    
+    //选择章节
+    LeeWeakSelf(self);
+    directoryVC.selectChapter = ^(NSInteger chapter) {
+
+        [weakself showMenu];
+        
+        [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[chapter]] success:^(id  _Nonnull responseObject) {
+            self.pageCurrent = 0;
+            self.xlBookReadZJNRModel = responseObject;
+            XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
+            contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
+            //contentVC.chapter = kReadingManager.chapter;
+            contentVC.page = self.pageCurrent;
+            self.isTaping = NO;
+            [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+            
+        } failure:^(NSError * _Nonnull error) {
+            
+        }];
+
 //        [kReadingManager requestContentWithChapter:chapter ispreChapter:weakSelf.ispreChapter Completion:^{
 //            [HUD hide];
 //            kReadingManager.chapter = chapter;
 //            kReadingManager.page = 0;
-//            
+//
 //            [weakSelf.pageViewController setViewControllers:@[[weakSelf getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-//            
+//
 //        } failure:^(NSString *error) {
 //            [HUD hide];
 //        }];
-//    };
+    };
 }
 
 
@@ -744,18 +847,18 @@
 #pragma mark - 弹出或隐藏菜单
 - (void)showMenu {
     
-   // [self.view insertSubview:self.menuView aboveSubview:self.pageViewController.view];
+    [self.view insertSubview:self.menuView aboveSubview:self.pageViewController.view];
     
-//    if (!self.menuView.hidden) {
-//        //如果没有隐藏，代表已经弹出来了，那么执行的是隐藏操作
-//        self.hiddenStatusBar = YES;
-//    } else {
-//        self.hiddenStatusBar = NO;
-//    }
-//
-//    [self.menuView showMenuWithDuration:kShowMenuDuration completion:nil];
-//
-//    [self.menuView showTitle:kReadingManager.title bookLink:((XXBookChapterModel *)kReadingManager.chapters[kReadingManager.chapter]).link];
+    if (!self.menuView.hidden) {
+        //如果没有隐藏，代表已经弹出来了，那么执行的是隐藏操作
+        self.hiddenStatusBar = YES;
+    } else {
+        self.hiddenStatusBar = NO;
+    }
+
+    [self.menuView showMenuWithDuration:kShowMenuDuration completion:nil];
+
+    //[self.menuView showTitle:kReadingManager.title bookLink:((XXBookChapterModel *)kReadingManager.chapters[kReadingManager.chapter]).link];
 }
 
 
@@ -816,27 +919,27 @@
 
 
 //菜单
-//- (XXBookMenuView *)menuView {
-//    if (!_menuView) {
-//        _menuView = [[XXBookMenuView alloc] init];
-//        [self.view addSubview:_menuView];
-//
-//        //第一次进来要隐藏
-//        _menuView.hidden = YES;
-//
-//        [_menuView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.edges.equalTo(self.view);
-//        }];
-//
-//        [_menuView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
-//            //来到这里表示menu已经是弹出来的
-//            [self showMenu];
-//        }]];
-//
-//        [self configMenuTap];
-//    }
-//    return _menuView;
-//}
+- (XXBookMenuView *)menuView {
+    if (!_menuView) {
+        _menuView = [[XXBookMenuView alloc] init];
+        [self.view addSubview:_menuView];
+
+        //第一次进来要隐藏
+        _menuView.hidden = YES;
+
+        [_menuView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+
+        [_menuView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
+            //来到这里表示menu已经是弹出来的
+            [self showMenu];
+        }]];
+
+        [self configMenuTap];
+    }
+    return _menuView;
+}
 
 
 

@@ -221,8 +221,7 @@
     if (!string) {
         return nil;
     }
-    string = [@"\t" stringByAppendingString:string];
-    string = [string stringByReplacingOccurrencesOfString:@"　　" withString:@""];
+    string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
     string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\n　　"];
     return string;
 }

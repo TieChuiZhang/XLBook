@@ -108,6 +108,10 @@
 		9BE63E182361D5F300C87BCC /* ZGiReaderPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E082361D5F300C87BCC /* ZGiReaderPageView.m */; };
 		9BE63E192361D5F300C87BCC /* JJPreventCrash.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E0A2361D5F300C87BCC /* JJPreventCrash.m */; };
 		9BE63E1A2361D5F300C87BCC /* NSString+ZGiReaderPaging.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E0B2361D5F300C87BCC /* NSString+ZGiReaderPaging.m */; };
+		9BE63E4323644F4C00C87BCC /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E4223644F4C00C87BCC /* UIButton+EnlargeTouchArea.m */; };
+		9BE63E46236451A300C87BCC /* XXHighLightButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E45236451A300C87BCC /* XXHighLightButton.m */; };
+		9BE63E492364521400C87BCC /* UIButton+ImagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E482364521400C87BCC /* UIButton+ImagePosition.m */; };
+		9BE63E4D2365D24A00C87BCC /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E4C2365D24A00C87BCC /* HUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -316,6 +320,14 @@
 		9BE63E0C2361D5F300C87BCC /* NSString+ZGiReaderPaging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZGiReaderPaging.h"; sourceTree = "<group>"; };
 		9BE63E0D2361D5F300C87BCC /* JJPreventCrash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJPreventCrash.h; sourceTree = "<group>"; };
 		9BE63E0E2361D5F300C87BCC /* ZGiReaderHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGiReaderHeader.h; sourceTree = "<group>"; };
+		9BE63E4123644F4C00C87BCC /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
+		9BE63E4223644F4C00C87BCC /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
+		9BE63E44236451A300C87BCC /* XXHighLightButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXHighLightButton.h; sourceTree = "<group>"; };
+		9BE63E45236451A300C87BCC /* XXHighLightButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXHighLightButton.m; sourceTree = "<group>"; };
+		9BE63E472364521400C87BCC /* UIButton+ImagePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImagePosition.h"; sourceTree = "<group>"; };
+		9BE63E482364521400C87BCC /* UIButton+ImagePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImagePosition.m"; sourceTree = "<group>"; };
+		9BE63E4B2365D24A00C87BCC /* HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUD.h; sourceTree = "<group>"; };
+		9BE63E4C2365D24A00C87BCC /* HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUD.m; sourceTree = "<group>"; };
 		DADFB010B27A93C545AA30BE /* Pods_XLBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XLBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F20B0EF3D2DC87138B2EF52C /* Pods-XLBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XLBook.debug.xcconfig"; path = "Target Support Files/Pods-XLBook/Pods-XLBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -438,6 +450,13 @@
 		9B9FDD782362F1D800B1AA73 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				9BE63E4A2365D24A00C87BCC /* HUD */,
+				9BE63E472364521400C87BCC /* UIButton+ImagePosition.h */,
+				9BE63E482364521400C87BCC /* UIButton+ImagePosition.m */,
+				9BE63E44236451A300C87BCC /* XXHighLightButton.h */,
+				9BE63E45236451A300C87BCC /* XXHighLightButton.m */,
+				9BE63E4123644F4C00C87BCC /* UIButton+EnlargeTouchArea.h */,
+				9BE63E4223644F4C00C87BCC /* UIButton+EnlargeTouchArea.m */,
 				9B9FDD792362F1D800B1AA73 /* NSDateTool */,
 			);
 			path = Tool;
@@ -1001,6 +1020,15 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
+		9BE63E4A2365D24A00C87BCC /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				9BE63E4B2365D24A00C87BCC /* HUD.h */,
+				9BE63E4C2365D24A00C87BCC /* HUD.m */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
 		D91A2D5691768854C8852333 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,6 +1156,7 @@
 			files = (
 				9B9FDD912363012900B1AA73 /* XXDirectoryVC.m in Sources */,
 				9BD9377A235D72B200B34B13 /* TOCroppedImageAttributes.m in Sources */,
+				9BE63E4323644F4C00C87BCC /* UIButton+EnlargeTouchArea.m in Sources */,
 				9BD93769235D72B200B34B13 /* TZAssetCell.m in Sources */,
 				9BD93712235D72B200B34B13 /* YBNetworkResponse.m in Sources */,
 				9BE63E122361D5F300C87BCC /* ZGiReaderRecordModel.m in Sources */,
@@ -1143,6 +1172,7 @@
 				9B9FDD662362A7BC00B1AA73 /* XXBookReadingVC.m in Sources */,
 				9BD9379B235D804600B34B13 /* SceneDelegate.m in Sources */,
 				9B32B075235D89D900FE71A9 /* LNConst.m in Sources */,
+				9BE63E46236451A300C87BCC /* XXHighLightButton.m in Sources */,
 				9BD93775235D72B200B34B13 /* TZLocationManager.m in Sources */,
 				9B9FDD962363015B00B1AA73 /* BaseTableView.m in Sources */,
 				9BE63E152361D5F300C87BCC /* ZGiReaderCurrentTempView.m in Sources */,
@@ -1153,6 +1183,7 @@
 				9B9FDD742362BB9C00B1AA73 /* XXSafeAreaInsets.m in Sources */,
 				9BD93778235D72B200B34B13 /* TOActivityCroppedImageProvider.m in Sources */,
 				9BD93776235D72B200B34B13 /* TZGifPhotoPreviewController.m in Sources */,
+				9BE63E492364521400C87BCC /* UIButton+ImagePosition.m in Sources */,
 				9B32B076235D89D900FE71A9 /* LNRequest.m in Sources */,
 				9B9FDD772362BEB000B1AA73 /* XXBookBodyModel.mm in Sources */,
 				9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */,
@@ -1178,6 +1209,7 @@
 				9BD9377C235D72B200B34B13 /* TOCropScrollView.m in Sources */,
 				9B9FDD712362BB3100B1AA73 /* UILabel+Add.m in Sources */,
 				9B9FDD8A2363008B00B1AA73 /* BaseView.m in Sources */,
+				9BE63E4D2365D24A00C87BCC /* HUD.m in Sources */,
 				9B32B06B235D860400FE71A9 /* XLTabBarBookController.m in Sources */,
 				9B32B094235DBE0400FE71A9 /* TopBookDCell.m in Sources */,
 				9BD9377D235D72B200B34B13 /* TOCropView.m in Sources */,
