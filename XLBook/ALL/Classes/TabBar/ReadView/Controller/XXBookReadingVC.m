@@ -797,6 +797,7 @@
         
         [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[chapter]] success:^(id  _Nonnull responseObject) {
             self.pageCurrent = 0;
+            self.pageZJ = chapter;
             self.xlBookReadZJNRModel = responseObject;
             XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
             contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
