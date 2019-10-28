@@ -85,6 +85,7 @@
         [xlTopBookOneHeaderView setXLBookOneBookWithSXTableView:tableView HeaderValue:topBookOneBookDModel];
         self.topBookOneBookDModel = topBookOneBookDModel;
         [self reloadData];
+        // 需要在书籍介绍获取更新 比较先后的两个数组个数对比更新 需在ocontroller传值
         //TopBookOneBookDModel *model = [kDatabase getBookWithId:self.summaryId];
         //model.Id = self.summaryId;
         //[kDatabase updateBook:model];
@@ -100,10 +101,10 @@
     if (!IsEmpty(dbChapters)) {
         self.chapters = dbChapters;
     }
-    if (self.chapters.count != 0) {
+    if (dbChapters.count != 0 ) {
         //[MBProgressHUD showWaitingViewText:@"加载缓存" detailText:nil inView:nil];
         [HUD showMsgWithoutView:@"加载缓存"];
-        self.zjlbBookArr = self.chapters;
+        self.zjlbBookArr = dbChapters;
         [self reloadData];
         [MBProgressHUD dismissHUD];
     }else{
