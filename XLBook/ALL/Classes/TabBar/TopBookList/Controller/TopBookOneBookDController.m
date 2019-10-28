@@ -72,6 +72,8 @@
     } failure:^(NSError * _Nonnull error) {
         
     }];
+    
+    [TopBookModelManager getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID] BookIDString:self.bookID];
     [self.view addSubview:self.xlTopOneBookNav];
     
     
@@ -84,11 +86,8 @@
 
 - (void)tap
 {
-    [TopBookModelManager getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID] WithUseCache:YES];
-    //NSDictionary *dic = @{@"bookID":TopBookModelManager.topBookOneBookDModel.Id,@"bookZJLBArr":TopBookModelManager.zjlbBookArr};
-    //[LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
-    //[self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/2594003.html",self.topBookModel.topBookOneBookDModel.Id]];
-    
+    NSDictionary *dic = @{@"bookID":TopBookModelManager.topBookOneBookDModel.Id,@"bookZJLBArr":TopBookModelManager.zjlbBookArr};
+    [LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
 }
 
 - (XLTopOneBookNav*)xlTopOneBookNav

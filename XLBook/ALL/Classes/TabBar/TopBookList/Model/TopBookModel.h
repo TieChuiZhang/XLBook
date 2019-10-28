@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;
 @property (nonatomic, strong) XLBookReadZJLBModel *xlBookReadZJLBModel;
 - (void)getAllClassify:(NSString *)urlString;
-- (void)getAllReadBookZJLB:(NSString *)urlString WithUseCache:(BOOL)userCache;
+- (void)getAllReadBookZJLB:(NSString *)urlString BookIDString:(NSString *)bookIDString;
 - (void)getAllReadBookZJNR:(NSString *)urlString
                    success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure;

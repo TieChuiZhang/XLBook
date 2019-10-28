@@ -791,9 +791,7 @@
     //选择章节
     LeeWeakSelf(self);
     directoryVC.selectChapter = ^(NSInteger chapter) {
-
         [weakself showMenu];
-        
         [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[chapter]] success:^(id  _Nonnull responseObject) {
             self.pageCurrent = 0;
             self.pageZJ = chapter;

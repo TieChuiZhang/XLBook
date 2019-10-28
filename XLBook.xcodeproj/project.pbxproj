@@ -396,10 +396,10 @@
 			isa = PBXGroup;
 			children = (
 				9B9FDDBE2366D3C700B1AA73 /* XXBookContentVC.h */,
-				9B9FDDBF2366D3C700B1AA73 /* XXBookReadingVC.m */,
-				9B9FDDC02366D3C700B1AA73 /* ZGiReader */,
 				9B9FDDDE2366D3C700B1AA73 /* XXBookContentVC.m */,
 				9B9FDDDF2366D3C700B1AA73 /* XXBookReadingVC.h */,
+				9B9FDDBF2366D3C700B1AA73 /* XXBookReadingVC.m */,
+				9B9FDDC02366D3C700B1AA73 /* ZGiReader */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
