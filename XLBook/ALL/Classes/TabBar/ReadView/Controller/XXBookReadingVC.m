@@ -124,11 +124,10 @@
     [super viewDidLoad];
     self.pageCurrent = 0;
     self.pageZJ = 0;
+    self.hiddenStatusBar = YES;
     self.fd_prefersNavigationBarHidden = YES;
     self.fd_interactivePopDisabled = NO;
-    
     [self requestDataWithShowLoading:YES];
-    [self setupViews];
 }
 
 
@@ -145,12 +144,12 @@
 
 #pragma mark - UIGestureRecognizerDelegate
 
-//- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-//    if ([touch.view isDescendantOfView:self.menuView]) {
-//        return NO;
-//    }
-//    return YES;
-//}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([touch.view isDescendantOfView:self.menuView]) {
+        return NO;
+    }
+    return YES;
+}
 
 - (TopBookModel *)topBookModel
 {
@@ -718,7 +717,7 @@
 //
 //                [kReadingManager clear];
 //
-//                [weakSelf go2Back];
+                [weakself go2Back];
             }
                 break;
             case kBookMenuType_day: {

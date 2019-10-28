@@ -42,9 +42,13 @@ NS_ASSUME_NONNULL_BEGIN
      "VoterCount":44,
      "Score":9.1  */
 @property (nonatomic, copy) NSDictionary *BookVote;
+
+/* 加入书架时间 */
+@property (nonatomic, assign) NSTimeInterval addTime;
 @end
 
 @interface TopBookOneBookMLDModel : NSObject
 @property(nonatomic,strong)NSString* personName;
+
 @end
 NS_ASSUME_NONNULL_END

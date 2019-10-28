@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XLBookBaseController : UIViewController
 @property (nonatomic, copy) NSDictionary *dlListDic;
+/**
+ 创建UI
+ */
+- (void)setupViews;
 @end
 
 NS_ASSUME_NONNULL_END

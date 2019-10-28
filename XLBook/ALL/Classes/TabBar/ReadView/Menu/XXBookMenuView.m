@@ -7,7 +7,7 @@
 //
 
 #define kLeftX AdaWidth(15.f)
-#define kTopHeight (20 + NavigationBar_HEIGHT + 25)
+#define kTopHeight ( NavigationBar_HEIGHT + 25)
 #define kBottomHeight (55 + kSafeAreaInsets.safeAreaInsets.bottom)
 
 #import "XXBookMenuView.h"
@@ -49,9 +49,6 @@
     _topView.backgroundColor = [UIColor colorWithRed:0.12 green:0.12 blue:0.12 alpha:1.00];
     [self addSubview:_topView];
     
-    UIButton *replaceBtn = [UIButton newButtonTitle:@"换源" font:fontSize(15) normarlColor:kwhiteColor];
-    [_topView addSubview:replaceBtn];
-    
     _titleLabel = [UILabel newLabel:@"" andTextColor:kwhiteColor andFont:fontSize(16)];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     [_topView addSubview:_titleLabel];
@@ -68,51 +65,33 @@
     [_topView addSubview:_linkLabel];
     
     //约束
-    
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_top).offset(-kTopHeight);
         make.left.right.mas_equalTo(self);
         make.height.mas_equalTo(kTopHeight);
     }];
     
-    [replaceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.top.mas_equalTo(_topView.mas_top).offset(kAppDelegate.statusBarHeight);
-        make.left.mas_equalTo(_topView.mas_left).offset(kLeftX);
-        make.size.mas_equalTo(CGSizeMake(NavigationBar_HEIGHT, NavigationBar_HEIGHT));
-    }];
-    [replaceBtn setEnlargeEdgeWithTop:0 right:kLeftX bottom:0 left:kLeftX];
-    
-    //replaceBtn抗拉伸
-    [replaceBtn setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
-    
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(replaceBtn);
-        make.left.mas_equalTo(replaceBtn.mas_right).offset(kLeftX);
+        make.top.mas_equalTo(_topView.mas_top).offset(20);
+        make.left.mas_equalTo(closeBtn.mas_right).offset(kLeftX);
         make.right.mas_equalTo(closeBtn.mas_left).offset(-kLeftX);
         make.height.mas_equalTo(NavigationBar_HEIGHT);
     }];
     
     [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(replaceBtn);
-        make.right.mas_equalTo(_topView.mas_right).offset(-kLeftX);
+        make.top.equalTo(self.topView).offset(10);
+        make.left.mas_equalTo(self.topView).offset(kLeftX);
         make.size.mas_equalTo(CGSizeMake(NavigationBar_HEIGHT, NavigationBar_HEIGHT));
     }];
     [closeBtn setEnlargeEdgeWithTop:0 right:kLeftX bottom:0 left:kLeftX];
     
     [_linkLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(replaceBtn.mas_bottom);
+        make.top.mas_equalTo(closeBtn.mas_bottom);
         make.bottom.mas_equalTo(_topView.mas_bottom);
         make.left.right.mas_equalTo(_topView);
     }];
     
-    //MJWeakSelf
     LeeWeakSelf(self);
-    [[replaceBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        if (weakself.delegate) {
-            [weakself.delegate sendNext: [NSNumber numberWithInteger:kBookMenuType_source]];
-        }
-    }];
-
     [[closeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         if (weakself.delegate) {
             [weakself.delegate sendNext: [NSNumber numberWithInteger:kBookMenuType_close]];

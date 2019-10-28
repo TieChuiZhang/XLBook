@@ -130,11 +130,10 @@
 
 
 - (void)scrollToTopOrBottom {
-    
     if (_isBottom) {
         [_rightButton setTitle:@"到顶部" forState:UIControlStateNormal];
-        //NSIndexPath *idxPath = [NSIndexPath indexPathForRow:kReadingManager.chapters.count - 1 inSection:0];
-        //[self.tableView scrollToRowAtIndexPath:idxPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        NSIndexPath *idxPath = [NSIndexPath indexPathForRow:self.dataArr.count - 1 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:idxPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
         _isBottom = NO;
     } else {
         [_rightButton setTitle:@"到底部" forState:UIControlStateNormal];
@@ -192,18 +191,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)go2Back {
-    if (self.navigationController) {
-        if ([self.navigationController viewControllers].count > 1) {
-            [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-        }
-    } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
 }
 
 /*

@@ -15,4 +15,5 @@ target 'XLBook' do
   pod 'FDFullscreenPopGesture'
   pod 'UITableView+FDTemplateLayoutCell'
   pod 'ReactiveObjC'
+  pod 'WCDB'
 end

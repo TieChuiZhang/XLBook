@@ -28,7 +28,7 @@
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(20, navV.height - 40 , 30, 30);
-    [backBtn setImage:[UIImage imageNamed:@"back_w"] forState:0];
+    [backBtn setImage:[UIImage imageNamed:@"icon_return_8x14_"] forState:0];
     backBtn.tag = 1;
     [backBtn addTarget:self action:@selector(dissMissCurrentVC:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:backBtn];

@@ -17,7 +17,6 @@
 @interface TopBookOneBookDController ()<UITableViewDelegate,UITableViewDataSource,XLTopOneBookNavDelegate>
 @property (nonatomic, copy) NSString *bookID;
 @property (nonatomic, strong) XLTopBookOneHeaderView *xlTopBookOneHeaderView;
-@property (nonatomic, strong) TopBookModel *topBookModel;
 @property (nonatomic, strong) XLTopOneBookNav *xlTopOneBookNav;
 @property(nonatomic,assign) CGFloat contentOffsetY;
 @end
@@ -66,11 +65,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.topBookModel.tableView = [self setupTableView];
+    TopBookModelManager.tableView = [self setupTableView];
     //CGFloat  aa = NAV_HEIGHT;
-    self.topBookModel.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-60);
-    [self.topBookModel getOneBookClassifyWithTableView:self.topBookModel.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://shuapi.jiaston.com/info/%@.html",self.bookID]];
-    [self.topBookModel getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID]];
+    TopBookModelManager.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-60);
+    [TopBookModelManager getOneBookClassifyWithTableView:TopBookModelManager.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://shuapi.jiaston.com/info/%@.html",self.bookID] success:^(id  _Nonnull responseObject) {
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
     [self.view addSubview:self.xlTopOneBookNav];
     
     
@@ -83,19 +84,11 @@
 
 - (void)tap
 {
-    
-    NSDictionary *dic = @{@"bookID":self.topBookModel.topBookOneBookDModel.Id,@"bookZJLBArr":self.topBookModel.zjlbBookArr};
-    [LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
+    [TopBookModelManager getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID] WithUseCache:YES];
+    //NSDictionary *dic = @{@"bookID":TopBookModelManager.topBookOneBookDModel.Id,@"bookZJLBArr":TopBookModelManager.zjlbBookArr};
+    //[LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
     //[self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/2594003.html",self.topBookModel.topBookOneBookDModel.Id]];
     
-}
-
-- (TopBookModel *)topBookModel
-{
-    if (!_topBookModel) {
-        _topBookModel = [TopBookModel new];
-    }
-    return _topBookModel;
 }
 
 - (XLTopOneBookNav*)xlTopOneBookNav
@@ -114,7 +107,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (self.topBookModel.topBookOneBookDModel.SameUserBooks.count != 0) {
+    if (TopBookModelManager.topBookOneBookDModel.SameUserBooks.count != 0) {
         return 3;
     }else{
         return 2;
@@ -133,12 +126,12 @@
     //[cell setXLBookListModelCellValue:topBookListModel];
     if (indexPath.section == 0) {
         TopBookOneBookMLCell *cell = [TopBookOneBookMLCell xlTopBookOneBookMLCellWithTableView:tableView IndexPathRow:indexPath.row];
-        [cell setXLBookOneBookDMLModelCellValue:self.topBookModel.topBookOneBookDModel];
+        [cell setXLBookOneBookDMLModelCellValue:TopBookModelManager.topBookOneBookDModel];
         return cell;
     }else if(indexPath.section == 1){
-        if (self.topBookModel.topBookOneBookDModel.SameUserBooks.count != 0) {
+        if (TopBookModelManager.topBookOneBookDModel.SameUserBooks.count != 0) {
             TopBookOneBookHXJCell *cell = [TopBookOneBookHXJCell xlTopBookOneBookHXJCellWithTableView:tableView IndexPathRow:indexPath.row];
-            [cell setXLBookOneBookDHXJModelCellValue:self.topBookModel.topBookOneBookDModel ArrayWithHXGDataArray:self.topBookModel.dataArray];
+            [cell setXLBookOneBookDHXJModelCellValue:TopBookModelManager.topBookOneBookDModel ArrayWithHXGDataArray:TopBookModelManager.dataArray];
     
             
             return cell;
@@ -151,7 +144,7 @@
     }else if(indexPath.section == 2) {
         TopBookOneBookTJCell *cell = [TopBookOneBookTJCell xlTopBookOneBookTJCellWithTableView:tableView IndexPathRow:indexPath.row];
         //[cell setXLBookOneBookDMLModelCellValue:self.topBookModel.topBookOneBookDModel];
-        [cell setXLBookOneBookDTJModelCellValue:self.topBookModel.topBookOneBookDModel ArrayWithHXGDataArray:@[]];
+        [cell setXLBookOneBookDTJModelCellValue:TopBookModelManager.topBookOneBookDModel ArrayWithHXGDataArray:@[]];
         return cell;
     }else{
         return nil;
@@ -161,11 +154,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
-        if (self.topBookModel.topBookOneBookDModel.SameUserBooks.count != 0) {
-            if (self.topBookModel.topBookOneBookDModel.SameUserBooks.count == 1) {
+        if (TopBookModelManager.topBookOneBookDModel.SameUserBooks.count != 0) {
+            if (TopBookModelManager.topBookOneBookDModel.SameUserBooks.count == 1) {
                 return 145;
             }else{
-                return (101+(40/self.topBookModel.topBookOneBookDModel.SameUserBooks.count))*self.topBookModel.topBookOneBookDModel.SameUserBooks.count;
+                return (101+(40/TopBookModelManager.topBookOneBookDModel.SameUserBooks.count))*TopBookModelManager.topBookOneBookDModel.SameUserBooks.count;
             }
         }else{
             return 49;

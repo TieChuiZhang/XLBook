@@ -18,7 +18,16 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHexString:@"EBECF0"];
     self.dlListDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"FLList" ofType:@"plist"]];
+    [self setupViews];
 }
+
+
+//创建UI
+- (void)setupViews {
+    
+}
+
+
 
 /*
 #pragma mark - Navigation

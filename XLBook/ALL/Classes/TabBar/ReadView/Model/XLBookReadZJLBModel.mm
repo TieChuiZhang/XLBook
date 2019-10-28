@@ -7,9 +7,11 @@
 //
 
 #import "XLBookReadZJLBModel.h"
-
+#import <WCDB/WCDB.h>
 @implementation XLBookReadZJLBModel
-
+WCDB_IMPLEMENTATION(XLBookReadZJLBModel)
+WCDB_SYNTHESIZE(XLBookReadZJLBModel, id)
+WCDB_SYNTHESIZE(XLBookReadZJLBModel, name)
 @end
 
 
