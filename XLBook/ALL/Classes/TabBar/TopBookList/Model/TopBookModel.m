@@ -85,37 +85,50 @@
         [xlTopBookOneHeaderView setXLBookOneBookWithSXTableView:tableView HeaderValue:topBookOneBookDModel];
         self.topBookOneBookDModel = topBookOneBookDModel;
         [self reloadData];
+        // 需要在书籍介绍获取更新 比较先后的两个数组个数对比更新 需在ocontroller传值
         //TopBookOneBookDModel *model = [kDatabase getBookWithId:self.summaryId];
         //model.Id = self.summaryId;
         //[kDatabase updateBook:model];
         //= result[@"data"][@"Id"];
-        self.summaryId = @"568fef99adb27bfb4b3a58dc";
+        //self.summaryId = result[@"data"][@"Id"];
         [MBProgressHUD dismissHUD];
     }];
 }
 
-- (void)getAllReadBookZJLB:(NSString *)urlString WithUseCache:(BOOL)userCache
+- (void)getAllReadBookZJLB:(NSString *)urlString BookIDString:(NSString *)bookIDString
 {
-    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
-    [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
-        self.zjlbBookArr = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
-        [kDatabase deleteChaptersWithSummaryId:self.summaryId];
-        if ([kDatabase insertChapters:self.zjlbBookArr summaryId:self.summaryId]) {
-            NSLog(@"目录插入成功");
-        }
-        else {
-            NSLog(@"目录插入失败");
-        }
+    NSArray *dbChapters = [kDatabase getChaptersWithSummaryId:bookIDString];
+    if (!IsEmpty(dbChapters)) {
+        self.chapters = dbChapters;
+    }
+    if (dbChapters.count != 0 ) {
+        //[MBProgressHUD showWaitingViewText:@"加载缓存" detailText:nil inView:nil];
+        [HUD showMsgWithoutView:@"加载缓存"];
+        self.zjlbBookArr = dbChapters;
         [self reloadData];
         [MBProgressHUD dismissHUD];
-    }];
+    }else{
+       // [MBProgressHUD showWaitingViewText:@"加载网络" detailText:nil inView:nil];
+         [HUD showMsgWithoutView:@"加载网络"];
+        [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+            self.zjlbBookArr = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
+            [kDatabase deleteChaptersWithSummaryId:bookIDString];
+            if ([kDatabase insertChapters:self.zjlbBookArr summaryId:bookIDString]) {
+                NSLog(@"目录插入成功");
+            }
+            else {
+                NSLog(@"目录插入失败");
+            }
+            [self reloadData];
+            [MBProgressHUD dismissHUD];
+        }];
+    }
 }
 
 - (void)getAllReadBookZJNR:(NSString *)urlString success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
 {
     [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
-        NSLog(@"%@",result);
         XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
         success(xlBookReadZJNRModel);
         [self reloadData];
