@@ -181,7 +181,12 @@
         XLBookReadZJLBModel *xlBookReadZJLBModel = obj;
         [self.mlArr addObject:xlBookReadZJLBModel.id];
     }];
-    [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[0]] success:^(id  _Nonnull responseObject) {
+    
+    [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[0]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
+                self.xlBookReadZJNRModel = responseObject;
+        XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
+        contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
+        //contentVC.chapter = kReadingManager.chapter;
         self.xlBookReadZJNRModel = responseObject;
         [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
@@ -579,8 +584,9 @@
 #define kReadingFrame CGRectMake(kReadSpaceX, kReadingTopH, kScreenWidth - kReadSpaceX*2, kScreenHeight - kReadingTopH - kReadingBottomH - kSafeAreaInsets.safeAreaInsets.top - kSafeAreaInsets.safeAreaInsets.bottom)
 - (void)requestDataAndSetViewController {
     NSLog(@"%@",[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]]);
-    [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] success:^(id  _Nonnull responseObject) {
-        self.xlBookReadZJNRModel = responseObject;
+    
+    [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
+                self.xlBookReadZJNRModel = responseObject;
         XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
@@ -792,7 +798,7 @@
     LeeWeakSelf(self);
     directoryVC.selectChapter = ^(NSInteger chapter) {
         [weakself showMenu];
-        [self.topBookModel getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[chapter]] success:^(id  _Nonnull responseObject) {
+        [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[chapter]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
             self.pageCurrent = 0;
             self.pageZJ = chapter;
             self.xlBookReadZJNRModel = responseObject;

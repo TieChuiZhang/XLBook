@@ -7,7 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "A7697C6D-1557-4591-A8F2-7D5CE95C793F"
+            uuid = "621AE2F4-03A1-4B1F-81B9-1A82D05F3258"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -18,17 +18,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C568CAB6-55F6-49D9-922C-2376524524B9"
+            uuid = "D5CCE796-58E4-4B38-82C6-014B5CFB19C2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XLBook/ALL/Classes/TabBar/TopBookList/Model/TopBookModel.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "-getAllReadBookZJLB:BookIDString:"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-getAllReadBookZJNR:bookIDString:success:failure:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C84F01A-AD2A-4E2B-AFAF-92CC89F742C4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XLBook/ALL/lib/DB/XXDatabase.mm"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "XXDatabase"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

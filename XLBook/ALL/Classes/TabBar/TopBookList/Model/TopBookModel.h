@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getAllClassify:(NSString *)urlString;
 - (void)getAllReadBookZJLB:(NSString *)urlString BookIDString:(NSString *)bookIDString;
 - (void)getAllReadBookZJNR:(NSString *)urlString
+              bookIDString:(NSString *)idString
                    success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure;
 - (void)getOneBookClassifyWithTableView:(UITableView *)tableView           WithHeaderxlTopBookOneHeaderView:(XLTopBookOneHeaderView *)xlTopBookOneHeaderView

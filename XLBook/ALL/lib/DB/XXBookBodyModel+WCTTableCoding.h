@@ -13,6 +13,6 @@
 
 WCDB_PROPERTY(cname)
 WCDB_PROPERTY(content)
-WCDB_PROPERTY(link)
+WCDB_PROPERTY(id)
 
 @end

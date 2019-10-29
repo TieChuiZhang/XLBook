@@ -17,5 +17,12 @@ WCDB_SYNTHESIZE(XLBookReadZJLBModel, name)
 
 @implementation XLBookReadZJNRModel
 
+WCDB_IMPLEMENTATION(XLBookReadZJNRModel)
+WCDB_SYNTHESIZE(XLBookReadZJNRModel, id)
+WCDB_SYNTHESIZE(XLBookReadZJNRModel, name)
+WCDB_SYNTHESIZE(XLBookReadZJNRModel, cname)
+WCDB_SYNTHESIZE(XLBookReadZJNRModel, cid)
+WCDB_SYNTHESIZE(XLBookReadZJNRModel, content)
+WCDB_PRIMARY(XLBookReadZJNRModel, id)
 @end
 

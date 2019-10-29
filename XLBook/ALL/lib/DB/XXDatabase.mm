@@ -89,17 +89,17 @@
 //插入章节内容
 - (BOOL)insertBookBody:(XLBookReadZJLBModel *)object bookId:(NSString *)bookId {
     NSString *name = [self getTableNameWithType:kDataTablaNameType_body name:bookId];
-    [self createTableName:name class:XLBookReadZJLBModel.class];
+    [self createTableName:name class:XLBookReadZJNRModel.class];
     return [self.database insertObject:object into:name];
 }
 
 
 //查询章节内容
-//- (XLBookReadZJNRModel *)getBookBodyWithLink:(NSString *)link bookId:(NSString *)bookId {
-//    NSString *name = [self getTableNameWithType:kDataTablaNameType_body name:bookId];
-//    [self createTableName:name class:XLBookReadZJNRModel.class];
-//    return [self.database getOneObjectOfClass:XLBookReadZJNRModel.class fromTable:name where:XXBookBodyModel.link == link];
-//}
+- (XLBookReadZJNRModel *)getBookBodyWithLink:(NSString *)link bookId:(NSString *)bookId {
+    NSString *name = [self getTableNameWithType:kDataTablaNameType_body name:bookId];
+    [self createTableName:name class:XLBookReadZJNRModel.class];
+    return [self.database getOneObjectOfClass:XLBookReadZJNRModel.class fromTable:name where:XLBookReadZJNRModel.id == bookId];
+}
 
 
 //插入小说目录
@@ -126,9 +126,7 @@
 
 //创建表
 - (BOOL)createTableName:(NSString *)name class:(Class)clasz {
-    NSLog(@"%d",[self.database isTableExists:name]);
     if (![self.database isTableExists:name]) {
-        NSLog(@"%d",[self.database createTableAndIndexesOfName:name withClass:clasz]);
         return [self.database createTableAndIndexesOfName:name withClass:clasz];
     }else{
         return NO;

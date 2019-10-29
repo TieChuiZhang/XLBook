@@ -81,6 +81,8 @@
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
         TopBookOneBookDModel *topBookOneBookDModel = [TopBookOneBookDModel mj_objectWithKeyValues:result[@"data"]];
         
+        //[kDatabase insertBook:topBookOneBookDModel];
+        
         self.dataArray = [TopBookHXGModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"SameUserBooks"]];
         [xlTopBookOneHeaderView setXLBookOneBookWithSXTableView:tableView HeaderValue:topBookOneBookDModel];
         self.topBookOneBookDModel = topBookOneBookDModel;
@@ -125,11 +127,30 @@
     }
 }
 
-- (void)getAllReadBookZJNR:(NSString *)urlString success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
+- (void)getAllReadBookZJNR:(NSString *)urlString bookIDString:(NSString *)idString success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
 {
+//    if (chapter >= self.chapters.count) {
+//        failure(@"请求小说内容越界");
+//        return;
+//    }
+//
+//    if (self.chapters.count == 0) {
+//        failure(@"目录为空！");
+//        return;
+//    }
+    XLBookReadZJLBModel __block *model = self.chapters[1];
+    
+    XLBookReadZJNRModel*dbmodel = [kDatabase getBookBodyWithLink:model.id bookId:idString];
+    NSLog(@"%@,%@",model.id,idString);
     [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
         XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
+        
+        if ([kDatabase insertBookBody:xlBookReadZJNRModel bookId:idString]) {
+            NSLog(@"存储boyd成功");
+        } else {
+            NSLog(@"存储boyd失败");
+        }
         success(xlBookReadZJNRModel);
         [self reloadData];
         [MBProgressHUD dismissHUD];
