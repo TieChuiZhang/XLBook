@@ -20,6 +20,7 @@
 //#import "XXBookReadingBackViewController.h"
 #import "TopBookModel.h"
 #import "XLBookReadZJLBModel.h"
+#import "XXDatabase.h"
 
 @interface XXBookReadingVC () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIGestureRecognizerDelegate>
 
@@ -128,6 +129,8 @@
     self.fd_prefersNavigationBarHidden = YES;
     self.fd_interactivePopDisabled = NO;
     [self requestDataWithShowLoading:YES];
+    
+    TopBookOneBookDModel *model = [kDatabase getBookWithId:self.bookID];
 }
 
 
@@ -703,8 +706,12 @@
                 //关闭
                 
                 //保存进度
-//                ReadingManager *manager = [ReadingManager shareReadingManager];
-//                XXBookModel *model = [kDatabase getBookWithId:manager.bookId];
+                //TopBookModel *manager = [TopBookModel shareReadingManager];
+                TopBookOneBookDModel *model = [TopBookOneBookDModel new];
+                model.Id = self.bookID;
+                model.page = self.pageCurrent;
+                model.chapter = self.pageZJ;
+               [kDatabase insertBook:model];
 //                if (manager.transitionStyle == kTransitionStyle_Scroll) {
 //                    //左右滑动
 //                    XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];

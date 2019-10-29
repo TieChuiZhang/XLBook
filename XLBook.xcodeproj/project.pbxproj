@@ -29,7 +29,7 @@
 		9B32B0A2235ECAA100FE71A9 /* XLTopOneBookNav.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0A1235ECAA100FE71A9 /* XLTopOneBookNav.m */; };
 		9B32B0A5235EEB2A00FE71A9 /* XLTopBookOneHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0A4235EEB2A00FE71A9 /* XLTopBookOneHeaderView.m */; };
 		9B32B0A9235EEFD000FE71A9 /* 111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B32B0A8235EEFD000FE71A9 /* 111.jpg */; };
-		9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.m */; };
+		9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.mm */; };
 		9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0B12360211700FE71A9 /* TopBookOneBookMLCell.m */; };
 		9B32B0B523602E0600FE71A9 /* TopBookOneBookTJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0B423602E0600FE71A9 /* TopBookOneBookTJCell.m */; };
 		9B32B0BB23603C8500FE71A9 /* TopBookOneBookHXJListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0BA23603C8500FE71A9 /* TopBookOneBookHXJListView.m */; };
@@ -134,7 +134,7 @@
 		9B32B0A4235EEB2A00FE71A9 /* XLTopBookOneHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLTopBookOneHeaderView.m; sourceTree = "<group>"; };
 		9B32B0A8235EEFD000FE71A9 /* 111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111.jpg; sourceTree = "<group>"; };
 		9B32B0AD235EFB7400FE71A9 /* TopBookOneBookDModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookDModel.h; sourceTree = "<group>"; };
-		9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookDModel.m; sourceTree = "<group>"; };
+		9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TopBookOneBookDModel.mm; sourceTree = "<group>"; };
 		9B32B0B02360211700FE71A9 /* TopBookOneBookMLCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookMLCell.h; sourceTree = "<group>"; };
 		9B32B0B12360211700FE71A9 /* TopBookOneBookMLCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookMLCell.m; sourceTree = "<group>"; };
 		9B32B0B323602E0600FE71A9 /* TopBookOneBookTJCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookTJCell.h; sourceTree = "<group>"; };
@@ -704,7 +704,7 @@
 				9B32B08F235DADD800FE71A9 /* TopBookListModel.h */,
 				9B32B090235DADD800FE71A9 /* TopBookListModel.m */,
 				9B32B0AD235EFB7400FE71A9 /* TopBookOneBookDModel.h */,
-				9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.m */,
+				9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.mm */,
 				9B32B0BF236056A600FE71A9 /* TopBookHXGModel.h */,
 				9B32B0C0236056A600FE71A9 /* TopBookHXGModel.m */,
 			);
@@ -1054,7 +1054,7 @@
 				9B32B074235D89D900FE71A9 /* LNSkinHelper.m in Sources */,
 				9B32B081235D9A3F00FE71A9 /* LeeRunTimePush.m in Sources */,
 				9B9FDE132366D3C700B1AA73 /* ZGiReaderPageCell.m in Sources */,
-				9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.m in Sources */,
+				9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.mm in Sources */,
 				9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */,
 				9B9FDE042366D3C700B1AA73 /* UIButton+Add.m in Sources */,
 				9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */,
