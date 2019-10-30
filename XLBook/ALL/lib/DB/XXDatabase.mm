@@ -75,9 +75,9 @@
 
 
 //更新书本
-//- (BOOL)updateBook:(TopBookOneBookDModel *)object {
-//    return [self.database updateRowsInTable:kBookTableName onProperties:{XXBookModel.summaryId, XXBookModel.updateStatus, XXBookModel.chapter, XXBookModel.page, XXBookModel.updated, XXBookModel.lastChapter} withObject:object where:XXBookModel.id == object.id];
-//}
+- (BOOL)updateBook:(TopBookOneBookDModel *)object {
+    return [self.database updateRowsInTable:kBookTableName onProperties:{TopBookOneBookDModel.Id, TopBookOneBookDModel.chapter, TopBookOneBookDModel.page, TopBookOneBookDModel.LastChapter} withObject:object where:TopBookOneBookDModel.Id == object.Id];
+}
 
 
 //删除某本书籍

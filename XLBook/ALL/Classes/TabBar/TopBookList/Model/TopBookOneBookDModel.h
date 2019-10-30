@@ -45,6 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* 加入书架时间 */
 @property (nonatomic, assign) NSTimeInterval addTime;
+/* 是否有更新 */
+@property (nonatomic, assign) BOOL updateStatus;
+
+@property (nonatomic, assign) NSInteger chapter;
+
+@property (nonatomic, assign) NSInteger page;
 @end
 
 @interface TopBookOneBookMLDModel : NSObject

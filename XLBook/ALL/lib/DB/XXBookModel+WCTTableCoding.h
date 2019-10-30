@@ -12,17 +12,14 @@
 @interface TopBookOneBookDModel (WCTTableCoding) <WCTTableCoding>
 
 WCDB_PROPERTY(Id)
-//WCDB_PROPERTY(coverURL)
-//WCDB_PROPERTY(Name)
-//WCDB_PROPERTY(updateStatus)
-//WCDB_PROPERTY(page)
-//WCDB_PROPERTY(updated)
-//WCDB_PROPERTY(chapter)
-//WCDB_PROPERTY(lastChapter)
+WCDB_PROPERTY(Name)
+WCDB_PROPERTY(Img)
+WCDB_PROPERTY(Desc)
+WCDB_PROPERTY(page)
+WCDB_PROPERTY(chapter)
+WCDB_PROPERTY(LastChapter)
+WCDB_PROPERTY(Author)
 WCDB_PROPERTY(addTime)
-//WCDB_PROPERTY(id)
-
-
 
 ///**书籍id  */
 //@property (nonatomic, copy) NSString *Id;

@@ -127,7 +127,7 @@
     }
 }
 
-- (void)getAllReadBookZJNR:(NSString *)urlString bookIDString:(NSString *)idString success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
+- (void)getAllReadBookZJNR:(NSString *)urlString bookIDString:(NSString *)idString  success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
 {
 //    if (chapter >= self.chapters.count) {
 //        failure(@"请求小说内容越界");
@@ -138,23 +138,28 @@
 //        failure(@"目录为空！");
 //        return;
 //    }
-    XLBookReadZJLBModel __block *model = self.chapters[1];
-    
-    XLBookReadZJNRModel*dbmodel = [kDatabase getBookBodyWithLink:model.id bookId:idString];
-    NSLog(@"%@,%@",model.id,idString);
+//    XLBookReadZJLBModel __block *model = self.chapters[1];
+//    
+//    XLBookReadZJNRModel*dbmodel = [kDatabase getBookBodyWithLink:model.id bookId:idString];
+//    if (dbmodel) {
+//        success(dbmodel);
+//    }else{
+//       
+//    }
     [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
-    [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
-        XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
-        
-        if ([kDatabase insertBookBody:xlBookReadZJNRModel bookId:idString]) {
-            NSLog(@"存储boyd成功");
-        } else {
-            NSLog(@"存储boyd失败");
-        }
-        success(xlBookReadZJNRModel);
-        [self reloadData];
-        [MBProgressHUD dismissHUD];
-    }];
+           [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+               XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
+               
+               if ([kDatabase insertBookBody:xlBookReadZJNRModel bookId:idString]) {
+                   NSLog(@"存储boyd成功");
+               } else {
+                   NSLog(@"存储boyd失败");
+               }
+               success(xlBookReadZJNRModel);
+               [self reloadData];
+               [MBProgressHUD dismissHUD];
+           }];
+    
 }
 
 @end
