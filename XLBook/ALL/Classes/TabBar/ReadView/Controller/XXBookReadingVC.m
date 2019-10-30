@@ -123,14 +123,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pageCurrent = 0;
-    self.pageZJ = 0;
+    TopBookOneBookDModel *model = [kDatabase getBookWithId:self.bookID];
+    if (model) {
+        self.pageCurrent = model.page;
+        self.pageZJ = model.chapter;
+    }else{
+        self.pageCurrent = 0;
+          self.pageZJ = 0;
+    }
     self.hiddenStatusBar = YES;
     self.fd_prefersNavigationBarHidden = YES;
     self.fd_interactivePopDisabled = NO;
     [self requestDataWithShowLoading:YES];
     
-    TopBookOneBookDModel *model = [kDatabase getBookWithId:self.bookID];
+    
 }
 
 
@@ -185,7 +191,7 @@
         [self.mlArr addObject:xlBookReadZJLBModel.id];
     }];
     
-    [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[0]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
+    [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
                 self.xlBookReadZJNRModel = responseObject;
         XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
@@ -707,11 +713,16 @@
                 
                 //保存进度
                 //TopBookModel *manager = [TopBookModel shareReadingManager];
+                TopBookOneBookDModel *dbmodel = [kDatabase getBookWithId:self.bookID];
                 TopBookOneBookDModel *model = [TopBookOneBookDModel new];
+                if (dbmodel) {
+                    [kDatabase deleteBookWithId:self.bookID];
+                }
                 model.Id = self.bookID;
                 model.page = self.pageCurrent;
                 model.chapter = self.pageZJ;
-               [kDatabase insertBook:model];
+                [kDatabase insertBook:model];
+                
 //                if (manager.transitionStyle == kTransitionStyle_Scroll) {
 //                    //左右滑动
 //                    XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
