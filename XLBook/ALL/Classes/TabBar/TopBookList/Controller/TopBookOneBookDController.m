@@ -88,6 +88,7 @@
 {
     NSDictionary *dic = @{@"bookID":TopBookModelManager.topBookOneBookDModel.Id,@"bookZJLBArr":TopBookModelManager.zjlbBookArr};
     [LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
+    
 }
 
 - (XLTopOneBookNav*)xlTopOneBookNav

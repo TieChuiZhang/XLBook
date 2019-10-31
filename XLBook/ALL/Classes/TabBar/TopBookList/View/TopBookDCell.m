@@ -158,11 +158,23 @@
 
 - (void)setXLBookListModelCellValue:(TopBookListModel *)topBookListModel
 {
-    [self.Img setImageURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",topBookListModel.Img]]];
+    if (topBookListModel.Score) {
+        self.Score.text = [NSString stringWithFormat:@"%.2f分",[topBookListModel.Score floatValue]];
+    }
+    if ([self isUrlAddress:topBookListModel.Img]) {
+         [self.Img setImageURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",topBookListModel.Img]]];
+    }else{
+         [self.Img setImageURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",topBookListModel.Img]]];
+    }
     self.Name.text = topBookListModel.Name;
     self.Author.text = [NSString stringWithFormat:@"%@/%@",topBookListModel.Author,topBookListModel.CName];
     self.Desc.text = topBookListModel.Desc;
-    self.Score.text = [NSString stringWithFormat:@"%.2f分",[topBookListModel.Score floatValue]];
+}
+- (BOOL)isUrlAddress:(NSString*)url
+{
+    NSString * reg =@"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
+    NSPredicate *urlPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg];
+    return[urlPredicate evaluateWithObject:url];
 }
 
 @end

@@ -12,6 +12,7 @@
 #import "TopBookHXGModel.h"
 #import "XLBookReadZJLBModel.h"
 #import "XXDatabase.h"
+
 @implementation TopBookModel
 
 + (instancetype)shareReadingManager {
@@ -47,8 +48,15 @@
 //            readM.transitionStyle = settingModel.transitionStyle;
 //        }
     });
-    
     return readM;
+}
+
+- (NSMutableArray *)dataArray
+{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
 }
 
 - (void)clear {
@@ -60,14 +68,21 @@
     //self.isSave = NO;
 }
 
-- (void)getAllClassify:(NSString *)urlString
+- (void)getAllClassify:(NSString *)urlString success:(void (^)(NSInteger ))success
 {
-    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
-    
     [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
-        self.dataArray = [TopBookListModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"BookList"]];
+        if ([result[@"data"] isKindOfClass:[NSArray class]]) {
+            self.dataArray = [TopBookListModel mj_objectArrayWithKeyValuesArray:result[@"data"]];
+        }else{
+            if (self.dataArray.count != 0) {
+                NSArray *arr =  [TopBookListModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"BookList"]];
+                [self.dataArray addObjectsFromArray:arr];
+            }else{
+                self.dataArray = [TopBookListModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"BookList"]];
+            }
+        }
+        success(1);
         [self reloadData];
-        [MBProgressHUD dismissHUD];
     }];
 }
 

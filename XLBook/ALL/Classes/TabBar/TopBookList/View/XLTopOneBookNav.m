@@ -36,7 +36,7 @@
     
     UIButton *camareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     camareBtn.frame = CGRectMake(kScreenWidth - 20 - 30,navV.height - 40 , 30, 30);
-    [camareBtn setImage:[UIImage imageNamed:@"camera_w"] forState:0];
+    [camareBtn setImage:[UIImage imageNamed:@"auth_face"] forState:0];
     [self addSubview:camareBtn];
     self.camareBtn = camareBtn;
     

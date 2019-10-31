@@ -15,11 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TopBookModel : NSObject
 @property (nonatomic, weak) UITableView *tableView;
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSArray *zjlbBookArr;
 @property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;
 @property (nonatomic, strong) XLBookReadZJLBModel *xlBookReadZJLBModel;
-- (void)getAllClassify:(NSString *)urlString;
+- (void)getAllClassify:(NSString *)urlString success:(void (^)(NSInteger maxPage))success;
 - (void)getAllReadBookZJLB:(NSString *)urlString BookIDString:(NSString *)bookIDString;
 - (void)getAllReadBookZJNR:(NSString *)urlString
               bookIDString:(NSString *)idString

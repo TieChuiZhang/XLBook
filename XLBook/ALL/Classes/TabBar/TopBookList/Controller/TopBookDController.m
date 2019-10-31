@@ -10,10 +10,14 @@
 #import "TopBookModel.h"
 #import "TopBookListModel.h"
 #import "TopBookDCell.h"
+#import <MJRefresh/MJRefresh.h>
 @interface TopBookDController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, copy) NSString *listUrl;
 @property (nonatomic, strong) TopBookModel *topBookModel;
 @property(nonatomic,assign) CGFloat contentOffsetY;
+@property (nonatomic, copy) NSString *searchUrl;
+@property (nonatomic, assign) NSUInteger maxpage;
+@property (nonatomic, assign) NSUInteger page;
 @end
 
 @implementation TopBookDController
@@ -24,7 +28,46 @@
     self.topBookModel.tableView = [self setupTableView];
     CGFloat  aa = NAV_HEIGHT;
     self.topBookModel.tableView.frame = CGRectMake(0, NAV_HEIGHT, kScreenWidth, kScreenHeight - aa);
-    [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@week/5.html",self.listUrl]];
+    self.page = 1;
+    if (self.listUrl) {
+        [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
+        [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@week/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
+            [MBProgressHUD dismissHUD];
+        }];
+        
+        [self dropRefresh];
+    }else{
+        [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
+        [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@",self.searchUrl] success:^(NSInteger maxPage) {
+            [MBProgressHUD dismissHUD];
+        }];
+    }
+    
+}
+
+- (void)dropRefresh
+{
+    LeeWeakSelf(self);
+    self.topBookModel.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self.topBookModel.dataArray removeAllObjects];
+        [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@week/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
+            [weakself.topBookModel.tableView.mj_header endRefreshing];
+        }];
+    }];
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        if (self.page > 5) {
+            weakself.topBookModel.tableView.mj_footer.state = MJRefreshStateNoMoreData;
+        }else{
+            self.page ++;
+            [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@week/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
+                [weakself.topBookModel.tableView.mj_footer endRefreshing];
+            }];
+        }
+        
+    }];
+    footer.automaticallyRefresh = NO;
+    self.topBookModel.tableView.mj_footer = footer;
+    
 }
 
 - (TopBookModel *)topBookModel

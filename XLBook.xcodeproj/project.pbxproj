@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6FFBF61C5EA8BD3B4335DA09 /* Pods_XLBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DADFB010B27A93C545AA30BE /* Pods_XLBook.framework */; };
+		9B01CD89236ABF15003EBA12 /* UIColor+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD7C236ABF15003EBA12 /* UIColor+PYSearchExtension.m */; };
+		9B01CD8A236ABF15003EBA12 /* PYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD7D236ABF15003EBA12 /* PYSearchViewController.m */; };
+		9B01CD8B236ABF15003EBA12 /* PYSearchSuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD7E236ABF15003EBA12 /* PYSearchSuggestionViewController.m */; };
+		9B01CD8C236ABF15003EBA12 /* PYSearchConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD80236ABF15003EBA12 /* PYSearchConst.m */; };
+		9B01CD8D236ABF15003EBA12 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CD81236ABF15003EBA12 /* PYSearch.bundle */; };
+		9B01CD8E236ABF15003EBA12 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD82236ABF15003EBA12 /* NSBundle+PYSearchExtension.m */; };
+		9B01CD8F236ABF15003EBA12 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD88236ABF15003EBA12 /* UIView+PYSearchExtension.m */; };
 		9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B05E235D846200FE71A9 /* MyBookController.m */; };
 		9B32B062235D847500FE71A9 /* TopBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B061235D847500FE71A9 /* TopBookController.m */; };
 		9B32B065235D849F00FE71A9 /* SearchBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B064235D849F00FE71A9 /* SearchBookController.m */; };
@@ -80,6 +87,20 @@
 
 /* Begin PBXFileReference section */
 		30DFE58C575FFA38F726E2DC /* Pods-XLBook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XLBook.release.xcconfig"; path = "Target Support Files/Pods-XLBook/Pods-XLBook.release.xcconfig"; sourceTree = "<group>"; };
+		9B01CD7B236ABF15003EBA12 /* NSBundle+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+PYSearchExtension.h"; sourceTree = "<group>"; };
+		9B01CD7C236ABF15003EBA12 /* UIColor+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PYSearchExtension.m"; sourceTree = "<group>"; };
+		9B01CD7D236ABF15003EBA12 /* PYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchViewController.m; sourceTree = "<group>"; };
+		9B01CD7E236ABF15003EBA12 /* PYSearchSuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchSuggestionViewController.m; sourceTree = "<group>"; };
+		9B01CD7F236ABF15003EBA12 /* UIView+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PYSearchExtension.h"; sourceTree = "<group>"; };
+		9B01CD80236ABF15003EBA12 /* PYSearchConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYSearchConst.m; sourceTree = "<group>"; };
+		9B01CD81236ABF15003EBA12 /* PYSearch.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYSearch.bundle; sourceTree = "<group>"; };
+		9B01CD82236ABF15003EBA12 /* NSBundle+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+PYSearchExtension.m"; sourceTree = "<group>"; };
+		9B01CD83236ABF15003EBA12 /* PYSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearch.h; sourceTree = "<group>"; };
+		9B01CD84236ABF15003EBA12 /* PYSearchSuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchSuggestionViewController.h; sourceTree = "<group>"; };
+		9B01CD85236ABF15003EBA12 /* PYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchViewController.h; sourceTree = "<group>"; };
+		9B01CD86236ABF15003EBA12 /* UIColor+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PYSearchExtension.h"; sourceTree = "<group>"; };
+		9B01CD87236ABF15003EBA12 /* PYSearchConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchConst.h; sourceTree = "<group>"; };
+		9B01CD88236ABF15003EBA12 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		9B32B05D235D846200FE71A9 /* MyBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBookController.h; sourceTree = "<group>"; };
 		9B32B05E235D846200FE71A9 /* MyBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBookController.m; sourceTree = "<group>"; };
 		9B32B060235D847500FE71A9 /* TopBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookController.h; sourceTree = "<group>"; };
@@ -246,6 +267,27 @@
 				30DFE58C575FFA38F726E2DC /* Pods-XLBook.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		9B01CD7A236ABF15003EBA12 /* PYSearch */ = {
+			isa = PBXGroup;
+			children = (
+				9B01CD7B236ABF15003EBA12 /* NSBundle+PYSearchExtension.h */,
+				9B01CD82236ABF15003EBA12 /* NSBundle+PYSearchExtension.m */,
+				9B01CD86236ABF15003EBA12 /* UIColor+PYSearchExtension.h */,
+				9B01CD7C236ABF15003EBA12 /* UIColor+PYSearchExtension.m */,
+				9B01CD85236ABF15003EBA12 /* PYSearchViewController.h */,
+				9B01CD7D236ABF15003EBA12 /* PYSearchViewController.m */,
+				9B01CD84236ABF15003EBA12 /* PYSearchSuggestionViewController.h */,
+				9B01CD7E236ABF15003EBA12 /* PYSearchSuggestionViewController.m */,
+				9B01CD7F236ABF15003EBA12 /* UIView+PYSearchExtension.h */,
+				9B01CD88236ABF15003EBA12 /* UIView+PYSearchExtension.m */,
+				9B01CD87236ABF15003EBA12 /* PYSearchConst.h */,
+				9B01CD80236ABF15003EBA12 /* PYSearchConst.m */,
+				9B01CD83236ABF15003EBA12 /* PYSearch.h */,
+				9B01CD81236ABF15003EBA12 /* PYSearch.bundle */,
+			);
+			path = PYSearch;
 			sourceTree = "<group>";
 		};
 		9B32B06C235D89B400FE71A9 /* Tool */ = {
@@ -645,9 +687,6 @@
 			isa = PBXGroup;
 			children = (
 				9BD935F9235D717000B34B13 /* Controller */,
-				9BD935FA235D717000B34B13 /* Model */,
-				9BD935FB235D717000B34B13 /* View */,
-				9BD935FC235D717000B34B13 /* Tool */,
 			);
 			path = SraechBooKList;
 			sourceTree = "<group>";
@@ -659,27 +698,6 @@
 				9B32B064235D849F00FE71A9 /* SearchBookController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		9BD935FA235D717000B34B13 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9BD935FB235D717000B34B13 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		9BD935FC235D717000B34B13 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tool;
 			sourceTree = "<group>";
 		};
 		9BD935FD235D717000B34B13 /* Other */ = {
@@ -735,6 +753,7 @@
 		9BD93613235D72B200B34B13 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				9B01CD7A236ABF15003EBA12 /* PYSearch */,
 				9B9FDE332366D50B00B1AA73 /* DB */,
 				9BD93614235D72B200B34B13 /* YBNetwork */,
 			);
@@ -854,6 +873,7 @@
 				9BD93608235D717000B34B13 /* Assets.xcassets in Resources */,
 				9B3AF1B023617FE400DF6C18 /* LaunchScreen.storyboard in Resources */,
 				9B32B0A9235EEFD000FE71A9 /* 111.jpg in Resources */,
+				9B01CD8D236ABF15003EBA12 /* PYSearch.bundle in Resources */,
 				9B32B07D235D947D00FE71A9 /* FLList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -923,6 +943,8 @@
 				9B32B0A2235ECAA100FE71A9 /* XLTopOneBookNav.m in Sources */,
 				9BD93715235D72B200B34B13 /* YBBaseRequest.m in Sources */,
 				9B32B076235D89D900FE71A9 /* LNRequest.m in Sources */,
+				9B01CD8A236ABF15003EBA12 /* PYSearchViewController.m in Sources */,
+				9B01CD8B236ABF15003EBA12 /* PYSearchSuggestionViewController.m in Sources */,
 				9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */,
 				9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */,
 				9BD9360D235D717000B34B13 /* AppDelegate.m in Sources */,
@@ -930,6 +952,7 @@
 				9B9FDE032366D3C700B1AA73 /* UILabel+Add.m in Sources */,
 				9B9FDE242366D3C700B1AA73 /* HUD.m in Sources */,
 				9B9FDE082366D3C700B1AA73 /* XXBookSettingView.m in Sources */,
+				9B01CD8E236ABF15003EBA12 /* NSBundle+PYSearchExtension.m in Sources */,
 				9BD9360B235D717000B34B13 /* main.m in Sources */,
 				9B32B08B235DA07100FE71A9 /* MBProgressHUD+LNHUD.m in Sources */,
 				9B32B0BB23603C8500FE71A9 /* TopBookOneBookHXJListView.m in Sources */,
@@ -945,8 +968,10 @@
 				9B32B09F235EB01D00FE71A9 /* TopBookOneBookDController.m in Sources */,
 				9B32B074235D89D900FE71A9 /* LNSkinHelper.m in Sources */,
 				9B32B081235D9A3F00FE71A9 /* LeeRunTimePush.m in Sources */,
+				9B01CD8C236ABF15003EBA12 /* PYSearchConst.m in Sources */,
 				9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.mm in Sources */,
 				9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */,
+				9B01CD8F236ABF15003EBA12 /* UIView+PYSearchExtension.m in Sources */,
 				9B9FDE042366D3C700B1AA73 /* UIButton+Add.m in Sources */,
 				9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */,
 				9B32B08E235DA10F00FE71A9 /* XLAPI.m in Sources */,
@@ -965,6 +990,7 @@
 				9B32B065235D849F00FE71A9 /* SearchBookController.m in Sources */,
 				9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */,
 				9B9FDE022366D3C700B1AA73 /* UIView+NewLine.m in Sources */,
+				9B01CD89236ABF15003EBA12 /* UIColor+PYSearchExtension.m in Sources */,
 				9B32B091235DADD800FE71A9 /* TopBookListModel.m in Sources */,
 				9BD93713235D72B200B34B13 /* YBNetworkCache.m in Sources */,
 				9B9FDE3D2366DAB600B1AA73 /* NSString+Add.m in Sources */,
