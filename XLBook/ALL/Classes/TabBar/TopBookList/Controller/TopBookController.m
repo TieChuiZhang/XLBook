@@ -15,7 +15,7 @@
 @implementation TopBookController
 
 - (UICollectionView *)collectionView {
-   
+    
     if (_collectionView == nil) {
         // 创建FlowLayout
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -50,7 +50,7 @@
 // 返回cell的尺寸大小
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    return CGSizeMake(100, 100);      // 让每个cell尺寸都不一样
+    return CGSizeMake(95, 95);      // 让每个cell尺寸都不一样
 }
 
 // 返回Footer的尺寸大小
@@ -77,13 +77,6 @@
     return UIEdgeInsetsMake(20, 20, 20, 20);
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self.view addSubview:self.collectionView];
-
-}
-
 // 返回Section个数
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
@@ -104,11 +97,20 @@
     
     // 设置cell
     
-    cell.backgroundColor = [UIColor darkGrayColor];
-    
+    cell.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0f];
+    cell.layer.cornerRadius =2.0f;
+    cell.contentView.layer.borderWidth =1.0f;
+    cell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
+    cell.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+    cell.layer.shadowOffset = CGSizeMake(0,2.0f);
+    cell.layer.shadowRadius =2.0f;
+    cell.layer.shadowOpacity =1.0f;
+    cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
+    NSArray *arr = @[@[@"最热榜",@"评分榜",@"收藏榜",@"推荐榜",@"完结榜",@"新书榜"],@[@"最热榜",@"评分榜",@"收藏榜",@"推荐榜",@"完结榜",@"新书榜"]];
     UILabel *label = [[UILabel alloc] initWithFrame:cell.bounds];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = @"Cell";
+    label.text = arr[indexPath.section][indexPath.item];
+    label.font = [UIFont boldSystemFontOfSize:10];
     label.textColor = [UIColor whiteColor];
     [cell addSubview:label];
     
@@ -123,14 +125,15 @@
         // 从复用队列中获取HooterView
         UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"MyHeader" forIndexPath:indexPath];
         // 设置HooterView
-        UILabel *label = [[UILabel alloc] initWithFrame:headerView.bounds];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(headerView.bounds.size.width-100, 20, 80, 30)];
         label.textAlignment = NSTextAlignmentRight;
+        label.textColor = [UIColor colorWithHexString:@"#333333"];
+        label.font = [UIFont boldSystemFontOfSize:14];
         if (indexPath.section == 0) {
-            label.text = @"the 太";
+            label.text = @"男生    ";
         }else{
-             label.text = @"the 大";
+            label.text = @"女生    ";
         }
-        label.textColor = [UIColor whiteColor];
         [headerView addSubview:label];
         // 返回HooterView
         return headerView;
@@ -152,8 +155,20 @@
             case 0:
                 string = [NSString stringWithFormat:@"%@",self.dlListDic[@"最热"][0]];
                 break;
-                case 1:
+            case 1:
                 string = [NSString stringWithFormat:@"%@",self.dlListDic[@"评分"][0]];
+                break;
+            case 2:
+                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"收藏"][0]];
+                break;
+            case 3:
+                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"推荐"][0]];
+                break;
+            case 4:
+                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"完结"][0]];
+                break;
+            case 5:
+                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"新书"][0]];
                 break;
             default:
                 break;
@@ -163,8 +178,20 @@
             case 0:
                 string = [NSString stringWithFormat:@"%@",self.dlListDic[@"最热"][1]];
                 break;
-                case 1:
+            case 1:
                 string = [NSString stringWithFormat:@"%@",self.dlListDic[@"评分"][1]];
+                break;
+            case 2:
+                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"收藏"][1]];
+                break;
+            case 3:
+                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"推荐"][1]];
+                break;
+            case 4:
+                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"完结"][1]];
+                break;
+            case 5:
+                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"新书"][1]];
                 break;
             default:
                 break;
@@ -172,6 +199,21 @@
     }
     NSDictionary *dic = @{@"listUrl":string};
     [LeeRunTimePush runtimePush:@"TopBookDController" dic:dic nav:self.navigationController];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.view addSubview:self.collectionView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    
+    // 代码格式化control + i
 }
 
 @end
