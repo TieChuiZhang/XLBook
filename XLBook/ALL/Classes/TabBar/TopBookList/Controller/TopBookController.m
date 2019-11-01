@@ -106,10 +106,9 @@
     cell.layer.shadowRadius =2.0f;
     cell.layer.shadowOpacity =1.0f;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
-    NSArray *arr = @[@[@"最热榜",@"评分榜",@"收藏榜",@"推荐榜",@"完结榜",@"新书榜"],@[@"最热榜",@"评分榜",@"收藏榜",@"推荐榜",@"完结榜",@"新书榜"]];
     UILabel *label = [[UILabel alloc] initWithFrame:cell.bounds];
     label.textAlignment = NSTextAlignmentCenter;
-    label.text = arr[indexPath.section][indexPath.item];
+    label.text = self.titleArr[indexPath.section][indexPath.item];
     label.font = [UIFont boldSystemFontOfSize:10];
     label.textColor = [UIColor whiteColor];
     [cell addSubview:label];
@@ -129,15 +128,14 @@
         label.textAlignment = NSTextAlignmentRight;
         label.textColor = [UIColor colorWithHexString:@"#333333"];
         label.font = [UIFont boldSystemFontOfSize:14];
-        if (indexPath.section == 0) {
-            label.text = @"男生    ";
+        if (indexPath.section == 0){
+            label.text = @"男生";
         }else{
-            label.text = @"女生    ";
+            label.text = @"女生";
+            label.textColor = [UIColor colorWithHexString:@"#555555"];
         }
         [headerView addSubview:label];
-        // 返回HooterView
         return headerView;
-        
     }
     return nil;
 }
@@ -149,54 +147,7 @@
 
 - (void)clickItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *string;
-    if (indexPath.section == 0) {
-        switch (indexPath.row) {
-            case 0:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"最热"][0]];
-                break;
-            case 1:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"评分"][0]];
-                break;
-            case 2:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"收藏"][0]];
-                break;
-            case 3:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"推荐"][0]];
-                break;
-            case 4:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"完结"][0]];
-                break;
-            case 5:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"新书"][0]];
-                break;
-            default:
-                break;
-        }
-    }else{
-        switch (indexPath.row) {
-            case 0:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"最热"][1]];
-                break;
-            case 1:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"评分"][1]];
-                break;
-            case 2:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"收藏"][1]];
-                break;
-            case 3:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"推荐"][1]];
-                break;
-            case 4:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"完结"][1]];
-                break;
-            case 5:
-                string = [NSString stringWithFormat:@"%@",self.dlListDic[@"新书"][1]];
-                break;
-            default:
-                break;
-        }
-    }
+    NSString *string = [NSString stringWithFormat:@"%@",self.dlListDic[self.titleArr[indexPath.section][indexPath.item]][indexPath.section]];
     NSDictionary *dic = @{@"listUrl":string};
     [LeeRunTimePush runtimePush:@"TopBookDController" dic:dic nav:self.navigationController];
 }

@@ -1,8 +1,8 @@
 //
-//  SearchBookController.h
+//  XLBookInfoController.h
 //  XLBook
 //
-//  Created by Lee on 2019/10/21.
+//  Created by Lee on 2019/11/1.
 //  Copyright © 2019 Lee. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SearchBookController : XLBookBaseController
+@interface XLBookInfoController : XLBookBaseController
 
 @end
 

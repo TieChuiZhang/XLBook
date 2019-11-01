@@ -8,7 +8,6 @@
 
 #import "XLBookNavController.h"
 #import "PYSearch.h"
-#import "SearchBookController.h"
 @interface XLBookNavController ()<PYSearchViewControllerDelegate>
 
 @end
@@ -45,7 +44,7 @@
     // 1. Create an Array of popular search
     NSArray *hotSeaches = @[@"剑来", @"牧神记", @"大王饶命", @"异常生物见闻录", @"庆余年"];
     // 2. Create a search view controller
-    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:NSLocalizedString(@"PYExampleSearchPlaceholderText", @"搜索编程语言") didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:NSLocalizedString(@"输入书名作者搜索书籍", @"") didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
         // Called when search begain.
         // eg：Push to a temp view controller
         NSString *searchUrl = [NSString stringWithFormat:@"https://sou.jiaston.com/search.aspx?key=%@&page=1&siteid=app2",[searchText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];

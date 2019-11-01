@@ -9,6 +9,7 @@
 #import "XLBookBaseController.h"
 
 @interface XLBookBaseController ()
+
 @end
 
 @implementation XLBookBaseController
@@ -19,6 +20,7 @@
     self.view.backgroundColor = [UIColor colorWithHexString:@"EBECF0"];
     self.dlListDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"FLList" ofType:@"plist"]];
     [self setupViews];
+    self.titleArr = @[@[@"最热榜",@"评分榜",@"收藏榜",@"推荐榜",@"完结榜",@"新书榜"],@[@"最热榜",@"评分榜",@"收藏榜",@"推荐榜",@"完结榜",@"新书榜"]];
 }
 
 

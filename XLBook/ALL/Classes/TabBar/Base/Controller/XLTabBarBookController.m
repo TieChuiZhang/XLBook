@@ -9,7 +9,7 @@
 #import "XLTabBarBookController.h"
 #import "MyBookController.h"
 #import "TopBookController.h"
-#import "SearchBookController.h"
+#import "XLBookInfoController.h"
 #import "XLBookNavController.h"
 @interface XLTabBarBookController ()
 
@@ -48,7 +48,7 @@
     [self setupChildVC:[TopBookController class] title:@"排行榜" image:@"icon_tabbar_classify_24x24_" selectImage:@"icon_tabbar_classify_sel_24x24_"];
     //我的
     //[self setupChildVC:[XLBookBaseController class] title:@"搜索" image:skin.tabBarThreeNormalImage selectImage:skin.tabBarThreeSelectImage];
-    [self setupChildVC:[SearchBookController class] title:@"搜索" image:@"icon_tabbar_mine_24x24_" selectImage:@"icon_tabbar_mine_sel_24x24_"];
+    [self setupChildVC:[XLBookInfoController class] title:@"我的" image:@"icon_tabbar_mine_24x24_" selectImage:@"icon_tabbar_mine_sel_24x24_"];
 }
 
 - (void)setupChildVC:(Class)child title:(NSString *)title image:(NSString *)image selectImage:(NSString *)selectImage

@@ -15,9 +15,9 @@
 		9B01CD8D236ABF15003EBA12 /* PYSearch.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CD81236ABF15003EBA12 /* PYSearch.bundle */; };
 		9B01CD8E236ABF15003EBA12 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD82236ABF15003EBA12 /* NSBundle+PYSearchExtension.m */; };
 		9B01CD8F236ABF15003EBA12 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD88236ABF15003EBA12 /* UIView+PYSearchExtension.m */; };
+		9B01CD97236C1E81003EBA12 /* XLBookInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD96236C1E81003EBA12 /* XLBookInfoController.m */; };
 		9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B05E235D846200FE71A9 /* MyBookController.m */; };
 		9B32B062235D847500FE71A9 /* TopBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B061235D847500FE71A9 /* TopBookController.m */; };
-		9B32B065235D849F00FE71A9 /* SearchBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B064235D849F00FE71A9 /* SearchBookController.m */; };
 		9B32B068235D852300FE71A9 /* XLBookNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B067235D852300FE71A9 /* XLBookNavController.m */; };
 		9B32B06B235D860400FE71A9 /* XLTabBarBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B06A235D860400FE71A9 /* XLTabBarBookController.m */; };
 		9B32B074235D89D900FE71A9 /* LNSkinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B06E235D89D900FE71A9 /* LNSkinHelper.m */; };
@@ -101,12 +101,12 @@
 		9B01CD86236ABF15003EBA12 /* UIColor+PYSearchExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PYSearchExtension.h"; sourceTree = "<group>"; };
 		9B01CD87236ABF15003EBA12 /* PYSearchConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYSearchConst.h; sourceTree = "<group>"; };
 		9B01CD88236ABF15003EBA12 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
+		9B01CD95236C1E81003EBA12 /* XLBookInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBookInfoController.h; sourceTree = "<group>"; };
+		9B01CD96236C1E81003EBA12 /* XLBookInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLBookInfoController.m; sourceTree = "<group>"; };
 		9B32B05D235D846200FE71A9 /* MyBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBookController.h; sourceTree = "<group>"; };
 		9B32B05E235D846200FE71A9 /* MyBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBookController.m; sourceTree = "<group>"; };
 		9B32B060235D847500FE71A9 /* TopBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookController.h; sourceTree = "<group>"; };
 		9B32B061235D847500FE71A9 /* TopBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookController.m; sourceTree = "<group>"; };
-		9B32B063235D849F00FE71A9 /* SearchBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchBookController.h; sourceTree = "<group>"; };
-		9B32B064235D849F00FE71A9 /* SearchBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchBookController.m; sourceTree = "<group>"; };
 		9B32B066235D852300FE71A9 /* XLBookNavController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBookNavController.h; sourceTree = "<group>"; };
 		9B32B067235D852300FE71A9 /* XLBookNavController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLBookNavController.m; sourceTree = "<group>"; };
 		9B32B069235D860400FE71A9 /* XLTabBarBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLTabBarBookController.h; sourceTree = "<group>"; };
@@ -288,6 +288,47 @@
 				9B01CD81236ABF15003EBA12 /* PYSearch.bundle */,
 			);
 			path = PYSearch;
+			sourceTree = "<group>";
+		};
+		9B01CD90236C1E0F003EBA12 /* InfoBook */ = {
+			isa = PBXGroup;
+			children = (
+				9B01CD91236C1E0F003EBA12 /* Controller */,
+				9B01CD92236C1E0F003EBA12 /* Model */,
+				9B01CD93236C1E0F003EBA12 /* View */,
+				9B01CD94236C1E0F003EBA12 /* Tool */,
+			);
+			path = InfoBook;
+			sourceTree = "<group>";
+		};
+		9B01CD91236C1E0F003EBA12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B01CD95236C1E81003EBA12 /* XLBookInfoController.h */,
+				9B01CD96236C1E81003EBA12 /* XLBookInfoController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B01CD92236C1E0F003EBA12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B01CD93236C1E0F003EBA12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B01CD94236C1E0F003EBA12 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		9B32B06C235D89B400FE71A9 /* Tool */ = {
@@ -566,7 +607,7 @@
 				9BD9360E235D71C400B34B13 /* Base */,
 				9BD935EE235D717000B34B13 /* MyBookList */,
 				9BD935F3235D717000B34B13 /* TopBookList */,
-				9BD935F8235D717000B34B13 /* SraechBooKList */,
+				9B01CD90236C1E0F003EBA12 /* InfoBook */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -681,23 +722,6 @@
 			children = (
 			);
 			path = Tool;
-			sourceTree = "<group>";
-		};
-		9BD935F8235D717000B34B13 /* SraechBooKList */ = {
-			isa = PBXGroup;
-			children = (
-				9BD935F9235D717000B34B13 /* Controller */,
-			);
-			path = SraechBooKList;
-			sourceTree = "<group>";
-		};
-		9BD935F9235D717000B34B13 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				9B32B063235D849F00FE71A9 /* SearchBookController.h */,
-				9B32B064235D849F00FE71A9 /* SearchBookController.m */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		9BD935FD235D717000B34B13 /* Other */ = {
@@ -959,6 +983,7 @@
 				9B32B068235D852300FE71A9 /* XLBookNavController.m in Sources */,
 				9B32B0A5235EEB2A00FE71A9 /* XLTopBookOneHeaderView.m in Sources */,
 				9B32B084235D9E4B00FE71A9 /* TopBookDController.m in Sources */,
+				9B01CD97236C1E81003EBA12 /* XLBookInfoController.m in Sources */,
 				9B32B06B235D860400FE71A9 /* XLTabBarBookController.m in Sources */,
 				9B32B094235DBE0400FE71A9 /* TopBookDCell.m in Sources */,
 				9B9FDE052366D3C700B1AA73 /* UIViewController+Add.m in Sources */,
@@ -987,7 +1012,6 @@
 				9B9FDE0A2366D3C700B1AA73 /* XXDirectoryVC.m in Sources */,
 				9B9FDE212366D3C700B1AA73 /* DateTools.m in Sources */,
 				9B9FDE372366D50B00B1AA73 /* XXDatabase.mm in Sources */,
-				9B32B065235D849F00FE71A9 /* SearchBookController.m in Sources */,
 				9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */,
 				9B9FDE022366D3C700B1AA73 /* UIView+NewLine.m in Sources */,
 				9B01CD89236ABF15003EBA12 /* UIColor+PYSearchExtension.m in Sources */,
