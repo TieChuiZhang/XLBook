@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TopBookModel : NSObject
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) NSArray *zjlbBookArr;
+@property (nonatomic, strong) NSMutableArray *zjlbBookArr;
 @property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;
 @property (nonatomic, strong) XLBookReadZJLBModel *xlBookReadZJLBModel;
 - (void)getAllClassify:(NSString *)urlString success:(void (^)(NSInteger maxPage))success;
@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 目录数组 */
 @property (nonatomic, strong) NSArray <XLBookReadZJLBModel *>*chapters;
+/** 记录当前第n章 */
+@property (nonatomic, assign) NSUInteger chapter;
 @end
 
 NS_ASSUME_NONNULL_END

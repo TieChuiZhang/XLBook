@@ -27,7 +27,7 @@
     self.navV = navV;
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(20, navV.height - 40 , 30, 30);
+    backBtn.frame = CGRectMake(10, navV.height - 40 , 30, 30);
     [backBtn setImage:[UIImage imageNamed:@"icon_return_8x14_"] forState:0];
     backBtn.tag = 1;
     [backBtn addTarget:self action:@selector(dissMissCurrentVC:) forControlEvents:UIControlEventTouchUpInside];
@@ -37,7 +37,7 @@
     UIButton *camareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     camareBtn.frame = CGRectMake(kScreenWidth - 20 - 30,navV.height - 40 , 30, 30);
     [camareBtn setImage:[UIImage imageNamed:@"auth_face"] forState:0];
-    [self addSubview:camareBtn];
+    //[self addSubview:camareBtn];
     self.camareBtn = camareBtn;
     
     UILabel *navLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, navV.height - 40, kScreenWidth, 30)];

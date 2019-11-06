@@ -20,6 +20,7 @@
 @property (nonatomic, copy) LeeLabel *Desc;
 /**书籍评分  */
 @property (nonatomic, copy) UILabel *Score;
+
 @end
 @implementation TopBookDCell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -115,6 +116,14 @@
     return _Name;
 }
 
+- (UIImageView *)Img
+{
+    if (!_Img) {
+        _Img = [UIImageView new];
+    }
+    return _Img;
+}
+
 - (UILabel *)Author
 {
     if (!_Author) {
@@ -148,33 +157,19 @@
     return _Score;
 }
 
-- (UIImageView *)Img
-{
-    if (!_Img) {
-        _Img = [UIImageView new];
-    }
-    return _Img;
-}
-
 - (void)setXLBookListModelCellValue:(TopBookListModel *)topBookListModel
 {
     if (topBookListModel.Score) {
         self.Score.text = [NSString stringWithFormat:@"%.2f分",[topBookListModel.Score floatValue]];
     }
-    if ([self isUrlAddress:topBookListModel.Img]) {
-         [self.Img setImageURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",topBookListModel.Img]]];
+    if ([ToolsObj isUrlAddress:topBookListModel.Img]) {
+        [self.Img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",topBookListModel.Img]] placeholder:[UIImage imageNamed:@"无封面.jpg"]];
     }else{
-         [self.Img setImageURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",topBookListModel.Img]]];
+         [self.Img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",topBookListModel.Img]] placeholder:[UIImage imageNamed:@"无封面.jpg"]];
     }
     self.Name.text = topBookListModel.Name;
     self.Author.text = [NSString stringWithFormat:@"%@/%@",topBookListModel.Author,topBookListModel.CName];
     self.Desc.text = topBookListModel.Desc;
-}
-- (BOOL)isUrlAddress:(NSString*)url
-{
-    NSString * reg =@"((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|(www.[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)";
-    NSPredicate *urlPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", reg];
-    return[urlPredicate evaluateWithObject:url];
 }
 
 @end

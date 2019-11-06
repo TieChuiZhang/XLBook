@@ -57,10 +57,10 @@
     }];
     
     [_Img mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.bgView).offset(-110);
+        make.top.equalTo(self.bgView).offset(-100);
         make.right.equalTo(self).offset(-20);
-        make.width.offset(70);
-        make.height.offset(120);
+        make.width.offset(80);
+        make.height.offset(110);
     }];
     
     [_Desc mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +82,7 @@
 {
     if (!_bgImage) {
         _bgImage = [UIImageView new];
-        _bgImage.image = [UIImage imageNamed:@"111.jpg"];
+        _bgImage.image = [UIImage imageNamed:@"headerImage@3x"];
     }
     return _bgImage;
 }
@@ -92,6 +92,7 @@
     if (!_bgView) {
         _bgView = [UIView new];
         _bgView.backgroundColor = [UIColor whiteColor];
+        _bgView.layer.cornerRadius = 2;
     }
     return _bgView;
 }
@@ -121,7 +122,7 @@
     if (!_Desc) {
         _Desc = [UILabel new];
         _Desc.font = [UIFont systemFontOfSize:12];
-        self.Desc.text = @"请稍后...";
+        _Desc.text = @"请稍后...";
         _Desc.numberOfLines = 0;
         _Desc.textColor = [UIColor colorWithHexString:@"#666666"];
     }
@@ -143,7 +144,6 @@
 {
     if (!_Img) {
         _Img = [UIImageView new];
-        _Img.image = [UIImage imageNamed:@"111.jpg"];
     }
     return _Img;
 }
@@ -151,6 +151,11 @@
 - (void)setXLBookOneBookWithSXTableView:(UITableView *)tableView HeaderValue:(TopBookOneBookDModel *)topBookOneBookDModel;
 {
     self.Desc.text = topBookOneBookDModel.Desc;
+    if ([ToolsObj isUrlAddress:topBookOneBookDModel.Img]) {
+         [self.Img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",topBookOneBookDModel.Img]] placeholder:[UIImage imageNamed:@"无封面.jpg"]];
+    }else{
+         [self.Img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",topBookOneBookDModel.Img]] placeholder:[UIImage imageNamed:@"无封面.jpg"]];
+    }
     [tableView layoutIfNeeded];
 }
 

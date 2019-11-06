@@ -33,6 +33,9 @@
 #import "HUD.h"
 #import "UIViewController+Add.h"
 #import "NSString+Add.h"
+#import "ToolsObj.h"
+#import "XXDatabase.h"
+#import <MJRefresh/MJRefresh.h>
 
 static NSString *kBookTableName = @"XLBookTableName";
 // Include any system framework and library headers here that should be included in all compilation units.
@@ -60,4 +63,5 @@ static NSString *kBookTableName = @"XLBookTableName";
 #define RGBCOLOR(R,G,B)  [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]
 #define NAV_HEIGHT ([[UIScreen mainScreen] bounds].size.height>=812)?88:64
 #define LeeWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define SHOW_TEXT(text) MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];hud.mode = MBProgressHUDModeText;  hud.labelText = text;hud.removeFromSuperViewOnHide = YES;[hud hide:YES afterDelay:1.5];
 #endif /* XLBook_pch */

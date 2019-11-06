@@ -16,6 +16,30 @@
 		9B01CD8E236ABF15003EBA12 /* NSBundle+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD82236ABF15003EBA12 /* NSBundle+PYSearchExtension.m */; };
 		9B01CD8F236ABF15003EBA12 /* UIView+PYSearchExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD88236ABF15003EBA12 /* UIView+PYSearchExtension.m */; };
 		9B01CD97236C1E81003EBA12 /* XLBookInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD96236C1E81003EBA12 /* XLBookInfoController.m */; };
+		9B01CD9B23711075003EBA12 /* LNProfileTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CD9823711074003EBA12 /* LNProfileTopView.xib */; };
+		9B01CD9C23711075003EBA12 /* LNProfileTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD9A23711075003EBA12 /* LNProfileTopView.m */; };
+		9B01CD9F2371113E003EBA12 /* UIView+NIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CD9D2371113D003EBA12 /* UIView+NIB.m */; };
+		9B01CDC0237112EC003EBA12 /* TZImageCropManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDA3237112EC003EBA12 /* TZImageCropManager.m */; };
+		9B01CDC1237112EC003EBA12 /* TZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDA5237112EC003EBA12 /* TZAssetCell.m */; };
+		9B01CDC2237112EC003EBA12 /* TZVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDA6237112EC003EBA12 /* TZVideoPlayerController.m */; };
+		9B01CDC3237112EC003EBA12 /* TZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDA7237112EC003EBA12 /* TZAssetModel.m */; };
+		9B01CDC4237112EC003EBA12 /* NSBundle+TZImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDA8237112EC003EBA12 /* NSBundle+TZImagePicker.m */; };
+		9B01CDC5237112EC003EBA12 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDAB237112EC003EBA12 /* UIView+Layout.m */; };
+		9B01CDC6237112EC003EBA12 /* TZPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDAC237112EC003EBA12 /* TZPhotoPreviewController.m */; };
+		9B01CDC7237112EC003EBA12 /* TZImagePickerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CDAD237112EC003EBA12 /* TZImagePickerController.bundle */; };
+		9B01CDC8237112EC003EBA12 /* TZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDAE237112EC003EBA12 /* TZProgressView.m */; };
+		9B01CDC9237112EC003EBA12 /* TZImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDB2237112EC003EBA12 /* TZImageManager.m */; };
+		9B01CDCA237112EC003EBA12 /* TZPhotoPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDB4237112EC003EBA12 /* TZPhotoPickerController.m */; };
+		9B01CDCB237112EC003EBA12 /* TZPhotoPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDB5237112EC003EBA12 /* TZPhotoPreviewCell.m */; };
+		9B01CDCC237112EC003EBA12 /* TZImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDBB237112EC003EBA12 /* TZImagePickerController.m */; };
+		9B01CDCD237112EC003EBA12 /* TZLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDBC237112EC003EBA12 /* TZLocationManager.m */; };
+		9B01CDCE237112EC003EBA12 /* TZGifPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDBD237112EC003EBA12 /* TZGifPhotoPreviewController.m */; };
+		9B01CDCF237112EC003EBA12 /* TZImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDBE237112EC003EBA12 /* TZImageRequestOperation.m */; };
+		9B01CDD22371525F003EBA12 /* ToolsObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDD12371525F003EBA12 /* ToolsObj.m */; };
+		9B01CDD6237161EE003EBA12 /* headerImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CDD5237161EE003EBA12 /* headerImage@3x.png */; };
+		9B01CDD823716801003EBA12 /* 无封面.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CDD723716800003EBA12 /* 无封面.jpg */; };
+		9B01CDDB2371721E003EBA12 /* MyBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDDA2371721E003EBA12 /* MyBookCell.m */; };
+		9B01CDDE2372652F003EBA12 /* TopBookZJMLFZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDDD2372652F003EBA12 /* TopBookZJMLFZModel.m */; };
 		9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B05E235D846200FE71A9 /* MyBookController.m */; };
 		9B32B062235D847500FE71A9 /* TopBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B061235D847500FE71A9 /* TopBookController.m */; };
 		9B32B068235D852300FE71A9 /* XLBookNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B067235D852300FE71A9 /* XLBookNavController.m */; };
@@ -35,7 +59,6 @@
 		9B32B09F235EB01D00FE71A9 /* TopBookOneBookDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B09E235EB01D00FE71A9 /* TopBookOneBookDController.m */; };
 		9B32B0A2235ECAA100FE71A9 /* XLTopOneBookNav.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0A1235ECAA100FE71A9 /* XLTopOneBookNav.m */; };
 		9B32B0A5235EEB2A00FE71A9 /* XLTopBookOneHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0A4235EEB2A00FE71A9 /* XLTopBookOneHeaderView.m */; };
-		9B32B0A9235EEFD000FE71A9 /* 111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B32B0A8235EEFD000FE71A9 /* 111.jpg */; };
 		9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.mm */; };
 		9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0B12360211700FE71A9 /* TopBookOneBookMLCell.m */; };
 		9B32B0B523602E0600FE71A9 /* TopBookOneBookTJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B0B423602E0600FE71A9 /* TopBookOneBookTJCell.m */; };
@@ -103,6 +126,50 @@
 		9B01CD88236ABF15003EBA12 /* UIView+PYSearchExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PYSearchExtension.m"; sourceTree = "<group>"; };
 		9B01CD95236C1E81003EBA12 /* XLBookInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLBookInfoController.h; sourceTree = "<group>"; };
 		9B01CD96236C1E81003EBA12 /* XLBookInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLBookInfoController.m; sourceTree = "<group>"; };
+		9B01CD9823711074003EBA12 /* LNProfileTopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LNProfileTopView.xib; sourceTree = "<group>"; };
+		9B01CD9923711075003EBA12 /* LNProfileTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNProfileTopView.h; sourceTree = "<group>"; };
+		9B01CD9A23711075003EBA12 /* LNProfileTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNProfileTopView.m; sourceTree = "<group>"; };
+		9B01CD9D2371113D003EBA12 /* UIView+NIB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NIB.m"; sourceTree = "<group>"; };
+		9B01CD9E2371113D003EBA12 /* UIView+NIB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NIB.h"; sourceTree = "<group>"; };
+		9B01CDA1237112EC003EBA12 /* TZPhotoPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewCell.h; sourceTree = "<group>"; };
+		9B01CDA2237112EC003EBA12 /* TZPhotoPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPickerController.h; sourceTree = "<group>"; };
+		9B01CDA3237112EC003EBA12 /* TZImageCropManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageCropManager.m; sourceTree = "<group>"; };
+		9B01CDA4237112EC003EBA12 /* TZImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImageManager.h; sourceTree = "<group>"; };
+		9B01CDA5237112EC003EBA12 /* TZAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetCell.m; sourceTree = "<group>"; };
+		9B01CDA6237112EC003EBA12 /* TZVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZVideoPlayerController.m; sourceTree = "<group>"; };
+		9B01CDA7237112EC003EBA12 /* TZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetModel.m; sourceTree = "<group>"; };
+		9B01CDA8237112EC003EBA12 /* NSBundle+TZImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TZImagePicker.m"; sourceTree = "<group>"; };
+		9B01CDA9237112EC003EBA12 /* TZLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZLocationManager.h; sourceTree = "<group>"; };
+		9B01CDAA237112EC003EBA12 /* TZImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImagePickerController.h; sourceTree = "<group>"; };
+		9B01CDAB237112EC003EBA12 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		9B01CDAC237112EC003EBA12 /* TZPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPreviewController.m; sourceTree = "<group>"; };
+		9B01CDAD237112EC003EBA12 /* TZImagePickerController.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TZImagePickerController.bundle; sourceTree = "<group>"; };
+		9B01CDAE237112EC003EBA12 /* TZProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZProgressView.m; sourceTree = "<group>"; };
+		9B01CDAF237112EC003EBA12 /* TZGifPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZGifPhotoPreviewController.h; sourceTree = "<group>"; };
+		9B01CDB0237112EC003EBA12 /* TZImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImageRequestOperation.h; sourceTree = "<group>"; };
+		9B01CDB1237112EC003EBA12 /* TZAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetCell.h; sourceTree = "<group>"; };
+		9B01CDB2237112EC003EBA12 /* TZImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageManager.m; sourceTree = "<group>"; };
+		9B01CDB3237112EC003EBA12 /* TZImageCropManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZImageCropManager.h; sourceTree = "<group>"; };
+		9B01CDB4237112EC003EBA12 /* TZPhotoPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPickerController.m; sourceTree = "<group>"; };
+		9B01CDB5237112EC003EBA12 /* TZPhotoPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZPhotoPreviewCell.m; sourceTree = "<group>"; };
+		9B01CDB6237112EC003EBA12 /* NSBundle+TZImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TZImagePicker.h"; sourceTree = "<group>"; };
+		9B01CDB7237112EC003EBA12 /* TZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetModel.h; sourceTree = "<group>"; };
+		9B01CDB8237112EC003EBA12 /* TZVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZVideoPlayerController.h; sourceTree = "<group>"; };
+		9B01CDB9237112EC003EBA12 /* TZPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZPhotoPreviewController.h; sourceTree = "<group>"; };
+		9B01CDBA237112EC003EBA12 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		9B01CDBB237112EC003EBA12 /* TZImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImagePickerController.m; sourceTree = "<group>"; };
+		9B01CDBC237112EC003EBA12 /* TZLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZLocationManager.m; sourceTree = "<group>"; };
+		9B01CDBD237112EC003EBA12 /* TZGifPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZGifPhotoPreviewController.m; sourceTree = "<group>"; };
+		9B01CDBE237112EC003EBA12 /* TZImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZImageRequestOperation.m; sourceTree = "<group>"; };
+		9B01CDBF237112EC003EBA12 /* TZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZProgressView.h; sourceTree = "<group>"; };
+		9B01CDD02371525F003EBA12 /* ToolsObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ToolsObj.h; path = XLBook/ALL/Classes/TabBar/InfoBook/Tool/ToolsObj.h; sourceTree = SOURCE_ROOT; };
+		9B01CDD12371525F003EBA12 /* ToolsObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ToolsObj.m; path = XLBook/ALL/Classes/TabBar/InfoBook/Tool/ToolsObj.m; sourceTree = SOURCE_ROOT; };
+		9B01CDD5237161EE003EBA12 /* headerImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headerImage@3x.png"; sourceTree = "<group>"; };
+		9B01CDD723716800003EBA12 /* 无封面.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "无封面.jpg"; sourceTree = "<group>"; };
+		9B01CDD92371721E003EBA12 /* MyBookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyBookCell.h; path = XLBook/ALL/Classes/TabBar/InfoBook/Tool/MyBookCell.h; sourceTree = SOURCE_ROOT; };
+		9B01CDDA2371721E003EBA12 /* MyBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyBookCell.m; path = XLBook/ALL/Classes/TabBar/InfoBook/Tool/MyBookCell.m; sourceTree = SOURCE_ROOT; };
+		9B01CDDC2372652F003EBA12 /* TopBookZJMLFZModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookZJMLFZModel.h; sourceTree = "<group>"; };
+		9B01CDDD2372652F003EBA12 /* TopBookZJMLFZModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookZJMLFZModel.m; sourceTree = "<group>"; };
 		9B32B05D235D846200FE71A9 /* MyBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBookController.h; sourceTree = "<group>"; };
 		9B32B05E235D846200FE71A9 /* MyBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBookController.m; sourceTree = "<group>"; };
 		9B32B060235D847500FE71A9 /* TopBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookController.h; sourceTree = "<group>"; };
@@ -141,7 +208,6 @@
 		9B32B0A1235ECAA100FE71A9 /* XLTopOneBookNav.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLTopOneBookNav.m; sourceTree = "<group>"; };
 		9B32B0A3235EEB2A00FE71A9 /* XLTopBookOneHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLTopBookOneHeaderView.h; sourceTree = "<group>"; };
 		9B32B0A4235EEB2A00FE71A9 /* XLTopBookOneHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLTopBookOneHeaderView.m; sourceTree = "<group>"; };
-		9B32B0A8235EEFD000FE71A9 /* 111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111.jpg; sourceTree = "<group>"; };
 		9B32B0AD235EFB7400FE71A9 /* TopBookOneBookDModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookDModel.h; sourceTree = "<group>"; };
 		9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = TopBookOneBookDModel.mm; sourceTree = "<group>"; };
 		9B32B0B02360211700FE71A9 /* TopBookOneBookMLCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookMLCell.h; sourceTree = "<group>"; };
@@ -320,6 +386,9 @@
 		9B01CD93236C1E0F003EBA12 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B01CD9923711075003EBA12 /* LNProfileTopView.h */,
+				9B01CD9A23711075003EBA12 /* LNProfileTopView.m */,
+				9B01CD9823711074003EBA12 /* LNProfileTopView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,8 +396,48 @@
 		9B01CD94236C1E0F003EBA12 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				9B01CD9E2371113D003EBA12 /* UIView+NIB.h */,
+				9B01CD9D2371113D003EBA12 /* UIView+NIB.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		9B01CDA0237112EC003EBA12 /* TZImagePickerController */ = {
+			isa = PBXGroup;
+			children = (
+				9B01CDA1237112EC003EBA12 /* TZPhotoPreviewCell.h */,
+				9B01CDA2237112EC003EBA12 /* TZPhotoPickerController.h */,
+				9B01CDA3237112EC003EBA12 /* TZImageCropManager.m */,
+				9B01CDA4237112EC003EBA12 /* TZImageManager.h */,
+				9B01CDA5237112EC003EBA12 /* TZAssetCell.m */,
+				9B01CDA6237112EC003EBA12 /* TZVideoPlayerController.m */,
+				9B01CDA7237112EC003EBA12 /* TZAssetModel.m */,
+				9B01CDA8237112EC003EBA12 /* NSBundle+TZImagePicker.m */,
+				9B01CDA9237112EC003EBA12 /* TZLocationManager.h */,
+				9B01CDAA237112EC003EBA12 /* TZImagePickerController.h */,
+				9B01CDAB237112EC003EBA12 /* UIView+Layout.m */,
+				9B01CDAC237112EC003EBA12 /* TZPhotoPreviewController.m */,
+				9B01CDAD237112EC003EBA12 /* TZImagePickerController.bundle */,
+				9B01CDAE237112EC003EBA12 /* TZProgressView.m */,
+				9B01CDAF237112EC003EBA12 /* TZGifPhotoPreviewController.h */,
+				9B01CDB0237112EC003EBA12 /* TZImageRequestOperation.h */,
+				9B01CDB1237112EC003EBA12 /* TZAssetCell.h */,
+				9B01CDB2237112EC003EBA12 /* TZImageManager.m */,
+				9B01CDB3237112EC003EBA12 /* TZImageCropManager.h */,
+				9B01CDB4237112EC003EBA12 /* TZPhotoPickerController.m */,
+				9B01CDB5237112EC003EBA12 /* TZPhotoPreviewCell.m */,
+				9B01CDB6237112EC003EBA12 /* NSBundle+TZImagePicker.h */,
+				9B01CDB7237112EC003EBA12 /* TZAssetModel.h */,
+				9B01CDB8237112EC003EBA12 /* TZVideoPlayerController.h */,
+				9B01CDB9237112EC003EBA12 /* TZPhotoPreviewController.h */,
+				9B01CDBA237112EC003EBA12 /* UIView+Layout.h */,
+				9B01CDBB237112EC003EBA12 /* TZImagePickerController.m */,
+				9B01CDBC237112EC003EBA12 /* TZLocationManager.m */,
+				9B01CDBD237112EC003EBA12 /* TZGifPhotoPreviewController.m */,
+				9B01CDBE237112EC003EBA12 /* TZImageRequestOperation.m */,
+				9B01CDBF237112EC003EBA12 /* TZProgressView.h */,
+			);
+			path = TZImagePickerController;
 			sourceTree = "<group>";
 		};
 		9B32B06C235D89B400FE71A9 /* Tool */ = {
@@ -431,9 +540,9 @@
 			isa = PBXGroup;
 			children = (
 				9B9FDDB92366D3C700B1AA73 /* XXDirectoryVC.h */,
+				9B9FDDBC2366D3C700B1AA73 /* XXDirectoryVC.m */,
 				9B9FDDBA2366D3C700B1AA73 /* XXDirectoryCell.h */,
 				9B9FDDBB2366D3C700B1AA73 /* XXDirectoryCell.m */,
-				9B9FDDBC2366D3C700B1AA73 /* XXDirectoryVC.m */,
 			);
 			path = Directory;
 			sourceTree = "<group>";
@@ -594,7 +703,8 @@
 		9BD935EB235D717000B34B13 /* Res */ = {
 			isa = PBXGroup;
 			children = (
-				9B32B0A8235EEFD000FE71A9 /* 111.jpg */,
+				9B01CDD723716800003EBA12 /* 无封面.jpg */,
+				9B01CDD5237161EE003EBA12 /* headerImage@3x.png */,
 				9BD935EC235D717000B34B13 /* Assets.xcassets */,
 			);
 			path = Res;
@@ -642,6 +752,8 @@
 		9BD935F1235D717000B34B13 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B01CDD92371721E003EBA12 /* MyBookCell.h */,
+				9B01CDDA2371721E003EBA12 /* MyBookCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -688,6 +800,8 @@
 				9B32B0AE235EFB7400FE71A9 /* TopBookOneBookDModel.mm */,
 				9B32B0BF236056A600FE71A9 /* TopBookHXGModel.h */,
 				9B32B0C0236056A600FE71A9 /* TopBookHXGModel.m */,
+				9B01CDDC2372652F003EBA12 /* TopBookZJMLFZModel.h */,
+				9B01CDDD2372652F003EBA12 /* TopBookZJMLFZModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -720,6 +834,8 @@
 		9BD935F7235D717000B34B13 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				9B01CDD02371525F003EBA12 /* ToolsObj.h */,
+				9B01CDD12371525F003EBA12 /* ToolsObj.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -777,6 +893,7 @@
 		9BD93613235D72B200B34B13 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				9B01CDA0237112EC003EBA12 /* TZImagePickerController */,
 				9B01CD7A236ABF15003EBA12 /* PYSearch */,
 				9B9FDE332366D50B00B1AA73 /* DB */,
 				9BD93614235D72B200B34B13 /* YBNetwork */,
@@ -894,11 +1011,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BD9360A235D717000B34B13 /* Main.storyboard in Resources */,
+				9B01CDC7237112EC003EBA12 /* TZImagePickerController.bundle in Resources */,
+				9B01CDD6237161EE003EBA12 /* headerImage@3x.png in Resources */,
 				9BD93608235D717000B34B13 /* Assets.xcassets in Resources */,
 				9B3AF1B023617FE400DF6C18 /* LaunchScreen.storyboard in Resources */,
-				9B32B0A9235EEFD000FE71A9 /* 111.jpg in Resources */,
 				9B01CD8D236ABF15003EBA12 /* PYSearch.bundle in Resources */,
+				9B01CDD823716801003EBA12 /* 无封面.jpg in Resources */,
 				9B32B07D235D947D00FE71A9 /* FLList.plist in Resources */,
+				9B01CD9B23711075003EBA12 /* LNProfileTopView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,21 +1075,30 @@
 				9B9FDE0B2366D3C700B1AA73 /* XXBookReadingVC.m in Sources */,
 				9BD93712235D72B200B34B13 /* YBNetworkResponse.m in Sources */,
 				9B32B0C1236056A600FE71A9 /* TopBookHXGModel.m in Sources */,
+				9B01CD9C23711075003EBA12 /* LNProfileTopView.m in Sources */,
+				9B01CDCC237112EC003EBA12 /* TZImagePickerController.m in Sources */,
 				9B9FDE312366D40E00B1AA73 /* BaseTableViewController.m in Sources */,
+				9B01CDCE237112EC003EBA12 /* TZGifPhotoPreviewController.m in Sources */,
 				9BD93612235D720E00B34B13 /* XLBookBaseController.m in Sources */,
 				9B9FDE2F2366D40E00B1AA73 /* BaseTableViewCell.m in Sources */,
 				9BD9379B235D804600B34B13 /* SceneDelegate.m in Sources */,
 				9B9FDE062366D3C700B1AA73 /* YYLabel+Add.m in Sources */,
 				9B9FDE1B2366D3C700B1AA73 /* XXBookBodyModel.mm in Sources */,
+				9B01CDD22371525F003EBA12 /* ToolsObj.m in Sources */,
 				9B32B075235D89D900FE71A9 /* LNConst.m in Sources */,
+				9B01CDC3237112EC003EBA12 /* TZAssetModel.m in Sources */,
 				9B9FDE232366D3C700B1AA73 /* XXSafeAreaInsets.m in Sources */,
 				9B9FDE1C2366D3C700B1AA73 /* XLBookReadZJLBModel.mm in Sources */,
 				9B32B0A2235ECAA100FE71A9 /* XLTopOneBookNav.m in Sources */,
+				9B01CDC0237112EC003EBA12 /* TZImageCropManager.m in Sources */,
 				9BD93715235D72B200B34B13 /* YBBaseRequest.m in Sources */,
 				9B32B076235D89D900FE71A9 /* LNRequest.m in Sources */,
 				9B01CD8A236ABF15003EBA12 /* PYSearchViewController.m in Sources */,
 				9B01CD8B236ABF15003EBA12 /* PYSearchSuggestionViewController.m in Sources */,
+				9B01CDC1237112EC003EBA12 /* TZAssetCell.m in Sources */,
+				9B01CDDE2372652F003EBA12 /* TopBookZJMLFZModel.m in Sources */,
 				9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */,
+				9B01CDC9237112EC003EBA12 /* TZImageManager.m in Sources */,
 				9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */,
 				9BD9360D235D717000B34B13 /* AppDelegate.m in Sources */,
 				9B32B0BE2360503D00FE71A9 /* TopBookOneBookHXJListCell.m in Sources */,
@@ -980,22 +1109,29 @@
 				9BD9360B235D717000B34B13 /* main.m in Sources */,
 				9B32B08B235DA07100FE71A9 /* MBProgressHUD+LNHUD.m in Sources */,
 				9B32B0BB23603C8500FE71A9 /* TopBookOneBookHXJListView.m in Sources */,
+				9B01CDC2237112EC003EBA12 /* TZVideoPlayerController.m in Sources */,
 				9B32B068235D852300FE71A9 /* XLBookNavController.m in Sources */,
 				9B32B0A5235EEB2A00FE71A9 /* XLTopBookOneHeaderView.m in Sources */,
 				9B32B084235D9E4B00FE71A9 /* TopBookDController.m in Sources */,
+				9B01CDC6237112EC003EBA12 /* TZPhotoPreviewController.m in Sources */,
 				9B01CD97236C1E81003EBA12 /* XLBookInfoController.m in Sources */,
 				9B32B06B235D860400FE71A9 /* XLTabBarBookController.m in Sources */,
 				9B32B094235DBE0400FE71A9 /* TopBookDCell.m in Sources */,
 				9B9FDE052366D3C700B1AA73 /* UIViewController+Add.m in Sources */,
+				9B01CDCD237112EC003EBA12 /* TZLocationManager.m in Sources */,
 				9B9FDE302366D40E00B1AA73 /* BaseView.m in Sources */,
+				9B01CDDB2371721E003EBA12 /* MyBookCell.m in Sources */,
 				9B9FDE1A2366D3C700B1AA73 /* XXBookMenuView.m in Sources */,
 				9BD93714235D72B200B34B13 /* YBNetworkManager.m in Sources */,
+				9B01CDC4237112EC003EBA12 /* NSBundle+TZImagePicker.m in Sources */,
 				9B32B09F235EB01D00FE71A9 /* TopBookOneBookDController.m in Sources */,
 				9B32B074235D89D900FE71A9 /* LNSkinHelper.m in Sources */,
 				9B32B081235D9A3F00FE71A9 /* LeeRunTimePush.m in Sources */,
 				9B01CD8C236ABF15003EBA12 /* PYSearchConst.m in Sources */,
+				9B01CDCB237112EC003EBA12 /* TZPhotoPreviewCell.m in Sources */,
 				9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.mm in Sources */,
 				9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */,
+				9B01CDC8237112EC003EBA12 /* TZProgressView.m in Sources */,
 				9B01CD8F236ABF15003EBA12 /* UIView+PYSearchExtension.m in Sources */,
 				9B9FDE042366D3C700B1AA73 /* UIButton+Add.m in Sources */,
 				9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */,
@@ -1011,13 +1147,17 @@
 				9B3AF25823619A5A00DF6C18 /* LNTableViewController.m in Sources */,
 				9B9FDE0A2366D3C700B1AA73 /* XXDirectoryVC.m in Sources */,
 				9B9FDE212366D3C700B1AA73 /* DateTools.m in Sources */,
+				9B01CD9F2371113E003EBA12 /* UIView+NIB.m in Sources */,
 				9B9FDE372366D50B00B1AA73 /* XXDatabase.mm in Sources */,
 				9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */,
 				9B9FDE022366D3C700B1AA73 /* UIView+NewLine.m in Sources */,
+				9B01CDCF237112EC003EBA12 /* TZImageRequestOperation.m in Sources */,
 				9B01CD89236ABF15003EBA12 /* UIColor+PYSearchExtension.m in Sources */,
 				9B32B091235DADD800FE71A9 /* TopBookListModel.m in Sources */,
+				9B01CDCA237112EC003EBA12 /* TZPhotoPickerController.m in Sources */,
 				9BD93713235D72B200B34B13 /* YBNetworkCache.m in Sources */,
 				9B9FDE3D2366DAB600B1AA73 /* NSString+Add.m in Sources */,
+				9B01CDC5237112EC003EBA12 /* UIView+Layout.m in Sources */,
 				9B9FDE192366D3C700B1AA73 /* BatteryView.m in Sources */,
 				9B9FDE222366D3C700B1AA73 /* XXHighLightButton.m in Sources */,
 			);

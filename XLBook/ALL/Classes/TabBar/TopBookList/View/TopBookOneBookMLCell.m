@@ -77,6 +77,7 @@
     if (!_bgView) {
         _bgView = [UIView new];
         _bgView.backgroundColor = [UIColor whiteColor];
+        _bgView.layer.cornerRadius = 2;
     }
     return _bgView;
 }

@@ -32,7 +32,6 @@
     tableView.dataSource = self;
     tableView.backgroundColor = [UIColor clearColor];
     tableView.backgroundView = nil;
-    //tableView.tableFooterView = [[UIView alloc]init];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
@@ -67,26 +66,29 @@
 
     TopBookModelManager.tableView = [self setupTableView];
     //CGFloat  aa = NAV_HEIGHT;
-    TopBookModelManager.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-60);
+    TopBookModelManager.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-50);
     [TopBookModelManager getOneBookClassifyWithTableView:TopBookModelManager.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://shuapi.jiaston.com/info/%@.html",self.bookID] success:^(id  _Nonnull responseObject) {
     } failure:^(NSError * _Nonnull error) {
         
     }];
-    
+    //目录
     [TopBookModelManager getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID] BookIDString:self.bookID];
     [self.view addSubview:self.xlTopOneBookNav];
     
-    
+    //_bookID    NSTaggedPointerString *    @"375026"    0xefd239881c338ebb
     UIButton *button = [UIButton new];
     button.frame = CGRectMake(10, kScreenHeight-50, kScreenWidth-20, 50);
-    button.backgroundColor = [UIColor blueColor];
+    [button setTitle:[NSString stringWithFormat:@"立即阅读"] forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor colorWithHexString:@"#01B0E0"];
+    button.layer.cornerRadius = 2;
     [button addTarget:self action:@selector(tap) forControlEvents:UIControlEventTouchUpInside];
+    [button.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
     [self.view addSubview:button];
 }
 
 - (void)tap
 {
-    NSDictionary *dic = @{@"bookID":TopBookModelManager.topBookOneBookDModel.Id,@"bookZJLBArr":TopBookModelManager.zjlbBookArr};
+    NSDictionary *dic = @{@"bookID":TopBookModelManager.topBookOneBookDModel.Id,@"bookZJLBArr":TopBookModelManager.zjlbBookArr,};
     [LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
     
 }

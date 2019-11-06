@@ -12,6 +12,7 @@
 #import "TopBookHXGModel.h"
 #import "XLBookReadZJLBModel.h"
 #import "XXDatabase.h"
+#import "TopBookZJMLFZModel.h"
 
 @implementation TopBookModel
 
@@ -58,6 +59,15 @@
     }
     return _dataArray;
 }
+
+- (NSMutableArray *)zjlbBookArr
+{
+    if (!_zjlbBookArr) {
+        _zjlbBookArr = [NSMutableArray array];
+    }
+    return _zjlbBookArr;
+}
+
 
 - (void)clear {
 //    self.chapter = 0;
@@ -119,16 +129,26 @@
         self.chapters = dbChapters;
     }
     if (dbChapters.count != 0 ) {
-        //[MBProgressHUD showWaitingViewText:@"加载缓存" detailText:nil inView:nil];
         [HUD showMsgWithoutView:@"加载缓存"];
-        self.zjlbBookArr = dbChapters;
+        [self.zjlbBookArr addObjectsFromArray:dbChapters];
         [self reloadData];
         [MBProgressHUD dismissHUD];
     }else{
-       // [MBProgressHUD showWaitingViewText:@"加载网络" detailText:nil inView:nil];
-         [HUD showMsgWithoutView:@"加载网络"];
+        [HUD showMsgWithoutView:@"加载网络"];
         [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
-            self.zjlbBookArr = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:[result[@"data"][@"list"] firstObject][@"list"]];
+            // 获取所有分组数组
+            NSMutableArray *fzListArr = [NSMutableArray array];
+            fzListArr = [TopBookZJMLFZModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"list"]];
+            // 循环去掉分组
+            [fzListArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                TopBookZJMLFZModel *topBookZJMLFZModel = obj;
+                NSArray *removeFZArr = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:topBookZJMLFZModel.list];
+                [removeFZArr enumerateObjectsUsingBlock:^(id  _Nonnull ZJMLFZ, NSUInteger idx, BOOL * _Nonnull stop) {
+                    XLBookReadZJLBModel *xlBookReadZJLBModel = ZJMLFZ;
+                    [self.zjlbBookArr addObject:xlBookReadZJLBModel];
+                }];
+            }];
+            // 存储目录
             [kDatabase deleteChaptersWithSummaryId:bookIDString];
             if ([kDatabase insertChapters:self.zjlbBookArr summaryId:bookIDString]) {
                 NSLog(@"目录插入成功");

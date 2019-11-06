@@ -38,6 +38,7 @@
 {
     if (!_listView) {
         _listView = [TopBookOneBookHXJListView new];
+        _listView.layer.cornerRadius = 2;
     }
     return _listView;
 }

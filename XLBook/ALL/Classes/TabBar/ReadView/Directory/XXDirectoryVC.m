@@ -9,6 +9,8 @@
 #import "XXDirectoryVC.h"
 #import "XXDirectoryCell.h"
 #import "XLBookReadZJLBModel.h"
+#import "TopBookZJMLFZModel.h"
+#import "TopBookModel.h"
 #define STATUS_BAR_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
 @interface XXDirectoryVC ()
 
@@ -22,6 +24,7 @@
 @property (nonatomic, assign) BOOL isBottom;
 
 @property (nonatomic, assign) BOOL isReplaceSummary;
+@property (nonatomic, strong) NSMutableArray *fzDataArray;
 
 
 @end
@@ -35,6 +38,14 @@
     return self;
 }
 
+- (NSMutableArray *)fzDataArray
+{
+    if (!_fzDataArray) {
+        _fzDataArray = [NSMutableArray array];
+    }
+    return _fzDataArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -44,6 +55,9 @@
     
     self.tableView.estimatedRowHeight = 44;
     [self.tableView registerClass:[XXDirectoryCell class] forCellReuseIdentifier:NSStringFromClass([XXDirectoryCell class])];
+    
+    NSLog(@"%lu",(unsigned long)TopBookModelManager.chapter);
+
 }
 
 - (void)configListOnpullRefresh {
@@ -126,6 +140,10 @@
         make.left.right.equalTo(self.view);
         make.bottom.mas_equalTo(_bottomView.mas_top);
     }];
+    
+    
+    NSIndexPath * dayOne = [NSIndexPath indexPathForRow:TopBookModelManager.chapter inSection:0];
+    [self.tableView scrollToRowAtIndexPath:dayOne atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
 
@@ -147,13 +165,25 @@
     return 44;
 }
 
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return self.dataArr.count;
+//}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    TopBookZJMLFZModel *topBookZJMLFZModel = self.dataArr[section];
+//    return topBookZJMLFZModel.list.count;
+    
     return self.dataArr.count;
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     XXDirectoryCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([XXDirectoryCell class])];
+    //TopBookZJMLFZModel *topBookZJMLFZModel = self.dataArr[indexPath.section];
+    //NSArray *arrrrr = [XLBookReadZJLBModel mj_objectArrayWithKeyValuesArray:topBookZJMLFZModel.list];
     XLBookReadZJLBModel *model = self.dataArr[indexPath.row];
     [cell configTitle:model.name indexPath:indexPath];
     return cell;
@@ -161,30 +191,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (_selectChapter) {
         _selectChapter (indexPath.row);
     }
-    
     [self cancelAction];
 }
 
-- (void)scrollToCurrentRow {
+//- (void)scrollToCurrentRow {
 //    if (kReadingManager.chapters.count > kReadingManager.chapter) {
 //        NSIndexPath *idxPath = [NSIndexPath indexPathForRow:kReadingManager.chapter inSection:0];;
 //        [self.tableView scrollToRowAtIndexPath:idxPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 //    }
-}
+//}
 
-- (void)cancelAction {
-    
-//    if (_isReplaceSummary) {
-//        //换了源
-//        if (_selectChapter) {
-//            _selectChapter (kReadingManager.chapter);
-//        }
-//    }
+- (void)cancelAction
+{
     [self go2Back];
 }
 
@@ -192,15 +215,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

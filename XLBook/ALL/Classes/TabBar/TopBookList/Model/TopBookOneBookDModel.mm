@@ -19,5 +19,5 @@ WCDB_SYNTHESIZE(TopBookOneBookDModel, page)
 //WCDB_SYNTHESIZE(TopBookOneBookDModel, updated)
 WCDB_SYNTHESIZE(TopBookOneBookDModel, chapter)
 WCDB_SYNTHESIZE(TopBookOneBookDModel, LastChapter)
-//WCDB_SYNTHESIZE(TopBookOneBookDModel, addTime)
+WCDB_SYNTHESIZE(TopBookOneBookDModel, addTime)
 @end

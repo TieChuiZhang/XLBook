@@ -109,6 +109,7 @@
     if (!_bgView) {
         _bgView = [UIView new];
         _bgView.backgroundColor = [UIColor whiteColor];
+//        _bgView.layer.cornerRadius = 2;
     }
     return _bgView;
 }
@@ -139,7 +140,7 @@
 - (void)abdWithUrlString:(NSString *)string WithNameString:(NSString *)nameString ViewTagWithCurrentTag:(NSInteger)tag{
     TopBookOneBookTJView *ooo = [self viewWithTag:tag];
     ooo.Name.text = nameString;
-    [ooo.Img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",string]] placeholder:[UIImage imageNamed:@"111.jpg"]];
+    [ooo.Img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",string]] placeholder:[UIImage imageNamed:@"无封面.jpg"]];
 }
 
 @end

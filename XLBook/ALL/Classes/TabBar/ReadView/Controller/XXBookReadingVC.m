@@ -20,8 +20,7 @@
 //#import "XXBookReadingBackViewController.h"
 #import "TopBookModel.h"
 #import "XLBookReadZJLBModel.h"
-#import "XXDatabase.h"
-
+#import "TopBookZJMLFZModel.h"
 @interface XXBookReadingVC () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -53,6 +52,8 @@
 @property (nonatomic, assign) NSInteger pagePrevious;
 @property (nonatomic, strong) NSMutableArray *mlArr;
 
+
+
 @end
 
 @implementation XXBookReadingVC
@@ -60,19 +61,18 @@
 
 - (instancetype)initWithBookId:(NSString *)bookId bookTitle:(NSString *)bookTitle summaryId:(NSString *)summaryId {
     if (self = [super init]) {
-//        [kReadingManager clear];
-//        kReadingManager.bookId = bookId;
-//        kReadingManager.title = bookTitle;
-//        kReadingManager.summaryId = summaryId;
-//        kReadingManager.isSave = YES;
+        //        [kReadingManager clear];
+        //        kReadingManager.bookId = bookId;
+        //        kReadingManager.title = bookTitle;
+        //        kReadingManager.summaryId = summaryId;
+        //        kReadingManager.isSave = YES;
         
         //XBookModel *book = [kDatabase getBookWithId:bookId];
-//        if (book) {
-//            //查询是否已经加入书架
-//            kReadingManager.chapter = book.chapter;
-//            kReadingManager.page = book.page;
-//        }
-        
+        //        if (book) {
+        //            //查询是否已经加入书架
+        //            kReadingManager.chapter = book.chapter;
+        //            kReadingManager.page = book.page;
+        //        }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onApplicationWillResignActive) name:UIApplicationWillResignActiveNotification object:nil];
     }
     return self;
@@ -82,22 +82,22 @@
 //进入后台 保存下进度
 - (void)onApplicationWillResignActive {
     //if (_pageViewController && kReadingManager.isSave == YES) {
-        //ReadingManager *manager = [ReadingManager shareReadingManager];
-        //XXBookModel *model = [kDatabase getBookWithId:manager.bookId];
-//        if (manager.transitionStyle == kTransitionStyle_Scroll) {
-//            //左右滑动
-//            XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
-//            model.page = firstVc.page;
-//            model.chapter = firstVc.chapter;
-//        }
-//        else {
-//            model.page = manager.page;
-//            model.chapter = manager.chapter;
-//        }
-//
-//        model.updateStatus = NO;
-        //[kDatabase updateBook:model];
-   // }
+    //ReadingManager *manager = [ReadingManager shareReadingManager];
+    //XXBookModel *model = [kDatabase getBookWithId:manager.bookId];
+    //        if (manager.transitionStyle == kTransitionStyle_Scroll) {
+    //            //左右滑动
+    //            XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
+    //            model.page = firstVc.page;
+    //            model.chapter = firstVc.chapter;
+    //        }
+    //        else {
+    //            model.page = manager.page;
+    //            model.chapter = manager.chapter;
+    //        }
+    //
+    //        model.updateStatus = NO;
+    //[kDatabase updateBook:model];
+    // }
 }
 
 
@@ -129,7 +129,7 @@
         self.pageZJ = model.chapter;
     }else{
         self.pageCurrent = 0;
-          self.pageZJ = 0;
+        self.pageZJ = 0;
     }
     self.hiddenStatusBar = YES;
     self.fd_prefersNavigationBarHidden = YES;
@@ -186,13 +186,12 @@
 
 #pragma mark - 开始进来处理下网络或者缓存
 - (void)requestDataWithShowLoading:(BOOL)show {
-    [self.bookZJLBArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        XLBookReadZJLBModel *xlBookReadZJLBModel = obj;
+    [self.bookZJLBArr enumerateObjectsUsingBlock:^(id  _Nonnull ZJMLFZ, NSUInteger idx, BOOL * _Nonnull stop) {
+        XLBookReadZJLBModel *xlBookReadZJLBModel = ZJMLFZ;
         [self.mlArr addObject:xlBookReadZJLBModel.id];
     }];
-    
-    [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
-                self.xlBookReadZJNRModel = responseObject;
+    [TopBookModelManager getAllReadBookZJNR:   [[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
+        self.xlBookReadZJNRModel = responseObject;
         XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
@@ -206,27 +205,27 @@
     
     //[self.topBookModel getAllReadBookZJNR:self.bookZJLBArr[1][@"id"]];
     
-//    if (show) {
-//        [HUD showProgress:nil inView:self.view];
-//    }
+    //    if (show) {
+    //        [HUD showProgress:nil inView:self.view];
+    //    }
     //MJWeakSelf;
     //[self requestSummaryWithComplete:^{
     
     
     
-        
-        //[self requestChaptersWithComplete:^{
-            
-//            [weakSelf requestContentWithComplete:^{
-//                [HUD hide];
-//                //初始化显示控制器
-//                [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-//            }];
-            
-            
-            
-        //}];
-   // }];
+    
+    //[self requestChaptersWithComplete:^{
+    
+    //            [weakSelf requestContentWithComplete:^{
+    //                [HUD hide];
+    //                //初始化显示控制器
+    //                [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    //            }];
+    
+    
+    
+    //}];
+    // }];
 }
 
 
@@ -306,7 +305,7 @@
 
 #pragma mark - 请求小说内容
 //- (void)requestContentWithComplete:(void(^)())complete {
-    
+
 //    MJWeakSelf;
 //    [kReadingManager requestContentWithChapter:kReadingManager.chapter ispreChapter:weakSelf.ispreChapter Completion:^{
 //        complete();
@@ -405,56 +404,56 @@
     //MJWeakSelf;
     XXBookContentVC __block *contentVC = [[XXBookContentVC alloc] init];
     //    contentVC.bookModel = kReadingManager.chapters[kReadingManager.chapter];
-        contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
+    contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
     //    contentVC.chapter = kReadingManager.chapter;
-        contentVC.page = self.pageCurrent;
-//    [self requestContentWithComplete:^{
-//        contentVC.bookModel = kReadingManager.chapters[kReadingManager.chapter];
-//        contentVC.chapter = kReadingManager.chapter;
-//        contentVC.page = kReadingManager.page;
-//
-//        weakSelf.isTaping = NO;
-
-//        //先删除pageViewController在重新加上，这里有个bug翻页后不能滑动了
-//        [weakSelf.pageViewController willMoveToParentViewController:nil];
-//        [weakSelf.pageViewController.view removeFromSuperview];
-//        [weakSelf.pageViewController removeFromParentViewController];
-//        kDealloc(weakSelf.pageViewController);
-//        [weakSelf.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    contentVC.page = self.pageCurrent;
+    //    [self requestContentWithComplete:^{
+    //        contentVC.bookModel = kReadingManager.chapters[kReadingManager.chapter];
+    //        contentVC.chapter = kReadingManager.chapter;
+    //        contentVC.page = kReadingManager.page;
+    //
+    //        weakSelf.isTaping = NO;
+    
+    //        //先删除pageViewController在重新加上，这里有个bug翻页后不能滑动了
+    //        [weakSelf.pageViewController willMoveToParentViewController:nil];
+    //        [weakSelf.pageViewController.view removeFromSuperview];
+    //        [weakSelf.pageViewController removeFromParentViewController];
+    //        kDealloc(weakSelf.pageViewController);
+    //        [weakSelf.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     //}];
     return contentVC;
 }
 
 
 - (XXBookContentVC *)getpageBookContent {
-
-//    if (kReadingManager.chapter > kReadingManager.chapters.count - 1) {
-//        [HUD showError:@"当前章节超出目录" inview:self.view];
-//        return nil;
-//    }
+    
+    //    if (kReadingManager.chapter > kReadingManager.chapters.count - 1) {
+    //        [HUD showError:@"当前章节超出目录" inview:self.view];
+    //        return nil;
+    //    }
     // 创建一个新的控制器类，并且分配给相应的数据
     XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
-//    contentVC.bookModel = kReadingManager.chapters[kReadingManager.chapter];
+    //    contentVC.bookModel = kReadingManager.chapters[kReadingManager.chapter];
     contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
-//    contentVC.chapter = kReadingManager.chapter;
+    //    contentVC.chapter = kReadingManager.chapter;
     NSLog(@"%ld",(long)self.pageCurrent);
     contentVC.page = self.pageCurrent;
-
+    
     return contentVC;
 }
 
 
 - (void)touchTap:(UITapGestureRecognizer *)tap {
     CGPoint touchPoint = [tap locationInView:self.pageViewController.view];
-
+    
     if ((touchPoint.x < SpaceWith * 2 && touchPoint.y < SpaceHeight) || (touchPoint.x < SpaceWith && touchPoint.y > SpaceHeight)) {
         // 左边
         //if (kReadingManager.isFullTapNext) {
         
-            //[self tapNextPage];
+        //[self tapNextPage];
         //}
         //else {
-            [self tapPrePage];
+        [self tapPrePage];
         //}
     }
     else if ((touchPoint.x > SpaceWith * 2 && touchPoint.y < SpaceHeight * 2) || (touchPoint.x > SpaceWith && touchPoint.y > SpaceHeight * 2)) {
@@ -470,6 +469,12 @@
 
 //点击下一页
 - (void)tapNextPage {
+    if (self.pageZJ >= self.mlArr.count - 1 && self.pageCurrent >= self.xlBookReadZJNRModel.pageCount-1) {
+        //self.pageCurrent = 0;
+        //self.ispreChapter = NO;
+        [HUD showMsgWithoutView:@"没有了老弟"];
+        return;
+    }
     if (self.pageCurrent >= self.xlBookReadZJNRModel.pageCount-1) {
         self.pageCurrent = 0;
         self.pageZJ ++;
@@ -482,49 +487,49 @@
     }
     
     
-             
-
-//    if (kReadingManager.page == [kReadingManager.chapters.lastObject pageCount] - 1 && kReadingManager.chapter >= kReadingManager.chapters.count - 1) {
-//        [HUD showMsgWithoutView:@"已经是最后一页了!"];
-//        return;
-//    }
-
-//    if (kReadingManager.page >= [kReadingManager.chapters[kReadingManager.chapter] pageCount] - 1) {
-//        kReadingManager.page = 0;
-//        kReadingManager.chapter++;
-//        _ispreChapter = NO;
-//        [self requestDataAndSetViewController];
-//
-//    } else {
-//        if (kReadingManager.transitionStyle == kTransitionStyle_default) {
-//            kReadingManager.page++;
-//            XXBookContentVC *textVC = [self getpageBookContent];
-//            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-//        }
-//        else if (kReadingManager.transitionStyle == kTransitionStyle_PageCurl) {
-//            kReadingManager.page++;
-//            //XXBookContentVC *textVC = [self getpageBookContent];
-////            XXBookReadingBackViewController *backView = [[XXBookReadingBackViewController alloc] init];
-////            [backView updateWithViewController:textVC];
-////            [self.pageViewController setViewControllers:@[textVC, backView] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-//        }
-//        else {
-//            MJWeakSelf;
-//            _isTaping = YES;
-//            XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
-//            firstVc.page ++;
-//            self.view.userInteractionEnabled = NO;
-//            self.pageViewController.view.userInteractionEnabled = NO;
-//            XXBookContentVC *textVC = [self getpageBookContent];
-//            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
-//                if (finished) {
-//                    weakSelf.isTaping = NO;
-//                    weakSelf.pageViewController.view.userInteractionEnabled = YES;
-//                    weakSelf.view.userInteractionEnabled = YES;
-//                }
-//            }];
-//        }
-//    }
+    
+    
+    //    if (kReadingManager.page == [kReadingManager.chapters.lastObject pageCount] - 1 && kReadingManager.chapter >= kReadingManager.chapters.count - 1) {
+    //        [HUD showMsgWithoutView:@"已经是最后一页了!"];
+    //        return;
+    //    }
+    
+    //    if (kReadingManager.page >= [kReadingManager.chapters[kReadingManager.chapter] pageCount] - 1) {
+    //        kReadingManager.page = 0;
+    //        kReadingManager.chapter++;
+    //        _ispreChapter = NO;
+    //        [self requestDataAndSetViewController];
+    //
+    //    } else {
+    //        if (kReadingManager.transitionStyle == kTransitionStyle_default) {
+    //            kReadingManager.page++;
+    //            XXBookContentVC *textVC = [self getpageBookContent];
+    //            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    //        }
+    //        else if (kReadingManager.transitionStyle == kTransitionStyle_PageCurl) {
+    //            kReadingManager.page++;
+    //            //XXBookContentVC *textVC = [self getpageBookContent];
+    ////            XXBookReadingBackViewController *backView = [[XXBookReadingBackViewController alloc] init];
+    ////            [backView updateWithViewController:textVC];
+    ////            [self.pageViewController setViewControllers:@[textVC, backView] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    //        }
+    //        else {
+    //            MJWeakSelf;
+    //            _isTaping = YES;
+    //            XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
+    //            firstVc.page ++;
+    //            self.view.userInteractionEnabled = NO;
+    //            self.pageViewController.view.userInteractionEnabled = NO;
+    //            XXBookContentVC *textVC = [self getpageBookContent];
+    //            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+    //                if (finished) {
+    //                    weakSelf.isTaping = NO;
+    //                    weakSelf.pageViewController.view.userInteractionEnabled = YES;
+    //                    weakSelf.view.userInteractionEnabled = YES;
+    //                }
+    //            }];
+    //        }
+    //    }
 }
 
 
@@ -544,58 +549,56 @@
         _ispreChapter = YES;
         [self requestDataAndSetViewController];
     }
-
-//    if (kReadingManager.chapter == 0 && kReadingManager.page == 0) {
-//        [HUD showMsgWithoutView:@"已经是第一页了!"];
-//        return;
-//    }
-
-//    if (self.xlBookReadZJNRModel.page > 0) {
-//
-//        if (kReadingManager.transitionStyle == kTransitionStyle_default) {
-//            kReadingManager.page--;
-//            XXBookContentVC *textVC = [self getpageBookContent];
-//            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
-//        }
-//        else if (kReadingManager.transitionStyle == kTransitionStyle_PageCurl) {
-//            kReadingManager.page--;
-//            //XXBookContentVC *textVC = [self getpageBookContent];
-////            XXBookReadingBackViewController *backView = [[XXBookReadingBackViewController alloc] init];
-////            [backView updateWithViewController:textVC];
-////            [self.pageViewController setViewControllers:@[textVC, backView] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
-//        }
-//        else {
-//            //MJWeakSelf;
-//
-//            XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
-//            //kReadingManager.page = firstVc.page - 1;
-//            _isTaping = YES;
-//            self.view.userInteractionEnabled = NO;
-//            self.pageViewController.view.userInteractionEnabled = NO;
-//            XXBookContentVC *textVC = [self getpageBookContent];
-//            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
-//                if (finished) {
-//                    self.isTaping = NO;
-//                    self.pageViewController.view.userInteractionEnabled = YES;
-//                    self.view.userInteractionEnabled = YES;
-//                }
-//            }];
-//        }
-//    } else {
-//        kReadingManager.chapter--;
-//        _ispreChapter = YES;
-//        [self requestDataAndSetViewController];
-//    }
+    
+    //    if (kReadingManager.chapter == 0 && kReadingManager.page == 0) {
+    //        [HUD showMsgWithoutView:@"已经是第一页了!"];
+    //        return;
+    //    }
+    
+    //    if (self.xlBookReadZJNRModel.page > 0) {
+    //
+    //        if (kReadingManager.transitionStyle == kTransitionStyle_default) {
+    //            kReadingManager.page--;
+    //            XXBookContentVC *textVC = [self getpageBookContent];
+    //            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+    //        }
+    //        else if (kReadingManager.transitionStyle == kTransitionStyle_PageCurl) {
+    //            kReadingManager.page--;
+    //            //XXBookContentVC *textVC = [self getpageBookContent];
+    ////            XXBookReadingBackViewController *backView = [[XXBookReadingBackViewController alloc] init];
+    ////            [backView updateWithViewController:textVC];
+    ////            [self.pageViewController setViewControllers:@[textVC, backView] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+    //        }
+    //        else {
+    //            //MJWeakSelf;
+    //
+    //            XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
+    //            //kReadingManager.page = firstVc.page - 1;
+    //            _isTaping = YES;
+    //            self.view.userInteractionEnabled = NO;
+    //            self.pageViewController.view.userInteractionEnabled = NO;
+    //            XXBookContentVC *textVC = [self getpageBookContent];
+    //            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+    //                if (finished) {
+    //                    self.isTaping = NO;
+    //                    self.pageViewController.view.userInteractionEnabled = YES;
+    //                    self.view.userInteractionEnabled = YES;
+    //                }
+    //            }];
+    //        }
+    //    } else {
+    //        kReadingManager.chapter--;
+    //        _ispreChapter = YES;
+    //        [self requestDataAndSetViewController];
+    //    }
 }
 #define kReadSpaceX 15
 #define kReadingTopH 40
 #define kReadingBottomH 35
 #define kReadingFrame CGRectMake(kReadSpaceX, kReadingTopH, kScreenWidth - kReadSpaceX*2, kScreenHeight - kReadingTopH - kReadingBottomH - kSafeAreaInsets.safeAreaInsets.top - kSafeAreaInsets.safeAreaInsets.bottom)
 - (void)requestDataAndSetViewController {
-    NSLog(@"%@",[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]]);
-    
     [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
-                self.xlBookReadZJNRModel = responseObject;
+        self.xlBookReadZJNRModel = responseObject;
         XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
@@ -679,7 +682,7 @@
     }
     string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
     string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\n　　"];
-
+    
     return string;
 }
 #pragma mark - 处理菜单的单击事件
@@ -695,16 +698,16 @@
         
         switch (type) {
             case kBookMenuType_source: {
-//                换源
-//                XXSummaryVC *vc = [[XXSummaryVC alloc] init];
-//                [weakSelf presentViewController:vc animated:YES completion:nil];
-//
-//                vc.selectedSummaryBlock = ^(NSString *_id) {
-//                    weakSelf.isReplaceSummary = YES;
-//                    kReadingManager.summaryId = _id;
-//
-//                    [weakSelf requestDataWithShowLoading:YES];
-//                };
+                //                换源
+                //                XXSummaryVC *vc = [[XXSummaryVC alloc] init];
+                //                [weakSelf presentViewController:vc animated:YES completion:nil];
+                //
+                //                vc.selectedSummaryBlock = ^(NSString *_id) {
+                //                    weakSelf.isReplaceSummary = YES;
+                //                    kReadingManager.summaryId = _id;
+                //
+                //                    [weakSelf requestDataWithShowLoading:YES];
+                //                };
             }
                 
                 break;
@@ -716,31 +719,42 @@
                 TopBookOneBookDModel *dbmodel = [kDatabase getBookWithId:self.bookID];
                 TopBookOneBookDModel *model = [TopBookOneBookDModel new];
                 if (dbmodel) {
+                    model.Id = self.bookID;
+                    model.page = self.pageCurrent;
+                    model.chapter = self.pageZJ;
+                    model.Img = dbmodel.Img;
+                    model.Name = dbmodel.Name;
+                    model.LastChapter = dbmodel.LastChapter;
                     [kDatabase deleteBookWithId:self.bookID];
+                }else{
+                    model.Id = self.bookID;
+                    model.page = self.pageCurrent;
+                    model.chapter = self.pageZJ;
+                    model.Img = TopBookModelManager.topBookOneBookDModel.Img;
+                    model.Name = TopBookModelManager.topBookOneBookDModel.Name;
+                    model.LastChapter = TopBookModelManager.topBookOneBookDModel.LastChapter;
                 }
-                model.Id = self.bookID;
-                model.page = self.pageCurrent;
-                model.chapter = self.pageZJ;
+                
                 [kDatabase insertBook:model];
                 
-//                if (manager.transitionStyle == kTransitionStyle_Scroll) {
-//                    //左右滑动
-//                    XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
-//                    model.page = firstVc.page;
-//                    model.chapter = firstVc.chapter;
-//                }
-//                else {
-//                    model.page = manager.page;
-//                    model.chapter = manager.chapter;
-//                }
-//
-//                model.updateStatus = NO;
-//                [kDatabase updateBook:model];
-//
-//                [[NSNotificationCenter defaultCenter] postNotificationName:kReloadBookShelfNotification object:nil];
-//
-//                [kReadingManager clear];
-//
+                //                if (manager.transitionStyle == kTransitionStyle_Scroll) {
+                //                    //左右滑动
+                //                    XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
+                //                    model.page = firstVc.page;
+                //                    model.chapter = firstVc.chapter;
+                //                }
+                //                else {
+                //                    model.page = manager.page;
+                //                    model.chapter = manager.chapter;
+                //                }
+                //
+                //                model.updateStatus = NO;
+                //                [kDatabase updateBook:model];
+                //
+                //                [[NSNotificationCenter defaultCenter] postNotificationName:kReloadBookShelfNotification object:nil];
+                //
+                //                [kReadingManager clear];
+                //
                 [weakself go2Back];
             }
                 break;
@@ -753,11 +767,11 @@
                 //目录
                 [weakself showDirectoryVCWithIsReplaceSummary:NO];
             }
-
+                
                 break;
             case kBookMenuType_down: {
                 //下载
-
+                
             }
                 break;
             case kBookMenuType_setting: {
@@ -765,39 +779,39 @@
                 //[weakSelf.menuView showOrHiddenSettingView];
             }
                 break;
-
+                
             default:
                 break;
         }
     }];
     
     
-//    self.menuView.settingView.changeSmallerFontBlock = ^{
-//        //字体缩小
-//        NSUInteger font = kReadingManager.font - 1;
-//        [weakSelf changeWithFont:font];
-//    };
-//
-//    self.menuView.settingView.changeBiggerFontBlock = ^{
-//        //字体放大
-//        NSUInteger font = kReadingManager.font + 1;
-//        [weakSelf changeWithFont:font];
-//    };
-//
-//    self.menuView.settingView.moreSettingBlock = ^{
-//        XXReadSettingVC *vc = [[XXReadSettingVC alloc] init];
-//        [weakSelf pushViewController:vc];
-//        vc.transitionStyleBlock = ^(kTransitionStyle style) {
-//            //先删除pageViewController在重新加上
-//            [weakSelf.pageViewController willMoveToParentViewController:nil];
-//            [weakSelf.pageViewController.view removeFromSuperview];
-//            [weakSelf.pageViewController removeFromParentViewController];
-//            kDealloc(weakSelf.pageViewController);
-//            [weakSelf pageViewController];
-//            [weakSelf requestDataAndSetViewController];
-//            [weakSelf showMenu];
-//        };
-//    };
+    //    self.menuView.settingView.changeSmallerFontBlock = ^{
+    //        //字体缩小
+    //        NSUInteger font = kReadingManager.font - 1;
+    //        [weakSelf changeWithFont:font];
+    //    };
+    //
+    //    self.menuView.settingView.changeBiggerFontBlock = ^{
+    //        //字体放大
+    //        NSUInteger font = kReadingManager.font + 1;
+    //        [weakSelf changeWithFont:font];
+    //    };
+    //
+    //    self.menuView.settingView.moreSettingBlock = ^{
+    //        XXReadSettingVC *vc = [[XXReadSettingVC alloc] init];
+    //        [weakSelf pushViewController:vc];
+    //        vc.transitionStyleBlock = ^(kTransitionStyle style) {
+    //            //先删除pageViewController在重新加上
+    //            [weakSelf.pageViewController willMoveToParentViewController:nil];
+    //            [weakSelf.pageViewController.view removeFromSuperview];
+    //            [weakSelf.pageViewController removeFromParentViewController];
+    //            kDealloc(weakSelf.pageViewController);
+    //            [weakSelf pageViewController];
+    //            [weakSelf requestDataAndSetViewController];
+    //            [weakSelf showMenu];
+    //        };
+    //    };
 }
 
 
@@ -805,11 +819,11 @@
 - (void)showDirectoryVCWithIsReplaceSummary:(BOOL)isReplaceSummary {
     
     //[HUD hide];
-    
+    TopBookModelManager.chapter = self.pageZJ;
     XXDirectoryVC *directoryVC = [[XXDirectoryVC alloc] initWithIsReplaceSummary:isReplaceSummary];
     directoryVC.dataArr = self.bookZJLBArr;
     [self presentViewController:directoryVC animated:YES completion:^{
-            //[directoryVC scrollToCurrentRow];
+        //[directoryVC scrollToCurrentRow];
     }];
     
     //选择章节
@@ -830,17 +844,17 @@
         } failure:^(NSError * _Nonnull error) {
             
         }];
-
-//        [kReadingManager requestContentWithChapter:chapter ispreChapter:weakSelf.ispreChapter Completion:^{
-//            [HUD hide];
-//            kReadingManager.chapter = chapter;
-//            kReadingManager.page = 0;
-//
-//            [weakSelf.pageViewController setViewControllers:@[[weakSelf getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-//
-//        } failure:^(NSString *error) {
-//            [HUD hide];
-//        }];
+        
+        //        [kReadingManager requestContentWithChapter:chapter ispreChapter:weakSelf.ispreChapter Completion:^{
+        //            [HUD hide];
+        //            kReadingManager.chapter = chapter;
+        //            kReadingManager.page = 0;
+        //
+        //            [weakSelf.pageViewController setViewControllers:@[[weakSelf getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        //
+        //        } failure:^(NSString *error) {
+        //            [HUD hide];
+        //        }];
     };
 }
 
@@ -850,19 +864,19 @@
     
     if (font < 5) return;
     
-//    BookSettingModel *md = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
-//    md.font = font;
-//    kReadingManager.font = md.font;
-//    [BookSettingModel encodeModel:md key:[BookSettingModel className]];
-//
-//    XXBookChapterModel *bookModel = kReadingManager.chapters[kReadingManager.chapter];
-//    [kReadingManager pagingWithBounds:kReadingFrame withFont:fontSize(kReadingManager.font) andChapter:bookModel];
-//
-//    //跳转回该章的第一页
-//    if (kReadingManager.page < bookModel.pageCount) {
-//        kReadingManager.page = 0;
-//    }
-//    [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+    //    BookSettingModel *md = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
+    //    md.font = font;
+    //    kReadingManager.font = md.font;
+    //    [BookSettingModel encodeModel:md key:[BookSettingModel className]];
+    //
+    //    XXBookChapterModel *bookModel = kReadingManager.chapters[kReadingManager.chapter];
+    //    [kReadingManager pagingWithBounds:kReadingFrame withFont:fontSize(kReadingManager.font) andChapter:bookModel];
+    //
+    //    //跳转回该章的第一页
+    //    if (kReadingManager.page < bookModel.pageCount) {
+    //        kReadingManager.page = 0;
+    //    }
+    //    [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
 
@@ -877,9 +891,9 @@
     } else {
         self.hiddenStatusBar = NO;
     }
-
+    
     [self.menuView showMenuWithDuration:kShowMenuDuration completion:nil];
-
+    
     //[self.menuView showTitle:kReadingManager.title bookLink:((XXBookChapterModel *)kReadingManager.chapters[kReadingManager.chapter]).link];
 }
 
@@ -912,13 +926,13 @@
         //NSDictionary *options = @{UIPageViewControllerOptionSpineLocationKey : @(UIPageViewControllerSpineLocationMin)};
         UIPageViewControllerTransitionStyle style;
         BOOL doubleSided = NO;
-//        if (kReadingManager.transitionStyle == kTransitionStyle_Scroll) {
-//            style = UIPageViewControllerTransitionStyleScroll;
-//        }
-//        else {
-//            doubleSided = YES;
-//            style = UIPageViewControllerTransitionStylePageCurl;
-//        }
+        //        if (kReadingManager.transitionStyle == kTransitionStyle_Scroll) {
+        //            style = UIPageViewControllerTransitionStyleScroll;
+        //        }
+        //        else {
+        //            doubleSided = YES;
+        //            style = UIPageViewControllerTransitionStylePageCurl;
+        //        }
         _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:style navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
         _pageViewController.doubleSided = doubleSided;
         _pageViewController.delegate = self;
@@ -945,19 +959,19 @@
     if (!_menuView) {
         _menuView = [[XXBookMenuView alloc] init];
         [self.view addSubview:_menuView];
-
+        
         //第一次进来要隐藏
         _menuView.hidden = YES;
-
+        
         [_menuView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
         }];
-
+        
         [_menuView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
             //来到这里表示menu已经是弹出来的
             [self showMenu];
         }]];
-
+        
         [self configMenuTap];
     }
     return _menuView;

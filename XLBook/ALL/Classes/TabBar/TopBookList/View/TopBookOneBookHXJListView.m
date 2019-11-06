@@ -27,6 +27,7 @@
     if (!_tableView) {
         _tableView = [UITableView new];
         _tableView.backgroundColor = [UIColor whiteColor];
+        _tableView.layer.cornerRadius = 2;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.dataSource = self;
         _tableView.scrollEnabled = NO;

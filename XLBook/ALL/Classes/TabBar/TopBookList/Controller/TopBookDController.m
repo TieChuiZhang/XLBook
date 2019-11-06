@@ -10,7 +10,6 @@
 #import "TopBookModel.h"
 #import "TopBookListModel.h"
 #import "TopBookDCell.h"
-#import <MJRefresh/MJRefresh.h>
 @interface TopBookDController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, copy) NSString *listUrl;
 @property (nonatomic, strong) TopBookModel *topBookModel;
@@ -18,13 +17,14 @@
 @property (nonatomic, copy) NSString *searchUrl;
 @property (nonatomic, assign) NSUInteger maxpage;
 @property (nonatomic, assign) NSUInteger page;
+@property (nonatomic, copy) NSString *titleString;
 @end
 
 @implementation TopBookDController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = self.titleString;
     self.topBookModel.tableView = [self setupTableView];
     CGFloat  aa = NAV_HEIGHT;
     self.topBookModel.tableView.frame = CGRectMake(0, NAV_HEIGHT, kScreenWidth, kScreenHeight - aa);
@@ -42,7 +42,6 @@
             [MBProgressHUD dismissHUD];
         }];
     }
-    
 }
 
 - (void)dropRefresh

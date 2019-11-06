@@ -9,7 +9,7 @@
 #define kLeftX AdaWidth(20)
 
 #import "XXDirectoryCell.h"
-
+#import "TopBookModel.h"
 @interface XXDirectoryCell()
 
 @property (nonatomic, strong) UIImageView *preView;
@@ -88,9 +88,9 @@
     
     _titleLabel.text = title;
     
-//    if ([ReadingManager shareReadingManager].chapter == indexPath.row) {
-//        _preView.image = [UIImage imageNamed:@"bookDirectory_selected"];
-//    }
+    if (TopBookModelManager.chapter == indexPath.row) {
+        _preView.image = [UIImage imageNamed:@"bookDirectory_selected"];
+    }
 }
 
 

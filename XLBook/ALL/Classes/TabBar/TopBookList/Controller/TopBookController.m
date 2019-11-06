@@ -148,7 +148,8 @@
 - (void)clickItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *string = [NSString stringWithFormat:@"%@",self.dlListDic[self.titleArr[indexPath.section][indexPath.item]][indexPath.section]];
-    NSDictionary *dic = @{@"listUrl":string};
+    NSString *titleString = [NSString stringWithFormat:@"%@",self.titleArr[indexPath.section][indexPath.item]];
+    NSDictionary *dic = @{@"listUrl":string,@"titleString":titleString};
     [LeeRunTimePush runtimePush:@"TopBookDController" dic:dic nav:self.navigationController];
 }
 
