@@ -48,15 +48,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     _isBottom = YES;
     [_rightButton setTitle:@"到底部" forState:UIControlStateNormal];
     
     self.tableView.estimatedRowHeight = 44;
     [self.tableView registerClass:[XXDirectoryCell class] forCellReuseIdentifier:NSStringFromClass([XXDirectoryCell class])];
-    
-    NSLog(@"%lu",(unsigned long)TopBookModelManager.chapter);
 
 }
 

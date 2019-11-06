@@ -13,7 +13,7 @@
 
 
 - (void)dealloc {
-    NSLog(@"%@ 释放了", self.className);
+    //NSLog(@"%@ 释放了", self.className);
     [kNotificationCenter removeObserver:self];
 }
 

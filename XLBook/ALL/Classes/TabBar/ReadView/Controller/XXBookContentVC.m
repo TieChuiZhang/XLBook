@@ -9,16 +9,6 @@
 #import "XXBookContentVC.h"
 #import "BatteryView.h"
 #import <YYKit/NSAttributedString+YYText.h>
-//小说内容据屏幕左右边的距离
-#define kReadSpaceX 15
-
-#define kReadingTopH 40
-
-#define kReadingBottomH 35
-
-#define kReadingFrame CGRectMake(kReadSpaceX, kReadingTopH, kScreenWidth - kReadSpaceX*2, kScreenHeight - kReadingTopH - kReadingBottomH - kSafeAreaInsets.safeAreaInsets.top - kSafeAreaInsets.safeAreaInsets.bottom)
-
-#define kReadingManager [ReadingManager shareReadingManager]
 @interface XXBookContentVC ()
 
 @property (nonatomic, strong) YYLabel *contentLabel;
@@ -223,6 +213,7 @@
     }
     string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
     string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\n　　"];
+    string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
     return string;
 }
 
@@ -242,27 +233,10 @@
         }
         
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString:[model.attributedString attributedSubstringFromRange:NSMakeRange(loc, len)]];
-        
-//        if (kReadingManager.bgColor == 5) {
-//            text.color = kwhiteColor;
-//        } else {
-//            text.color = kblackColor;
-//        }
-        
-        //        return [_content substringWithRange:NSMakeRange(loc, len)];
         return text;
     }
     return [[NSAttributedString alloc] init];
 }
-
-//- (void)setPage:(NSUInteger)page {
-//    _page = page;
-//    self.contentLabel.attributedText = [kReadingManager getStringWithpage:page andChapter:_bookModel];
-//    self.timeLabel.text = [[DateTools shareDate] getTimeString];
-//    self.pageLabel.text = [NSString stringWithFormat:@"%zd/%zd", page+1, _bookModel.pageCount];
-//    [self changeBgColorWithIndex:kReadingManager.bgColor];
-//}
-
 
 #pragma mark - getter
 

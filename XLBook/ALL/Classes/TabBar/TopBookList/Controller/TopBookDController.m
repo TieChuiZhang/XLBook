@@ -31,7 +31,7 @@
     self.page = 1;
     if (self.listUrl) {
         [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
-        [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@week/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
+        [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@total/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
             [MBProgressHUD dismissHUD];
         }];
         
@@ -49,7 +49,7 @@
     LeeWeakSelf(self);
     self.topBookModel.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.topBookModel.dataArray removeAllObjects];
-        [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@week/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
+        [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@total/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
             [weakself.topBookModel.tableView.mj_header endRefreshing];
         }];
     }];
@@ -58,7 +58,7 @@
             weakself.topBookModel.tableView.mj_footer.state = MJRefreshStateNoMoreData;
         }else{
             self.page ++;
-            [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@week/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
+            [self.topBookModel getAllClassify:[NSString stringWithFormat:@"%@total/%lu.html",self.listUrl,(unsigned long)self.page] success:^(NSInteger maxPage) {
                 [weakself.topBookModel.tableView.mj_footer endRefreshing];
             }];
         }

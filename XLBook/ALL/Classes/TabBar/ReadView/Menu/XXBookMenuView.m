@@ -66,25 +66,26 @@
     
     //约束
     [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_top).offset(-kTopHeight);
+        make.top.mas_equalTo(self.mas_top).offset(-69);
         make.left.right.mas_equalTo(self);
-        make.height.mas_equalTo(kTopHeight);
-    }];
-    
-    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_topView.mas_top).offset(20);
-        make.left.mas_equalTo(closeBtn.mas_right).offset(kLeftX);
-        make.right.mas_equalTo(closeBtn.mas_left).offset(-kLeftX);
-        make.height.mas_equalTo(NavigationBar_HEIGHT);
+        make.height.mas_equalTo(69);
     }];
     
     [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.topView).offset(10);
-        make.left.mas_equalTo(self.topView).offset(kLeftX);
-        make.size.mas_equalTo(CGSizeMake(NavigationBar_HEIGHT, NavigationBar_HEIGHT));
+        make.top.equalTo(self.topView).offset(20);
+        make.left.mas_equalTo(self.topView).offset(15);
+        make.width.offset(44);
+        make.height.offset(44);
     }];
-    [closeBtn setEnlargeEdgeWithTop:0 right:kLeftX bottom:0 left:kLeftX];
-    
+    [closeBtn setEnlargeEdgeWithTop:0 right:15 bottom:0 left:15];
+
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.topView).offset(20);
+        make.left.mas_equalTo(closeBtn.mas_right).offset(15);
+        make.right.mas_equalTo(_topView.right).offset(-69);
+        make.height.mas_equalTo(44);
+    }];
+
     [_linkLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(closeBtn.mas_bottom);
         make.bottom.mas_equalTo(_topView.mas_bottom);
@@ -238,7 +239,7 @@
         self.hidden = hidden;
     } else {
         hidden = YES;
-        //topOffset = -kTopHeight;
+        topOffset = -kTopHeight;
         bottomOffset = kBottomHeight;
     }
     

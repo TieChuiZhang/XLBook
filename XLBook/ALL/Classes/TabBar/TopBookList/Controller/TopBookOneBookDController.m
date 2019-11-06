@@ -88,8 +88,12 @@
 
 - (void)tap
 {
-    NSDictionary *dic = @{@"bookID":TopBookModelManager.topBookOneBookDModel.Id,@"bookZJLBArr":TopBookModelManager.zjlbBookArr,};
-    [LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
+    if (TopBookModelManager.zjlbBookArr.count == 0) {
+        [HUD showMsgWithoutView:@"请稍后"];
+    }else{
+        NSDictionary *dic = @{@"bookID":TopBookModelManager.topBookOneBookDModel.Id,@"bookZJLBArr":TopBookModelManager.zjlbBookArr,@"bookName":TopBookModelManager.topBookOneBookDModel.Name};
+        [LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
+    }
     
 }
 

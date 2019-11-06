@@ -52,7 +52,7 @@
 @property (nonatomic, assign) NSInteger pagePrevious;
 @property (nonatomic, strong) NSMutableArray *mlArr;
 
-
+@property (nonatomic, copy) NSString *bookName;
 
 @end
 
@@ -184,19 +184,51 @@
     return _mlArr;
 }
 
+- (NSString *)xlZJNRSFBookWithBookID:(NSString *)bookID
+{
+    NSString *urlHeaderStr;
+    if ([self.bookID length] ==6) {
+        NSInteger str3 = [[self.bookID substringToIndex:3] integerValue];
+        str3 ++;
+        urlHeaderStr = [NSString stringWithFormat: @"%ld", str3];
+        NSLog(@"6");
+    }else if ([self.bookID length] ==5){
+        NSInteger str3 = [[self.bookID substringToIndex:2] integerValue];
+        str3 ++;
+        urlHeaderStr = [NSString stringWithFormat: @"%ld", str3];
+        NSLog(@"5");
+    }else if ([self.bookID length] ==4){
+        NSInteger str3 = [[self.bookID substringToIndex:1] integerValue];
+        str3 ++;
+        urlHeaderStr = [NSString stringWithFormat: @"%ld", str3];
+        NSLog(@"4");
+    }else if ([self.bookID length] ==3){
+        urlHeaderStr = @"1";
+        NSLog(@"3");
+    }else if ([self.bookID length] ==2){
+        urlHeaderStr = @"1";
+        NSLog(@"2");
+    }
+    return urlHeaderStr;
+}
+
 #pragma mark - 开始进来处理下网络或者缓存
 - (void)requestDataWithShowLoading:(BOOL)show {
+    LeeWeakSelf(self);
     [self.bookZJLBArr enumerateObjectsUsingBlock:^(id  _Nonnull ZJMLFZ, NSUInteger idx, BOOL * _Nonnull stop) {
         XLBookReadZJLBModel *xlBookReadZJLBModel = ZJMLFZ;
-        [self.mlArr addObject:xlBookReadZJLBModel.id];
+        [weakself.mlArr addObject:xlBookReadZJLBModel.id];
     }];
-    [TopBookModelManager getAllReadBookZJNR:   [[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
-        self.xlBookReadZJNRModel = responseObject;
+   //https://appios3.zygjzl.com//BookFiles/Html/1/707/5081120.html
+   //https://appios3.zygjzl.com//BookFiles/Html/1/707/5018251.html
+    NSString *urlHeaderStr = [self xlZJNRSFBookWithBookID:self.bookID];
+    [TopBookModelManager getAllReadBookZJNR:[[NSString stringWithFormat:@"https://appios3.zygjzl.com//BookFiles/Html/%@/%@/%@.html",urlHeaderStr,self.bookID,self.mlArr[self.pageZJ]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
+        weakself.xlBookReadZJNRModel = responseObject;
         XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
-        self.xlBookReadZJNRModel = responseObject;
-        [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        weakself.xlBookReadZJNRModel = responseObject;
+        [weakself.pageViewController setViewControllers:@[[weakself getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
     } failure:^(NSError * _Nonnull error) {
         
@@ -436,7 +468,6 @@
     //    contentVC.bookModel = kReadingManager.chapters[kReadingManager.chapter];
     contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
     //    contentVC.chapter = kReadingManager.chapter;
-    NSLog(@"%ld",(long)self.pageCurrent);
     contentVC.page = self.pageCurrent;
     
     return contentVC;
@@ -592,98 +623,27 @@
     //        [self requestDataAndSetViewController];
     //    }
 }
-#define kReadSpaceX 15
-#define kReadingTopH 40
-#define kReadingBottomH 35
-#define kReadingFrame CGRectMake(kReadSpaceX, kReadingTopH, kScreenWidth - kReadSpaceX*2, kScreenHeight - kReadingTopH - kReadingBottomH - kSafeAreaInsets.safeAreaInsets.top - kSafeAreaInsets.safeAreaInsets.bottom)
 - (void)requestDataAndSetViewController {
+    LeeWeakSelf(self);
     [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
-        self.xlBookReadZJNRModel = responseObject;
+        weakself.xlBookReadZJNRModel = responseObject;
         XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
-        if (self.ispreChapter) {
-            [self pagingWithBounds:kReadingFrame withFont:fontSize(15) andChapter:self.xlBookReadZJNRModel];
-            contentVC.page = self.pagePrevious;
-            self.pageCurrent = self.pagePrevious;
+        if (weakself.ispreChapter) {
+            [TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(15) andChapter:weakself.xlBookReadZJNRModel];
+            contentVC.page = TopBookModelManager.pagePrevious;
+            weakself.pageCurrent = TopBookModelManager.pagePrevious;
         }else{
-            contentVC.page = self.pageCurrent;
+            contentVC.page = weakself.pageCurrent;
         }
-        self.isTaping = NO;
-        [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        weakself.isTaping = NO;
+        [weakself.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
     } failure:^(NSError * _Nonnull error) {
         
     }];
     
-}
-
-- (void)pagingWithBounds:(CGRect)bounds withFont:(UIFont *)font andChapter:(XLBookReadZJNRModel *)xlBookReadZJNRModel {
-    
-    xlBookReadZJNRModel.pageDatas = @[].mutableCopy;
-    
-    if (!xlBookReadZJNRModel.content) {
-        xlBookReadZJNRModel.content = @"";
-    }
-    
-    NSString *body = [self adjustParagraphFormat:xlBookReadZJNRModel.content];
-    
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:body];
-    attr.font = font;
-    attr.color = kblackColor;
-    
-    // 设置label的行间距
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    [paragraphStyle setLineSpacing:AdaWidth(9)];
-    [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, body.length)];
-    
-    CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) attr);
-    
-    CGPathRef path = CGPathCreateWithRect(bounds, NULL);
-    
-    CFRange range = CFRangeMake(0, 0);
-    
-    NSUInteger rangeOffset = 0;
-    
-    do {
-        CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(rangeOffset, 0), path, NULL);
-        
-        range = CTFrameGetVisibleStringRange(frame);
-        
-        rangeOffset += range.length;
-        
-        //range.location
-        [xlBookReadZJNRModel.pageDatas addObject:@(range.location)];
-        
-        if (frame) {
-            CFRelease(frame);
-        }
-    } while (range.location + range.length < attr.length);
-    
-    if (path) {
-        CFRelease(path);
-    }
-    
-    if (frameSetter) {
-        CFRelease(frameSetter);
-    }
-    
-    //xlBookReadZJNRModel.pageCount = xlBookReadZJNRModel.pageDatas.count;
-    
-    //xlBookReadZJNRModel.attributedString = attr;
-    
-    self.pagePrevious = xlBookReadZJNRModel.pageDatas.count -1;
-}
-
-// 换行\t制表符，缩进
-- (NSString *)adjustParagraphFormat:(NSString *)string {
-    if (!string) {
-        return nil;
-    }
-    string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\n　　"];
-    
-    return string;
 }
 #pragma mark - 处理菜单的单击事件
 - (void)configMenuTap {
@@ -716,20 +676,20 @@
                 
                 //保存进度
                 //TopBookModel *manager = [TopBookModel shareReadingManager];
-                TopBookOneBookDModel *dbmodel = [kDatabase getBookWithId:self.bookID];
+                TopBookOneBookDModel *dbmodel = [kDatabase getBookWithId:weakself.bookID];
                 TopBookOneBookDModel *model = [TopBookOneBookDModel new];
                 if (dbmodel) {
-                    model.Id = self.bookID;
-                    model.page = self.pageCurrent;
-                    model.chapter = self.pageZJ;
+                    model.Id = weakself.bookID;
+                    model.page = weakself.pageCurrent;
+                    model.chapter = weakself.pageZJ;
                     model.Img = dbmodel.Img;
                     model.Name = dbmodel.Name;
                     model.LastChapter = dbmodel.LastChapter;
-                    [kDatabase deleteBookWithId:self.bookID];
+                    [kDatabase deleteBookWithId:weakself.bookID];
                 }else{
-                    model.Id = self.bookID;
-                    model.page = self.pageCurrent;
-                    model.chapter = self.pageZJ;
+                    model.Id = weakself.bookID;
+                    model.page = weakself.pageCurrent;
+                    model.chapter = weakself.pageZJ;
                     model.Img = TopBookModelManager.topBookOneBookDModel.Img;
                     model.Name = TopBookModelManager.topBookOneBookDModel.Name;
                     model.LastChapter = TopBookModelManager.topBookOneBookDModel.LastChapter;
@@ -830,16 +790,16 @@
     LeeWeakSelf(self);
     directoryVC.selectChapter = ^(NSInteger chapter) {
         [weakself showMenu];
-        [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[chapter]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
-            self.pageCurrent = 0;
-            self.pageZJ = chapter;
-            self.xlBookReadZJNRModel = responseObject;
+        [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,weakself.mlArr[chapter]] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
+            weakself.pageCurrent = 0;
+            weakself.pageZJ = chapter;
+            weakself.xlBookReadZJNRModel = responseObject;
             XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
-            contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
+            contentVC.xlBookReadZJNRModel = weakself.xlBookReadZJNRModel;
             //contentVC.chapter = kReadingManager.chapter;
-            contentVC.page = self.pageCurrent;
-            self.isTaping = NO;
-            [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+            contentVC.page = weakself.pageCurrent;
+            weakself.isTaping = NO;
+            [weakself.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
             
         } failure:^(NSError * _Nonnull error) {
             
@@ -894,7 +854,7 @@
     
     [self.menuView showMenuWithDuration:kShowMenuDuration completion:nil];
     
-    //[self.menuView showTitle:kReadingManager.title bookLink:((XXBookChapterModel *)kReadingManager.chapters[kReadingManager.chapter]).link];
+    [self.menuView showTitle:self.bookName bookLink:nil];
 }
 
 
@@ -910,10 +870,11 @@
 
 //控制状态栏的显示和隐藏
 - (void)setHiddenStatusBar:(BOOL)hiddenStatusBar {
+    LeeWeakSelf(self);
     _hiddenStatusBar = hiddenStatusBar;
     [UIView animateWithDuration:kShowMenuDuration animations:^{
         //给状态栏的隐藏和显示加动画
-        [self setNeedsStatusBarAppearanceUpdate];
+        [weakself setNeedsStatusBarAppearanceUpdate];
     }];
 }
 
@@ -956,6 +917,7 @@
 
 //菜单
 - (XXBookMenuView *)menuView {
+    LeeWeakSelf(self);
     if (!_menuView) {
         _menuView = [[XXBookMenuView alloc] init];
         [self.view addSubview:_menuView];
@@ -964,12 +926,12 @@
         _menuView.hidden = YES;
         
         [_menuView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.view);
+            make.edges.equalTo(weakself.view);
         }];
         
         [_menuView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithActionBlock:^(id  _Nonnull sender) {
             //来到这里表示menu已经是弹出来的
-            [self showMenu];
+            [weakself showMenu];
         }]];
         
         [self configMenuTap];

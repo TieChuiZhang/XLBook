@@ -88,7 +88,7 @@
 {
     TopBookOneBookDModel *topBookListModel = [self.cacheArray objectAtIndex:indexPath.row];
     NSArray *mlArr = [kDatabase getChaptersWithSummaryId:topBookListModel.Id];
-    NSDictionary *dic = @{@"bookID":topBookListModel.Id,@"bookZJLBArr":mlArr};
+    NSDictionary *dic = @{@"bookID":topBookListModel.Id,@"bookZJLBArr":mlArr,@"bookName":topBookListModel.Name};
     [LeeRunTimePush runtimePush:@"XXBookReadingVC" dic:dic nav:self.navigationController];
 }
 

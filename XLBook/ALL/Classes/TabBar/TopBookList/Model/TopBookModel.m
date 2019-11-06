@@ -136,6 +136,7 @@
     }else{
         [HUD showMsgWithoutView:@"加载网络"];
         [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+            [self.zjlbBookArr removeAllObjects];
             // 获取所有分组数组
             NSMutableArray *fzListArr = [NSMutableArray array];
             fzListArr = [TopBookZJMLFZModel mj_objectArrayWithKeyValuesArray:result[@"data"][@"list"]];
@@ -181,20 +182,88 @@
 //    }else{
 //       
 //    }
+    NSLog(@"%@",urlString);
     [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
            [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
                XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
-               
-               if ([kDatabase insertBookBody:xlBookReadZJNRModel bookId:idString]) {
-                   NSLog(@"存储boyd成功");
-               } else {
-                   NSLog(@"存储boyd失败");
-               }
+//               if ([kDatabase insertBookBody:xlBookReadZJNRModel bookId:idString]) {
+//                   NSLog(@"存储boyd成功");
+//               } else {
+//                   NSLog(@"存储boyd失败");
+//               }
                success(xlBookReadZJNRModel);
                [self reloadData];
                [MBProgressHUD dismissHUD];
            }];
     
+}
+
+- (void)pagingWithBounds:(CGRect)bounds withFont:(UIFont *)font andChapter:(XLBookReadZJNRModel *)xlBookReadZJNRModel {
+    
+    xlBookReadZJNRModel.pageDatas = @[].mutableCopy;
+    
+    if (!xlBookReadZJNRModel.content) {
+        xlBookReadZJNRModel.content = @"";
+    }
+    
+    NSString *body = [self adjustParagraphFormat:xlBookReadZJNRModel.content];
+    
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:body];
+    attr.font = font;
+    attr.color = kblackColor;
+    
+    // 设置label的行间距
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    [paragraphStyle setLineSpacing:AdaWidth(9)];
+    [attr addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, body.length)];
+    
+    CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) attr);
+    
+    CGPathRef path = CGPathCreateWithRect(bounds, NULL);
+    
+    CFRange range = CFRangeMake(0, 0);
+    
+    NSUInteger rangeOffset = 0;
+    
+    do {
+        CTFrameRef frame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(rangeOffset, 0), path, NULL);
+        
+        range = CTFrameGetVisibleStringRange(frame);
+        
+        rangeOffset += range.length;
+        
+        //range.location
+        [xlBookReadZJNRModel.pageDatas addObject:@(range.location)];
+        
+        if (frame) {
+            CFRelease(frame);
+        }
+    } while (range.location + range.length < attr.length);
+    
+    if (path) {
+        CFRelease(path);
+    }
+    
+    if (frameSetter) {
+        CFRelease(frameSetter);
+    }
+    
+    //xlBookReadZJNRModel.pageCount = xlBookReadZJNRModel.pageDatas.count;
+    
+    //xlBookReadZJNRModel.attributedString = attr;
+    
+    self.pagePrevious = xlBookReadZJNRModel.pageDatas.count -1;
+}
+
+// 换行\t制表符，缩进
+- (NSString *)adjustParagraphFormat:(NSString *)string {
+    if (!string) {
+        return nil;
+    }
+    string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+    string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\n　　"];
+    string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return string;
 }
 
 @end

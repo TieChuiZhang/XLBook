@@ -40,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray <XLBookReadZJLBModel *>*chapters;
 /** 记录当前第n章 */
 @property (nonatomic, assign) NSUInteger chapter;
+@property (nonatomic, assign) NSInteger pagePrevious;
+
+- (void)pagingWithBounds:(CGRect)bounds withFont:(UIFont *)font andChapter:(XLBookReadZJNRModel *)xlBookReadZJNRModel;
 @end
 
 NS_ASSUME_NONNULL_END

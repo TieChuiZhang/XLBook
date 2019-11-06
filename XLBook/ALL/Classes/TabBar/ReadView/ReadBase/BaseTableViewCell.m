@@ -11,7 +11,7 @@
 @implementation BaseTableViewCell
 
 - (void)dealloc {
-    NSLog(@"%@ 释放了",NSStringFromClass([self class]));
+    //NSLog(@"%@ 释放了",NSStringFromClass([self class]));
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

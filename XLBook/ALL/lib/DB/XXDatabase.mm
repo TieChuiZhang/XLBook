@@ -87,6 +87,7 @@
 
 
 //插入章节内容
+//目前存储章节内容的时候是根据书籍id存储 只能存一章 需要更改
 - (BOOL)insertBookBody:(XLBookReadZJLBModel *)object bookId:(NSString *)bookId {
     NSString *name = [self getTableNameWithType:kDataTablaNameType_body name:bookId];
     [self createTableName:name class:XLBookReadZJNRModel.class];

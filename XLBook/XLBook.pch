@@ -64,4 +64,9 @@ static NSString *kBookTableName = @"XLBookTableName";
 #define NAV_HEIGHT ([[UIScreen mainScreen] bounds].size.height>=812)?88:64
 #define LeeWeakSelf(type)  __weak typeof(type) weak##type = type;
 #define SHOW_TEXT(text) MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];hud.mode = MBProgressHUDModeText;  hud.labelText = text;hud.removeFromSuperViewOnHide = YES;[hud hide:YES afterDelay:1.5];
+
+#define kReadSpaceX 15
+#define kReadingTopH 40
+#define kReadingBottomH 35
+#define kReadingFrame CGRectMake(kReadSpaceX, kReadingTopH, kScreenWidth - kReadSpaceX*2, kScreenHeight - kReadingTopH - kReadingBottomH - kSafeAreaInsets.safeAreaInsets.top - kSafeAreaInsets.safeAreaInsets.bottom)
 #endif /* XLBook_pch */

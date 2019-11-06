@@ -561,9 +561,9 @@
 		9B9FDDE02366D3C700B1AA73 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				9B9FDDE32366D3C700B1AA73 /* BatteryView.h */,
 				9B9FDDE12366D3C700B1AA73 /* BatteryView.m */,
 				9B9FDDE22366D3C700B1AA73 /* XXBookMenuView.h */,
-				9B9FDDE32366D3C700B1AA73 /* BatteryView.h */,
 				9B9FDDE42366D3C700B1AA73 /* XXBookMenuView.m */,
 			);
 			path = Menu;
