@@ -44,7 +44,11 @@
         _tableView.estimatedSectionFooterHeight = 0;
     }
     else{
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        //这里是弃用的属性
         self.automaticallyAdjustsScrollViewInsets = NO;
+        #pragma clang diagnostic pop
     }
     CGFloat bottomInset = 0;
     if (self.navigationController.childViewControllers.firstObject == self && self.navigationController.tabBarController) {

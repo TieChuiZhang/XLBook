@@ -24,7 +24,6 @@
     
     dispatch_once(&onceToken, ^{
         readM = [[self alloc] init];
-        
         //BookSettingModel *settingModel = [BookSettingModel decodeModelWithKey:BookSettingModel.className];
         
 //        if (!settingModel) {
@@ -127,9 +126,8 @@
     NSArray *dbChapters = [kDatabase getChaptersWithSummaryId:bookIDString];
     if (!IsEmpty(dbChapters)) {
         self.chapters = dbChapters;
-    }
-    if (dbChapters.count != 0 ) {
         [HUD showMsgWithoutView:@"加载缓存"];
+        [self.zjlbBookArr removeAllObjects];
         [self.zjlbBookArr addObjectsFromArray:dbChapters];
         [self reloadData];
         [MBProgressHUD dismissHUD];
@@ -186,11 +184,11 @@
     [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
            [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
                XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
-//               if ([kDatabase insertBookBody:xlBookReadZJNRModel bookId:idString]) {
-//                   NSLog(@"存储boyd成功");
-//               } else {
-//                   NSLog(@"存储boyd失败");
-//               }
+               if ([kDatabase insertBookBody:xlBookReadZJNRModel bookId:idString]) {
+                   NSLog(@"存储boyd成功");
+               } else {
+                   NSLog(@"存储boyd失败");
+               }
                success(xlBookReadZJNRModel);
                [self reloadData];
                [MBProgressHUD dismissHUD];
@@ -261,7 +259,9 @@
         return nil;
     }
     string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\n　　"];
+    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n" withString:@"\n"];
+    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n　　\n" withString:@"\n"];
+    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n　　\n　　\n" withString:@"\n"];
     string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
     return string;
 }

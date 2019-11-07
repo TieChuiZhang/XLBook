@@ -19,12 +19,12 @@
 
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    for (UIView *childView in self.superview.subviews) {
+    //for (UIView *childView in self.superview.subviews) {
 //        if ([childView isKindOfClass:XXEmptyView.class] && !childView.hidden) {
 //            return childView;
 //            break;
 //        }
-    }
+    //}
     return [super hitTest:point withEvent:event];
 }
 

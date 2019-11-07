@@ -7,7 +7,6 @@
 //
 
 #import "XLBookNavController.h"
-#import "PYSearch.h"
 @interface XLBookNavController ()<PYSearchViewControllerDelegate>
 
 @end

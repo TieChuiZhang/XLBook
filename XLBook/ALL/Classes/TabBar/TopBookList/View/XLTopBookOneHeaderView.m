@@ -69,13 +69,20 @@
         make.right.equalTo(self.bgView).offset(-10);
         make.bottom.equalTo(self.bgView).offset(-10);
     }];
-//
-//    [_Author mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.Name.mas_bottom).offset(10);
-//        make.left.equalTo(self).offset(10);
-//        make.width.offset(100);
-//        make.height.offset(20);
-//    }];
+
+    [_Name mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.bgImage).offset(20);
+        make.left.equalTo(self).offset(10);
+        make.right.equalTo(self.Img.mas_left).offset(-20);
+        make.height.offset(20);
+    }];
+    
+    [_Author mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.Name.mas_bottom).offset(10);
+        make.left.equalTo(self).offset(10);
+        make.right.equalTo(self.Img.mas_left).offset(-20);
+        make.height.offset(20);
+    }];
 }
 
 - (UIImageView *)bgImage
@@ -101,8 +108,8 @@
 {
     if (!_Name) {
         _Name = [UILabel new];
-        _Name.font = [UIFont boldSystemFontOfSize:14];
-        _Name.textColor = [UIColor colorWithHexString:@"#666666"];
+        _Name.font = [UIFont boldSystemFontOfSize:18];
+        _Name.textColor = [UIColor colorWithHexString:@"#000000"];
     }
     return _Name;
 }
@@ -111,7 +118,8 @@
 {
     if (!_Author) {
         _Author = [UILabel new];
-        _Author.font = [UIFont systemFontOfSize:12];
+        _Author.font = [UIFont systemFontOfSize:14];
+        _Author.textAlignment = NSTextAlignmentCenter;
         _Author.textColor = [UIColor colorWithHexString:@"#666666"];
     }
     return _Author;
@@ -151,6 +159,8 @@
 - (void)setXLBookOneBookWithSXTableView:(UITableView *)tableView HeaderValue:(TopBookOneBookDModel *)topBookOneBookDModel;
 {
     self.Desc.text = topBookOneBookDModel.Desc;
+    self.Name.text = topBookOneBookDModel.Name;
+    self.Author.text = topBookOneBookDModel.Author;
     if ([ToolsObj isUrlAddress:topBookOneBookDModel.Img]) {
          [self.Img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",topBookOneBookDModel.Img]] placeholder:[UIImage imageNamed:@"无封面.jpg"]];
     }else{

@@ -86,7 +86,7 @@
 {
     if (!_mlLabel) {
         _mlLabel = [UILabel new];
-        _mlLabel.text = @"目录";
+        _mlLabel.text = @"无";
         _mlLabel.font = [UIFont boldSystemFontOfSize:13];
         _mlLabel.textColor = [UIColor colorWithHexString:@"#666666"];
     }

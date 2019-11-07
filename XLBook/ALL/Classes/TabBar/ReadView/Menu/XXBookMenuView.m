@@ -219,7 +219,7 @@
 }
 
 
-- (void)showMenuWithDuration:(CGFloat)duration completion:(void(^)())completion {
+- (void)showMenuWithDuration:(CGFloat)duration completion:(void(^)(void))completion {
     
     if (!_settingView.hidden) {
         _settingView.hidden = YES;

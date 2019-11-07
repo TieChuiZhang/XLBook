@@ -68,6 +68,13 @@
     return 100;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(topBookHXJListCellTapInCellWithView:ModelWithCellModel:byCellIndexRow:)]) {
+        [self.delegate topBookHXJListCellTapInCellWithView:self ModelWithCellModel:self.dataArray[indexPath.row] byCellIndexRow:indexPath.row];
+    }
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {

@@ -22,15 +22,15 @@
 
 
 /** 字体缩小 */
-@property (nonatomic, copy) void(^changeSmallerFontBlock)();
+@property (nonatomic, copy) void(^changeSmallerFontBlock)(void);
 
 /** 字体放大 */
-@property (nonatomic, copy) void(^changeBiggerFontBlock)();
+@property (nonatomic, copy) void(^changeBiggerFontBlock)(void);
 
 /** 横竖屏切换 */
 //@property (nonatomic, copy) void(^landspaceBlock)();
 
 /** 更多设置 */
-@property (nonatomic, copy) void(^moreSettingBlock)();
+@property (nonatomic, copy) void(^moreSettingBlock)(void);
 
 @end

@@ -8,7 +8,7 @@
 
 #import "TopBookOneBookHXJCell.h"
 #import "TopBookOneBookHXJListView.h"
-@interface TopBookOneBookHXJCell()
+@interface TopBookOneBookHXJCell()<TopBookHXJListCellDelegate>
 @property (nonatomic, strong) TopBookOneBookHXJListView *listView;
 @end
 @implementation TopBookOneBookHXJCell
@@ -17,7 +17,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor colorWithHexString:@"#F1F1F1"];
+        self.backgroundColor = [UIColor clearColor];
         [self addSubview:self.listView];
     }
     return self;
@@ -39,8 +39,17 @@
     if (!_listView) {
         _listView = [TopBookOneBookHXJListView new];
         _listView.layer.cornerRadius = 2;
+        _listView.delegate = self;
     }
     return _listView;
+}
+
+
+- (void)topBookHXJListCellTapInCellWithView:(TopBookOneBookHXJListView *)TopBookOneBookHXJListView ModelWithCellModel:(TopBookHXGModel *)model byCellIndexRow:(NSInteger)row
+{
+    if (_selectCell) {
+           _selectCell(model.Id);
+       }
 }
 
 

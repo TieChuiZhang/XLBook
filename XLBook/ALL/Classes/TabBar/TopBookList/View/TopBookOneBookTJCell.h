@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TopBookOneBookTJCell : UITableViewCell
 + (instancetype)xlTopBookOneBookTJCellWithTableView:(UITableView *)tableView IndexPathRow:(NSInteger)row;
 - (void)setXLBookOneBookDTJModelCellValue:(TopBookOneBookDModel *)xlBookOneBookDMLModel ArrayWithHXGDataArray:(NSArray *)dataArray;
+@property (nonatomic, copy) void(^selectItem)(NSString *bookID);
 @end
 
 NS_ASSUME_NONNULL_END

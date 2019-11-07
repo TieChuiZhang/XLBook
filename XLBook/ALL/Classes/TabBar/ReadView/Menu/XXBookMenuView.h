@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, kBookMenuType) {
  @param duration 动画时间
  @param completion 完成回调
  */
-- (void)showMenuWithDuration:(CGFloat)duration completion:(void(^)())completion;
+- (void)showMenuWithDuration:(CGFloat)duration completion:(void(^)(void))completion;
 
 /**
  显示小说标题和链接

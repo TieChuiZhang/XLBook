@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reloadData;
 + (instancetype)shareReadingManager;
+/** 小说字体大小 */
+@property (nonatomic, assign) NSUInteger font;
 
 @property (nonatomic, copy) NSString *summaryId;
 

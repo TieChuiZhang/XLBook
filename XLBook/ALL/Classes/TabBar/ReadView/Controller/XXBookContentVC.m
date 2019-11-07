@@ -124,7 +124,7 @@
 {
     _xlBookReadZJNRModel = xlBookReadZJNRModel;
     self.titleLabel.text = xlBookReadZJNRModel.cname;
-    [self pagingWithBounds:kReadingFrame withFont:fontSize(15) andChapter:xlBookReadZJNRModel];
+    [self pagingWithBounds:kReadingFrame withFont:fontSize(18) andChapter:xlBookReadZJNRModel];
     
     
 //    if (bookModel.status == kbookBodyStatus_loading) {
@@ -212,7 +212,10 @@
         return nil;
     }
     string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\n　　"];
+    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n　　\n　　\n" withString:@"\n"];
+    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n" withString:@"\n"];
+    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n　　\n" withString:@"\n"];
+
     string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
     return string;
 }
@@ -280,6 +283,7 @@
     if (!_contentLabel) {
         _contentLabel = [[YYLabel alloc] init];
         _contentLabel.numberOfLines = 0;
+        _contentLabel.font = [UIFont systemFontOfSize:18];
         [_contentLabel setTextVerticalAlignment:YYTextVerticalAlignmentTop];//居上对齐
         [self.view addSubview:_contentLabel];
         

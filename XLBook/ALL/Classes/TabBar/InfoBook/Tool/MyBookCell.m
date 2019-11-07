@@ -123,6 +123,6 @@
          [self.Img setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://imgapi.jiaston.com/BookFiles/BookImages/%@",topBookOneBookDModel.Img]] placeholder:[UIImage imageNamed:@"无封面.jpg"]];
     }
     self.Name.text = topBookOneBookDModel.Name;
-    self.LastChapter.text = topBookOneBookDModel.LastChapter;
+    self.LastChapter.text = [NSString stringWithFormat:@"最新更新:%@",topBookOneBookDModel.LastChapter];
 }
 @end

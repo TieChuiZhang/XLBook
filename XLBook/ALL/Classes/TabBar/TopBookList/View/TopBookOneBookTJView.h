@@ -11,7 +11,7 @@
 @class TopBookOneBookTJView;
 NS_ASSUME_NONNULL_BEGIN
 @protocol TopBookOneBookTJViewDelegate <NSObject>
-- (void)topBookOneBookTJViewTapCurrentView:(TopBookOneBookTJView *)topEView;
+- (void)topBookOneBookTJViewTapCurrentView:(TopBookOneBookTJView *)topEView; 
 @end
 @interface TopBookOneBookTJView : UIView
 @property (nonatomic, strong) TopBookOneBookDModel *topBookOneBookDModel;

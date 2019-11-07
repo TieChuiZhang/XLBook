@@ -52,7 +52,11 @@
         tableView.estimatedSectionFooterHeight = 0;
     }
     else{
-        self.automaticallyAdjustsScrollViewInsets = NO;
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            //这里是弃用的属性
+            self.automaticallyAdjustsScrollViewInsets = NO;
+            #pragma clang diagnostic pop
     }
     CGFloat bottomInset = 0;
     if (self.navigationController.childViewControllers.firstObject == self && self.navigationController.tabBarController) {
@@ -67,12 +71,6 @@
     TopBookModelManager.tableView = [self setupTableView];
     //CGFloat  aa = NAV_HEIGHT;
     TopBookModelManager.tableView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight-50);
-    [TopBookModelManager getOneBookClassifyWithTableView:TopBookModelManager.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://shuapi.jiaston.com/info/%@.html",self.bookID] success:^(id  _Nonnull responseObject) {
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
-    //目录
-    [TopBookModelManager getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID] BookIDString:self.bookID];
     [self.view addSubview:self.xlTopOneBookNav];
     
     //_bookID    NSTaggedPointerString *    @"375026"    0xefd239881c338ebb
@@ -114,9 +112,9 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (TopBookModelManager.topBookOneBookDModel.SameUserBooks.count != 0) {
-        return 3;
-    }else{
         return 2;
+    }else{
+        return 1;
     }
 }
 
@@ -130,27 +128,39 @@
     //TopBookOneBookDModel *topBookListModel = [self.topBookModel.dataArray objectAtIndex:indexPath.row];
     //TopBookDCell *cell = [TopBookDCell xlTopBookListCellWithTableView:tableView IndexPathRow:indexPath.row];
     //[cell setXLBookListModelCellValue:topBookListModel];
-    if (indexPath.section == 0) {
-        TopBookOneBookMLCell *cell = [TopBookOneBookMLCell xlTopBookOneBookMLCellWithTableView:tableView IndexPathRow:indexPath.row];
-        [cell setXLBookOneBookDMLModelCellValue:TopBookModelManager.topBookOneBookDModel];
-        return cell;
-    }else if(indexPath.section == 1){
+    //if (indexPath.section == 0) {
+//        TopBookOneBookMLCell *cell = [TopBookOneBookMLCell xlTopBookOneBookMLCellWithTableView:tableView IndexPathRow:indexPath.row];
+//        [cell setXLBookOneBookDMLModelCellValue:TopBookModelManager.topBookOneBookDModel];
+//        return cell;
+//    }else
+        if(indexPath.section == 0){
         if (TopBookModelManager.topBookOneBookDModel.SameUserBooks.count != 0) {
             TopBookOneBookHXJCell *cell = [TopBookOneBookHXJCell xlTopBookOneBookHXJCellWithTableView:tableView IndexPathRow:indexPath.row];
             [cell setXLBookOneBookDHXJModelCellValue:TopBookModelManager.topBookOneBookDModel ArrayWithHXGDataArray:TopBookModelManager.dataArray];
-    
+            LeeWeakSelf(self)
+            cell.selectCell = ^(NSString *bookID) {
+                NSDictionary *dic = @{@"bookID":bookID};
+                [LeeRunTimePush runtimePush:@"TopBookOneBookDController" dic:dic nav:weakself.navigationController];
+            };
             
             return cell;
-        }else{
+        }
+        else{
             TopBookOneBookMLCell *cell = [TopBookOneBookMLCell xlTopBookOneBookMLCellWithTableView:tableView IndexPathRow:indexPath.row];
             //[cell setXLBookOneBookDMLModelCellValue:self.topBookModel.topBookOneBookDModel];
             return cell;
         }
         
-    }else if(indexPath.section == 2) {
+    }else if(indexPath.section == 1) {
         TopBookOneBookTJCell *cell = [TopBookOneBookTJCell xlTopBookOneBookTJCellWithTableView:tableView IndexPathRow:indexPath.row];
         //[cell setXLBookOneBookDMLModelCellValue:self.topBookModel.topBookOneBookDModel];
+        LeeWeakSelf(self)
         [cell setXLBookOneBookDTJModelCellValue:TopBookModelManager.topBookOneBookDModel ArrayWithHXGDataArray:@[]];
+        cell.selectItem = ^(NSString *bookID) {
+            NSDictionary *dic = @{@"bookID":bookID};
+            [LeeRunTimePush runtimePush:@"TopBookOneBookDController" dic:dic nav:weakself.navigationController];
+        };
+    
         return cell;
     }else{
         return nil;
@@ -159,7 +169,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         if (TopBookModelManager.topBookOneBookDModel.SameUserBooks.count != 0) {
             if (TopBookModelManager.topBookOneBookDModel.SameUserBooks.count == 1) {
                 return 145;
@@ -169,7 +179,7 @@
         }else{
             return 49;
         }
-    }else if(indexPath.section == 2){
+    }else if(indexPath.section == 1){
         return 370;
     }else {
         return 44;
@@ -198,7 +208,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //https://appios3.zygjzl.com/BookFiles/Html/446/445936/info.html
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [TopBookModelManager getOneBookClassifyWithTableView:TopBookModelManager.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://shuapi.jiaston.com/info/%@.html",self.bookID] success:^(id  _Nonnull responseObject) {
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+    //目录
+    [TopBookModelManager getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID] BookIDString:self.bookID];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

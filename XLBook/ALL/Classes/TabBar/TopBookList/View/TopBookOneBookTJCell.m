@@ -90,8 +90,10 @@
 
 - (void)topBookOneBookTJViewTapCurrentView:(TopBookOneBookTJView *)topEView
 {
-    NSLog(@"%ld",(long)topEView.tag);
-    NSLog(@"%@",self.dataArray);
+    if (_selectItem) {
+        _selectItem(self.dataArray[topEView.tag][@"Id"]);
+    }
+    NSLog(@"%@",self.dataArray[topEView.tag]);
 }
 
 - (UILabel *)headerLabel
