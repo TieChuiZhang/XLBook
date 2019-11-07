@@ -40,7 +40,6 @@
 		9B01CDD823716801003EBA12 /* 无封面.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CDD723716800003EBA12 /* 无封面.jpg */; };
 		9B01CDDB2371721E003EBA12 /* MyBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDDA2371721E003EBA12 /* MyBookCell.m */; };
 		9B01CDDE2372652F003EBA12 /* TopBookZJMLFZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDDD2372652F003EBA12 /* TopBookZJMLFZModel.m */; };
-		9B17A7482373FE64008A32BC /* XXBookReadingBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A7472373FE64008A32BC /* XXBookReadingBackViewController.m */; };
 		9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B05E235D846200FE71A9 /* MyBookController.m */; };
 		9B32B062235D847500FE71A9 /* TopBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B061235D847500FE71A9 /* TopBookController.m */; };
 		9B32B068235D852300FE71A9 /* XLBookNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B067235D852300FE71A9 /* XLBookNavController.m */; };
@@ -171,8 +170,6 @@
 		9B01CDDA2371721E003EBA12 /* MyBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyBookCell.m; path = XLBook/ALL/Classes/TabBar/InfoBook/Tool/MyBookCell.m; sourceTree = SOURCE_ROOT; };
 		9B01CDDC2372652F003EBA12 /* TopBookZJMLFZModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookZJMLFZModel.h; sourceTree = "<group>"; };
 		9B01CDDD2372652F003EBA12 /* TopBookZJMLFZModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookZJMLFZModel.m; sourceTree = "<group>"; };
-		9B17A7462373FE64008A32BC /* XXBookReadingBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBookReadingBackViewController.h; sourceTree = "<group>"; };
-		9B17A7472373FE64008A32BC /* XXBookReadingBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBookReadingBackViewController.m; sourceTree = "<group>"; };
 		9B32B05D235D846200FE71A9 /* MyBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBookController.h; sourceTree = "<group>"; };
 		9B32B05E235D846200FE71A9 /* MyBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBookController.m; sourceTree = "<group>"; };
 		9B32B060235D847500FE71A9 /* TopBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookController.h; sourceTree = "<group>"; };
@@ -553,8 +550,6 @@
 		9B9FDDBD2366D3C700B1AA73 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9B17A7462373FE64008A32BC /* XXBookReadingBackViewController.h */,
-				9B17A7472373FE64008A32BC /* XXBookReadingBackViewController.m */,
 				9B9FDDBE2366D3C700B1AA73 /* XXBookContentVC.h */,
 				9B9FDDDE2366D3C700B1AA73 /* XXBookContentVC.m */,
 				9B9FDDDF2366D3C700B1AA73 /* XXBookReadingVC.h */,
@@ -1081,7 +1076,6 @@
 				9BD93712235D72B200B34B13 /* YBNetworkResponse.m in Sources */,
 				9B32B0C1236056A600FE71A9 /* TopBookHXGModel.m in Sources */,
 				9B01CD9C23711075003EBA12 /* LNProfileTopView.m in Sources */,
-				9B17A7482373FE64008A32BC /* XXBookReadingBackViewController.m in Sources */,
 				9B01CDCC237112EC003EBA12 /* TZImagePickerController.m in Sources */,
 				9B9FDE312366D40E00B1AA73 /* BaseTableViewController.m in Sources */,
 				9B01CDCE237112EC003EBA12 /* TZGifPhotoPreviewController.m in Sources */,
