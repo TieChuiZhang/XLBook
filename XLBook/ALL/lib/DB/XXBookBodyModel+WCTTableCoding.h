@@ -10,9 +10,9 @@
 #import <WCDB/WCDB.h>
 
 @interface XLBookReadZJNRModel (WCTTableCoding) <WCTTableCoding>
-
 WCDB_PROPERTY(cname)
 WCDB_PROPERTY(content)
 WCDB_PROPERTY(id)
+WCDB_PROPERTY(cid)
 
 @end

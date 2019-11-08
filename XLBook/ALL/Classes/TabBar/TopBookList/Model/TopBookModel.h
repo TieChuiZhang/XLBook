@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getAllClassify:(NSString *)urlString success:(void (^)(NSInteger maxPage))success;
 - (void)getAllReadBookZJLB:(NSString *)urlString BookIDString:(NSString *)bookIDString;
 - (void)getAllReadBookZJNR:(NSString *)urlString
+                 ChapterID:(NSString *)chapterID
               bookIDString:(NSString *)idString
                    success:(void (^)(id responseObject))success
                    failure:(void (^)(NSError *error))failure;
@@ -45,6 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger pagePrevious;
 
 - (void)pagingWithBounds:(CGRect)bounds withFont:(UIFont *)font andChapter:(XLBookReadZJNRModel *)xlBookReadZJNRModel;
+
+- (NSAttributedString *)getStringWithpage:(NSInteger)page nsadna:(XLBookReadZJNRModel *)model;
+- (NSString *)adjustParagraphFormat:(NSString *)string;
 @end
 
 NS_ASSUME_NONNULL_END

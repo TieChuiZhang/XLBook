@@ -99,7 +99,7 @@
 - (XLBookReadZJNRModel *)getBookBodyWithLink:(NSString *)link bookId:(NSString *)bookId {
     NSString *name = [self getTableNameWithType:kDataTablaNameType_body name:bookId];
     [self createTableName:name class:XLBookReadZJNRModel.class];
-    return [self.database getOneObjectOfClass:XLBookReadZJNRModel.class fromTable:name where:XLBookReadZJNRModel.id == bookId];
+    return [self.database getOneObjectOfClass:XLBookReadZJNRModel.class fromTable:name where:XLBookReadZJNRModel.cid == link];
 }
 
 

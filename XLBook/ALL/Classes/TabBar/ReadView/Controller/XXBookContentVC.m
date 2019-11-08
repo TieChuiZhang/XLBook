@@ -9,6 +9,7 @@
 #import "XXBookContentVC.h"
 #import "BatteryView.h"
 #import <YYKit/NSAttributedString+YYText.h>
+#import "TopBookModel.h"
 @interface XXBookContentVC ()
 
 @property (nonatomic, strong) YYLabel *contentLabel;
@@ -159,7 +160,7 @@
         xlBookReadZJNRModel.content = @"";
     }
     
-    NSString *body = [self adjustParagraphFormat:xlBookReadZJNRModel.content];
+    NSString *body = [TopBookModelManager adjustParagraphFormat:xlBookReadZJNRModel.content];
     
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:body];
     attr.font = font;
@@ -205,21 +206,6 @@
     
     xlBookReadZJNRModel.attributedString = attr;
 }
-
-// 换行\t制表符，缩进
-- (NSString *)adjustParagraphFormat:(NSString *)string {
-    if (!string) {
-        return nil;
-    }
-    string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n　　\n　　\n" withString:@"\n"];
-    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n" withString:@"\n"];
-    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n　　\n" withString:@"\n"];
-
-    string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
-    return string;
-}
-
 
 - (NSAttributedString *)getStringWithpage:(NSInteger)page nsadna:(XLBookReadZJNRModel *)model {
     
@@ -283,7 +269,7 @@
     if (!_contentLabel) {
         _contentLabel = [[YYLabel alloc] init];
         _contentLabel.numberOfLines = 0;
-        _contentLabel.font = [UIFont systemFontOfSize:18];
+        _contentLabel.font = [UIFont systemFontOfSize:15];
         [_contentLabel setTextVerticalAlignment:YYTextVerticalAlignmentTop];//居上对齐
         [self.view addSubview:_contentLabel];
         

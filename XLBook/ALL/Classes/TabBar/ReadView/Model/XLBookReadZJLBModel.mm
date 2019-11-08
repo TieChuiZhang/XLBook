@@ -23,6 +23,6 @@ WCDB_SYNTHESIZE(XLBookReadZJNRModel, name)
 WCDB_SYNTHESIZE(XLBookReadZJNRModel, cname)
 WCDB_SYNTHESIZE(XLBookReadZJNRModel, cid)
 WCDB_SYNTHESIZE(XLBookReadZJNRModel, content)
-WCDB_PRIMARY(XLBookReadZJNRModel, id)
+WCDB_PRIMARY(XLBookReadZJNRModel, cid)
 @end
 

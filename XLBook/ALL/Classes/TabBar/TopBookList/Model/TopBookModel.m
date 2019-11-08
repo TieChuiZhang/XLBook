@@ -161,7 +161,7 @@
     }
 }
 
-- (void)getAllReadBookZJNR:(NSString *)urlString bookIDString:(NSString *)idString  success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
+- (void)getAllReadBookZJNR:(NSString *)urlString ChapterID:(NSString *)chapterID bookIDString:(NSString *)idString success:(void (^)(id _Nonnull))success failure:(void (^)(NSError * _Nonnull))failure
 {
 //    if (chapter >= self.chapters.count) {
 //        failure(@"请求小说内容越界");
@@ -180,20 +180,38 @@
 //    }else{
 //       
 //    }
-    NSLog(@"%@",urlString);
-    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
-           [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
-               XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
-               if ([kDatabase insertBookBody:xlBookReadZJNRModel bookId:idString]) {
-                   NSLog(@"存储boyd成功");
-               } else {
-                   NSLog(@"存储boyd失败");
-               }
-               success(xlBookReadZJNRModel);
-               [self reloadData];
-               [MBProgressHUD dismissHUD];
-           }];
+//    XLBookReadZJNRModel *dbModel = [kDatabase getBookBodyWithLink:chapterID bookId:idString];;
+//    if (dbModel) {
+//        //[TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(18) andChapter:dbModel];
+//        success(dbModel);
+//        [self reloadData];
+//        [MBProgressHUD dismissHUD];
+//    }else{
+//        
+//        
+//    }
     
+    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
+    [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+        XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
+        
+//        XLBookReadZJNRModel *saveModel = [[XLBookReadZJNRModel alloc] init];
+//        saveModel.id = xlBookReadZJNRModel.id;
+//        saveModel.name = xlBookReadZJNRModel.name;
+//        saveModel.cname = xlBookReadZJNRModel.cname;
+//        saveModel.cid = xlBookReadZJNRModel.cid;
+//        saveModel.nid = xlBookReadZJNRModel.nid;
+//        saveModel.content = xlBookReadZJNRModel.content;
+//        if ([kDatabase insertBookBody:saveModel bookId:idString]) {
+//            NSLog(@"存储boyd成功");
+//        } else {
+//            NSLog(@"存储boyd失败");
+//        }
+        success(xlBookReadZJNRModel);
+        [self reloadData];
+        [MBProgressHUD dismissHUD];
+    }];
+   
 }
 
 - (void)pagingWithBounds:(CGRect)bounds withFont:(UIFont *)font andChapter:(XLBookReadZJNRModel *)xlBookReadZJNRModel {
@@ -259,11 +277,12 @@
         return nil;
     }
     string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n" withString:@"\n"];
     string = [string stringByReplacingOccurrencesOfString:@"\n　　\n　　\n" withString:@"\n"];
     string = [string stringByReplacingOccurrencesOfString:@"\n　　\n　　\n　　\n" withString:@"\n"];
+    string = [string stringByReplacingOccurrencesOfString:@"\n　　\n" withString:@"\n"];
     string = [string stringByReplacingOccurrencesOfString:@" " withString:@""];
     return string;
 }
+
 
 @end

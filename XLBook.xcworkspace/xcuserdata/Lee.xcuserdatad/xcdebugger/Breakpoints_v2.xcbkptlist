@@ -7,7 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "621AE2F4-03A1-4B1F-81B9-1A82D05F3258"
+            uuid = "39A6B94C-7C49-47FC-99E2-6A48359D9326"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -18,16 +18,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7F018B2B-B795-4184-B698-B9A97DCE7112"
+            uuid = "BEEE5F9D-9F77-4403-8E76-6AB1819D8B2C"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XLBook/ALL/Classes/TabBar/ReadView/Controller/XXBookReadingVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "575"
-            endingLineNumber = "575"
-            landmarkName = "-configMenuTap"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
+            landmarkName = "-requestDataAndSetViewController"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9511F56B-4ABA-41E2-B34D-ADE9247AED44"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XLBook/ALL/Classes/TabBar/ReadView/Controller/XXBookReadingVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "541"
+            endingLineNumber = "541"
+            landmarkName = "-requestDataAndSetViewController"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "723864CB-3A1C-4BC3-BC8B-3163632EE299"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XLBook/ALL/Classes/TabBar/ReadView/Controller/XXBookReadingVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "523"
+            endingLineNumber = "523"
+            landmarkName = "-tapPrePage"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
