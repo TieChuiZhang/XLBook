@@ -180,38 +180,38 @@
 //    }else{
 //       
 //    }
-//    XLBookReadZJNRModel *dbModel = [kDatabase getBookBodyWithLink:chapterID bookId:idString];;
-//    if (dbModel) {
-//        //[TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(18) andChapter:dbModel];
-//        success(dbModel);
-//        [self reloadData];
-//        [MBProgressHUD dismissHUD];
-//    }else{
-//        
-//        
-//    }
-    
-    [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
-    [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
-        XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
-        
-//        XLBookReadZJNRModel *saveModel = [[XLBookReadZJNRModel alloc] init];
-//        saveModel.id = xlBookReadZJNRModel.id;
-//        saveModel.name = xlBookReadZJNRModel.name;
-//        saveModel.cname = xlBookReadZJNRModel.cname;
-//        saveModel.cid = xlBookReadZJNRModel.cid;
-//        saveModel.nid = xlBookReadZJNRModel.nid;
-//        saveModel.content = xlBookReadZJNRModel.content;
-//        if ([kDatabase insertBookBody:saveModel bookId:idString]) {
-//            NSLog(@"存储boyd成功");
-//        } else {
-//            NSLog(@"存储boyd失败");
-//        }
-        success(xlBookReadZJNRModel);
+    XLBookReadZJNRModel *dbModel = [kDatabase getBookBodyWithLink:chapterID bookId:idString];;
+    if (dbModel) {
+        //[TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(18) andChapter:dbModel];
+        success(dbModel);
         [self reloadData];
         [MBProgressHUD dismissHUD];
-    }];
-   
+    }else{
+        [MBProgressHUD showWaitingViewText:nil detailText:nil inView:nil];
+         [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
+             XLBookReadZJNRModel *xlBookReadZJNRModel = [XLBookReadZJNRModel mj_objectWithKeyValues:result[@"data"]];
+             
+             XLBookReadZJNRModel *saveModel = [[XLBookReadZJNRModel alloc] init];
+             saveModel.id = xlBookReadZJNRModel.id;
+             saveModel.name = xlBookReadZJNRModel.name;
+             saveModel.cname = xlBookReadZJNRModel.cname;
+             saveModel.cid = xlBookReadZJNRModel.cid;
+             saveModel.nid = xlBookReadZJNRModel.nid;
+             saveModel.content = xlBookReadZJNRModel.content;
+             if ([kDatabase insertBookBody:saveModel bookId:idString]) {
+                 NSLog(@"存储boyd成功");
+             } else {
+                 NSLog(@"存储boyd失败");
+             }
+             success(xlBookReadZJNRModel);
+             [self reloadData];
+             [MBProgressHUD dismissHUD];
+         }];
+        
+        
+    }
+    
+    
 }
 
 - (void)pagingWithBounds:(CGRect)bounds withFont:(UIFont *)font andChapter:(XLBookReadZJNRModel *)xlBookReadZJNRModel {
