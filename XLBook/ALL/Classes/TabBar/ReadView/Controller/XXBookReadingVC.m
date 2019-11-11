@@ -140,21 +140,29 @@
 
 
 - (void)setupViews {
-    
+    [self pageViewController];
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchTap:)];
     _tap.numberOfTapsRequired = 1;
     _tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:self.tap];
     _tap.delegate = self;
-    
-    [self pageViewController];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    
     if ([touch.view isDescendantOfView:self.menuView]) {
         return NO;
+    }
+    for (UIGestureRecognizer *gesture in _pageViewController.gestureRecognizers) {
+        /*
+         /UIPageViewControllerTransitionStylePageCurl模拟翻页类型中有UIPanGestureRecognizer UITapGestureRecognizer两种手势，删除左右边缘的点击事件
+         */
+        [_pageViewController.view removeGestureRecognizer:gesture];
+        if ([gesture isKindOfClass:UITapGestureRecognizer.class]) {
+            [_pageViewController.view removeGestureRecognizer:gesture];
+        }
     }
     return YES;
 }
@@ -362,79 +370,82 @@
     if (!completed) {
         XXBookContentVC *readerPageVC = (XXBookContentVC *)previousViewControllers.firstObject;
         self.pageCurrent = readerPageVC.page;
-        //self.pageZJ = readerPageVC.chapter;
+        self.pageZJ = readerPageVC.chapter;
     } else {
         XXBookContentVC *readPageVC = (XXBookContentVC *)pageViewController.viewControllers.firstObject;
         self.pageCurrent = readPageVC.page;
-        //self.pageZJ = readPageVC.chapter;
+        self.pageZJ = readPageVC.chapter;
     }
     _isTaping = NO;
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
+{
+    XXBookContentVC *readPageVC = (XXBookContentVC *)pageViewController.viewControllers.firstObject;
+    XXBookContentVC *lastObjectPageVC = (XXBookContentVC *)pageViewController.viewControllers.lastObject;
+    NSLog(@"lastObjectPageVCpage:%lu",(unsigned long)lastObjectPageVC.page);
+    NSLog(@"页面page:%lu",(unsigned long)readPageVC.page);
+    NSLog(@"controllerpage:%ld",(long)self.pageCurrent);
 }
 
 
 #pragma mark - UIPageViewControllerDataSource
 
 //上一页
-//- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-//
-//    if (_isTaping) {
-//        return nil;
-//    }
-//
-//    if (self.pageZJ == 0 && self.pageCurrent == 0) {
-//        [HUD showMsgWithoutView:@"已经是第一页了!"];
-//        return nil;
-//    }
-//
-////    if ([viewController isKindOfClass:XXBookContentVC.class]) {
-////        XXBookContentVC *vc = [[XXBookContentVC alloc] init];
-////        [vc updateWithViewController:viewController];
-////        return vc;
-////    }
-//
-//    if (self.pageCurrent > 0){
-//        self.pageCurrent --;
-//        return [self getpageBookContent];
-//    }else{
-//        self.pageZJ --;
-//        _ispreChapter = YES;
-//        return [self getChapterBookContent];
-//    }
-//    return nil;
-//}
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
 
+    if (_isTaping) {
+        return nil;
+    }
+
+    if (self.pageZJ == 0 && self.pageCurrent == 0) {
+        [HUD showMsgWithoutView:@"已经是第一页了!"];
+        return nil;
+    }
+
+//    if ([viewController isKindOfClass:XXBookContentVC.class]) {
+//        XXBookContentVC *vc = [[XXBookContentVC alloc] init];
+//        [vc updateWithViewController:viewController];
+//        return vc;
+//    }
+
+    if (self.pageCurrent > 0){
+        self.pageCurrent --;
+        return [self getChapterBookContent];
+    }else{
+        self.pageZJ --;
+        _ispreChapter = YES;
+        return [self getChapterBookContent];
+    }
+    return nil;
+}
 
 //下一页
-//- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-//
-////    if ([viewController isKindOfClass:XXBookContentVC.class]) {
-////        XXBookReadingBackViewController *vc = [[XXBookReadingBackViewController alloc] init];
-////        [vc updateWithViewController:viewController];
-////        return vc;
-////    }
-//    if (self.pageZJ >= self.mlArr.count - 1 && self.pageCurrent >= self.xlBookReadZJNRModel.pageCount-1) {
-//        //self.pageCurrent = 0;
-//        //self.ispreChapter = NO;
-//        [HUD showMsgWithoutView:@"没有了老弟"];
-//        return nil;
-//    }
-//    if (self.pageCurrent >= self.xlBookReadZJNRModel.pageCount-1) {
-//        self.pageCurrent = 0;
-//        self.pageZJ ++;
-//        self.ispreChapter = NO;
-//        return [self getChapterBookContent];
-//    }else{
-//        self.pageCurrent ++;
-//        return [self getpageBookContent];
-//    }
-//}
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    if (_isTaping) {
+        return nil;
+    }
+    if (self.pageZJ >= self.mlArr.count - 1 && self.pageCurrent >= self.xlBookReadZJNRModel.pageCount-1) {
+        //self.pageCurrent = 0;
+        //self.ispreChapter = NO;
+        [HUD showMsgWithoutView:@"没有了老弟"];
+        return nil;
+    }
+    if (self.pageCurrent == self.xlBookReadZJNRModel.pageCount-1) {
+        self.pageCurrent = 0;
+        self.pageZJ ++;
+        self.ispreChapter = NO;
+    }else{
+        self.pageCurrent ++;
+    }
+    return [self getChapterBookContent];
+}
 
 - (XXBookContentVC *)getChapterBookContent {
     LeeWeakSelf(self);
     XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
     [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] ChapterID:self.mlArr[self.pageZJ] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
         weakself.xlBookReadZJNRModel = responseObject;
-        
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
         if (weakself.ispreChapter) {
@@ -445,7 +456,7 @@
             contentVC.page = weakself.pageCurrent;
         }
         weakself.isTaping = NO;
-        [weakself.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        
     } failure:^(NSError * _Nonnull error) {
         
     }];
@@ -457,7 +468,6 @@
     XXBookContentVC __block *contentVC = [[XXBookContentVC alloc] init];
     contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
     contentVC.page = self.pageCurrent;
-   
     return contentVC;
 }
 
@@ -489,37 +499,69 @@
 //点击下一页
 - (void)tapNextPage {
     if (self.pageZJ >= self.mlArr.count - 1 && self.pageCurrent >= self.xlBookReadZJNRModel.pageCount-1) {
-        //self.pageCurrent = 0;
-        //self.ispreChapter = NO;
+
         [HUD showMsgWithoutView:@"没有了老弟"];
         return;
     }
     if (self.pageCurrent >= self.xlBookReadZJNRModel.pageCount-1) {
+        self.isTaping = YES;
         self.pageCurrent = 0;
         self.pageZJ ++;
         self.ispreChapter = NO;
         [self requestDataAndSetViewController];
     }else{
-        self.pageCurrent ++;
+//        self.isTaping = YES;
+//        self.pageCurrent ++;
+//        XXBookContentVC *textVC = [self getpageBookContent];
+//        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        _isTaping = YES;
+        LeeWeakSelf(self);
+        XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
+        self.pageCurrent = firstVc.page + 1;
+        self.view.userInteractionEnabled = NO;
+        self.pageViewController.view.userInteractionEnabled = NO;
         XXBookContentVC *textVC = [self getpageBookContent];
-        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+            if (finished) {
+                weakself.isTaping = NO;
+                weakself.pageViewController.view.userInteractionEnabled = YES;
+                weakself.view.userInteractionEnabled = YES;
+            }
+        }];
+       
     }
 }
 
 
 //点击上一页
 - (void)tapPrePage {
-    
+    self.isTaping = YES;
     if (self.pageZJ == 0 && self.pageCurrent == 0) {
         [HUD showMsgWithoutView:@"已经是第一页了!"];
         return;
     }
     if (self.pageCurrent > 0){
-        self.pageCurrent --;
+//        self.pageCurrent --;
+//        XXBookContentVC *textVC = [self getpageBookContent];
+//        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+//        self.isTaping = NO;
+        LeeWeakSelf(self);
+        XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
+        self.pageCurrent = firstVc.page - 1;
+        _isTaping = YES;
+        self.view.userInteractionEnabled = NO;
+        self.pageViewController.view.userInteractionEnabled = NO;
         XXBookContentVC *textVC = [self getpageBookContent];
-        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+            if (finished) {
+                weakself.isTaping = NO;
+                weakself.pageViewController.view.userInteractionEnabled = YES;
+                weakself.view.userInteractionEnabled = YES;
+            }
+        }];
     }else{
         self.pageZJ --;
+        self.isTaping = YES;
         _ispreChapter = YES;
         [self requestDataAndSetViewController];
     }
@@ -536,12 +578,20 @@
             [TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(18) andChapter:weakself.xlBookReadZJNRModel];
             contentVC.page = TopBookModelManager.pagePrevious;
             weakself.pageCurrent = TopBookModelManager.pagePrevious;
+            [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+                if (finished) {
+                    weakself.isTaping = NO;
+                }
+            }];
         }else{
-
             contentVC.page = weakself.pageCurrent;
+            [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+                if (finished) {
+                    weakself.isTaping = NO;
+                }
+            }];
         }
-        weakself.isTaping = NO;
-        [weakself.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        
     } failure:^(NSError * _Nonnull error) {
         
     }];
@@ -774,7 +824,6 @@
     }
     return _pageViewController;
 }
-
 //菜单
 - (XXBookMenuView *)menuView {
     LeeWeakSelf(self);

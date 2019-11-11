@@ -106,6 +106,7 @@
 		9BD93715235D72B200B34B13 /* YBBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD93622235D72B200B34B13 /* YBBaseRequest.m */; };
 		9BD9379B235D804600B34B13 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD9379A235D804600B34B13 /* SceneDelegate.m */; };
 		9BE63DA423608B2200C87BCC /* TopBookOneBookTJView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */; };
+		9BE63E502375A95B00C87BCC /* UIPageViewController+PageControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE63E4F2375A95B00C87BCC /* UIPageViewController+PageControllerTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -310,6 +311,8 @@
 		9BD9379A235D804600B34B13 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		9BE63DA223608B2200C87BCC /* TopBookOneBookTJView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookOneBookTJView.h; sourceTree = "<group>"; };
 		9BE63DA323608B2200C87BCC /* TopBookOneBookTJView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookOneBookTJView.m; sourceTree = "<group>"; };
+		9BE63E4E2375A95B00C87BCC /* UIPageViewController+PageControllerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIPageViewController+PageControllerTool.h"; sourceTree = "<group>"; };
+		9BE63E4F2375A95B00C87BCC /* UIPageViewController+PageControllerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIPageViewController+PageControllerTool.m"; sourceTree = "<group>"; };
 		DADFB010B27A93C545AA30BE /* Pods_XLBook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XLBook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F20B0EF3D2DC87138B2EF52C /* Pods-XLBook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XLBook.debug.xcconfig"; path = "Target Support Files/Pods-XLBook/Pods-XLBook.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -554,6 +557,8 @@
 				9B9FDDDE2366D3C700B1AA73 /* XXBookContentVC.m */,
 				9B9FDDDF2366D3C700B1AA73 /* XXBookReadingVC.h */,
 				9B9FDDBF2366D3C700B1AA73 /* XXBookReadingVC.m */,
+				9BE63E4E2375A95B00C87BCC /* UIPageViewController+PageControllerTool.h */,
+				9BE63E4F2375A95B00C87BCC /* UIPageViewController+PageControllerTool.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1115,6 +1120,7 @@
 				9B32B084235D9E4B00FE71A9 /* TopBookDController.m in Sources */,
 				9B01CDC6237112EC003EBA12 /* TZPhotoPreviewController.m in Sources */,
 				9B01CD97236C1E81003EBA12 /* XLBookInfoController.m in Sources */,
+				9BE63E502375A95B00C87BCC /* UIPageViewController+PageControllerTool.m in Sources */,
 				9B32B06B235D860400FE71A9 /* XLTabBarBookController.m in Sources */,
 				9B32B094235DBE0400FE71A9 /* TopBookDCell.m in Sources */,
 				9B9FDE052366D3C700B1AA73 /* UIViewController+Add.m in Sources */,

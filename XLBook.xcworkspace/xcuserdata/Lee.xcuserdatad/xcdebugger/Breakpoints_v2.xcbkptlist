@@ -7,7 +7,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "39A6B94C-7C49-47FC-99E2-6A48359D9326"
+            uuid = "621AE2F4-03A1-4B1F-81B9-1A82D05F3258"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -50,17 +50,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "723864CB-3A1C-4BC3-BC8B-3163632EE299"
-            shouldBeEnabled = "Yes"
+            uuid = "4C84F01A-AD2A-4E2B-AFAF-92CC89F742C4"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "XLBook/ALL/Classes/TabBar/ReadView/Controller/XXBookReadingVC.m"
+            filePath = "XLBook/ALL/lib/DB/XXDatabase.mm"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
-            landmarkName = "-requestDataAndSetViewController"
-            landmarkType = "7">
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "XXDatabase"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

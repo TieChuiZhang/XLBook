@@ -37,6 +37,7 @@
     
     //背景颜色的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBgColorWithNotifiction:) name:kNotificationWithChangeBg object:nil];
+    //self.view.backgroundColor = [UIColor redColor];
 }
 
 
