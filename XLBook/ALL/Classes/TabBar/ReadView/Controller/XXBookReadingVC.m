@@ -135,17 +135,18 @@
     self.fd_interactivePopDisabled = NO;
     [self requestDataWithShowLoading:YES];
     
+      _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchTap:)];
+      _tap.numberOfTapsRequired = 1;
+      //_tap.cancelsTouchesInView = NO;
+      [self.view addGestureRecognizer:self.tap];
+      _tap.delegate = self;
+    
     
 }
 
 
 - (void)setupViews {
     [self pageViewController];
-    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchTap:)];
-    _tap.numberOfTapsRequired = 1;
-    _tap.cancelsTouchesInView = NO;
-    [self.view addGestureRecognizer:self.tap];
-    _tap.delegate = self;
 }
 
 #pragma mark - UIGestureRecognizerDelegate
@@ -154,15 +155,6 @@
     
     if ([touch.view isDescendantOfView:self.menuView]) {
         return NO;
-    }
-    for (UIGestureRecognizer *gesture in _pageViewController.gestureRecognizers) {
-        /*
-         /UIPageViewControllerTransitionStylePageCurl模拟翻页类型中有UIPanGestureRecognizer UITapGestureRecognizer两种手势，删除左右边缘的点击事件
-         */
-        [_pageViewController.view removeGestureRecognizer:gesture];
-        if ([gesture isKindOfClass:UITapGestureRecognizer.class]) {
-            [_pageViewController.view removeGestureRecognizer:gesture];
-        }
     }
     return YES;
 }
@@ -370,11 +362,11 @@
     if (!completed) {
         XXBookContentVC *readerPageVC = (XXBookContentVC *)previousViewControllers.firstObject;
         self.pageCurrent = readerPageVC.page;
-        self.pageZJ = readerPageVC.chapter;
+        //self.pageZJ = readerPageVC.chapter;
     } else {
         XXBookContentVC *readPageVC = (XXBookContentVC *)pageViewController.viewControllers.firstObject;
         self.pageCurrent = readPageVC.page;
-        self.pageZJ = readPageVC.chapter;
+        //self.pageZJ = readPageVC.chapter;
     }
     _isTaping = NO;
 }
@@ -383,9 +375,9 @@
 {
     XXBookContentVC *readPageVC = (XXBookContentVC *)pageViewController.viewControllers.firstObject;
     XXBookContentVC *lastObjectPageVC = (XXBookContentVC *)pageViewController.viewControllers.lastObject;
-    NSLog(@"lastObjectPageVCpage:%lu",(unsigned long)lastObjectPageVC.page);
-    NSLog(@"页面page:%lu",(unsigned long)readPageVC.page);
-    NSLog(@"controllerpage:%ld",(long)self.pageCurrent);
+//    NSLog(@"lastObjectPageVCpage:%lu",(unsigned long)lastObjectPageVC.page);
+//    NSLog(@"页面page:%lu",(unsigned long)readPageVC.page);
+//    NSLog(@"controllerpage:%ld",(long)self.pageCurrent);
 }
 
 
@@ -393,7 +385,6 @@
 
 //上一页
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-
     if (_isTaping) {
         return nil;
     }
@@ -411,7 +402,7 @@
 
     if (self.pageCurrent > 0){
         self.pageCurrent --;
-        return [self getChapterBookContent];
+        return [self getpageBookContent];
     }else{
         self.pageZJ --;
         _ispreChapter = YES;
@@ -435,10 +426,12 @@
         self.pageCurrent = 0;
         self.pageZJ ++;
         self.ispreChapter = NO;
+        return [self getChapterBookContent];
     }else{
         self.pageCurrent ++;
+        return [self getpageBookContent];
     }
-    return [self getChapterBookContent];
+    
 }
 
 - (XXBookContentVC *)getChapterBookContent {
@@ -513,7 +506,9 @@
 //        self.isTaping = YES;
 //        self.pageCurrent ++;
 //        XXBookContentVC *textVC = [self getpageBookContent];
-//        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+//        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+//
+//        self.isTaping = NO;
         _isTaping = YES;
         LeeWeakSelf(self);
         XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
@@ -532,9 +527,9 @@
     }
 }
 
-
 //点击上一页
 - (void)tapPrePage {
+    NSLog(@"当前第%ld章",(long)self.pageZJ);
     self.isTaping = YES;
     if (self.pageZJ == 0 && self.pageCurrent == 0) {
         [HUD showMsgWithoutView:@"已经是第一页了!"];

@@ -12,10 +12,13 @@
 
 
 
--(BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         return NO;
     }
     return YES;
 }
+
+
+
 @end

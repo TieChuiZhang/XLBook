@@ -38,8 +38,12 @@
 		9B01CDD22371525F003EBA12 /* ToolsObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDD12371525F003EBA12 /* ToolsObj.m */; };
 		9B01CDD6237161EE003EBA12 /* headerImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CDD5237161EE003EBA12 /* headerImage@3x.png */; };
 		9B01CDD823716801003EBA12 /* 无封面.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B01CDD723716800003EBA12 /* 无封面.jpg */; };
-		9B01CDDB2371721E003EBA12 /* MyBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDDA2371721E003EBA12 /* MyBookCell.m */; };
 		9B01CDDE2372652F003EBA12 /* TopBookZJMLFZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B01CDDD2372652F003EBA12 /* TopBookZJMLFZModel.m */; };
+		9B17A74E237951D0008A32BC /* UIView+SZPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A74C237951D0008A32BC /* UIView+SZPageController.m */; };
+		9B17A74F237951D0008A32BC /* SZPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A74D237951D0008A32BC /* SZPageController.m */; };
+		9B17A75F23796754008A32BC /* MyBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A75C23796754008A32BC /* MyBookCell.m */; };
+		9B17A7622379676A008A32BC /* MyBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A7612379676A008A32BC /* MyBookModel.m */; };
+		9B17A76523796CC0008A32BC /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A76323796CC0008A32BC /* BaseModel.m */; };
 		9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B05E235D846200FE71A9 /* MyBookController.m */; };
 		9B32B062235D847500FE71A9 /* TopBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B061235D847500FE71A9 /* TopBookController.m */; };
 		9B32B068235D852300FE71A9 /* XLBookNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B067235D852300FE71A9 /* XLBookNavController.m */; };
@@ -167,10 +171,18 @@
 		9B01CDD12371525F003EBA12 /* ToolsObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ToolsObj.m; path = XLBook/ALL/Classes/TabBar/InfoBook/Tool/ToolsObj.m; sourceTree = SOURCE_ROOT; };
 		9B01CDD5237161EE003EBA12 /* headerImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headerImage@3x.png"; sourceTree = "<group>"; };
 		9B01CDD723716800003EBA12 /* 无封面.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "无封面.jpg"; sourceTree = "<group>"; };
-		9B01CDD92371721E003EBA12 /* MyBookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyBookCell.h; path = XLBook/ALL/Classes/TabBar/InfoBook/Tool/MyBookCell.h; sourceTree = SOURCE_ROOT; };
-		9B01CDDA2371721E003EBA12 /* MyBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyBookCell.m; path = XLBook/ALL/Classes/TabBar/InfoBook/Tool/MyBookCell.m; sourceTree = SOURCE_ROOT; };
 		9B01CDDC2372652F003EBA12 /* TopBookZJMLFZModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookZJMLFZModel.h; sourceTree = "<group>"; };
 		9B01CDDD2372652F003EBA12 /* TopBookZJMLFZModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopBookZJMLFZModel.m; sourceTree = "<group>"; };
+		9B17A74A237951D0008A32BC /* UIView+SZPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SZPageController.h"; sourceTree = "<group>"; };
+		9B17A74B237951D0008A32BC /* SZPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZPageController.h; sourceTree = "<group>"; };
+		9B17A74C237951D0008A32BC /* UIView+SZPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SZPageController.m"; sourceTree = "<group>"; };
+		9B17A74D237951D0008A32BC /* SZPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZPageController.m; sourceTree = "<group>"; };
+		9B17A75C23796754008A32BC /* MyBookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBookCell.m; sourceTree = "<group>"; };
+		9B17A75D23796754008A32BC /* MyBookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBookCell.h; sourceTree = "<group>"; };
+		9B17A7602379676A008A32BC /* MyBookModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBookModel.h; sourceTree = "<group>"; };
+		9B17A7612379676A008A32BC /* MyBookModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBookModel.m; sourceTree = "<group>"; };
+		9B17A76323796CC0008A32BC /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		9B17A76423796CC0008A32BC /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		9B32B05D235D846200FE71A9 /* MyBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBookController.h; sourceTree = "<group>"; };
 		9B32B05E235D846200FE71A9 /* MyBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBookController.m; sourceTree = "<group>"; };
 		9B32B060235D847500FE71A9 /* TopBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookController.h; sourceTree = "<group>"; };
@@ -443,6 +455,44 @@
 			path = TZImagePickerController;
 			sourceTree = "<group>";
 		};
+		9B17A749237951D0008A32BC /* SZPageController */ = {
+			isa = PBXGroup;
+			children = (
+				9B17A74B237951D0008A32BC /* SZPageController.h */,
+				9B17A74D237951D0008A32BC /* SZPageController.m */,
+				9B17A74A237951D0008A32BC /* UIView+SZPageController.h */,
+				9B17A74C237951D0008A32BC /* UIView+SZPageController.m */,
+			);
+			path = SZPageController;
+			sourceTree = "<group>";
+		};
+		9B17A75A23796754008A32BC /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		9B17A75B23796754008A32BC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B17A75D23796754008A32BC /* MyBookCell.h */,
+				9B17A75C23796754008A32BC /* MyBookCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B17A75E23796754008A32BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B17A76423796CC0008A32BC /* BaseModel.h */,
+				9B17A76323796CC0008A32BC /* BaseModel.m */,
+				9B17A7602379676A008A32BC /* MyBookModel.h */,
+				9B17A7612379676A008A32BC /* MyBookModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9B32B06C235D89B400FE71A9 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,6 +603,7 @@
 		9B9FDDBD2366D3C700B1AA73 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B17A749237951D0008A32BC /* SZPageController */,
 				9B9FDDBE2366D3C700B1AA73 /* XXBookContentVC.h */,
 				9B9FDDDE2366D3C700B1AA73 /* XXBookContentVC.m */,
 				9B9FDDDF2366D3C700B1AA73 /* XXBookReadingVC.h */,
@@ -730,10 +781,10 @@
 		9BD935EE235D717000B34B13 /* MyBookList */ = {
 			isa = PBXGroup;
 			children = (
+				9B17A75E23796754008A32BC /* Model */,
+				9B17A75A23796754008A32BC /* Tools */,
+				9B17A75B23796754008A32BC /* View */,
 				9BD935EF235D717000B34B13 /* Controller */,
-				9BD935F0235D717000B34B13 /* Model */,
-				9BD935F1235D717000B34B13 /* View */,
-				9BD935F2235D717000B34B13 /* Tool */,
 			);
 			path = MyBookList;
 			sourceTree = "<group>";
@@ -745,29 +796,6 @@
 				9B32B05E235D846200FE71A9 /* MyBookController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		9BD935F0235D717000B34B13 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		9BD935F1235D717000B34B13 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9B01CDD92371721E003EBA12 /* MyBookCell.h */,
-				9B01CDDA2371721E003EBA12 /* MyBookCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		9BD935F2235D717000B34B13 /* Tool */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tool;
 			sourceTree = "<group>";
 		};
 		9BD935F3235D717000B34B13 /* TopBookList */ = {
@@ -1113,6 +1141,7 @@
 				9B01CD8E236ABF15003EBA12 /* NSBundle+PYSearchExtension.m in Sources */,
 				9BD9360B235D717000B34B13 /* main.m in Sources */,
 				9B32B08B235DA07100FE71A9 /* MBProgressHUD+LNHUD.m in Sources */,
+				9B17A7622379676A008A32BC /* MyBookModel.m in Sources */,
 				9B32B0BB23603C8500FE71A9 /* TopBookOneBookHXJListView.m in Sources */,
 				9B01CDC2237112EC003EBA12 /* TZVideoPlayerController.m in Sources */,
 				9B32B068235D852300FE71A9 /* XLBookNavController.m in Sources */,
@@ -1122,11 +1151,12 @@
 				9B01CD97236C1E81003EBA12 /* XLBookInfoController.m in Sources */,
 				9BE63E502375A95B00C87BCC /* UIPageViewController+PageControllerTool.m in Sources */,
 				9B32B06B235D860400FE71A9 /* XLTabBarBookController.m in Sources */,
+				9B17A74E237951D0008A32BC /* UIView+SZPageController.m in Sources */,
 				9B32B094235DBE0400FE71A9 /* TopBookDCell.m in Sources */,
+				9B17A75F23796754008A32BC /* MyBookCell.m in Sources */,
 				9B9FDE052366D3C700B1AA73 /* UIViewController+Add.m in Sources */,
 				9B01CDCD237112EC003EBA12 /* TZLocationManager.m in Sources */,
 				9B9FDE302366D40E00B1AA73 /* BaseView.m in Sources */,
-				9B01CDDB2371721E003EBA12 /* MyBookCell.m in Sources */,
 				9B9FDE1A2366D3C700B1AA73 /* XXBookMenuView.m in Sources */,
 				9BD93714235D72B200B34B13 /* YBNetworkManager.m in Sources */,
 				9B01CDC4237112EC003EBA12 /* NSBundle+TZImagePicker.m in Sources */,
@@ -1138,6 +1168,7 @@
 				9B32B0AF235EFB7400FE71A9 /* TopBookOneBookDModel.mm in Sources */,
 				9B3AF1A82361614C00DF6C18 /* TopBookOneBookHXJCell.m in Sources */,
 				9B01CDC8237112EC003EBA12 /* TZProgressView.m in Sources */,
+				9B17A74F237951D0008A32BC /* SZPageController.m in Sources */,
 				9B01CD8F236ABF15003EBA12 /* UIView+PYSearchExtension.m in Sources */,
 				9B9FDE042366D3C700B1AA73 /* UIButton+Add.m in Sources */,
 				9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */,
@@ -1155,6 +1186,7 @@
 				9B9FDE212366D3C700B1AA73 /* DateTools.m in Sources */,
 				9B01CD9F2371113E003EBA12 /* UIView+NIB.m in Sources */,
 				9B9FDE372366D50B00B1AA73 /* XXDatabase.mm in Sources */,
+				9B17A76523796CC0008A32BC /* BaseModel.m in Sources */,
 				9BD935DB235D6E3000B34B13 /* XLBook.xcdatamodeld in Sources */,
 				9B9FDE022366D3C700B1AA73 /* UIView+NewLine.m in Sources */,
 				9B01CDCF237112EC003EBA12 /* TZImageRequestOperation.m in Sources */,

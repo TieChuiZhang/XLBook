@@ -10,6 +10,7 @@
 #import "TopBookOneBookDModel.h"
 #import "XLTopBookOneHeaderView.h"
 #import "XLBookReadZJLBModel.h"
+#import "MyBookModel.h"
 #define TopBookModelManager [TopBookModel shareReadingManager]
 NS_ASSUME_NONNULL_BEGIN
 
@@ -49,6 +50,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSAttributedString *)getStringWithpage:(NSInteger)page nsadna:(XLBookReadZJNRModel *)model;
 - (NSString *)adjustParagraphFormat:(NSString *)string;
+
+
+@property (nonatomic, assign) kBgColor bgColor;
+
+@property (nonatomic, assign) kDayMode dayMode;
+
+/* 点击全屏翻下页 */
+@property (nonatomic, assign) BOOL isFullTapNext;
+
+/* 过渡样式 */
+@property (nonatomic, assign) kTransitionStyle transitionStyle;
+
 @end
 
 NS_ASSUME_NONNULL_END

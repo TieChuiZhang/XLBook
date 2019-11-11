@@ -70,3 +70,12 @@ static NSString *kBookTableName = @"XLBookTableName";
 #define kReadingBottomH 35
 #define kReadingFrame CGRectMake(kReadSpaceX, kReadingTopH, kScreenWidth - kReadSpaceX*2, kScreenHeight - kReadingTopH - kReadingBottomH - kSafeAreaInsets.safeAreaInsets.top - kSafeAreaInsets.safeAreaInsets.bottom)
 #endif /* XLBook_pch */
+
+
+#define YYModelSynthCoderAndHash \
+- (void)encodeWithCoder:(NSCoder *)aCoder { [self yy_modelEncodeWithCoder:aCoder]; } \
+- (id)initWithCoder:(NSCoder *)aDecoder { return [self yy_modelInitWithCoder:aDecoder]; } \
+- (id)copyWithZone:(NSZone *)zone { return [self yy_modelCopy]; } \
+- (NSUInteger)hash { return [self yy_modelHash]; } \
+- (BOOL)isEqual:(id)object { return [self yy_modelIsEqual:object]; }
+

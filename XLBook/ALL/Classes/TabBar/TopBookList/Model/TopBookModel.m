@@ -24,29 +24,29 @@
     
     dispatch_once(&onceToken, ^{
         readM = [[self alloc] init];
-        //BookSettingModel *settingModel = [BookSettingModel decodeModelWithKey:BookSettingModel.className];
+        BookSettingModel *settingModel = [BookSettingModel decodeModelWithKey:BookSettingModel.className];
         
-//        if (!settingModel) {
-//            //没有存档
-//            settingModel = [[BookSettingModel alloc] init];
-//            settingModel.font = 20;
-//            settingModel.dayMode = kDayMode_light;
-//            settingModel.bgColor = kBgColor_default;
-//            settingModel.transitionStyle = kTransitionStyle_default;
-//            [BookSettingModel encodeModel:settingModel key:[BookSettingModel className]];
-//
-//            readM.font = 20;
-//            readM.dayMode = settingModel.dayMode;
-//            readM.bgColor = settingModel.bgColor;
-//            readM.transitionStyle = settingModel.transitionStyle;
-//
-//        } else {
-//            //已经存档了设置
-//            readM.isFullTapNext = settingModel.isFullTapNext;
-//            readM.font = settingModel.font;
-//            readM.bgColor = settingModel.bgColor;
-//            readM.transitionStyle = settingModel.transitionStyle;
-//        }
+        if (!settingModel) {
+            //没有存档
+            settingModel = [[BookSettingModel alloc] init];
+            settingModel.font = 20;
+            settingModel.dayMode = kDayMode_light;
+            settingModel.bgColor = kBgColor_default;
+            settingModel.transitionStyle = kTransitionStyle_default;
+            [BookSettingModel encodeModel:settingModel key:[BookSettingModel className]];
+
+            readM.font = 20;
+            readM.dayMode = settingModel.dayMode;
+            readM.bgColor = settingModel.bgColor;
+            readM.transitionStyle = settingModel.transitionStyle;
+
+        } else {
+            //已经存档了设置
+            readM.isFullTapNext = settingModel.isFullTapNext;
+            readM.font = settingModel.font;
+            readM.bgColor = settingModel.bgColor;
+            readM.transitionStyle = settingModel.transitionStyle;
+        }
     });
     return readM;
 }
