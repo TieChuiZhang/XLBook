@@ -25,9 +25,9 @@
             filePath = "XLBook/ALL/Classes/TabBar/ReadView/Controller/XXBookReadingVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "537"
-            endingLineNumber = "537"
-            landmarkName = "-requestDataAndSetViewController"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
+            landmarkName = "-configMenuTap"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,9 +41,9 @@
             filePath = "XLBook/ALL/Classes/TabBar/ReadView/Controller/XXBookReadingVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "541"
-            endingLineNumber = "541"
-            landmarkName = "-requestDataAndSetViewController"
+            startingLineNumber = "554"
+            endingLineNumber = "554"
+            landmarkName = "-configMenuTap"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,9 +57,9 @@
             filePath = "XLBook/ALL/Classes/TabBar/ReadView/Controller/XXBookReadingVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
-            landmarkName = "-tapPrePage"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
+            landmarkName = "-requestDataAndSetViewController"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
