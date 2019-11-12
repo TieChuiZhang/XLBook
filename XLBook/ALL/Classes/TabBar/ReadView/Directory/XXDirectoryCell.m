@@ -9,7 +9,6 @@
 #define kLeftX AdaWidth(20)
 
 #import "XXDirectoryCell.h"
-#import "TopBookModel.h"
 @interface XXDirectoryCell()
 
 @property (nonatomic, strong) UIImageView *preView;

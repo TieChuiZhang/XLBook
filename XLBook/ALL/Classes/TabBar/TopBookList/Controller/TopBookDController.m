@@ -7,7 +7,6 @@
 //
 
 #import "TopBookDController.h"
-#import "TopBookModel.h"
 #import "TopBookListModel.h"
 #import "TopBookDCell.h"
 @interface TopBookDController ()<UITableViewDelegate,UITableViewDataSource>

@@ -27,6 +27,6 @@
 @property (nonatomic, assign) NSUInteger page;
 
 
-- (void)updateWithViewController:(UIViewController *)viewController;
+//- (void)updateWithViewController:(UIViewController *)viewController;
 
 @end

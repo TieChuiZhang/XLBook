@@ -9,7 +9,7 @@
 #import "XXBookContentVC.h"
 #import "BatteryView.h"
 #import <YYKit/NSAttributedString+YYText.h>
-#import "TopBookModel.h"
+#import "UIImage+Add.h"
 @interface XXBookContentVC ()
 
 @property (nonatomic, strong) YYLabel *contentLabel;
@@ -34,73 +34,101 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     //背景颜色的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBgColorWithNotifiction:) name:kNotificationWithChangeBg object:nil];
-    self.view.backgroundColor = [UIColor colorWithHexString:@"F9EACE"];
+    [self bgColorWithManager:TopBookModelManager.bgColor];
+    //self.view.backgroundColor = [UIColor colorWithHexString:@"F9EACE"];
 }
 
 
 - (void)changeBgColorWithNotifiction:(NSNotification *)sender {
-    //kBgColor bgoColor = [[sender userInfo][kNotificationWithChangeBg] integerValue];
-    //[self changeBgColorWithIndex:bgoColor];
+    kBgColor bgoColor = [[sender userInfo][kNotificationWithChangeBg] integerValue];
+    [self changeBgColorWithIndex:bgoColor];
+}
+
+
+- (void)bgColorWithManager:(NSInteger )index{
+    NSString *bgImageName;
+    switch (TopBookModelManager.bgColor) {
+        case 1:
+            bgImageName = @"def_bg_375x667_";
+            break;
+        case 2:
+            bgImageName = @"ink_bg_375x667_";
+            break;
+        case 3:
+            bgImageName = @"flax_bg_375x667_";
+            break;
+        case 4:
+            bgImageName = @"green_bg_375x667_";
+            break;
+        case 5:
+            bgImageName = @"peach_bg_375x667_";
+            break;
+        case 6:
+            bgImageName = @"coffee_mode_bg";
+            break;
+        default:
+            break;
+    }
+    UIImage *bgImage = UIImageName(bgImageName);
+    self.view.layer.contents = (__bridge id _Nullable)(bgImage.CGImage);
 }
 
 
 #pragma mark - 改变背景颜色
-//- (void)changeBgColorWithIndex:(kBgColor)bgoColor {
-//
-//    NSString *bgImageName;
-//    switch (kReadingManager.bgColor) {
-//        case kBgColor_default:
-//            bgImageName = @"def_bg_375x667_";
-//            break;
-//        case kBgColor_ink:
-//            bgImageName = @"ink_bg_375x667_";
-//            break;
-//        case kBgColor_flax:
-//            bgImageName = @"flax_bg_375x667_";
-//            break;
-//        case kBgColor_green:
-//            bgImageName = @"green_bg_375x667_";
-//            break;
-//        case kBgColor_peach:
-//            bgImageName = @"peach_bg_375x667_";
-//            break;
-//        case kBgColor_Black:
-//            bgImageName = @"coffee_mode_bg";
-//            break;
-//        default:
-//            break;
-//    }
-//
-//    if (kReadingManager.dayMode == kDayMode_night) {
-//        UIColor *color = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
-//        NSMutableAttributedString *text = (NSMutableAttributedString *)self.contentLabel.attributedText;
-//        text.yy_color = color;
-//        self.contentLabel.attributedText = text;
-//
-//        self.titleLabel.textColor = color;
-//        self.timeLabel.textColor = color;
-//        self.pageLabel.textColor = color;
-//    } else {
-//
-//        NSMutableAttributedString *text = (NSMutableAttributedString *)self.contentLabel.attributedText;
-//        text.yy_color = kblackColor;
-//        self.contentLabel.attributedText = text;
-//
-//        self.titleLabel.textColor = knormalColor;
-//        self.timeLabel.textColor = knormalColor;
-//        self.pageLabel.textColor = knormalColor;
-//    }
-//
-//    UIImage *bgImage = UIImageName(bgImageName);
-//    self.view.layer.contents = (__bridge id _Nullable)(bgImage.CGImage);
-//
-//    self.batteryView.backgroundColor = [bgImage mostColor];
-//    [self.batteryView setNeedsDisplay];
-//}
-//
+- (void)changeBgColorWithIndex:(kBgColor)bgoColor {
+
+    NSString *bgImageName;
+    switch (TopBookModelManager.bgColor) {
+        case kBgColor_default:
+            bgImageName = @"def_bg_375x667_";
+            break;
+        case kBgColor_ink:
+            bgImageName = @"ink_bg_375x667_";
+            break;
+        case kBgColor_flax:
+            bgImageName = @"flax_bg_375x667_";
+            break;
+        case kBgColor_green:
+            bgImageName = @"green_bg_375x667_";
+            break;
+        case kBgColor_peach:
+            bgImageName = @"peach_bg_375x667_";
+            break;
+        case kBgColor_Black:
+            bgImageName = @"coffee_mode_bg";
+            break;
+        default:
+            break;
+    }
+
+    if (TopBookModelManager.dayMode == kDayMode_night) {
+        UIColor *color = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+        NSMutableAttributedString *text = (NSMutableAttributedString *)self.contentLabel.attributedText;
+        text.color = color;
+        self.contentLabel.attributedText = text;
+
+        self.titleLabel.textColor = color;
+        self.timeLabel.textColor = color;
+        self.pageLabel.textColor = color;
+    } else {
+
+        NSMutableAttributedString *text = (NSMutableAttributedString *)self.contentLabel.attributedText;
+        text.color = kblackColor;
+        self.contentLabel.attributedText = text;
+
+        self.titleLabel.textColor = knormalColor;
+        self.timeLabel.textColor = knormalColor;
+        self.pageLabel.textColor = knormalColor;
+    }
+
+    UIImage *bgImage = UIImageName(bgImageName);
+    self.view.layer.contents = (__bridge id _Nullable)(bgImage.CGImage);
+
+    self.batteryView.backgroundColor = [bgImage mostColor];
+    [self.batteryView setNeedsDisplay];
+}
 
 #pragma mark - setter
 
@@ -223,6 +251,12 @@
         }
         
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString:[model.attributedString attributedSubstringFromRange:NSMakeRange(loc, len)]];
+        
+        if (TopBookModelManager.bgColor == 5) {
+                  text.color = kwhiteColor;
+              } else {
+                  text.color = kblackColor;
+              }
         return text;
     }
     return [[NSAttributedString alloc] init];

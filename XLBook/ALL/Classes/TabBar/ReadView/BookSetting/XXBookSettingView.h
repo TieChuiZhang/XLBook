@@ -16,21 +16,21 @@
 
  @param bgColor <#bgColor description#>
  */
-//- (void)changeLightbgColorSeleted:(kBgColor)bgColor;
+- (void)changeLightbgColorSeleted:(kBgColor)bgColor;
 
 - (void)changeNight;
 
 
 /** 字体缩小 */
-@property (nonatomic, copy) void(^changeSmallerFontBlock)(void);
+@property (nonatomic, copy) void(^changeSmallerFontBlock)();
 
 /** 字体放大 */
-@property (nonatomic, copy) void(^changeBiggerFontBlock)(void);
+@property (nonatomic, copy) void(^changeBiggerFontBlock)();
 
 /** 横竖屏切换 */
 //@property (nonatomic, copy) void(^landspaceBlock)();
 
 /** 更多设置 */
-@property (nonatomic, copy) void(^moreSettingBlock)(void);
+@property (nonatomic, copy) void(^moreSettingBlock)();
 
 @end

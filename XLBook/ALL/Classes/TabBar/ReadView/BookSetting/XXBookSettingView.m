@@ -9,6 +9,7 @@
 #define kItemW AdaWidth(44)
 
 #import "XXBookSettingView.h"
+#import "UIImage+Add.h"
 
 @interface XXBookSettingView()
 
@@ -66,12 +67,12 @@
     
     CGFloat settingWidth = AdaWidth(60);
     CGFloat fontBtnSpaceX = AdaWidth(20);
-//    CGSize buttonSize = CGSizeMake((kScreenWidth - fontBtnSpaceX*2 - settingWidth)/2, sImage.height);
+    CGSize buttonSize = CGSizeMake((kScreenWidth - fontBtnSpaceX*2 - settingWidth)/2, sImage.height);
     
     [smallButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.mas_top).offset(AdaWidth(12.f));
         make.left.equalTo(@(fontBtnSpaceX));
-        //make.size.mas_equalTo(buttonSize);
+        make.size.mas_equalTo(buttonSize);
     }];
     
     [bigButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -86,18 +87,18 @@
         make.width.mas_equalTo(settingWidth);
     }];
     
-//    MJWeakSelf;
-//    [[smallButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-//        if (weakSelf.changeSmallerFontBlock) {
-//            weakSelf.changeSmallerFontBlock();
-//        }
-//    }];
+    MJWeakSelf;
+    [[smallButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        if (weakSelf.changeSmallerFontBlock) {
+            weakSelf.changeSmallerFontBlock();
+        }
+    }];
     
-//    [[bigButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-//        if (weakSelf.changeBiggerFontBlock) {
-//            weakSelf.changeBiggerFontBlock();
-//        }
-//    }];
+    [[bigButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        if (weakSelf.changeBiggerFontBlock) {
+            weakSelf.changeBiggerFontBlock();
+        }
+    }];
     
 //    [[_landspaceButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
 //        if (weakself.landspaceBlock) {
@@ -105,11 +106,11 @@
 //        }
 //    }];
     
-//    [[settingButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-//        if (weakSelf.moreSettingBlock) {
-//            weakSelf.moreSettingBlock();
-//        }
-//    }];
+    [[settingButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        if (weakSelf.moreSettingBlock) {
+            weakSelf.moreSettingBlock();
+        }
+    }];
     
     _colorSubViews = [[NSMutableArray alloc] init];
     
@@ -120,10 +121,10 @@
     MAS_VIEW *prev;
     for (int i = 0; i < colors.count; i++) {
         
-        //kBgColor bgColor = i + 1;
+        kBgColor bgColor = i + 1;
         
         UIButton *colorButton = [[UIButton alloc] init];
-        //colorButton.tag = bgColor;
+        colorButton.tag = bgColor;
         [colorButton setBackgroundImage:UIImageName(colors[i]) forState:0];
         colorButton.layer.masksToBounds = YES;
         [colorButton setImage:UIImageName(@"setting_theme_selected") forState:UIControlStateSelected];
@@ -141,9 +142,9 @@
         
         prev = colorButton;
         
-//        if (kReadingManager.bgColor == bgColor) {
-//            [self seletedColor:colorButton];
-//        }
+        if (TopBookModelManager.bgColor == bgColor) {
+            [self seletedColor:colorButton];
+        }
         
         [_colorSubViews addObject:colorButton];
     }
@@ -177,34 +178,34 @@
     _colorSeletedButton.selected = NO;
     _colorSeletedButton = sender;
     
-//    kReadingManager.bgColor = sender.tag;
-//    kReadingManager.dayMode = kDayMode_light;
-//
-//    //查询设置model
-//    BookSettingModel *model = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
-//    model.dayMode = kReadingManager.dayMode;
-//    model.bgColor = sender.tag;
-//    [BookSettingModel encodeModel:model key:[BookSettingModel className]];
+    TopBookModelManager.bgColor = sender.tag;
+    TopBookModelManager.dayMode = kDayMode_light;
+    
+    //查询设置model
+    BookSettingModel *model = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
+    model.dayMode = TopBookModelManager.dayMode;
+    model.bgColor = sender.tag;
+    [BookSettingModel encodeModel:model key:[BookSettingModel className]];
     
     //发送通知到内容页面改变背景颜色
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWithChangeBg object:nil userInfo:@{kNotificationWithChangeBg:NSStringFormat(@"%ld", (long)sender.tag)}];
 }
 
 
-//- (void)changeLightbgColorSeleted:(kBgColor)bgColor {
-//
-//    UIButton *seletedButton;
-//    for (UIButton *button in _colorSubViews) {
-//        if (button.tag == bgColor) {
-//            seletedButton = button;
-//            break;
-//        }
-//    }
-//
-//    if (seletedButton) {
-//       [self seletedColor:seletedButton];
-//    }
-//}
+- (void)changeLightbgColorSeleted:(kBgColor)bgColor {
+    
+    UIButton *seletedButton;
+    for (UIButton *button in _colorSubViews) {
+        if (button.tag == bgColor) {
+            seletedButton = button;
+            break;
+        }
+    }
+    
+    if (seletedButton) {
+       [self seletedColor:seletedButton];
+    }
+}
 
 
 - (void)changeNight {

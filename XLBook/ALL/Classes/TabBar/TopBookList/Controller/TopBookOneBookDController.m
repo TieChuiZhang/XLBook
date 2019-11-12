@@ -13,7 +13,6 @@
 #import "TopBookOneBookHXJCell.h"
 #import "TopBookOneBookDModel.h"
 #import "XLTopOneBookNav.h"
-#import "TopBookModel.h"
 @interface TopBookOneBookDController ()<UITableViewDelegate,UITableViewDataSource,XLTopOneBookNavDelegate>
 @property (nonatomic, copy) NSString *bookID;
 @property (nonatomic, strong) XLTopBookOneHeaderView *xlTopBookOneHeaderView;

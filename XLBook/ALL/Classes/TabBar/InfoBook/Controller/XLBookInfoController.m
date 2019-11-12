@@ -22,13 +22,13 @@ static NSString *const reuseId = @"cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem = nil;
     LNProfileTopView *topView = [LNProfileTopView viewFromNib];
     topView.frame = CGRectMake(0, 0, kScreenWidth, kScreenWidth * 200 / 375.0);
     [self.view addSubview:topView];
     self.topView = topView;
     [self.view addSubview:self.tableView];
-    LeeWeakSelf(self)
+    //LeeWeakSelf(self)
     [topView setClickHeadIcon:^(LNProfileTopView * view) {
         //[weakself pickPicture];
     }];

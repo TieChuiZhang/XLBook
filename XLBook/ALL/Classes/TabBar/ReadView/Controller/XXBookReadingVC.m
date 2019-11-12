@@ -12,14 +12,14 @@
 //#import "XXSummaryVC.h"
 //#import "XXDatabase.h"
 #import "XXBookMenuView.h"
-//#import "XXReadSettingVC.h"
+#import "XXReadSettingVC.h"
 #import "XXBookReadingVC.h"
 #import "XXBookContentVC.h"
 #import "XXDirectoryVC.h"
 //#import "XXBookModel.h"
-#import "TopBookModel.h"
 #import "XLBookReadZJLBModel.h"
 #import "TopBookZJMLFZModel.h"
+#import "XXBookReadingBackViewController.h"
 @interface XXBookReadingVC () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *pageViewController;
@@ -503,26 +503,42 @@
         self.ispreChapter = NO;
         [self requestDataAndSetViewController];
     }else{
+        if (TopBookModelManager.transitionStyle == kTransitionStyle_default) {
+            self.pageCurrent ++;
+            XXBookContentVC *textVC = [self getpageBookContent];
+            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+        }
+        else if (TopBookModelManager.transitionStyle == kTransitionStyle_PageCurl) {
+            self.pageCurrent ++;
+            XXBookContentVC *textVC = [self getpageBookContent];
+            XXBookReadingBackViewController *backView = [[XXBookReadingBackViewController alloc] init];
+            [backView updateWithViewController:textVC];
+            [self.pageViewController setViewControllers:@[textVC, backView] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+        }
+        else {
+            _isTaping = YES;
+            LeeWeakSelf(self);
+            XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
+            self.pageCurrent = firstVc.page + 1;
+            self.view.userInteractionEnabled = NO;
+            self.pageViewController.view.userInteractionEnabled = NO;
+            XXBookContentVC *textVC = [self getpageBookContent];
+            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+                if (finished) {
+                    weakself.isTaping = NO;
+                    weakself.pageViewController.view.userInteractionEnabled = YES;
+                    weakself.view.userInteractionEnabled = YES;
+                }
+            }];
+        }
+        
 //        self.isTaping = YES;
 //        self.pageCurrent ++;
 //        XXBookContentVC *textVC = [self getpageBookContent];
 //        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 //
 //        self.isTaping = NO;
-        _isTaping = YES;
-        LeeWeakSelf(self);
-        XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
-        self.pageCurrent = firstVc.page + 1;
-        self.view.userInteractionEnabled = NO;
-        self.pageViewController.view.userInteractionEnabled = NO;
-        XXBookContentVC *textVC = [self getpageBookContent];
-        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
-            if (finished) {
-                weakself.isTaping = NO;
-                weakself.pageViewController.view.userInteractionEnabled = YES;
-                weakself.view.userInteractionEnabled = YES;
-            }
-        }];
+       
        
     }
 }
@@ -536,24 +552,33 @@
         return;
     }
     if (self.pageCurrent > 0){
-//        self.pageCurrent --;
-//        XXBookContentVC *textVC = [self getpageBookContent];
-//        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
-//        self.isTaping = NO;
-        LeeWeakSelf(self);
-        XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
-        self.pageCurrent = firstVc.page - 1;
-        _isTaping = YES;
-        self.view.userInteractionEnabled = NO;
-        self.pageViewController.view.userInteractionEnabled = NO;
-        XXBookContentVC *textVC = [self getpageBookContent];
-        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
-            if (finished) {
-                weakself.isTaping = NO;
-                weakself.pageViewController.view.userInteractionEnabled = YES;
-                weakself.view.userInteractionEnabled = YES;
-            }
-        }];
+        if (TopBookModelManager.transitionStyle == kTransitionStyle_default) {
+            self.pageCurrent --;
+            XXBookContentVC *textVC = [self getpageBookContent];
+            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+        }
+        else if (TopBookModelManager.transitionStyle == kTransitionStyle_PageCurl) {
+            self.pageCurrent --;
+            XXBookContentVC *textVC = [self getpageBookContent];
+            XXBookReadingBackViewController *backView = [[XXBookReadingBackViewController alloc] init];
+            [backView updateWithViewController:textVC];
+            [self.pageViewController setViewControllers:@[textVC, backView] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+        }else {
+           LeeWeakSelf(self);
+           XXBookContentVC *firstVc = [self.pageViewController.viewControllers firstObject];
+           self.pageCurrent = firstVc.page - 1;
+           _isTaping = YES;
+           self.view.userInteractionEnabled = NO;
+           self.pageViewController.view.userInteractionEnabled = NO;
+           XXBookContentVC *textVC = [self getpageBookContent];
+           [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+               if (finished) {
+                   weakself.isTaping = NO;
+                   weakself.pageViewController.view.userInteractionEnabled = YES;
+                   weakself.view.userInteractionEnabled = YES;
+               }
+           }];
+        }        
     }else{
         self.pageZJ --;
         self.isTaping = YES;
@@ -674,21 +699,21 @@
 //            NSUInteger font = kReadingManager.font + 1;
 //            [weakself changeWithFont:font];
 //        };
-//
-//        self.menuView.settingView.moreSettingBlock = ^{
-//            XXReadSettingVC *vc = [[XXReadSettingVC alloc] init];
-//            [weakSelf pushViewController:vc];
-//            vc.transitionStyleBlock = ^(kTransitionStyle style) {
-//                //先删除pageViewController在重新加上
-//                [weakSelf.pageViewController willMoveToParentViewController:nil];
-//                [weakSelf.pageViewController.view removeFromSuperview];
-//                [weakSelf.pageViewController removeFromParentViewController];
-//                kDealloc(weakSelf.pageViewController);
-//                [weakSelf pageViewController];
-//                [weakSelf requestDataAndSetViewController];
-//                [weakSelf showMenu];
-//            };
-//        };
+
+        self.menuView.settingView.moreSettingBlock = ^{
+            XXReadSettingVC *vc = [[XXReadSettingVC alloc] init];
+            [weakself pushViewController:vc];
+            vc.transitionStyleBlock = ^(kTransitionStyle style) {
+                //先删除pageViewController在重新加上
+                [weakself.pageViewController willMoveToParentViewController:nil];
+                [weakself.pageViewController.view removeFromSuperview];
+                [weakself.pageViewController removeFromParentViewController];
+                kDealloc(weakself.pageViewController);
+                [weakself pageViewController];
+                [weakself requestDataAndSetViewController];
+                [weakself showMenu];
+            };
+        };
 }
 
 
@@ -737,22 +762,21 @@
 
 #pragma mark - 改变内容字体大小
 - (void)changeWithFont:(NSUInteger)font {
-    
-    if (font < 5) return;
-    
-    //    BookSettingModel *md = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
-    //    md.font = font;
-    //    kReadingManager.font = md.font;
-    //    [BookSettingModel encodeModel:md key:[BookSettingModel className]];
-    //
-    //    XXBookChapterModel *bookModel = kReadingManager.chapters[kReadingManager.chapter];
-    //    [kReadingManager pagingWithBounds:kReadingFrame withFont:fontSize(kReadingManager.font) andChapter:bookModel];
-    //
-    //    //跳转回该章的第一页
-    //    if (kReadingManager.page < bookModel.pageCount) {
-    //        kReadingManager.page = 0;
-    //    }
-    //    [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+//
+//    if (font < 5) return;
+//        BookSettingModel *md = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
+//        md.font = font;
+//        TopBookModelManager.font = md.font;
+//        [BookSettingModel encodeModel:md key:[BookSettingModel className]];
+//
+//        XXBookChapterModel *bookModel = kReadingManager.chapters[kReadingManager.chapter];
+//        [kReadingManager pagingWithBounds:kReadingFrame withFont:fontSize(kReadingManager.font) andChapter:bookModel];
+//
+//        //跳转回该章的第一页
+//        if (kReadingManager.page < bookModel.pageCount) {
+//            kReadingManager.page = 0;
+//        }
+//        [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
 
@@ -801,9 +825,17 @@
 - (UIPageViewController *)pageViewController {
     
     if (!_pageViewController) {
-        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-        navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                      options:nil];
+        //NSDictionary *options = @{UIPageViewControllerOptionSpineLocationKey : @(UIPageViewControllerSpineLocationMin)};
+        UIPageViewControllerTransitionStyle style;
+        //BOOL doubleSided = NO;
+        if (TopBookModelManager.transitionStyle == kTransitionStyle_Scroll) {
+            style = UIPageViewControllerTransitionStyleScroll;
+        }
+        else {
+            //doubleSided = YES;
+            style = UIPageViewControllerTransitionStylePageCurl;
+        }
+        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:style navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
         _pageViewController.delegate = self;
         _pageViewController.dataSource = self;
         [self.view addSubview:_pageViewController.view];

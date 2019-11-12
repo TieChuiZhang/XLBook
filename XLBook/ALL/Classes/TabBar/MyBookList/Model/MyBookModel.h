@@ -36,12 +36,12 @@ typedef NS_ENUM(NSInteger, kbookBodyStatus) {
 };
 
 
-@interface MyBookModel : BaseModel
+@interface MyBookModel : NSObject
 
 @end
 NS_ASSUME_NONNULL_END
 
-@interface BookSettingModel : NSObject
+@interface BookSettingModel : BaseModel
 
 @property (nonatomic, assign) NSUInteger font;
 

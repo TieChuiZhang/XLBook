@@ -9,7 +9,8 @@
 #ifndef XLBook_pch
 #define XLBook_pch
 #import <UIKit/UIKit.h>
-#import "YYKit.h"
+#import <YYKit.h>
+#import <YYKit/NSObject+YYModel.h>
 #import <MJExtension/MJExtension.h>
 #import <Masonry/Masonry.h>
 #import "LNSkinHelper.h"
@@ -37,6 +38,7 @@
 #import "XXDatabase.h"
 #import <MJRefresh/MJRefresh.h>
 #import "PYSearch.h"
+#import "TopBookModel.h"
 static NSString *kBookTableName = @"XLBookTableName";
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
@@ -69,13 +71,16 @@ static NSString *kBookTableName = @"XLBookTableName";
 #define kReadingTopH 40
 #define kReadingBottomH 35
 #define kReadingFrame CGRectMake(kReadSpaceX, kReadingTopH, kScreenWidth - kReadSpaceX*2, kScreenHeight - kReadingTopH - kReadingBottomH - kSafeAreaInsets.safeAreaInsets.top - kSafeAreaInsets.safeAreaInsets.bottom)
-#endif /* XLBook_pch */
 
 
 #define YYModelSynthCoderAndHash \
-- (void)encodeWithCoder:(NSCoder *)aCoder { [self yy_modelEncodeWithCoder:aCoder]; } \
-- (id)initWithCoder:(NSCoder *)aDecoder { return [self yy_modelInitWithCoder:aDecoder]; } \
-- (id)copyWithZone:(NSZone *)zone { return [self yy_modelCopy]; } \
-- (NSUInteger)hash { return [self yy_modelHash]; } \
-- (BOOL)isEqual:(id)object { return [self yy_modelIsEqual:object]; }
+- (void)encodeWithCoder:(NSCoder *)aCoder { [self modelEncodeWithCoder:aCoder]; } \
+- (id)initWithCoder:(NSCoder *)aDecoder { return [self modelInitWithCoder:aDecoder]; } \
+- (id)copyWithZone:(NSZone *)zone { return [self modelCopy]; } \
+- (NSUInteger)hash { return [self modelHash]; } \
+- (BOOL)isEqual:(id)object { return [self modelIsEqual:object]; }
+#endif /* XLBook_pch */
+
+
+
 

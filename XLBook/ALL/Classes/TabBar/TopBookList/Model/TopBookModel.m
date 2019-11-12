@@ -29,13 +29,13 @@
         if (!settingModel) {
             //没有存档
             settingModel = [[BookSettingModel alloc] init];
-            settingModel.font = 20;
+            settingModel.font = 18;
             settingModel.dayMode = kDayMode_light;
             settingModel.bgColor = kBgColor_default;
             settingModel.transitionStyle = kTransitionStyle_default;
             [BookSettingModel encodeModel:settingModel key:[BookSettingModel className]];
 
-            readM.font = 20;
+            readM.font = 18;
             readM.dayMode = settingModel.dayMode;
             readM.bgColor = settingModel.bgColor;
             readM.transitionStyle = settingModel.transitionStyle;

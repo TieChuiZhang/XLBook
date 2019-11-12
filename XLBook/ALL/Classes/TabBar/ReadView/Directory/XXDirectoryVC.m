@@ -10,7 +10,6 @@
 #import "XXDirectoryCell.h"
 #import "XLBookReadZJLBModel.h"
 #import "TopBookZJMLFZModel.h"
-#import "TopBookModel.h"
 #define STATUS_BAR_HEIGHT ([[UIApplication sharedApplication] statusBarFrame].size.height)
 @interface XXDirectoryVC ()
 

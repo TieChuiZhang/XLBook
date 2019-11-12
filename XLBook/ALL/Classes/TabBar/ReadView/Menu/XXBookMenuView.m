@@ -153,10 +153,10 @@
         if (i == 0) {
             _dayButton = button;
 
-//            if (kReadingManager.bgColor != 5) {
-//                [button setImage:UIImageName(@"day_mode") forState:0];
-//                [button setTitle:@"白天" forState:UIControlStateNormal];
-//            }
+            if (TopBookModelManager.bgColor != 5) {
+                [button setImage:UIImageName(@"day_mode") forState:0];
+                [button setTitle:@"白天" forState:UIControlStateNormal];
+            }
         }
     }
 }
@@ -164,30 +164,30 @@
 
 - (void)changeDayAndNight {
     
-//    if (kReadingManager.dayMode == kDayMode_light) {
-//        
-//        kReadingManager.dayMode = kDayMode_night;
-//        kReadingManager.bgColor = kBgColor_Black;
-//        
-//        BookSettingModel *model = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
-//        model.dayMode = kDayMode_light;
-//        model.bgColor = kBgColor_Black;
-//        [BookSettingModel encodeModel:model key:[BookSettingModel className]];
+    if (TopBookModelManager.dayMode == kDayMode_light) {
         
-//        [_dayButton setImage:[UIImage imageNamed:@"night_mode"] forState:0];
-//        [_dayButton setTitle:@"夜间" forState:UIControlStateNormal];
-//
-//        [_settingView changeNight];
-//
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWithChangeBg object:nil userInfo:@{kNotificationWithChangeBg:NSStringFormat(@"%ld", (long)kBgColor_Black)}];
-//
-//    } else {
-//
-//        [_dayButton setImage:[UIImage imageNamed:@"day_mode"] forState:0];
-//        [_dayButton setTitle:@"白天" forState:UIControlStateNormal];
-//
-//        [_settingView changeLightbgColorSeleted:kBgColor_default];
-//    }
+        TopBookModelManager.dayMode = kDayMode_night;
+        TopBookModelManager.bgColor = kBgColor_Black;
+        
+        BookSettingModel *model = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
+        model.dayMode = kDayMode_light;
+        model.bgColor = kBgColor_Black;
+        [BookSettingModel encodeModel:model key:[BookSettingModel className]];
+        
+        [_dayButton setImage:[UIImage imageNamed:@"night_mode"] forState:0];
+        [_dayButton setTitle:@"夜间" forState:UIControlStateNormal];
+
+        [_settingView changeNight];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWithChangeBg object:nil userInfo:@{kNotificationWithChangeBg:NSStringFormat(@"%ld", (long)kBgColor_Black)}];
+
+    } else {
+
+        [_dayButton setImage:[UIImage imageNamed:@"day_mode"] forState:0];
+        [_dayButton setTitle:@"白天" forState:UIControlStateNormal];
+
+        [_settingView changeLightbgColorSeleted:kBgColor_default];
+    }
 }
 
 

@@ -44,6 +44,12 @@
 		9B17A75F23796754008A32BC /* MyBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A75C23796754008A32BC /* MyBookCell.m */; };
 		9B17A7622379676A008A32BC /* MyBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A7612379676A008A32BC /* MyBookModel.m */; };
 		9B17A76523796CC0008A32BC /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A76323796CC0008A32BC /* BaseModel.m */; };
+		9B17A771237A4FCA008A32BC /* XXReadSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A76B237A4FCA008A32BC /* XXReadSettingModel.m */; };
+		9B17A772237A4FCA008A32BC /* XXReadSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A76C237A4FCA008A32BC /* XXReadSettingVC.m */; };
+		9B17A773237A4FCA008A32BC /* XXReadSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A76D237A4FCA008A32BC /* XXReadSettingCell.m */; };
+		9B17A776237A58B7008A32BC /* XXBookSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A775237A58B7008A32BC /* XXBookSettingView.m */; };
+		9B17A779237A5964008A32BC /* UIImage+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A778237A5964008A32BC /* UIImage+Add.m */; };
+		9B17A77C237A61C8008A32BC /* XXBookReadingBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B17A77B237A61C7008A32BC /* XXBookReadingBackViewController.m */; };
 		9B32B05F235D846200FE71A9 /* MyBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B05E235D846200FE71A9 /* MyBookController.m */; };
 		9B32B062235D847500FE71A9 /* TopBookController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B061235D847500FE71A9 /* TopBookController.m */; };
 		9B32B068235D852300FE71A9 /* XLBookNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B32B067235D852300FE71A9 /* XLBookNavController.m */; };
@@ -79,7 +85,6 @@
 		9B9FDE052366D3C700B1AA73 /* UIViewController+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FDDAD2366D3C700B1AA73 /* UIViewController+Add.m */; };
 		9B9FDE062366D3C700B1AA73 /* YYLabel+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FDDB12366D3C700B1AA73 /* YYLabel+Add.m */; };
 		9B9FDE072366D3C700B1AA73 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FDDB22366D3C700B1AA73 /* UIButton+EnlargeTouchArea.m */; };
-		9B9FDE082366D3C700B1AA73 /* XXBookSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FDDB62366D3C700B1AA73 /* XXBookSettingView.m */; };
 		9B9FDE092366D3C700B1AA73 /* XXDirectoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FDDBB2366D3C700B1AA73 /* XXDirectoryCell.m */; };
 		9B9FDE0A2366D3C700B1AA73 /* XXDirectoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FDDBC2366D3C700B1AA73 /* XXDirectoryVC.m */; };
 		9B9FDE0B2366D3C700B1AA73 /* XXBookReadingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FDDBF2366D3C700B1AA73 /* XXBookReadingVC.m */; };
@@ -183,6 +188,18 @@
 		9B17A7612379676A008A32BC /* MyBookModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBookModel.m; sourceTree = "<group>"; };
 		9B17A76323796CC0008A32BC /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		9B17A76423796CC0008A32BC /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		9B17A76B237A4FCA008A32BC /* XXReadSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXReadSettingModel.m; sourceTree = "<group>"; };
+		9B17A76C237A4FCA008A32BC /* XXReadSettingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXReadSettingVC.m; sourceTree = "<group>"; };
+		9B17A76D237A4FCA008A32BC /* XXReadSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXReadSettingCell.m; sourceTree = "<group>"; };
+		9B17A76E237A4FCA008A32BC /* XXReadSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXReadSettingModel.h; sourceTree = "<group>"; };
+		9B17A76F237A4FCA008A32BC /* XXReadSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXReadSettingCell.h; sourceTree = "<group>"; };
+		9B17A770237A4FCA008A32BC /* XXReadSettingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXReadSettingVC.h; sourceTree = "<group>"; };
+		9B17A774237A58B7008A32BC /* XXBookSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBookSettingView.h; sourceTree = "<group>"; };
+		9B17A775237A58B7008A32BC /* XXBookSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBookSettingView.m; sourceTree = "<group>"; };
+		9B17A777237A5964008A32BC /* UIImage+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Add.h"; sourceTree = "<group>"; };
+		9B17A778237A5964008A32BC /* UIImage+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Add.m"; sourceTree = "<group>"; };
+		9B17A77A237A61C7008A32BC /* XXBookReadingBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBookReadingBackViewController.h; sourceTree = "<group>"; };
+		9B17A77B237A61C7008A32BC /* XXBookReadingBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBookReadingBackViewController.m; sourceTree = "<group>"; };
 		9B32B05D235D846200FE71A9 /* MyBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBookController.h; sourceTree = "<group>"; };
 		9B32B05E235D846200FE71A9 /* MyBookController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBookController.m; sourceTree = "<group>"; };
 		9B32B060235D847500FE71A9 /* TopBookController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopBookController.h; sourceTree = "<group>"; };
@@ -252,8 +269,6 @@
 		9B9FDDB22366D3C700B1AA73 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
 		9B9FDDB32366D3C700B1AA73 /* UIViewController+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Add.h"; sourceTree = "<group>"; };
 		9B9FDDB42366D3C700B1AA73 /* UIButton+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Add.h"; sourceTree = "<group>"; };
-		9B9FDDB62366D3C700B1AA73 /* XXBookSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXBookSettingView.m; sourceTree = "<group>"; };
-		9B9FDDB72366D3C700B1AA73 /* XXBookSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXBookSettingView.h; sourceTree = "<group>"; };
 		9B9FDDB92366D3C700B1AA73 /* XXDirectoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDirectoryVC.h; sourceTree = "<group>"; };
 		9B9FDDBA2366D3C700B1AA73 /* XXDirectoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXDirectoryCell.h; sourceTree = "<group>"; };
 		9B9FDDBB2366D3C700B1AA73 /* XXDirectoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXDirectoryCell.m; sourceTree = "<group>"; };
@@ -493,6 +508,19 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9B17A76A237A4FCA008A32BC /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				9B17A76E237A4FCA008A32BC /* XXReadSettingModel.h */,
+				9B17A76B237A4FCA008A32BC /* XXReadSettingModel.m */,
+				9B17A770237A4FCA008A32BC /* XXReadSettingVC.h */,
+				9B17A76C237A4FCA008A32BC /* XXReadSettingVC.m */,
+				9B17A76F237A4FCA008A32BC /* XXReadSettingCell.h */,
+				9B17A76D237A4FCA008A32BC /* XXReadSettingCell.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		9B32B06C235D89B400FE71A9 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,6 +574,7 @@
 		9B9FDDA52366D3C700B1AA73 /* ReadView */ = {
 			isa = PBXGroup;
 			children = (
+				9B17A76A237A4FCA008A32BC /* Setting */,
 				9B9FDE252366D40E00B1AA73 /* ReadBase */,
 				9B9FDDA62366D3C700B1AA73 /* Category */,
 				9B9FDDB52366D3C700B1AA73 /* BookSetting */,
@@ -583,8 +612,10 @@
 		9B9FDDB52366D3C700B1AA73 /* BookSetting */ = {
 			isa = PBXGroup;
 			children = (
-				9B9FDDB62366D3C700B1AA73 /* XXBookSettingView.m */,
-				9B9FDDB72366D3C700B1AA73 /* XXBookSettingView.h */,
+				9B17A777237A5964008A32BC /* UIImage+Add.h */,
+				9B17A778237A5964008A32BC /* UIImage+Add.m */,
+				9B17A774237A58B7008A32BC /* XXBookSettingView.h */,
+				9B17A775237A58B7008A32BC /* XXBookSettingView.m */,
 			);
 			path = BookSetting;
 			sourceTree = "<group>";
@@ -603,6 +634,8 @@
 		9B9FDDBD2366D3C700B1AA73 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9B17A77A237A61C7008A32BC /* XXBookReadingBackViewController.h */,
+				9B17A77B237A61C7008A32BC /* XXBookReadingBackViewController.m */,
 				9B17A749237951D0008A32BC /* SZPageController */,
 				9B9FDDBE2366D3C700B1AA73 /* XXBookContentVC.h */,
 				9B9FDDDE2366D3C700B1AA73 /* XXBookContentVC.m */,
@@ -1109,6 +1142,7 @@
 				9BD93712235D72B200B34B13 /* YBNetworkResponse.m in Sources */,
 				9B32B0C1236056A600FE71A9 /* TopBookHXGModel.m in Sources */,
 				9B01CD9C23711075003EBA12 /* LNProfileTopView.m in Sources */,
+				9B17A771237A4FCA008A32BC /* XXReadSettingModel.m in Sources */,
 				9B01CDCC237112EC003EBA12 /* TZImagePickerController.m in Sources */,
 				9B9FDE312366D40E00B1AA73 /* BaseTableViewController.m in Sources */,
 				9B01CDCE237112EC003EBA12 /* TZGifPhotoPreviewController.m in Sources */,
@@ -1120,6 +1154,7 @@
 				9B01CDD22371525F003EBA12 /* ToolsObj.m in Sources */,
 				9B32B075235D89D900FE71A9 /* LNConst.m in Sources */,
 				9B01CDC3237112EC003EBA12 /* TZAssetModel.m in Sources */,
+				9B17A779237A5964008A32BC /* UIImage+Add.m in Sources */,
 				9B9FDE232366D3C700B1AA73 /* XXSafeAreaInsets.m in Sources */,
 				9B9FDE1C2366D3C700B1AA73 /* XLBookReadZJLBModel.mm in Sources */,
 				9B32B0A2235ECAA100FE71A9 /* XLTopOneBookNav.m in Sources */,
@@ -1137,8 +1172,8 @@
 				9B32B0BE2360503D00FE71A9 /* TopBookOneBookHXJListCell.m in Sources */,
 				9B9FDE032366D3C700B1AA73 /* UILabel+Add.m in Sources */,
 				9B9FDE242366D3C700B1AA73 /* HUD.m in Sources */,
-				9B9FDE082366D3C700B1AA73 /* XXBookSettingView.m in Sources */,
 				9B01CD8E236ABF15003EBA12 /* NSBundle+PYSearchExtension.m in Sources */,
+				9B17A773237A4FCA008A32BC /* XXReadSettingCell.m in Sources */,
 				9BD9360B235D717000B34B13 /* main.m in Sources */,
 				9B32B08B235DA07100FE71A9 /* MBProgressHUD+LNHUD.m in Sources */,
 				9B17A7622379676A008A32BC /* MyBookModel.m in Sources */,
@@ -1150,6 +1185,7 @@
 				9B01CDC6237112EC003EBA12 /* TZPhotoPreviewController.m in Sources */,
 				9B01CD97236C1E81003EBA12 /* XLBookInfoController.m in Sources */,
 				9BE63E502375A95B00C87BCC /* UIPageViewController+PageControllerTool.m in Sources */,
+				9B17A772237A4FCA008A32BC /* XXReadSettingVC.m in Sources */,
 				9B32B06B235D860400FE71A9 /* XLTabBarBookController.m in Sources */,
 				9B17A74E237951D0008A32BC /* UIView+SZPageController.m in Sources */,
 				9B32B094235DBE0400FE71A9 /* TopBookDCell.m in Sources */,
@@ -1160,6 +1196,7 @@
 				9B9FDE1A2366D3C700B1AA73 /* XXBookMenuView.m in Sources */,
 				9BD93714235D72B200B34B13 /* YBNetworkManager.m in Sources */,
 				9B01CDC4237112EC003EBA12 /* NSBundle+TZImagePicker.m in Sources */,
+				9B17A77C237A61C8008A32BC /* XXBookReadingBackViewController.m in Sources */,
 				9B32B09F235EB01D00FE71A9 /* TopBookOneBookDController.m in Sources */,
 				9B32B074235D89D900FE71A9 /* LNSkinHelper.m in Sources */,
 				9B32B081235D9A3F00FE71A9 /* LeeRunTimePush.m in Sources */,
@@ -1173,6 +1210,7 @@
 				9B9FDE042366D3C700B1AA73 /* UIButton+Add.m in Sources */,
 				9B32B0B22360211700FE71A9 /* TopBookOneBookMLCell.m in Sources */,
 				9B32B08E235DA10F00FE71A9 /* XLAPI.m in Sources */,
+				9B17A776237A58B7008A32BC /* XXBookSettingView.m in Sources */,
 				9B9FDE182366D3C700B1AA73 /* XXBookContentVC.m in Sources */,
 				9B32B087235D9F9700FE71A9 /* TopBookModel.m in Sources */,
 				9B32B0B523602E0600FE71A9 /* TopBookOneBookTJCell.m in Sources */,
