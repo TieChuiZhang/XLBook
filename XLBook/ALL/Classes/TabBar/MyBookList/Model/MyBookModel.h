@@ -24,9 +24,9 @@ typedef NS_ENUM(NSInteger, kBgColor) {
 };
 
 typedef NS_ENUM(NSInteger, kTransitionStyle) {
-    kTransitionStyle_Scroll, //默认无效果
+    kTransitionStyle_Scroll,//左右翻页
     kTransitionStyle_PageCurl, //模拟翻页
-    kTransitionStyle_default, //左右翻页
+    kTransitionStyle_default, //默认无效果
 };
 
 typedef NS_ENUM(NSInteger, kbookBodyStatus) {

@@ -53,4 +53,5 @@ typedef NS_ENUM(NSUInteger, kBookMenuType) {
  */
 - (void)changeDayAndNight;
 
+- (void)abcbbbbbb;
 @end

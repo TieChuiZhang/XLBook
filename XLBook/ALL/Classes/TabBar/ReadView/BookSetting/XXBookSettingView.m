@@ -10,7 +10,7 @@
 
 #import "XXBookSettingView.h"
 #import "UIImage+Add.h"
-
+#import "XXBookMenuView.h"
 @interface XXBookSettingView()
 
 @property (nonatomic, strong) UIButton *smallButton;
@@ -22,6 +22,8 @@
 @property (nonatomic, strong) UIButton *colorSeletedButton;
 
 //@property (nonatomic, strong) UIButton *landspaceButton;
+
+
 
 @end
 
@@ -169,7 +171,6 @@
     }
 }
 
-
 - (void)seletedColor:(UIButton *)sender {
     
     if (sender.selected) return;
@@ -180,7 +181,6 @@
     
     TopBookModelManager.bgColor = sender.tag;
     TopBookModelManager.dayMode = kDayMode_light;
-    
     //查询设置model
     BookSettingModel *model = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
     model.dayMode = TopBookModelManager.dayMode;
@@ -189,6 +189,10 @@
     
     //发送通知到内容页面改变背景颜色
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationWithChangeBg object:nil userInfo:@{kNotificationWithChangeBg:NSStringFormat(@"%ld", (long)sender.tag)}];
+    
+    if ([self.deleagte respondsToSelector:@selector(xxBookSettingViewDelegteDelegteView:)]) {
+        [self.deleagte xxBookSettingViewDelegteDelegteView:self];
+    }
 }
 
 
@@ -206,7 +210,6 @@
        [self seletedColor:seletedButton];
     }
 }
-
 
 - (void)changeNight {
     for (UIButton *button in _colorSubViews) {

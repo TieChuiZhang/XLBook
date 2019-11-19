@@ -46,6 +46,7 @@
             readM.font = settingModel.font;
             readM.bgColor = settingModel.bgColor;
             readM.transitionStyle = settingModel.transitionStyle;
+            readM.dayMode = settingModel.dayMode;
         }
     });
     return readM;

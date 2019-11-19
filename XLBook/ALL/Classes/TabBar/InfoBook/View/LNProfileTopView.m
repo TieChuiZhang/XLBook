@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *headIcon;
 
 @end
-
 @implementation LNProfileTopView
 
 - (void)awakeFromNib

@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // https://appios3.zygjzl.com/top/lady/top/commend/week/1.html
     self.view.backgroundColor = [UIColor colorWithHexString:@"EBECF0"];
     self.dlListDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"FLList" ofType:@"plist"]];
     [self setupViews];

@@ -204,18 +204,52 @@
     }
 }
 
+- (NSString *)xlZJNRSFBookWithBookID:(NSString *)bookID
+{
+    NSString *urlHeaderStr;
+    if ([self.bookID length] ==6) {
+        NSInteger str3 = [[self.bookID substringToIndex:3] integerValue];
+        str3 ++;
+        urlHeaderStr = [NSString stringWithFormat: @"%ld", str3];
+        NSLog(@"6");
+    }else if ([self.bookID length] ==5){
+        NSInteger str3 = [[self.bookID substringToIndex:2] integerValue];
+        str3 ++;
+        urlHeaderStr = [NSString stringWithFormat: @"%ld", str3];
+        NSLog(@"5");
+    }else if ([self.bookID length] ==4){
+        NSInteger str3 = [[self.bookID substringToIndex:1] integerValue];
+        str3 ++;
+        urlHeaderStr = [NSString stringWithFormat: @"%ld", str3];
+        NSLog(@"4");
+    }else if ([self.bookID length] ==3){
+        urlHeaderStr = @"1";
+        NSLog(@"3");
+    }else if ([self.bookID length] ==2){
+        urlHeaderStr = @"1";
+        NSLog(@"2");
+    }
+    return urlHeaderStr;
+}
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    //https://appios3.zygjzl.com/BookFiles/Html/468/467491/info.html
     //https://appios3.zygjzl.com/BookFiles/Html/446/445936/info.html
+    //https://shuapi.jiaston.com/info/%@.html
+    
+    NSString *urlHeaderStr = [self xlZJNRSFBookWithBookID:self.bookID];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [TopBookModelManager getOneBookClassifyWithTableView:TopBookModelManager.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://shuapi.jiaston.com/info/%@.html",self.bookID] success:^(id  _Nonnull responseObject) {
+    [TopBookModelManager getOneBookClassifyWithTableView:TopBookModelManager.tableView WithHeaderxlTopBookOneHeaderView:self.xlTopBookOneHeaderView WithUrlString:[NSString stringWithFormat:@"https://appios3.zygjzl.com/BookFiles/Html/%@/%@/info.html",urlHeaderStr,self.bookID] success:^(id  _Nonnull responseObject) {
     } failure:^(NSError * _Nonnull error) {
         
     }];
     //目录
-    [TopBookModelManager getAllReadBookZJLB:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/",self.bookID] BookIDString:self.bookID];
+    
+    //https://appios3.zygjzl.com/BookFiles/Html/468/467491/index.html
+    [TopBookModelManager getAllReadBookZJLB:[NSString stringWithFormat:@"https://appios3.zygjzl.com/BookFiles/Html/%@/%@/index.html",urlHeaderStr,self.bookID] BookIDString:self.bookID];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

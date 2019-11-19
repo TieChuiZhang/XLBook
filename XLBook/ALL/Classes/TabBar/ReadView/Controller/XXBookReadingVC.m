@@ -229,9 +229,6 @@
     
     [TopBookModelManager getAllReadBookZJNR:[[NSString stringWithFormat:@"https://appios3.zygjzl.com//BookFiles/Html/%@/%@/%@.html",urlHeaderStr,self.bookID,self.mlArr[self.pageZJ]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] ChapterID:self.mlArr[self.pageZJ] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
         weakself.xlBookReadZJNRModel = responseObject;
-               XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
-               contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
-               //contentVC.chapter = kReadingManager.chapter;
                weakself.xlBookReadZJNRModel = responseObject;
                [weakself.pageViewController setViewControllers:@[[weakself getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     } failure:^(NSError * _Nonnull error) {
@@ -442,7 +439,7 @@
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
         if (weakself.ispreChapter) {
-            [TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(18) andChapter:weakself.xlBookReadZJNRModel];
+            [TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(TopBookModelManager.font) andChapter:weakself.xlBookReadZJNRModel];
             contentVC.page = TopBookModelManager.pagePrevious;
             weakself.pageCurrent = TopBookModelManager.pagePrevious;
         }else{
@@ -506,14 +503,14 @@
         if (TopBookModelManager.transitionStyle == kTransitionStyle_default) {
             self.pageCurrent ++;
             XXBookContentVC *textVC = [self getpageBookContent];
-            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:nil];
+            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         }
         else if (TopBookModelManager.transitionStyle == kTransitionStyle_PageCurl) {
             self.pageCurrent ++;
             XXBookContentVC *textVC = [self getpageBookContent];
             XXBookReadingBackViewController *backView = [[XXBookReadingBackViewController alloc] init];
             [backView updateWithViewController:textVC];
-            [self.pageViewController setViewControllers:@[textVC, backView] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+            [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
         }
         else {
             _isTaping = YES;
@@ -531,15 +528,6 @@
                 }
             }];
         }
-        
-//        self.isTaping = YES;
-//        self.pageCurrent ++;
-//        XXBookContentVC *textVC = [self getpageBookContent];
-//        [self.pageViewController setViewControllers:@[textVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-//
-//        self.isTaping = NO;
-       
-       
     }
 }
 
@@ -589,28 +577,47 @@
 
 - (void)requestDataAndSetViewController {
     LeeWeakSelf(self);
-    [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,self.mlArr[self.pageZJ]] ChapterID:self.mlArr[self.pageZJ] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
+    NSString *urlHeaderStr = [self xlZJNRSFBookWithBookID:self.bookID];
+    [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://appios3.zygjzl.com//BookFiles/Html/%@/%@/%@.html",urlHeaderStr,self.bookID,self.mlArr[self.pageZJ]] ChapterID:self.mlArr[self.pageZJ] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
         weakself.xlBookReadZJNRModel = responseObject;
         XXBookContentVC *contentVC = [[XXBookContentVC alloc] init];
         contentVC.xlBookReadZJNRModel = self.xlBookReadZJNRModel;
         //contentVC.chapter = kReadingManager.chapter;
         if (weakself.ispreChapter) {
-            [TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(18) andChapter:weakself.xlBookReadZJNRModel];
+            [TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(TopBookModelManager.font) andChapter:weakself.xlBookReadZJNRModel];
             contentVC.page = TopBookModelManager.pagePrevious;
             weakself.pageCurrent = TopBookModelManager.pagePrevious;
-            [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
-                if (finished) {
-                    weakself.isTaping = NO;
-                }
-            }];
+            if (TopBookModelManager.transitionStyle ==  kTransitionStyle_Scroll){
+                [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+                    if (finished) {
+                        weakself.isTaping = NO;
+                    }
+                }];
+            }else{
+                [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionReverse animated:NO completion:^(BOOL finished) {
+                    if (finished) {
+                        weakself.isTaping = NO;
+                    }
+                }];
+            }
         }else{
+            NSLog(@"222");
             contentVC.page = weakself.pageCurrent;
-            [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
-                if (finished) {
-                    weakself.isTaping = NO;
-                }
-            }];
+            if (TopBookModelManager.transitionStyle ==  kTransitionStyle_Scroll){
+                [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+                    if (finished) {
+                        weakself.isTaping = NO;
+                    }
+                }];
+            }else{
+                [self.pageViewController setViewControllers:@[contentVC] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
+                    if (finished) {
+                        weakself.isTaping = NO;
+                    }
+                }];
+            }
         }
+        
         
     } failure:^(NSError * _Nonnull error) {
         
@@ -635,6 +642,9 @@
                 //TopBookModel *manager = [TopBookModel shareReadingManager];
                 TopBookOneBookDModel *dbmodel = [kDatabase getBookWithId:weakself.bookID];
                 TopBookOneBookDModel *model = [TopBookOneBookDModel new];
+                BookSettingModel *settingModel = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
+                settingModel.dayMode = TopBookModelManager.dayMode;
+                [BookSettingModel encodeModel:settingModel key:[BookSettingModel className]];
                 if (dbmodel) {
                     model.Id = self.bookID;
                     model.page = self.pageCurrent;
@@ -662,7 +672,7 @@
                 break;
             case kBookMenuType_day: {
                 //白天黑夜切换
-                //[weakSelf.menuView changeDayAndNight];
+                [weakself.menuView changeDayAndNight];
             }
                 break;
             case kBookMenuType_directory: {
@@ -679,6 +689,7 @@
             case kBookMenuType_setting: {
                 //设置
                 [weakself.menuView showOrHiddenSettingView];
+                
             }
                 break;
                 
@@ -688,17 +699,17 @@
     }];
     
     
-//        self.menuView.settingView.changeSmallerFontBlock = ^{
-//            //字体缩小
-//            NSUInteger font = kReadingManager.font - 1;
-//            [weakself changeWithFont:font];
-//        };
-//
-//        self.menuView.settingView.changeBiggerFontBlock = ^{
-//            //字体放大
-//            NSUInteger font = kReadingManager.font + 1;
-//            [weakself changeWithFont:font];
-//        };
+        self.menuView.settingView.changeSmallerFontBlock = ^{
+            //字体缩小
+            NSUInteger font = TopBookModelManager.font - 1;
+            [weakself changeWithFont:font];
+        };
+
+        self.menuView.settingView.changeBiggerFontBlock = ^{
+            //字体放大
+            NSUInteger font = TopBookModelManager.font + 1;
+            [weakself changeWithFont:font];
+        };
 
         self.menuView.settingView.moreSettingBlock = ^{
             XXReadSettingVC *vc = [[XXReadSettingVC alloc] init];
@@ -730,9 +741,10 @@
     
     //选择章节
     LeeWeakSelf(self);
+    NSString *urlHeaderStr = [self xlZJNRSFBookWithBookID:self.bookID];
     directoryVC.selectChapter = ^(NSInteger chapter) {
         [weakself showMenu];
-        [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://shuapi.jiaston.com/book/%@/%@.html",self.bookID,weakself.mlArr[chapter]] ChapterID:weakself.mlArr[chapter] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
+        [TopBookModelManager getAllReadBookZJNR:[NSString stringWithFormat:@"https://appios3.zygjzl.com//BookFiles/Html/%@/%@/%@.html",urlHeaderStr,self.bookID,weakself.mlArr[chapter]] ChapterID:weakself.mlArr[chapter] bookIDString:self.bookID success:^(id  _Nonnull responseObject) {
             weakself.pageCurrent = 0;
             weakself.pageZJ = chapter;
             weakself.xlBookReadZJNRModel = responseObject;
@@ -762,21 +774,20 @@
 
 #pragma mark - 改变内容字体大小
 - (void)changeWithFont:(NSUInteger)font {
-//
-//    if (font < 5) return;
-//        BookSettingModel *md = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
-//        md.font = font;
-//        TopBookModelManager.font = md.font;
-//        [BookSettingModel encodeModel:md key:[BookSettingModel className]];
-//
-//        XXBookChapterModel *bookModel = kReadingManager.chapters[kReadingManager.chapter];
-//        [kReadingManager pagingWithBounds:kReadingFrame withFont:fontSize(kReadingManager.font) andChapter:bookModel];
-//
-//        //跳转回该章的第一页
-//        if (kReadingManager.page < bookModel.pageCount) {
-//            kReadingManager.page = 0;
-//        }
-//        [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+
+    if (font < 5) return;
+        BookSettingModel *md = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
+        md.font = font;
+        TopBookModelManager.font = md.font;
+        [BookSettingModel encodeModel:md key:[BookSettingModel className]];
+
+        [TopBookModelManager pagingWithBounds:kReadingFrame withFont:fontSize(TopBookModelManager.font) andChapter:self.xlBookReadZJNRModel];
+
+        //跳转回该章的第一页
+        if (self.pageCurrent < TopBookModelManager.pagePrevious) {
+            self.pageCurrent = 0;
+        }
+        [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
 

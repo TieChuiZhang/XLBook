@@ -38,6 +38,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBgColorWithNotifiction:) name:kNotificationWithChangeBg object:nil];
     [self bgColorWithManager:TopBookModelManager.bgColor];
     //self.view.backgroundColor = [UIColor colorWithHexString:@"F9EACE"];
+    
 }
 
 
@@ -50,26 +51,45 @@
 - (void)bgColorWithManager:(NSInteger )index{
     NSString *bgImageName;
     switch (TopBookModelManager.bgColor) {
-        case 1:
+        case kBgColor_default:
             bgImageName = @"def_bg_375x667_";
             break;
-        case 2:
+        case kBgColor_ink:
             bgImageName = @"ink_bg_375x667_";
             break;
-        case 3:
+        case kBgColor_flax:
             bgImageName = @"flax_bg_375x667_";
             break;
-        case 4:
+        case kBgColor_green:
             bgImageName = @"green_bg_375x667_";
             break;
-        case 5:
+        case kBgColor_peach:
             bgImageName = @"peach_bg_375x667_";
             break;
-        case 6:
+        case kBgColor_Black:
             bgImageName = @"coffee_mode_bg";
             break;
         default:
             break;
+    }
+    if (TopBookModelManager.dayMode == kDayMode_night) {
+        UIColor *color = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+        //NSMutableAttributedString *text = (NSMutableAttributedString *)self.contentLabel.attributedText;
+        //text.color = color;
+        //self.contentLabel.attributedText = text;
+
+        self.titleLabel.textColor = color;
+        self.timeLabel.textColor = color;
+        self.pageLabel.textColor = color;
+    } else {
+
+        //NSMutableAttributedString *text = (NSMutableAttributedString *)self.contentLabel.attributedText;
+        //text.color = kblackColor;
+        //self.contentLabel.attributedText = text;
+
+        self.titleLabel.textColor = knormalColor;
+        self.timeLabel.textColor = knormalColor;
+        self.pageLabel.textColor = knormalColor;
     }
     UIImage *bgImage = UIImageName(bgImageName);
     self.view.layer.contents = (__bridge id _Nullable)(bgImage.CGImage);
@@ -122,7 +142,7 @@
         self.timeLabel.textColor = knormalColor;
         self.pageLabel.textColor = knormalColor;
     }
-
+  
     UIImage *bgImage = UIImageName(bgImageName);
     self.view.layer.contents = (__bridge id _Nullable)(bgImage.CGImage);
 
@@ -154,7 +174,7 @@
 {
     _xlBookReadZJNRModel = xlBookReadZJNRModel;
     self.titleLabel.text = xlBookReadZJNRModel.cname;
-    [self pagingWithBounds:kReadingFrame withFont:fontSize(18) andChapter:xlBookReadZJNRModel];
+    [self pagingWithBounds:kReadingFrame withFont:fontSize(TopBookModelManager.font) andChapter:xlBookReadZJNRModel];
     
     
 //    if (bookModel.status == kbookBodyStatus_loading) {
@@ -253,10 +273,15 @@
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithAttributedString:[model.attributedString attributedSubstringFromRange:NSMakeRange(loc, len)]];
         
         if (TopBookModelManager.bgColor == 5) {
-                  text.color = kwhiteColor;
+                  text.color = kblackColor;
               } else {
                   text.color = kblackColor;
               }
+        if (TopBookModelManager.dayMode == kDayMode_night) {
+            text.color = kwhiteColor;
+        }else{
+            text.color = kblackColor;
+        }
         return text;
     }
     return [[NSAttributedString alloc] init];

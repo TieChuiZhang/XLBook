@@ -137,7 +137,7 @@
         // Called when search begain.
         // eg：Push to a temp view controller
         NSString *searchUrl = [NSString stringWithFormat:@"https://sou.jiaston.com/search.aspx?key=%@&page=1&siteid=app2",[searchText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
-        NSDictionary *dic = @{@"searchUrl":searchUrl};
+        NSDictionary *dic = @{@"searchUrl":searchUrl,@"TopVC":@"1"};
         [LeeRunTimePush runtimePush:@"TopBookDController" dic:dic nav:self.navigationController];
     }];
     searchViewController.delegate = self;

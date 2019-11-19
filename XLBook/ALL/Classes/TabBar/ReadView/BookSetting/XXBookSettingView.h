@@ -7,10 +7,13 @@
 //
 
 #import "BaseView.h"
+@class XXBookSettingView;
+@protocol XXBookSettingViewDelegte <NSObject>
+- (void)xxBookSettingViewDelegteDelegteView:(XXBookSettingView *)view;
+@end
 
 @interface XXBookSettingView : BaseView
-
-
+@property (nonatomic, weak) id<XXBookSettingViewDelegte> deleagte;
 /**
  设置白天背景颜色
 

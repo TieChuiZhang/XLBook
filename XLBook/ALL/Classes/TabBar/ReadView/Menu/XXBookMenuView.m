@@ -12,7 +12,7 @@
 
 #import "XXBookMenuView.h"
 
-@interface XXBookMenuView()
+@interface XXBookMenuView()<XXBookSettingViewDelegte>
 
 @property (nonatomic, strong) UIView *topView;
 
@@ -152,7 +152,10 @@
         
         if (i == 0) {
             _dayButton = button;
-
+            if (TopBookModelManager.dayMode == kDayMode_night) {
+                //[button setImage:UIImageName(@"day_mode") forState:0];
+                //[button setTitle:@"白天" forState:UIControlStateNormal];
+            }
             if (TopBookModelManager.bgColor != 5) {
                 [button setImage:UIImageName(@"day_mode") forState:0];
                 [button setTitle:@"白天" forState:UIControlStateNormal];
@@ -165,10 +168,8 @@
 - (void)changeDayAndNight {
     
     if (TopBookModelManager.dayMode == kDayMode_light) {
-        
         TopBookModelManager.dayMode = kDayMode_night;
         TopBookModelManager.bgColor = kBgColor_Black;
-        
         BookSettingModel *model = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
         model.dayMode = kDayMode_light;
         model.bgColor = kBgColor_Black;
@@ -185,9 +186,14 @@
 
         [_dayButton setImage:[UIImage imageNamed:@"day_mode"] forState:0];
         [_dayButton setTitle:@"白天" forState:UIControlStateNormal];
-
         [_settingView changeLightbgColorSeleted:kBgColor_default];
     }
+}
+
+- (void)xxBookSettingViewDelegteDelegteView:(XXBookSettingView *)view
+{
+    [_dayButton setImage:[UIImage imageNamed:@"day_mode"] forState:0];
+    [_dayButton setTitle:@"白天" forState:UIControlStateNormal];
 }
 
 
@@ -195,6 +201,7 @@
     
     _settingView = [[XXBookSettingView alloc] init];
     _settingView.hidden = YES;
+    _settingView.deleagte = self;
     [self addSubview:_settingView];
     
     [_settingView mas_makeConstraints:^(MASConstraintMaker *make) {

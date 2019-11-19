@@ -17,12 +17,16 @@
 @property (nonatomic, assign) NSUInteger maxpage;
 @property (nonatomic, assign) NSUInteger page;
 @property (nonatomic, copy) NSString *titleString;
+@property (nonatomic, copy) NSString *TopVC;
 @end
 
 @implementation TopBookDController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([self.TopVC isEqualToString:@"1"]) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
     self.title = self.titleString;
     self.topBookModel.tableView = [self setupTableView];
     CGFloat  aa = NAV_HEIGHT;
