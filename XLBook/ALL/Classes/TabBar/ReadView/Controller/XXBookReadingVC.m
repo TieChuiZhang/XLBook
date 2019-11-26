@@ -9,14 +9,11 @@
 #define SpaceWith kScreenWidth / 3
 #define SpaceHeight kScreenHeight / 3
 #define kShowMenuDuration 0.3f
-//#import "XXSummaryVC.h"
-//#import "XXDatabase.h"
 #import "XXBookMenuView.h"
 #import "XXReadSettingVC.h"
 #import "XXBookReadingVC.h"
 #import "XXBookContentVC.h"
 #import "XXDirectoryVC.h"
-//#import "XXBookModel.h"
 #import "XLBookReadZJLBModel.h"
 #import "TopBookZJMLFZModel.h"
 #import "XXBookReadingBackViewController.h"
@@ -140,8 +137,39 @@
       //_tap.cancelsTouchesInView = NO;
       [self.view addGestureRecognizer:self.tap];
       _tap.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationEnterBackground) name: @"applicationEnterBackground" object:nil];
+}
+
+- (void)applicationEnterBackground
+{
+    //TopBookModel *manager = [TopBookModel shareReadingManager];
+    TopBookOneBookDModel *dbmodel = [kDatabase getBookWithId:self.bookID];
+    TopBookOneBookDModel *model = [TopBookOneBookDModel new];
+    BookSettingModel *settingModel = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
+    settingModel.dayMode = TopBookModelManager.dayMode;
+    [BookSettingModel encodeModel:settingModel key:[BookSettingModel className]];
+    if (dbmodel) {
+        model.Id = self.bookID;
+        model.page = self.pageCurrent;
+        model.chapter = self.pageZJ;
+        model.Img = dbmodel.Img;
+        model.Name = dbmodel.Name;
+        model.LastChapter = dbmodel.LastChapter;
+        [kDatabase deleteBookWithId:self.bookID];
+    }else{
+        model.Id = self.bookID;
+        model.page = self.pageCurrent;
+        model.chapter = self.pageZJ;
+        model.Img = TopBookModelManager.topBookOneBookDModel.Img;
+        model.Name = TopBookModelManager.topBookOneBookDModel.Name;
+        model.LastChapter = TopBookModelManager.topBookOneBookDModel.LastChapter;
+    }
     
-    
+    if ([kDatabase insertBook:model]) {
+        NSLog(@"存储书籍成功");
+    }else{
+        NSLog(@"存储书籍失败");
+    }
 }
 
 
@@ -234,121 +262,7 @@
     } failure:^(NSError * _Nonnull error) {
         
     }];
-    
-
-    
-    
-    //[self.topBookModel getAllReadBookZJNR:self.bookZJLBArr[1][@"id"]];
-    
-    //    if (show) {
-    //        [HUD showProgress:nil inView:self.view];
-    //    }
-    //MJWeakSelf;
-    //[self requestSummaryWithComplete:^{
-    
-    
-    
-    
-    //[self requestChaptersWithComplete:^{
-    
-    //            [weakSelf requestContentWithComplete:^{
-    //                [HUD hide];
-    //                //初始化显示控制器
-    //                [self.pageViewController setViewControllers:@[[self getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    //            }];
-    
-    
-    
-    //}];
-    // }];
 }
-
-
-#pragma mark - 请求源头列表
-//- (void)requestSummaryWithComplete:(void(^)())complete {
-//
-//    MJWeakSelf;
-//
-//    if (kReadingManager.summaryId.length > 0) {
-//
-//        complete();
-//
-//    } else {
-//        //如果没有加入书架的就会没有源id 需要请求一遍拿到源id,然后请求目录数组->再请求第一章
-//        [kReadingManager requestSummaryCompletion:^{
-//
-//            //请求完成
-//            if (kReadingManager.summaryId.length == 0) {
-//                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"⚠️" message:@"当前书籍没有源更新!" preferredStyle:UIAlertControllerStyleAlert];
-//
-//                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//
-//                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-//
-//                    [weakSelf dismissViewControllerAnimated:YES completion:nil];
-//
-//                }]];
-//
-//                [weakSelf presentViewController:alert animated:YES completion:^{
-//                    [HUD hide];
-//                }];
-//            } else {
-//                //有源id
-//                complete();
-//            }
-//
-//        } failure:^(NSString *error) {
-//            [HUD hide];
-//            [HUD showError:error inview:weakSelf.view];
-//        }];
-//    }
-//
-//}
-
-
-#pragma mark - 请求小数目录数组
-//- (void)requestChaptersWithComplete:(void(^)())complete {
-//
-//    MJWeakSelf
-//    [kReadingManager requestChaptersWithUseCache:!self.isReplaceSummary completion:^{
-//        if (weakSelf.isReplaceSummary) {
-//            //已经更换了源ID 弹出目录让用户选择
-//            if (kReadingManager.chapter > kReadingManager.chapters.count - 1) {
-//                //如果上次读的章节数大于当前源的总章节数
-//                kReadingManager.chapter = kReadingManager.chapters.count - 1;
-//            }
-//            weakSelf.isReplaceSummary = NO;
-//            //保存下进度
-////            XXBookModel *model = [kDatabase getBookWithId:kReadingManager.bookId];
-////            model.chapter = kReadingManager.chapter;
-////            model.page = kReadingManager.page;
-////            model.summaryId = kReadingManager.summaryId;
-////            [kDatabase updateBook:model];
-//
-//            dispatch_async_on_main_queue(^{
-//                [weakSelf showDirectoryVCWithIsReplaceSummary:YES];
-//            });
-//        } else {
-//            complete();
-//        }
-//    } failure:^(NSString *error) {
-//        [HUD hide];
-//        [HUD showError:error inview:weakSelf.view];
-//    }];
-//}
-
-
-#pragma mark - 请求小说内容
-//- (void)requestContentWithComplete:(void(^)())complete {
-
-//    MJWeakSelf;
-//    [kReadingManager requestContentWithChapter:kReadingManager.chapter ispreChapter:weakSelf.ispreChapter Completion:^{
-//        complete();
-//    } failure:^(NSString *error) {
-//        [HUD hide];
-//    }];
-//}
-
 
 #pragma mark - UIPageViewControllerDelegate
 /*
@@ -367,19 +281,7 @@
     }
     _isTaping = NO;
 }
-
-- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers
-{
-    XXBookContentVC *readPageVC = (XXBookContentVC *)pageViewController.viewControllers.firstObject;
-    XXBookContentVC *lastObjectPageVC = (XXBookContentVC *)pageViewController.viewControllers.lastObject;
-//    NSLog(@"lastObjectPageVCpage:%lu",(unsigned long)lastObjectPageVC.page);
-//    NSLog(@"页面page:%lu",(unsigned long)readPageVC.page);
-//    NSLog(@"controllerpage:%ld",(long)self.pageCurrent);
-}
-
-
 #pragma mark - UIPageViewControllerDataSource
-
 //上一页
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     if (_isTaping) {
@@ -636,37 +538,9 @@
         
         switch (type) {
             case kBookMenuType_close: {
-                //关闭
-                
                 //保存进度
-                //TopBookModel *manager = [TopBookModel shareReadingManager];
-                TopBookOneBookDModel *dbmodel = [kDatabase getBookWithId:weakself.bookID];
-                TopBookOneBookDModel *model = [TopBookOneBookDModel new];
-                BookSettingModel *settingModel = [BookSettingModel decodeModelWithKey:[BookSettingModel className]];
-                settingModel.dayMode = TopBookModelManager.dayMode;
-                [BookSettingModel encodeModel:settingModel key:[BookSettingModel className]];
-                if (dbmodel) {
-                    model.Id = self.bookID;
-                    model.page = self.pageCurrent;
-                    model.chapter = self.pageZJ;
-                    model.Img = dbmodel.Img;
-                    model.Name = dbmodel.Name;
-                    model.LastChapter = dbmodel.LastChapter;
-                    [kDatabase deleteBookWithId:self.bookID];
-                }else{
-                    model.Id = self.bookID;
-                    model.page = self.pageCurrent;
-                    model.chapter = self.pageZJ;
-                    model.Img = TopBookModelManager.topBookOneBookDModel.Img;
-                    model.Name = TopBookModelManager.topBookOneBookDModel.Name;
-                    model.LastChapter = TopBookModelManager.topBookOneBookDModel.LastChapter;
-                }
-                
-                if ([kDatabase insertBook:model]) {
-                    NSLog(@"存储书籍成功");
-                }else{
-                    NSLog(@"存储书籍失败");
-                }
+                [weakself applicationEnterBackground];
+                //关闭
                 [weakself go2Back];
             }
                 break;
@@ -757,17 +631,6 @@
         } failure:^(NSError * _Nonnull error) {
             
         }];
-        
-        //        [kReadingManager requestContentWithChapter:chapter ispreChapter:weakSelf.ispreChapter Completion:^{
-        //            [HUD hide];
-        //            kReadingManager.chapter = chapter;
-        //            kReadingManager.page = 0;
-        //
-        //            [weakSelf.pageViewController setViewControllers:@[[weakSelf getpageBookContent]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-        //
-        //        } failure:^(NSString *error) {
-        //            [HUD hide];
-        //        }];
     };
 }
 
@@ -886,6 +749,14 @@
     return _menuView;
 }
 
+
+
+- (void)dealloc {
+        //单条移除观察者
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"applicationEnterBackground" object:nil];
+        //移除所有观察者
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 
 @end

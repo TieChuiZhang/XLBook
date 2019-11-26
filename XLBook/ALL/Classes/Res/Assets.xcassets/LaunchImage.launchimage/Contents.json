@@ -2,86 +2,68 @@
   "images" : [
     {
       "extent" : "full-screen",
-      "idiom" : "iphone",
-      "subtype" : "2688h",
-      "filename" : "launchScreeniPhoneXPortraitiOS12_414x896pt@3x.png",
-      "minimum-system-version" : "12.0",
       "orientation" : "portrait",
-      "scale" : "3x"
-    },
-    {
-      "extent" : "full-screen",
       "idiom" : "iphone",
-      "subtype" : "1792h",
-      "filename" : "launchScreeniPhoneXPortraitiOS12_414x896pt@2x.png",
-      "minimum-system-version" : "12.0",
-      "orientation" : "portrait",
-      "scale" : "2x"
-    },
-    {
-      "extent" : "full-screen",
-      "idiom" : "iphone",
-      "subtype" : "2436h",
-      "filename" : "launchScreeniPhoneXPortraitiOS11_375x812pt@3x.png",
+      "filename" : "WeChatf4e500b980bb88be984c91afa9568118iPhoneXPortraitiOS11_375x812pt@3x.png",
       "minimum-system-version" : "11.0",
-      "orientation" : "portrait",
+      "subtype" : "2436h",
       "scale" : "3x"
     },
     {
       "extent" : "full-screen",
+      "orientation" : "portrait",
       "idiom" : "iphone",
+      "filename" : "WeChatf4e500b980bb88be984c91afa9568118iPhonePortraitiOS89_414x736pt@3x.png",
+      "minimum-system-version" : "8.0",
       "subtype" : "736h",
-      "filename" : "launchScreeniPhonePortraitiOS89_414x736pt@3x.png",
-      "minimum-system-version" : "8.0",
-      "orientation" : "portrait",
       "scale" : "3x"
     },
     {
       "extent" : "full-screen",
+      "orientation" : "portrait",
       "idiom" : "iphone",
-      "subtype" : "667h",
-      "filename" : "launchScreeniPhonePortraitiOS89_375x667pt@2x.png",
+      "filename" : "WeChatf4e500b980bb88be984c91afa9568118iPhonePortraitiOS89_375x667pt@2x.png",
       "minimum-system-version" : "8.0",
-      "orientation" : "portrait",
+      "subtype" : "667h",
       "scale" : "2x"
     },
     {
+      "extent" : "full-screen",
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "launchScreeniPhonePortraitiOS789_320x480pt@2x.png",
-      "extent" : "full-screen",
+      "filename" : "WeChatf4e500b980bb88be984c91afa9568118iPhonePortraitiOS789_320x480pt@2x.png",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
     },
     {
       "extent" : "full-screen",
+      "orientation" : "portrait",
       "idiom" : "iphone",
+      "filename" : "WeChatf4e500b980bb88be984c91afa9568118iPhonePortraitiOS789_320x568pt@2x.png",
+      "minimum-system-version" : "7.0",
       "subtype" : "retina4",
-      "filename" : "launchScreeniPhonePortraitiOS789_320x568pt@2x.png",
-      "minimum-system-version" : "7.0",
-      "orientation" : "portrait",
       "scale" : "2x"
     },
     {
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "launchScreeniPhonePortraitiOS56_320x480pt.png",
       "extent" : "full-screen",
+      "idiom" : "iphone",
+      "filename" : "WeChatf4e500b980bb88be984c91afa9568118iPhonePortraitiOS56_320x480pt.png",
+      "orientation" : "portrait",
       "scale" : "1x"
     },
     {
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "launchScreeniPhonePortraitiOS56_320x480pt@2x.png",
       "extent" : "full-screen",
+      "idiom" : "iphone",
+      "filename" : "WeChatf4e500b980bb88be984c91afa9568118iPhonePortraitiOS56_320x480pt@2x.png",
+      "orientation" : "portrait",
       "scale" : "2x"
     },
     {
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "launchScreeniPhonePortraitiOS56_320x568pt@2x.png",
       "extent" : "full-screen",
+      "idiom" : "iphone",
+      "filename" : "WeChatf4e500b980bb88be984c91afa9568118iPhonePortraitiOS56_320x568pt@2x.png",
       "subtype" : "retina4",
+      "orientation" : "portrait",
       "scale" : "2x"
     }
   ],

@@ -21,7 +21,7 @@
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"搜索"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(search)];
     self.cacheArray  = [TopBookOneBookDModel mj_objectArrayWithKeyValuesArray:[kDatabase getBooks]];
-    self.title = @"书架";
+    self.title = @"最近阅读";
     self.tableView = [self setupTableView];
     [self dropRefresh];
 }
@@ -29,15 +29,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //[self.tableView.mj_header beginRefreshing];
+    [self.tableView.mj_header beginRefreshing];
 }
 
 - (void)dropRefresh
 {
     LeeWeakSelf(self);
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-         [weakself.cacheArray removeAllObjects];
-         weakself.cacheArray  = [TopBookOneBookDModel mj_objectArrayWithKeyValuesArray:[kDatabase getBooks]];
+        [weakself.cacheArray removeAllObjects];
+        weakself.cacheArray  = [TopBookOneBookDModel mj_objectArrayWithKeyValuesArray:[kDatabase getBooks]];
         [weakself.tableView reloadData];
         [weakself.tableView.mj_header endRefreshing];
     }];

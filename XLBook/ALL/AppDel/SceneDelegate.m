@@ -56,7 +56,11 @@
 
     // Save changes in the application's managed object context when the application transitions to the background.
     [(AppDelegate *)UIApplication.sharedApplication.delegate saveContext];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"applicationEnterBackground" object:nil];
+    
 }
+
 
 
 @end

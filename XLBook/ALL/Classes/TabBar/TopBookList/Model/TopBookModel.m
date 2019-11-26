@@ -127,13 +127,13 @@
     NSArray *dbChapters = [kDatabase getChaptersWithSummaryId:bookIDString];
     if (!IsEmpty(dbChapters)) {
         self.chapters = dbChapters;
-        [HUD showMsgWithoutView:@"加载缓存"];
+        //[HUD showMsgWithoutView:@"加载缓存"];
         [self.zjlbBookArr removeAllObjects];
         [self.zjlbBookArr addObjectsFromArray:dbChapters];
         [self reloadData];
         [MBProgressHUD dismissHUD];
     }else{
-        [HUD showMsgWithoutView:@"加载网络"];
+        //[HUD showMsgWithoutView:@"加载网络"];
         [XLAPI getAllClassifyWithUrlString:urlString ListComplete:^(id result, BOOL cache, NSError *error) {
             [self.zjlbBookArr removeAllObjects];
             // 获取所有分组数组
